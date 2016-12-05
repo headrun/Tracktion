@@ -1,0 +1,578 @@
+<ul class="nav nav-tabs">
+  <li ng-class="{active: $ctrl.activeTab === tabName}"
+      ng-repeat="tabName in $ctrl.tabsOrder">
+    <a ui-sref="{{ $ctrl.stateName +
+                   '({tabName: tabName,
+                      state: $ctrl.tabs[tabName].state
+                    })'
+                }}">
+      {{ $ctrl.tabs[tabName].title }}
+    </a>
+  </li>
+</ul>
+
+<div class="tabs-content">
+  <!-- Description for Clinical Trail Summary starts here -->
+  <div class="tab-pane clinical-trail-summary" role="tabpanel" 
+    ng-if="$ctrl.activeTab === 'Clinical Trail Summary' ">
+    <h3></h3>
+    <div class="clinical-trail-summary-data center-block">
+      <!-- Description of Clinical-trail-summary-->
+      <div class="row">
+        <div class="filter-container form-inline text-center">
+          <div class="filter-item">
+            <input type="radio" name="track" >
+            <select class="form-control" id="select5">
+              <option> Select Trial Status</option>
+              <option>Completed</option>
+              <option>Ongoing</option>
+              <option>Recruiting</option>
+              <option>All</option>
+            </select> 
+          </div>
+          <div class="filter-item">
+            <input type="radio" name="track" >
+            <select class="form-control">
+              <option> Select Drug Class</option>
+              <option>GLP1</option>
+              <option>SGLT2</option>
+              <option>DPP4</option>
+              <option>Others</option>
+              <option>All</option>
+            </select> 
+          </div>
+	  <div class="filter-item">
+            <input type="radio" name="track" >
+            <select class="form-control">
+              <option> Select by Drug</option>
+              <option>Adlyxin/Lyxumia</option>
+              <option>Lixisenatide</option>
+              <option>Tanzeum/Eperzan</option>
+              <option>Albiglutide (GSK)</option>
+              <option>Semaglutide (Novo Nordisk)</option>
+              <option>ITCA 650 (Intarcia)</option>
+             </select> 
+          </div>
+
+          <div class="filter-item">
+            <input type="radio" name="track" >
+            <select class="form-control">
+              <option> Select Year</option>
+              <option>2014</option>
+              <option>2015</option>
+              <option>2016</option>
+              <option>2017</option>
+              <option>2018</option>
+              <option>2019</option>
+              <option>2020</option>
+             </select>
+          </div>
+          <div class="filter-item">
+            <input type="radio" name="track" >
+            <select class="form-control">
+              <option> Select Location</option>
+              <option>US</option>
+              <option>EU</option>
+              <option>China</option>
+              <option>Japan</option>
+            </select>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="summary-container">
+         <table class="table table-responsive drugtable center-block">
+           <thead>
+             <tr class="drugtr">
+               <th class="drugth">Drug</th>
+               <th class="druginnertable">
+                 <table class="table table-bordered table-responsive">
+                   <thead>
+                     <tr>
+                       <th colspan="4" >Before 2014</th>
+                       <th colspan="4">2014</th>
+                       <th colspan="4">2015</th>
+                       <th colspan="4">2016</th>
+                       <th colspan="4">2017</th>
+                       <th colspan="4">2018</th>
+                       <th colspan="4">2019</th>
+                       <th colspan="4">2020</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                       <td colspan="4">...</td>
+                       <td>1Q</td>
+                       <td>2Q</td>
+                       <td>3Q</td>
+                       <td>4Q</td>
+                       <td>1Q</td>
+                       <td>2Q</td>
+                       <td>3Q</td>
+                       <td>4Q</td>
+                       <td>1Q</td>
+                       <td>2Q</td>
+                       <td>3Q</td>
+                       <td>4Q</td>
+                       <td>1Q</td>
+                       <td>2Q</td>
+                       <td>3Q</td>
+                       <td>4Q</td>
+                       <td>1Q</td>
+                       <td>2Q</td>
+                       <td>3Q</td>
+                       <td>4Q</td>
+                       <td>1Q</td>
+                       <td>2Q</td>
+                       <td>3Q</td>
+                       <td>4Q</td>
+                       <td>1Q</td>
+                       <td>2Q</td>
+                       <td>3Q</td>
+                       <td>4Q</td>
+                     </tr>
+                   </tbody>
+                 </table>
+               </th>
+             </tr>
+           </thead>
+           <tbody>
+             <table class="table drugrow1table">
+               <tbody>
+                 <tr>
+                   <td rowspan="3" class="main_row text-center">Adlyxin / Lyxumia Lixisenatide (Sanofi)</td>
+                   <td class="trail_c">
+                     <div class="status completed">C</div>
+                     <div class="detail_wrapper sanofi-1">
+                       <div class="progress">
+                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                         </div>
+                       </div>
+                       <div class="prim-date"></div>
+                       <div class="flag-ico us"></div>
+                       <div class="flag-ico eu"></div>
+                       <p><a target="_blank" href="https://clinicaltrials.gov/ct2/show/NCT01798706?term=NCT01798706&rank=1">NCT01798706 </a>
+                             (GETGOAL-O); Phase III; N=350; Older subjects
+                       </p>
+                     </div>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td class="trail_c">
+                     <div class="status completed">C</div>
+                     <div class="detail_wrapper sanofi-2">
+                       <div class="progress">
+                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                         </div>
+                       </div>
+                       <div class="prim-date"></div>
+                       <div class="full-results"><i class="fa fa-star" aria-hidden="true"></i></div>
+                       <div class="flag-ico us"></div>
+                       <div class="flag-ico eu"></div>
+                       <p><a target="_blank" 
+                            href="https://clinicaltrials.gov/ct2/show/study/NCT01147250?term=Lixisenatide+and+elixa&rank=1&show_locs=Y#locn">
+                            NCT01147250 
+                          </a>
+                           Phase III; N=6068; T2DM after ACS during treatment
+                       </p>
+                     </div>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td class="trail_r">
+                   <div class="status recruiting">R</div>
+                     <div class="detail_wrapper sanofi-3">
+                       <div class="progress">
+                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                         </div>
+                       </div>
+                       <div class="prim-date"></div>
+                       <div class="flag-ico us"></div>
+                       <div class="flag-ico eu"></div>
+                       <p><a target="_blank" 
+                             href="https://clinicaltrials.gov/ct2/show/study/NCT02787551?term=Lixisenatide&rank=16&show_locs=Y#locn"> NCT02787551</a>
+                              ;(LIXILAN-G); Phase III; N=500; FDC with Insulin Glargine
+                       </p>
+                     </div>
+                   </td>
+                 </tr>
+               </tbody>
+             </table>
+             <!--end of first  row -->
+             <table class="table">
+               <tbody>
+                 <tr>
+                   <td rowspan="2" class="main_row text-center">Tanzeum / Eperzan Albiglutide (GSK)</td>
+                   <td class="trail_o">
+                     <div class="status ongoing">O</div>
+                     <div class="detail_wrapper gsk-1">
+                       <div class="progress">
+                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                         </div>
+                       </div>
+                       <div class="prim-date"></div>
+                       <div class="flag-ico us"></div>
+                       <p><a target="_blank" href="https://clinicaltrials.gov/ct2/show/study/NCT02683746?term=Albiglutide+and+phase+3&rank=1&show_locs=Y#locn">NCT02683746</a>
+                        ; Phase III; N=300; Safety and Efficacy of Liquid drug in T2DM
+                     </p>
+                     </div>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td class="trail_r">
+                     <div class="status recruiting">R</div>
+                     <div class="detail_wrapper gsk-2">
+                       <div class="progress">
+                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                         </div>
+                       </div>
+                       <div class="prim-date"></div>
+                       <div class="flag-ico us"></div>
+                       <div class="flag-ico eu"></div>
+                       <p><a target="_blank" href="https://clinicaltrials.gov/ct2/show/NCT02229227?term=albiglutide&rank=16">NCT02229227</a>
+                        Phase III; N=704; Safety and Efficacy of Albiglutide Vs Insulin Lispro, (both FDC with Insulin Glargine
+                     </p>
+                     </div>
+                   </td>
+                 </tr>
+               </tbody>
+             </table>
+             <!--end of 2nd row -->
+             <table class="table">
+               <tbody>
+                 <tr>
+                   <td rowspan="2" class="main_row text-center">Trulicity Dulaglutide (Eli Lilly)</td>
+                   <td class="trail_c">
+                     <div class="status completed">C</div>
+                     <div class="detail_wrapper lilly-1">
+                       <div class="progress">
+                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                         </div>
+                       </div>
+                       <div class="full-results"><i class="fa fa-star" aria-hidden="true"></i></div>
+                       <div class="prim-date"></div>
+                       <div class="flag-ico un1"></div>
+                       <div class="flag-ico un2"></div>
+                       <p><a target="_blank" href="https://clinicaltrials.gov/ct2/show/NCT01648582?term=DULAGLUTIDE+AND+PHASE+3&rank=6">NCT01648582</a>
+                        ; Phase III; N=789; Safety and Efficacy study in comparison to Insulin Glargine
+                     </p>
+                     </div>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td class="trail_o">
+                     <div class="status ongoing">O</div>
+                     <div class="detail_wrapper lilly-2">
+                       <div class="progress">
+                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                         </div>
+                       </div>
+                       <div class="prim-date"></div>
+                       <p><a target="_blank" href="https://clinicaltrials.gov/ct2/show/study/NCT02597049?term=DULAGLUTIDE+AND+PHASE+3&rank=9&show_locs=Y#locn"> NCT02597049 </a>
+                       (AWARD-10); Phase III; N=436; Safety and Efficacy of Dulaglutide when added to SGLT-2 inhibitor
+                     </p>
+                     </div>
+                   </td>
+                 </tr>
+               </tbody>
+             </table>  
+             <!-- end of 3rd row -->
+             <table class="table">
+               <tbody>
+                 <tr>
+                   <td rowspan="2" class="main_row text-center">Semaglutide (Novo Nordisk)</td>
+                   <td class="trail_c">
+                     <div class="status completed">C</div>
+                     <div class="detail_wrapper novo-1">
+                       <div class="progress">
+                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                         </div>
+                       </div>
+                       <div class="full-results"><i class="fa fa-star" aria-hidden="true"></i></div>
+                       <div class="prim-date"></div>
+                       <div class="flag-ico us"></div>
+                       <div class="flag-ico eu"></div>
+                       <p><a target="_blank" href="https://clinicaltrials.gov/ct2/show/study/NCT01720446?term=SEMAGLUTIDE+AND+PHASE+3&rank=1&show_locs=Y#locn"> NCT01720446 </a>
+                       (SUSTAIN-6); Phase III; N=3297; CV and long term outcomes
+                     </p>
+                     </div>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td class="trail_r">
+                     <div class="status recruiting">R</div>
+                     <div class="detail_wrapper novo-2">
+                       <div class="progress">
+                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                         </div>
+                       </div>
+                       <div class="prim-date"></div>
+                       <div class="flag-ico us"></div>
+                       <div class="flag-ico un3"></div>
+                       <p><a target="_blank" href="https://clinicaltrials.gov/ct2/show/study/NCT02906930?term=SEMAGLUTIDE+AND+PHASE+3&rank=9&show_locs=Y#locn"> NCT02906930 </a>
+                       (PIONEER-1); Phase III; N=704; Safety and Efficacy in patients treated with diet and exercise only
+                     </p>
+                     </div>
+                   </td>
+                 </tr>
+               </tbody>
+             </table>
+             <!-- 4throw-->
+             <table class="table">
+               <tbody>
+                 <tr>
+                   <td rowspan="2" class="main_row text-center">ITCA 650 (Intarcia)</td>
+                   <td class="trail_c">
+                     <div class="status completed">C</div>
+                     <div class="detail_wrapper antarcia-1">
+                       <div class="progress">
+                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                         </div>
+                       </div>
+                       <div class="full-results"><i class="fa fa-star" aria-hidden="true"></i></div>
+                       <div class="prim-date"></div>
+                       <div class="flag-ico us"></div>
+                       <p><a target="_blank" href="https://clinicaltrials.gov/ct2/show/study/NCT01455870?term=ITCA-650+and+intarcia&rank=11&show_locs=Y#locn">NCT01455870 </a>
+                        (FREEDOM-2); Phase III; N=535; Safety and Efficacy in comparison to Sitagliptin
+                     </p>
+                     </div>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td class="trail_r">
+                     <div class="status recruiting">R</div>
+                     <div class="detail_wrapper antarcia-2">
+                       <div class="progress">
+                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                         </div>
+                       </div>
+                       <div class="flag-ico us"></div>
+                       <div class="flag-ico eu"></div>
+                       <p><a target="_blank" href="https://clinicaltrials.gov/ct2/show/study/NCT01455896?term=ITCA-650+and+intarcia&rank=2&show_locs=Y#locn">NCT01455896 </a>
+                       ; Phase III; N=4000; CV Outcomes
+                     </p>
+                     </div>
+                   </td>
+                 </tr>
+               </tbody>
+             </table>
+                <!-- end of 4throw -->
+                  <!-- end of last row -->
+           </tbody>
+          </table>
+
+          <div class="legend">
+            <div class="item">
+             <div class="status completed">C</div>
+               <p class="center-align">Completed</p>
+             </div>
+             <div class="item">
+               <div class="status ongoing">O</div>
+               <p class="center-align">Ongoing</p>
+             </div>
+             <div class="item">
+               <div class="status recruiting">R</div>
+               <p class="center-align">Recruiting</p>
+             </div>
+             <div class="item">
+               <div class="prim-date align-style"></div>
+               <p class="para-align">Primary Completion Date</p>
+             </div>
+             <div class="item">
+                <div class="full-results"><i class="fa fa-star" aria-hidden="true"></i></div>
+                <p>Full Results</p>
+             </div>
+           </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Description of Clinical Trail summary ends here -->
+  <!-- Description of Clinical Data starts here -->
+  <div class="tab-pane clinical-data text-justify" role="tabpanel" 
+    ng-if="$ctrl.activeTab === 'Clinical Data' ">
+
+    <h3></h3>
+    <table class="table table-bordered table-striped center-block">
+      <thead>
+	<tr>
+	  <th>Sl.No</th>
+	  <th>Drug</th>
+	  <th>NCTID (Trial Name)</th>
+	  <th>Phase</th>
+	  <th>Start Date/PCD</th>
+	  <th>Sample size</th>
+	  <th>Primary Endpoint</th>
+	  <th>Results</th>
+	  <th>Summary</th>
+	</tr>
+      </thead>
+      <tbody>
+	<tr>
+	  <td>1</td>
+	  <td>Lixisenatide</td>
+	  <td>NCT01798706 (GETGOAL-O)</td>
+	  <td>III</td>
+	  <td>Jun'13/Feb'15</td>
+	  <td>350</td>
+	  <td>Change in HbA1c From Baseline</td>
+	    <td>
+	      <ul>
+		<li>Mean HbA1c at baseline:  8%</li>
+		<li>Mean change in HbA1c from baseline to Week 24: -0.64%</li>
+		<li>Safety profile consistent with other studies of drug</li>
+	      </ul>
+	    </td>
+	    <td>Trial met primary endpoint. No unexpected safety findings1</td>
+	  </tr>
+	  <tr>
+	    <td>2</td>
+	    <td>Albiglutide</td>
+	    <td>NCT02683746</td>
+	    <td>III</td>
+	    <td>Mar'16/May'17</td>
+	    <td>300</td>
+	    <td>Change from baseline in HbA1c at Wk 26</td>
+	    <td>
+	      <ul>
+	         <li>Trial ongoing</li>
+	      </ul>
+	     </td>
+	     <td>Trial ongoing2</td>
+	   </tr>
+	   <tr>
+	     <td>3</td>
+	     <td>Dulaglutide</td>
+	     <td>NCT01648582</td>
+	     <td>III</td>
+	     <td>Jul'12/Aug'14</td>
+	     <td>789</td>
+	     <td>Change from baseline in HbA1c at Wk 26</td>
+	     <td>
+		<ul>
+		  <li>Mean change at Week 26:-1.70  (0.067) for 1.5mg 
+			   Dulaglutide Vs -1.15  (0.067) for insulin glargine
+		  </li>
+		</ul>
+	     </td>
+	     <td>Trial met primary endpoint3</td>
+	   </tr>
+	   <tr>
+	     <td>4</td>
+	     <td>Semaglutide</td>
+	     <td>NCT01720446</td>
+	     <td>III</td>
+	     <td>Feb'13/Ma'16</td>
+	     <td>3297</td>
+	     <td>Noninferiority of major cardiovascular events</td>
+	     <td>
+	       <ul>
+		 <li>Patients receiving drug showed 26% lower risk of first 
+			   occurrence of CV death, nonfatal MI, or stroke compared
+		        with those receiving placebo
+                 </li>
+		 <li>Vitreous hemorrhage, blindness occurred in 3% of patients 
+                  on the active drug compared with 1.8% of the placebo
+		        group
+                 </li>
+	       </ul>
+	     </td>
+	     <td>Trial met primary endpoint, showed statistically significant reduction in CV risk4</td>
+	   </tr>
+	 </tbody>
+       </table>
+     
+     </div>
+  <!-- Description of Clinical Data ends here -->
+  <!-- News Data starts Here -->
+  <div class="tab-pane news center-block text-justify " role="tabpanel" 
+    ng-if="$ctrl.activeTab === 'News' ">
+    <div class="widget">
+ 
+      <div class="title">
+        <h3>Diabetes Newsletter (13th-17th July)</h3>
+      </div>
+
+      <div class="content">
+	<p>According to The Centers for Disease Control and Prevention there are about 24 million people in US with diabetes,
+	   out of which nearly 18 million people are diagnosed and the remaining 6 million people remain undiagnosed. It is also
+	   reported that majority of the people suffer from type 2 diabetes. Type 1 diabetes is only about 10% of the overall
+	   diabetes population. It is observed that the prevalence of diabetes is increasing over the years. Lifestyle disorders
+	   mainly obesity is the most important contributing factor. Prevalence of type 2 diabetes is high in Europe and even
+	   there obesity is considered as the main reason for increasing prevalence.
+        </p>
+	<p class="brown-font">
+          <b>This the first trial to assess effect of coadministration of a GLP-1 receptor agonist /SGLT-2 
+	     inhibitor
+          </b>
+        </p>
+        <p class="sub-heading"><span>DURATION-8 Study Details</span></p>
+        <p>The study was a 28 week, multicentre, double-blind, randomised, active-controlled phase 3 trial done at 109 sites
+	  in six countries</p>
+	<p class="sub-heading"><span>Efficacy</span></p>
+	<ul>
+	  <li><p>In the study, T2D adults with stable metformin therapy received receive once-weekly exenatide 2 mg plus
+	    once-daily dapagliflozin 10 mg oral tablets for 28 weeks</p></li>
+	    <li><p>Exenatide plus dapagliflozin significantly reduced HbA1c from baseline to week 28 compared with exenatide
+	    alone (-0.4% [95% CI -0.6 to -0.1]; p=0.004) or dapagliflozin alone (-0.6% [-0.8 to -0.3]; p&lt;0.001).</p></li>
+	</ul>
+	<table class="table table-bordered">
+	  <tbody>
+	    <tr>
+	      <td></td>
+	      <td>exenatide plus dapagliflozin</td>
+	      <td>exenatide</td>
+	      <td>dapagliflozin</td>
+	    </tr>
+	    <tr>
+	      <td>Change in baseline HbA1c at 28 weeks</td>
+	      <td>-1.95% (95% CI -2.1 to -1.8)</td>
+	      <td>-1.58% (-1.8 to -1.4)</td>
+	      <td>-1.37% (-1.6 to -1.2)</td>
+	    </tr>
+	    <tr>
+	      <td>Body weight reduction (kg)</td>
+	      <td>-3.4</td>
+	      <td>-1.5</td>
+	      <td>-2.2</td>
+	    </tr>
+	    <tr>
+	      <td>Systolic blood pressure reduction in mmHg</td>
+	      <td>-4.2</td>
+	      <td>-1.3</td>
+	      <td>-1.8</td>
+	    </tr>
+	  </tbody>
+	</table>
+
+	<p class="sub-heading brown-font"><span>Other pipeline updates</span></p>
+        <p>The diabetes pipeline indicates that there are around 150 molecules in different phases of development.  The late
+	  stage molecules are follow up drugs such as ertugliflozin (PF-04971729) which is a SGLT-2 inhibitor and combination
+	  therapies with ertugliflozin as seen in the Pfizer and Merck pipeline. Novo Nordisk has semaglutide in phase 3 which is
+	  a GLP-1 medicine but with weekly one dose.  The drug will be the fourth drug in the market for weekly once dosing apart
+	  from Trulicity, Tanzeum and Bydureon. In its trials the drug has proved that it can reduce heart risks and stroke by 26%.
+	  This drug is expected to drive the growth of the company in the future since its blockbuster drug Victoza will lose its
+	  market share against Trulicity. The company is also conducting trials for oral semaglutide which would be taken daily.</p>
+	  
+        <p>Some of the companies such as MedImmune, GSK, Roche, REMD Biotherapeutics, Navitas Pharma,   and IndiPharm ha
+	  ve their molecules in early stages of development. </p>
+	<p>Not only novel drugs and combinations but companies such as Medtronic and Qualcomm are working together to develop
+	  future generation continuous glucose monitoring (CGM) systems that aim to improve health outcomes for people with diabetes.
+	  Medtronic is a market leader in diabetes management and Qualcomm has expertise in developing reference designs for wireless,
+	  single-use and small integrated modules. Using expertise from both the companies they are developing affordable, user
+	  friendly and more accurate CGM systems.</p>
+	<p>Apart from spending in research and development we even see that companies are going forward for mergers and
+	  acquisitions to step ahead in the diabetes market. Such as OPKO Health has announced that it will acquire Transition
+	  Therapeutics. This acquisition will help OPKO to gain access and also have first mover advantage to diabetes market with
+	  novel drug GLP-1/Glucagon dual agonist for type 2 diabetes and obesity. The drug TT401 is a once or twice weekly
+	  oxyntomodulin for type 2 diabetes and obesity and has recently completed phase 2 trials.</p>
+	<p>Similarly Allergan has declared that it will acquire Motus Therapeutics (formerly known as Rhythm Health) for Motus'
+	  ghrelin agonist, for the treatment of gastroparesis in patients with type 1 and type 2 diabetes.</p>
+      </div>   
+    </div>
+  </div>
+  <!-- News Data Ends Here -->
+</div>

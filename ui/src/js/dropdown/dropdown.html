@@ -1,0 +1,29 @@
+<div uib-dropdown class="dropdown download-dd">
+
+  <a href="#" ng-if="$ctrl.size === 'small'"
+              ng-click="$ctrl.toggle($event)"
+              uib-dropdown-toggle>
+    <i class="fa fa-download"></i> <span class="caret"></span>
+  </a>
+  <a href="#" ng-if="$ctrl.size === 'big'"
+     class="btn btn-primary"
+     ng-click="$ctrl.toggle($event)"
+     uib-dropdown-toggle>
+    <i class="fa fa-download"></i> Download <span class="caret"></span>
+  </a>
+
+  <ul class="dropdown-menu" uib-dropdown-menu>
+    <li>
+      <a target="_blank" href="/img/sampleChart.jpg">Image</a>
+    </li>
+    <li>
+      <a href="">PDF</a>
+    </li>
+    <li>
+      <a href="">MS Excel</a>
+    </li>
+    <li>
+      <a href="">Email</a>
+    </li>
+  </ul>
+</div>

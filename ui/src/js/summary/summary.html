@@ -1,0 +1,400 @@
+<div class="container-fluid visualization">
+  <div class="summary-nav" style="color: white;position: absolute;width:200px;height:100%;background-color:rgb(16, 59, 108);"> 
+    <aside>
+      <ul class="nav">
+        <li class="active" >
+          <a ui-sref="dashboard.summary"><i class="fa fa-bars"></i>&nbsp; SUMMARY
+          </a>
+        </li>
+        <li>
+          <a ui-sref="dashboard.enrollment({tabName: 'enrollments'})">Enrollment Summary
+            <i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>
+            <span style="background-color: #10cfbd"></span>
+          </a>
+        </li>
+        <li>
+          <a ui-sref="dashboard.claims({tabName: 'inpatient'})"> Claims Summary
+            <i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>
+            <span style="background-color: #6d5cae"></span>
+          </a>
+        </li>
+        <li>
+          <a ui-sref="dashboard.centersofvalue({tabName: 'claims-cost'})">Centers of value
+            <i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>
+            <span style="background-color: #327fc5"></span>
+          </a>
+        </li>
+        <li>
+          <a ui-sref="dashboard.healthrisk({tabName: 'health status'})">Health Risk
+            <i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>
+            <span style="background-color: #f7911e"></span>
+          </a>
+        </li>
+        <li>
+          <a ui-sref="dashboard.healthinitiative">Health Initiatives
+            <i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>
+            <span style="background-color: #10cfbd"></span>
+          </a>
+        </li>
+        <li>
+          <a ui-sref="dashboard.financial({tabName: 'cost'})">Financial Summary
+            <i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>
+            <span style="background-color: #6d5cae"></span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+  </div>
+
+  <div class="summary-tabs" style="padding: 0 0 0 210px;">
+  <div class="widget-row">
+    <div class="widget" style=" height: 260px">
+      <div class="widget-content">
+        <div class="widget-title">
+          <div class="enrollment summary"></div> 
+          <a ui-sref="dashboard.enrollment({tabName: 'enrollments'})">
+           ENROLLMENT SUMMARY <i class="arrow teal pull-right" ></i>
+          </a>
+        </div>
+        <div class="widget-body">
+
+          <div class="dec-bar">
+            <div style="background-color: #10cfbd"></div>
+          </div>
+          <table width="100%" class="table table-condensed">
+            <tr>
+              <td>Total Lives</td>
+              <td class="text-right">2,455</td>
+              <td class="text-right">
+                 <div class="indicator circle-green"></div>
+              </td>
+            </tr>
+            <tr>
+              <td>M/E<sup>1</sup> Ratio</td>
+              <td class="text-right" >2.2</td>
+              <td class="text-right" >
+                <div class="indicator circle-green"></div>
+              </td>
+            </tr>
+            <tr>
+              <td>Total Claims</td>
+              <td class="text-right" >7,500</td>
+              <td class="text-right">
+                <i class="indicator circle-red"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>C/E<sup>2</sup> Ratio</td>
+              <td class="text-right" >3.0</td>
+              <td class="text-right" >
+                 <i class="indicator circle-green"></i>
+              </td>
+            </tr>
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="widget" style=" height: 260px">
+      <div class="widget-content">
+        <div class="widget-title">
+          <div class="claims summary"></div>
+          <a ui-sref="dashboard.claims({tabName: 'inpatient'})">
+            CLAIMS SUMMARY <i class="arrow violet pull-right" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div class="widget-body">
+
+          <div class="dec-bar">
+            <div style="background-color: #6d5cae"></div>
+          </div>
+          <table width="100%" height="30%"  class="table table-condensed">
+            <thead>
+              <tr>
+                <th style="text-align: left">Type</th>
+                <th>LTM</th>
+                <th>Growth</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>IP Claims</td>
+                <td class="text-right" >4,780</td>
+                <td class="text-right" >17%</td>
+                <td class="text-right" >
+                   <i class="indicator circle-red"></i>
+                </td>
+              </tr>
+              <tr>
+                <td>ER Visits</td>
+                <td class="text-right" >780</td>
+                <td class="text-right" >-8%</td>
+                <td class="text-right" >
+                  <i class="indicator circle-green"></i>
+                </td>
+              </tr>
+              <tr>
+                <td>OP Claims</td>
+                <td class="text-right" >2,300</td>
+                <td class="text-right" >11%</td>
+                <td class="text-right">
+                  <i class="indicator circle-red"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="widget" style=" height: 260px">
+      <div class="widget-content">
+        <div class="widget-title">
+          <div class="summary centersofvalue"></div> 
+          <a ui-sref="dashboard.centersofvalue({tabName: 'claims-cost'})">
+            CENTERS OF VALUE <i class="arrow blue  pull-right" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div class="widget-body">
+
+          <div class="dec-bar">
+            <div style="background-color: #327fc5"></div>
+          </div>
+          <table width="100%" class="table table-condensed">
+            <tr>
+              <td>COV claims<sup>3</sup> ratio:</td>
+              <td class="text-right" >0.32</td>
+              <td class="text-right" >
+                 <i class="indicator circle-green"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>COV cost<sup>4</sup> ratio:</td>
+              <td class="text-right"  >0.22</td>
+              <td class="text-right"  >
+                <i class="indicator circle-red"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>Potential Savings:</td>
+              <td class="text-right"  >$733k</td>
+              <td class="text-right"  >
+                <i class="indicator circle-green"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>Realized Savings:</td>
+              <td class="text-right"  >$122k</td>
+              <td class="text-right"  >
+                 <i class="indicator circle-red"></i>
+              </td>
+            </tr>
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="widget-row last-row">
+
+    <div class="widget" style=" height: 294px">
+      <div class="widget-content">
+        <div class="widget-title">
+          <div class="summary healthrisk"></div> 
+          <a ui-sref="dashboard.healthrisk({tabName: 'health status'})">
+            HEALTH RISK PROFILE <i class="arrow yellow pull-right" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div class="widget-body">
+
+          <div class="dec-bar">
+            <div style="background-color: #f7911e;"></div>
+          </div>
+          <table width="100%" class="table table-condensed">
+            <thead>
+              <tr>
+                <th></th>
+                <th class="text-right">Current</th>
+                <th class="text-right">Target</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Population Risk Score</td>
+                <td class="text-right">1.35</td>
+                <td class="text-right">1.2</td>
+                <td class="text-right">
+                  <i class="indicator circle-red"></i>
+                </td>
+              </tr>
+              <tr>
+                <td>Healthy Population</td>
+                <td class="text-right">65%</td>
+                <td class="text-right">75%</td>
+                <td class="text-right">
+                  <i class="indicator circle-red"></i>
+                </td>
+              </tr>
+              <tr>
+                <td>Unhealthy to Healthy Swing</td>
+                <td class="text-right"  >10%</td>
+                <td class="text-right"  >8%</td>
+                <td class="text-right"  >
+                  <i class="indicator circle-green"></i>
+                </td>
+              </tr>
+              <tr>
+                <td>At-risk</td>
+                <td class="text-right"  >27%</td>
+                <td class="text-right"  >15%</td>
+                <td class="text-right" >
+                   <i class="indicator circle-red"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="widget" style=" height: 294px">
+      <div class="widget-content">
+        <div class="widget-title">
+          <div class="summary healthinitialtive"></div>
+
+          <a ui-sref="dashboard.healthinitiative">
+            HEALTH INITIATIVES <i class="arrow teal pull-right" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div class="widget-body">
+
+          <div class="dec-bar">
+            <div style="background-color: #10cfbd"></div>
+          </div>
+          <table width="100%" class="table table-condensed">
+            <thead>
+              <tr>
+                <th style="text-align: left">Initiative</th>
+                <th>#&nbsp;</th>
+                <th>Enrolled/Used</th>
+                <th>Completion rate</th>
+                <th>
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>Wellness Programs</td>
+                <td class="text-right" >5</td>
+                <td class="text-right" >402</td>
+                <td class="text-right" >34%</td>
+                <td class="text-right" >
+                  <i class="indicator circle-green"></i>
+                </td>
+              </tr>
+              <tr>
+                <td>Diabetes</td>
+                <td class="text-right" >3</td>
+                <td class="text-right" >299</td>
+                <td class="text-right" >44%</td>
+                <td class="text-right" >
+                  <i class="indicator circle-green"></i>
+                </td>
+              </tr>
+              <tr>
+                <td>Smoke Cess.</td>
+                <td  class="text-right" >2</td>
+                <td  class="text-right" >103</td>
+                <td  class="text-right" >23%</td>
+                <td  class="text-right" >
+                   <i class="indicator circle-red"></i>
+                </td>
+              </tr>
+              <tr>
+                <td>Onsite Clinic</td>
+                <td class="text-right" >3</td>
+                <td class="text-right" >102</td>
+                <td class="text-right" >N/A</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="widget" style=" height: 294px">
+      <div class="widget-content">
+        <div class="widget-title">
+          <div class="summary financial"></div>
+          <a ui-sref="dashboard.financial({tabName: 'cost'})">
+            FINANCIAL SUMMARY <i class="arrow violet pull-right" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div class="widget-body">
+
+          <div class="dec-bar">
+            <div style="background-color: #6d5cae"></div>
+          </div>
+          <table width="100%" class="table table-condensed" >
+            <tr>
+              <td>Growth in total cost:</td>
+              <td class="text-right" >14%</td>
+              <td class="text-right">
+                 <i class="indicator circle-green"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>PEPM Cost:</td>
+              <td class="text-right" >2.1k</td>
+              <td class="text-right" >
+                <i class="indicator circle-red"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>PMPM Cost:</td>
+              <td class="text-right"  >1.8k</td>
+              <td class="text-right" >
+                <i class="indicator circle-red"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>On-site clinic ROI:</td>
+              <td class="text-right" >0.9</td>
+              <td class="text-right" >
+                 <i class="indicator circle-red"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>Average Net disc</td>
+              <td class="text-right">17%</td>
+              <td class="text-right">
+                <i class="indicator circle-red"></i>
+              </td>
+            </tr>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <small>
+      <i>1- M/E: Member/ Employee Ratio,
+         2-C/E: Claims per Employee ratio,
+         3- # of Claims from COV/ total claims,
+         4- Cost related to COV/ Total Cost
+      </i>
+    </small>
+  </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="form-group" ng-switch="$ctrl.type">
+
+  <div class="filter" ng-switch-when="dropdown">
+    <label>{{ $ctrl.filterTitle.toUpperCase() }}</label>
+    <select class="form-control"
+            name="{{ $ctrl.name }}"
+            length="{{ $ctrl.values.length }}"
+            ng-model="$ctrl.selected"
+            ng-change="$ctrl.onChange($ctrl.selected)">
+
+      <option value="{{ value[0] }}" ng-repeat="value in $ctrl.values">
+        {{ value[1] || value[0] }}
+      </option>
+    </select>
+  </div>
+
+  <div class="filter checkbox" ng-switch-when="checkbox">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"
+               ng-change="$ctrl.onChange($ctrl.selected)"
+               ng-model="$ctrl.selected"> {{ $ctrl.filterTitle.toUpperCase() }}
+      </label>
+    </div>
+  </div>
+</div>

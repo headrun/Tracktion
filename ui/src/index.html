@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+
+    <!--Fonts LATO -->
+    <link rel="stylesheet" href="/fonts/lato/stylesheet.css" />
+
+    <!-- vendor styles -->
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="/libs/angular-ui-bootstrap/src/position/position.css"/>
+    <!-- application specific styles -->
+    <link rel="stylesheet" href="app.css"/>
+  </head>
+  <body>
+
+    <div ng-app="dcube" class="app">
+      <div ui-view autoscroll="false" class="content">
+      </div>
+
+      <!-- Loading overlay, which block screen unless everything is rendered -->
+      <div ng-if="loading" class="loading-overlay">
+        <div><span>Loading...</span></div>
+      </div>
+    </div>
+
+    <!-- Vendor Scripts -->
+    <script src="/libs/highcharts/highcharts.js"></script>
+    <script src="/libs/highcharts/highcharts-more.js"></script>
+    <script src="/libs/angular/angular.min.js"></script>
+    <script src="/libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/libs/angular-resource/angular-resource.min.js"></script>
+    <script src="/libs/underscore/underscore-min.js"></script>
+    <script src="/libs/angular-ui-bootstrap/src/position/position.js"></script>
+    <script src="/libs/angular-ui-bootstrap/src/dropdown/dropdown.js"></script>
+
+    <!-- Auth Service -->
+    <script src="/js/core/auth/auth.js"></script>
+    <script src="/js/core/auth/session.js"></script>
+    <script src="/js/core/auth/authEvents.js"></script>
+
+    <!-- Utils Service -->
+    <script src="/js/core/utils/utils.js"></script>
+
+    <!-- Highcharts Component -->
+    <script src="/js/highcharts/highcharts.module.js"></script>
+    <script src="/js/highcharts/highcharts.component.js"></script>
+
+    <!-- Login Module -->
+    <script src="/js/login/login.module.js"></script>
+    <script src="/js/login/login.component.js"></script>
+
+    <!-- Logout Module -->
+    <script src="/js/logout/logout.module.js"></script>
+    <script src="/js/logout/logout.component.js"></script>
+
+    <!-- Header Module -->
+    <script src="/js/header/header.module.js"></script>
+    <script src="/js/header/header.component.js"></script>
+
+    <!-- Filters Module -->
+    <script src="/js/filter/filter.module.js"></script>
+    <script src="/js/filter/filter.component.js"></script>
+
+    <!-- Filter Bar Module -->
+    <script src="/js/filterBar/filterBar.module.js"></script>
+    <script src="/js/filterBar/filterBar.component.js"></script>
+
+    <!-- Layout Component -->
+    <script src="/js/layout/layout.module.js"></script>
+    <script src="/js/layout/layout.component.js"></script>
+
+    <!-- Tab Component -->
+    <script src="/js/tab/tab.module.js"></script>
+    <script src="/js/tab/tab.component.js"></script>
+
+    <!-- Track weekly Component -->
+    <script src="/js/trackweekly/trackweekly.module.js"></script>
+    <script src="/js/trackweekly/trackweekly.component.js"></script>
+  
+    <!-- Track Special Component -->
+    <script src="/js/trackspecial/trackspecial.module.js"></script>
+    <script src="/js/trackspecial/trackspecial.component.js"></script>
+
+    <!-- Track Social Component -->
+    <script src="/js/tracksocial/tracksocial.module.js"></script>
+    <script src="/js/tracksocial/tracksocial.component.js"></script>
+
+    <!-- Reports Component -->
+    <script src="/js/reports/reports.module.js"></script>
+    <script src="/js/reports/reports.component.js"></script>
+
+    <!-- Dropdowns Component -->
+    <script src="/js/dropdown/dropdown.module.js"></script>
+    <script src="/js/dropdown/dropdown.component.js"></script>
+
+    <!-- Summary Component -->
+    <script src="/js/summary/summary.module.js"></script>
+    <script src="/js/summary/summary.component.js"></script>
+
+    <!-- Dashboard Module -->
+    <script src="/js/dashboard/dashboard.module.js"></script>
+    <script src="/js/dashboard/dashboard.component.js"></script>
+
+    <!-- APP -->
+    <script src="/js/app.js"></script>
+    <script src="/js/app.config.js"></script>
+  </body>
+</html>

@@ -1,0 +1,526 @@
+trackweekly {
+ 
+  div.tabs-content{
+
+   overflow:auto;
+
+    div.clinical-trail-summary {
+       
+      div.clinical-trail-summary-data{
+
+        width:95%;
+        background-color:#fff;
+        padding:15px;
+        
+
+        div.filter-container{
+
+          div.filter-item{
+            display:inline-block;
+            padding:12px;
+            
+            input{
+              margin-left:25px;
+              height:25px;
+              width:15px;
+              vertical-align:middle;
+            }
+         
+            &> select{
+              margin-left:10px;
+              width:auto;
+            }
+          }
+          
+        }
+        
+        div.summary-container {
+
+          div.legend{
+             
+            width:100%;
+            height:80px;
+            margin-top:30px;
+            justify-content:center; 
+            display:flex;
+            div.item {
+              
+              display:inline-block;
+              padding:25px;  
+
+              div.status {
+                height:25px;
+                position:absolute;
+                width:25px;
+                border-radius:100%;
+                color:white;
+                padding:3px 7px;             
+              }
+  
+              div.completed {
+                background-color:red;
+                margin-left:-30px;
+              }
+              div.ongoing {
+                background-color:#7B7B7B;
+                margin-left:-30px;
+              }
+              div.recruiting {
+                background-color:#8296B0;
+                margin-left:-30px;
+              }
+              div.prim-date {
+                background-color:yellow;
+                margin-left:-30px;
+                height:15px;
+                display:inline-block;
+                width:5px;
+              }
+              div.full-results {
+                color:#E63DCE;
+                margin-left:-30px;
+                display:inline-block;
+              }
+              p{
+                display:inline-block;
+                vertical-align:middle;
+                margin-top:2px;
+              }
+            }
+
+          }
+          table.drugtable {
+
+            width:95%;
+
+            tr.drugtr{
+
+              th.drugth {
+
+                vertical-align:middle;
+              }
+            
+              th.druginnertable {
+                table{
+                  background-color:#fff;
+                  tbody>tr>td, thead>tr>th {
+                     border:1px solid #075982;
+                  }
+                  thead>tr>th {
+                    border-top: 1px solid silver;
+                  }
+                }
+              }
+
+            }
+
+          }
+	  table {
+
+            td {
+              vertical-align:middle;
+
+	      div.status {
+                  height:25px;
+                  width:25px;
+                  border-radius:100%;
+                  color:white;
+                  position:absolute;
+                  padding:3px 7px;
+              }
+
+              div.prim-date {
+                background-color:yellow;
+              }
+
+              div.completed {
+                background-color:red;
+              }
+              
+              &>div.ongoing {
+                background-color:#7B7B7B;
+              }
+
+              div.progress {
+		display:inline-block;
+                position:relative;
+              }
+              div.prim-date {
+		height:20px;
+                width:6px;
+ 		margin-bottom:1px;
+                display:inline-block;
+                position:absolute;
+              }
+              div.flag-ico {
+                width:20px;
+                height:20px;
+                display:inline-block;
+                position:absolute;
+              }
+              
+	      div.us {
+                    background:no-repeat url(/img/us.png) 100%;
+                    background-size:contain;
+              }
+              div.eu {
+
+                    background:no-repeat url(/img/eu.png) 100%;
+                    background-size:contain;
+              }
+              div.un1 {
+                background:no-repeat url(/img/un1.png) 100%;
+                background-size:contain;
+              }
+              div.un2 {
+                background:no-repeat url(/img/un2.png) 100%;
+                background-size:contain;
+              }
+              div.un3 {
+                background:no-repeat url(/img/un3.png) 100%;
+                background-size:contain;
+              }
+              p{
+                position:relative;
+                display:inline-block;
+                float:right;
+              }
+
+            }
+            td.trail_c {
+ 
+                div.detail_wrapper {
+                  
+                  padding-left:35px;
+
+                  div.progress {
+                    width:18.6%;
+                  }
+                 
+                 
+                  p{
+                     position:relative;
+                     display:inline-block;
+                     float:right;
+                  }
+
+                }
+
+                div.sanofi-1 { 
+                  div.prim-date{
+                    background-color:yellow;
+                    margin-left: -15px;
+                    margin-right:0px;
+                  }
+                  div.us {
+                    margin-left:30px;
+                  }
+                  div.eu {
+                    margin-left:50px;
+                  }
+                   
+                }
+ 
+                div.sanofi-2 {
+                  div.prim-date {
+                    margin-left:-10px;
+                    background-color:yellow;
+                  }
+                  div.full-results{
+                    display:inline-block;
+                    position:absolute;
+                    margin-left:10px;
+                    color:#E63DCE;
+                  }
+                  div.us {
+                    margin-left:30px;
+                  }
+                  div.eu {
+                    margin-left:50px;
+                  }
+                }
+
+                div.lilly-1 {
+                  padding-left:35px;
+                 
+                  div.progress {
+                    width:14.6%!important;
+                  }
+                  div.full-results {
+                    display:inline-block;
+                    position:absolute;
+                    margin-left:10px;
+                    color: #E63DCE;
+                  }
+                  div.prim-date {
+                    margin-left:-47px;
+                  }
+                  div.un1 {
+                    padding-left:50px;
+                  }
+                  div.un2 {
+                    padding-left:75px;
+                  }
+                }
+                
+                div.novo-1 {
+                  padding-left:56px;
+                 
+                  div.progress {
+                    width:32%;
+                  }
+                  &>div.full-results {
+                    margin-left:10px;
+                    display:inline-block;
+                    position:absolute;
+                    color:#E63DCE;
+                  }
+                  div.prim-date  {
+                    margin-left:-10px;
+                  }
+                  div.us {
+                    margin-left:30px;
+                  }
+                  div.eu {
+                    margin-left:50px;
+                  }
+                  p {
+                    margin-right:120px;
+                  }
+                }
+
+                div.antarcia-1 {
+                  div.progress {
+                    width:27%;
+                  }
+                  div.full-results{
+                    display:inline-block;
+                    position:absolute;
+                    margin-left:10px;
+                    color:#E63DCE;
+                  }
+                  div.prim-date {
+                    margin-left:-10px;
+                  }
+                  div.us {
+                    margin-left:30px;
+                  }
+                  p{
+                   width:50%;
+                  }
+                }
+
+              }
+             /*end of td */  
+            td.trail_o {
+
+              div.gsk-1{
+                padding-left:372px;
+
+                div.progress {
+                  width:27%;
+                }
+		div.prim-date {
+                  margin-left:-10px;
+                }
+                div.us{
+		  margin-left:23px;
+                }
+                p{
+                  width:55%;       
+                }
+              }
+           
+              div.lilly-2 {
+                padding-left:330px;
+            
+                div.progress {
+                  width: 25.6%;
+                }
+                div.prim-date {
+                  margin-left:-10px;
+                }
+                p{
+                 width:57%;
+                }
+              }
+      
+            }
+
+             td.main_row {
+               width:10%;
+             }
+            
+             td.trail_r {
+
+               div.antarcia-2 {
+
+                 padding-left:35px!important;
+
+                 div.progress {
+                   width:37%!important;
+                 }
+
+                 div.us{
+                   margin-left: 30px;
+                 }
+
+                 div.eu {
+                   margin-left:50px;
+                 }
+                
+                 p{
+                   margin-right:150px;
+                 }
+               }
+               div.novo-2 {
+                 
+                 padding-left:440px;
+
+                 div.progress {
+                   width:32%;
+                 }
+                 div.prim-date {
+                   margin-left:-10px;
+                 }
+                 div.us {
+                   margin-left:30px;
+                 }
+                 div.un3 {
+                   margin-left:50px; 
+                 }
+               }
+
+               div.gsk-2 {
+                padding-left:180px!important;
+
+                div.progress {
+                  width:43%!important;
+                }
+                div.prim-date {
+                  margin-left:-44px;
+                }
+                div.us{
+                  margin-left:30px;
+                }
+                div.eu {
+                  margin-left:50px;
+                }
+                p{
+                  width:47%!important;
+                }
+
+              }
+
+ 
+              div.detail_wrapper {
+
+                padding-left:440px;
+
+                div.progress {
+                  width:46%;
+                }
+
+                div.prim-date {
+                  background-color:yellow;
+                }
+
+                p{
+                   position:relative;
+                   display:inline-block;
+                   float:right;
+                   width:40%;
+                }
+
+             }
+             div.sanofi-3{
+               div.prim-date {
+                 margin-left:-10px;
+                 background-color:yellow;
+               }
+               div.full-results{
+                 display:inline-block;
+                 position:absolute;
+                 margin-left:10px;
+                 color:#E63DCE;
+               }
+               div.us {
+                 margin-left:30px;
+               }
+               div.eu {
+                 margin-left:50px;
+               }
+             }
+              
+               div.recruiting{
+                 background-color:#8296B0;
+	       }
+              
+             }
+          }
+          
+        }
+
+      }   
+    }
+
+    div.clinical-data{
+	    
+      table{
+	width:95%;
+	     
+	th {
+	  background-color:@brand-primary;
+          color:#fff;
+	}
+
+	tbody{
+	  
+          tr{
+	    background-color:#fff!important;
+	  }
+	}
+
+      } 
+
+    }
+
+    div.news {
+      width:95%;
+      
+      div.widget{
+       
+        background-color:#fff;
+
+        div.title {
+          background-color:@brand-primary;
+          color:#fff;
+          
+          h3{
+            padding:10px;
+          }          
+        }
+        
+        div.content{
+          padding:10px;
+
+          p.brown-font{
+
+            color:#D55A4D;
+            font-weight:700;
+          }
+
+         &> p.sub-heading{
+            font-size:15px;
+            font-weight:bold;
+          }
+
+        }
+
+      }
+      
+    }
+
+  }
+ 
+}

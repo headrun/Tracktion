@@ -1,0 +1,18 @@
+<filter-bar ng-if="$ctrl.tabData.filters"
+            filters-order="$ctrl.tabData.filtersOrder"
+            filters="$ctrl.tabData.filters"
+            selected-filters="$ctrl.tabData.selectedFilters"
+            update-selected-filters="$ctrl.updateTabFilters(filters)">
+</filter-bar>
+
+<ul class="nav navbar-nav subnav" ng-if="$ctrl.tabData.subnav">
+
+  <li ng-repeat="item in $ctrl.tabData.subnav"
+      ng-class="{ active: item[1] === $ctrl.activeSubnav }">
+    <a href="#" ng-click="$ctrl.anchorScroll($event, item[1])">{{ item[0] }}</a>
+  </li>
+</ul>
+
+<layout elements="$ctrl.tabData.widgets"
+        elements-order="$ctrl.tabData.widgetOrder"
+        class="visualization"></layout>

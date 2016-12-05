@@ -1,0 +1,8 @@
+<filter ng-repeat="filter in $ctrl.filtersOrder"
+        filter-title="$ctrl.filters[filter].title"
+        name="$ctrl.filters[filter].name || 'filter'"
+        values="$ctrl.filters[filter].values"
+        selected="$ctrl.filters[filter].selected"
+        none="$ctrl.filters[filter].none"
+        type="$ctrl.filters[filter].type"
+        update="$ctrl.updateFilter(filter, value)"></filter>

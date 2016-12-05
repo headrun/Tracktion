@@ -1,0 +1,230 @@
+header {
+
+  a.brand {
+
+    width: 200px;
+    padding: 5px 0;
+
+    &:hover {
+
+      color: @brand-primary;
+    }
+
+    &.more-padding {
+
+      padding-left: @gutter;
+    }
+
+    &> img {
+
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  nav.navbar {
+
+    background-color: @navbar-bg;
+    box-shadow: 0 5px 24px -10px @navbar-shadow;
+    border-bottom: none;
+    padding: 0 @gutter;
+    height: @navbar-height;
+    color: @body-bg;
+
+    &> a.navbutton{
+
+      background-color: #103b6c;
+      position: fixed;
+      top: 80%;
+      left: 0;
+      color: #fff;
+      padding: 3px;
+      display: table;
+      .box-shadow(2px 0 10px rgba(0,0,0,0.5));
+      border: 1px solid rgba(0,0,0,0.5);
+      border-left: none;
+    }
+    &> aside { 
+      left: 0px
+    }
+
+
+    &.collapsed {
+
+      aside, div.aside-overlay {
+
+        display: none;
+      }
+    }
+
+    &> a.toggle-collapse, &> a.brand {
+
+      cursor: pointer;
+    }
+
+    &> a.toggle-collapse {
+
+      display: block;
+      position: relative;
+      font-size: 22px;
+      line-height: 22px;
+      padding: 24px @gutter;
+      padding-left: 0;
+      color: black;
+
+      &:hover {
+
+        color: @text-color;
+      }
+    }
+
+    img {
+
+      display: block;
+      height: 100%;
+      width: 100%;
+
+    }
+
+    div.secondary-logo {
+      &.secondary-logo {
+
+        height: 70px;
+        padding: 10px 20px 10px 10px;
+      }
+      &> img{
+        padding-left: 20px;
+        border-left: 1px solid #eaeaeb;
+	width:auto;
+      }
+    }
+
+    div.center-contetnt {
+
+      color:black;
+      display: table;
+      height: @navbar-height;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      text-align: center;
+      z-index: -3;
+      margin-left: -131px;
+    
+      h2 {
+
+        margin-top: 10px;
+        margin-bottom: 0;
+      }
+
+      p {
+        
+        color:gray;
+        margin-bottom: 0;
+        padding-bottom: 3px;
+        border-bottom: 3px solid @brand-primary;
+      }
+    }
+
+    &> a.brand {
+
+      padding: 10px;
+      position: relative;
+      display: block;
+      height: 100%;
+      text-decoration: none;
+      background-color:@brand-secondary;
+    }
+
+    aside {
+
+      width: 240px;
+      height: 100%;
+      position: fixed;
+      background-color:@aside-bg;
+
+      ul.nav {
+
+        color: @body-bg-light;
+
+        position: relative;
+        padding: @gutter;
+
+        li > a {
+
+          margin-right: 0;
+          width: 100%;
+          padding-bottom: 12px!important;
+          padding-top: 12px!important;
+          border-bottom: 1px solid #eaeaeb;
+
+          &> i.fa-chevron-right  {
+
+            margin-top: 6px;
+            font-size: 11px;
+            color: @brand-primary;
+          }
+        }
+      }
+    }
+
+    div.aside-overlay {
+
+      .overlay;
+      display: block;
+      cursor: pointer;
+      background-color: fade(#000000, 50%);
+      z-index: -2;
+    }
+
+    ul.nav {
+
+      display: block;
+
+      li {
+
+        a {
+
+          color:#000;
+          display: inline-block;
+          line-height: 20px;
+
+          &:hover, &:focus {
+
+            text-decoration: none;
+          }
+        }
+
+        logout > a {
+
+          color: white;
+
+          &>i {
+            padding: 0px 2px 0px 2px;
+          }
+        }
+
+        &.active {
+
+          a, a:hover, a:focus {
+            
+            text-transform: uppercase;
+            color: white;
+            background-color: @brand-primary;
+            border-bottom: 3px solid @brand-primary;
+            padding-bottom: 12px;
+
+            &>div {
+              display:none;
+            }
+          }
+        }
+
+        &:last-child a {
+
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
