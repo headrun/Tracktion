@@ -27,7 +27,7 @@
         <li>
           <a ui-sref="dashboard.reports({tabName: ''})">Reports
             <i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>
-            <span style="background-color: #327fc5"></span>
+            <span style="background-color: #f7911e"></span>
           </a>
         </li>
       </ul>
@@ -41,7 +41,7 @@
         <div class="widget-title">
           <div class="enrollment summary"></div> 
           <a ui-sref="dashboard.enrollment({tabName: 'enrollments'})">
-           ENROLLMENT SUMMARY <i class="arrow teal pull-right" ></i>
+           TRACK WEEKLY <i class="arrow teal pull-right" ></i>
           </a>
         </div>
         <div class="widget-body">
@@ -89,7 +89,7 @@
         <div class="widget-title">
           <div class="claims summary"></div>
           <a ui-sref="dashboard.claims({tabName: 'inpatient'})">
-            CLAIMS SUMMARY <i class="arrow violet pull-right" aria-hidden="true"></i>
+            TRACK SPECIAL <i class="arrow violet pull-right" aria-hidden="true"></i>
           </a>
         </div>
         <div class="widget-body">
@@ -137,13 +137,15 @@
         </div>
       </div>
     </div>
+  </div>
 
+  <div class="widget-row last-row">
     <div class="widget" style=" height: 260px">
       <div class="widget-content">
         <div class="widget-title">
           <div class="summary centersofvalue"></div> 
           <a ui-sref="dashboard.centersofvalue({tabName: 'claims-cost'})">
-            CENTERS OF VALUE <i class="arrow blue  pull-right" aria-hidden="true"></i>
+            TRACK SOCIAL <i class="arrow blue  pull-right" aria-hidden="true"></i>
           </a>
         </div>
         <div class="widget-body">
@@ -186,16 +188,12 @@
       </div>
     </div>
 
-  </div>
-
-  <div class="widget-row last-row">
-
-    <div class="widget" style=" height: 294px">
+    <div class="widget" style=" height: 260px">
       <div class="widget-content">
         <div class="widget-title">
           <div class="summary healthrisk"></div> 
           <a ui-sref="dashboard.healthrisk({tabName: 'health status'})">
-            HEALTH RISK PROFILE <i class="arrow yellow pull-right" aria-hidden="true"></i>
+            REPORTS <i class="arrow yellow pull-right" aria-hidden="true"></i>
           </a>
         </div>
         <div class="widget-body">
@@ -251,138 +249,9 @@
         </div>
       </div>
     </div>
-
-    <div class="widget" style=" height: 294px">
-      <div class="widget-content">
-        <div class="widget-title">
-          <div class="summary healthinitialtive"></div>
-
-          <a ui-sref="dashboard.healthinitiative">
-            HEALTH INITIATIVES <i class="arrow teal pull-right" aria-hidden="true"></i>
-          </a>
-        </div>
-        <div class="widget-body">
-
-          <div class="dec-bar">
-            <div style="background-color: #10cfbd"></div>
-          </div>
-          <table width="100%" class="table table-condensed">
-            <thead>
-              <tr>
-                <th style="text-align: left">Initiative</th>
-                <th>#&nbsp;</th>
-                <th>Enrolled/Used</th>
-                <th>Completion rate</th>
-                <th>
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td>Wellness Programs</td>
-                <td class="text-right" >5</td>
-                <td class="text-right" >402</td>
-                <td class="text-right" >34%</td>
-                <td class="text-right" >
-                  <i class="indicator circle-green"></i>
-                </td>
-              </tr>
-              <tr>
-                <td>Diabetes</td>
-                <td class="text-right" >3</td>
-                <td class="text-right" >299</td>
-                <td class="text-right" >44%</td>
-                <td class="text-right" >
-                  <i class="indicator circle-green"></i>
-                </td>
-              </tr>
-              <tr>
-                <td>Smoke Cess.</td>
-                <td  class="text-right" >2</td>
-                <td  class="text-right" >103</td>
-                <td  class="text-right" >23%</td>
-                <td  class="text-right" >
-                   <i class="indicator circle-red"></i>
-                </td>
-              </tr>
-              <tr>
-                <td>Onsite Clinic</td>
-                <td class="text-right" >3</td>
-                <td class="text-right" >102</td>
-                <td class="text-right" >N/A</td>
-              </tr>
-            </tbody>
-          </table>
-
-        </div>
-      </div>
-    </div>
-
-
-    <div class="widget" style=" height: 294px">
-      <div class="widget-content">
-        <div class="widget-title">
-          <div class="summary financial"></div>
-          <a ui-sref="dashboard.financial({tabName: 'cost'})">
-            FINANCIAL SUMMARY <i class="arrow violet pull-right" aria-hidden="true"></i>
-          </a>
-        </div>
-        <div class="widget-body">
-
-          <div class="dec-bar">
-            <div style="background-color: #6d5cae"></div>
-          </div>
-          <table width="100%" class="table table-condensed" >
-            <tr>
-              <td>Growth in total cost:</td>
-              <td class="text-right" >14%</td>
-              <td class="text-right">
-                 <i class="indicator circle-green"></i>
-              </td>
-            </tr>
-            <tr>
-              <td>PEPM Cost:</td>
-              <td class="text-right" >2.1k</td>
-              <td class="text-right" >
-                <i class="indicator circle-red"></i>
-              </td>
-            </tr>
-            <tr>
-              <td>PMPM Cost:</td>
-              <td class="text-right"  >1.8k</td>
-              <td class="text-right" >
-                <i class="indicator circle-red"></i>
-              </td>
-            </tr>
-            <tr>
-              <td>On-site clinic ROI:</td>
-              <td class="text-right" >0.9</td>
-              <td class="text-right" >
-                 <i class="indicator circle-red"></i>
-              </td>
-            </tr>
-            <tr>
-              <td>Average Net disc</td>
-              <td class="text-right">17%</td>
-              <td class="text-right">
-                <i class="indicator circle-red"></i>
-              </td>
-            </tr>
-          </table>
-
-        </div>
-      </div>
-    </div>
   </div>
-  <div>
-    <small>
-      <i>1- M/E: Member/ Employee Ratio,
-         2-C/E: Claims per Employee ratio,
-         3- # of Claims from COV/ total claims,
-         4- Cost related to COV/ Total Cost
-      </i>
-    </small>
+
+   
   </div>
   </div>
 </div>
