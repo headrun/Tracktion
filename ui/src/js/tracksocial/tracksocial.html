@@ -14,18 +14,793 @@
 <div class="tabs-content">
   <div class="tab-pane" role="tabpanel" 
     ng-if="$ctrl.activeTab === 'Market Watch' ">
+    <div class="marketwatch-content  container-fluid center-block">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="widget widget-blue">
+            <div class="widget-title news-firstrow-title">
+              <h3>
+                 Timeline
+                 <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Share via Email" data-original-title="Remove"><i class="fa fa-telegram"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+                 </span>
+              </h3> 
+            </div>
+            <div class="widget-content news-first-row">
+              <div id="timeline-chart">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row row-2">
+        <div class="col-md-4">
+          <div class="widget">
+            <div class="widget-title top">
+              <h3>
+                Top Social Influencers
+                <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Share via Email" data-original-title="Remove"><i class="fa fa-telegram"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+                 </span>
+              </h3>
+            </div>
+            <div class="widget-content top-social-content news-second-row">
+              <div class="influencers-rows">
+                  <table class="table" id="influencers-table">
+	             <thead>
+		       <tr>
+			 <th>Influencer Name</th>
+			 <th class="text-right">Klout Score</th>
+		       </tr>
+	             </thead>
+	             <tbody>
+		       <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
+                           data-title="click to view data" rel="tooltip" title="">
+			 <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+				<a class="articles-link state-sensitive" data-encoded="true" href="#">sbkramermd</a>
+			 </td>
+			 <td class="count text-right">82.72</td>
+		       </tr>
+		       <tr class="tw-influencer" data-id="FiU5GX" data-original-title="" data-placement="top" data-source="twitter" 
+                           data-title="click to view data" rel="tooltip" title="">
+			 <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+				<a class="articles-link state-sensitive" data-encoded="true" href="#">drelmerlee</a>
+			</td>
+			<td class="count text-right">82.28</td>
+		       </tr>
+		       <tr class="tw-influencer" data-id="km4zsB" data-original-title="" data-placement="top" data-source="twitter" 
+                           data-title="click to view data" rel="tooltip" title="">
+			 <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+				<a class="articles-link state-sensitive" data-encoded="true" href="#">endocrine</a>
+			 </td>
+			 <td class="count text-right">80.39</td>
+		       </tr>
+		       <tr class="tw-influencer" data-id="FfisIu" data-original-title="" data-placement="top" data-source="twitter" 
+                           data-title="click to view data" rel="tooltip" title="">
+			 <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+				<a class="articles-link state-sensitive" data-encoded="true" href="#">endocrinologist`</a>
+			 </td>
+			 <td class="count text-right">80.06</td>
+		       </tr>
+		       <tr class="tw-influencer" data-id="Nld5zT" data-original-title="" data-placement="top" data-source="twitter" 
+                          data-title="click to view data" rel="tooltip" title="">
+			 <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+				<a class="articles-link state-sensitive" data-encoded="true" href="#">ashley c.ford</a>
+			 </td>
+			 <td class="count text-right">79.37</td>
+		       </tr>
+		       <tr class="tw-influencer" data-id="dHZiqQ" data-original-title="" data-placement="top" data-source="twitter" 
+                           data-title="click to view data" rel="tooltip" title="">
+			 <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+				<a class="articles-link state-sensitive" data-encoded="true" href="#">nejm</a>
+			 </td>
+			 <td class="count text-right">72.00</td>
+		       </tr>
+		       <tr class="tw-influencer" data-id="7vL39x" data-original-title="" data-placement="top" data-source="twitter" 
+                           data-title="click to view data" rel="tooltip" title="">
+			 <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+				<a class="articles-link state-sensitive" data-encoded="true" href="#">london's mommy</a>
+			 </td>
+			 <td class="count text-right">70.19</td>
+		       </tr>
+		       <tr class="tw-influencer" data-id="CrnKih" data-original-title="" data-placement="top" data-source="twitter" 
+                          data-title="click to view data" rel="tooltip" title="">
+			  <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+				<a class="articles-link state-sensitive" data-encoded="true" href="#">lupus fdn of america</a>
+			  </td>
+			 <td class="count text-right">69.94</td>
+		       </tr>
+		       <tr class="tw-influencer" data-id="BLXSaw" data-original-title="" data-placement="top" data-source="twitter" 
+                           data-title="click to view data" rel="tooltip" title="">
+			 <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+				<a class="articles-link state-sensitive" data-encoded="true" href="#">adam feuerstein</a>
+			 </td>
+			 <td class="count text-right">69.46</td>
+		       </tr>
+		       <tr class="tw-influencer" data-id="iZlQOp" data-original-title="" data-placement="top" data-source="twitter" 
+                          data-title="click to view data" rel="tooltip" title="">
+			 <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+				<a class="articles-link state-sensitive" data-encoded="true" href="#">wtnh news 8</a>
+			 </td>
+			 <td class="count text-right">68.88</td>
+		       </tr>
+	            </tbody>
+                  </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="widget">
+            <div class="widget-title top">
+              <h3>
+                Top Patient Influencers
+                <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Share via Email" data-original-title="Remove"><i class="fa fa-telegram"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+                 </span>
+              </h3>
+            </div>
+            <div class="widget-content top-social-content news-second-row">
+              <div class="influencers-rows">
+                <table class="table" id="influencers-table">
+		  <thead>
+		    <tr>
+		      <th>Influencer Name</th>
+		      <th class="text-right">Klout Score</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
+                       data-title="click to view data" rel="tooltip" title="">
 
-    Description of Market Watch
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">sixuntilme</a>
+		      </td>
+		      <td class="count text-right">68.06</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="FiU5GX" data-original-title="" data-placement="top" data-source="twitter" 
+                        data-title="click to view data" rel="tooltip" title="">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">healthline</a>
+		      </td>
+		      <td class="count text-right">67.06</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="km4zsB" data-original-title="" data-placement="top" data-source="twitter" 
+                       data-title="click to view data" rel="tooltip" title="">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">Kerri Sparling, Six Until Me</a>
+		      </td>
+		      <td class="count text-right">66.07</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="FfisIu" data-original-title="" data-placement="top" data-source="twitter" 
+                       data-title="click to view data" rel="tooltip" title="">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">Kelly Close, Close Concerns</a>
+		      </td>
+		      <td class="count text-right">64.78</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="Nld5zT" data-original-title="" data-placement="top" data-source="twitter" 
+                       data-title="click to view data" rel="tooltip" title="">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">Manny Hernandez, Tu Diabetes</a>
+		      </td>
+		      <td class="count text-right">64.15</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="dHZiqQ" data-original-title="" data-placement="top" data-source="twitter" 
+                        data-title="click to view data" rel="tooltip" title="">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">
+			     Leighann Calentine, D-Mom Blog
+			  </a>
+		      </td>
+		      <td class="count text-right">63.60</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="7vL39x" data-original-title="" data-placement="top" data-source="twitter" 
+                        data-title="click to view data" rel="tooltip" title="">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">Riva Greenberg,&nbsp;The Huffington Post</a>
+		      </td>
+		      <td class="count text-right">63.52</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="CrnKih" data-original-title="" data-placement="top" data-source="twitter" 
+                       data-title="click to view data" rel="tooltip" title="">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">Kelly Kunik,&nbsp;Diabetesaliciousness</a>
+		      </td>
+		      <td class="count text-right">63.41</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="BLXSaw" data-original-title="" data-placement="top" data-source="twitter" 
+                       data-title="click to view data" rel="tooltip" title="">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">Elizabeth Woolley</a>
+		      </td>
+		      <td class="count text-right">62.36</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="iZlQOp" data-original-title="" data-placement="top" data-source="twitter" 
+                       data-title="click to view data" rel="tooltip" title="">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">Kim Vlasnik</a>
+		      </td>
+		      <td class="count text-right">61.93</td>
+		    </tr>
+		  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="widget">
+            <div class="widget-title top">
+              <h3>
+                Top KOLS
+                <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Share via Email" data-original-title="Remove"><i class="fa fa-telegram"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+                 </span>
+              </h3>
+            </div>
+            <div class="widget-content top-social-content news-second-row">
+              <div class="influencers-row"> 
+                <table class="table" id="influencers-table">
+		  <thead>
+		    <tr>
+		      <th>Influencer Name</th>
+		      <th class="text-right">Klout Score</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
+                        data-title="click to view data" rel="tooltip" title="">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">lifeincontrol1</a>
+		      </td>
+		      <td class="count text-right">72.00</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="FiU5GX" data-original-title="" data-placement="top" data-source="twitter" 
+                        data-title="click to view data" rel="tooltip" title="">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">wdd</a>
+		      </td>
+		      <td class="count text-right">59.46</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="km4zsB" data-original-title="" data-placement="top" data-source="twitter" 
+                        data-title="click to view data" rel="tooltip" title="">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">diabetescouk 382</a>
+		      </td>
+		      <td class="count text-right">55.97</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="FfisIu" data-original-title="" data-placement="top" data-source="twitter" 
+                         data-title="click to view data" rel="tooltip" title="">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">intdiabetesfed</a>
+		      </td>
+		      <td class="count text-right">52.03</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="Nld5zT" data-original-title="" data-placement="top" data-source="twitter" 
+                        data-title="click to view data" rel="tooltip" title="">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">AmDiabetesAssn</a>
+		      </td>
+		      <td class="count text-right">48.14</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="dHZiqQ" data-original-title="" data-placement="top" data-source="twitter" 
+                       data-title="click to view data" rel="tooltip" title="">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">medivizor 222</a>
+		      </td>
+		      <td class="count text-right">47.78</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="7vL39x" data-original-title="" data-placement="top" data-source="twitter" 
+                        data-title="click to view data" rel="tooltip" title="">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">dr.raj on cardiology</a>
+		      </td>
+		      <td class="count text-right">46.13</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="CrnKih" data-original-title="" data-placement="top" data-source="twitter" 
+                        data-title="click to view data" rel="tooltip" title="">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">michael dempsey</a>
+		      </td>
+		      <td class="count text-right">45.05</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="BLXSaw" data-original-title="" data-placement="top" data-source="twitter" 
+                        data-title="click to view data" rel="tooltip" title="">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">holden caulfield phd</a>
+		      </td>
+		      <td class="count text-right">43.31</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="iZlQOp" data-original-title="" data-placement="top" data-source="twitter" 
+                       data-title="click to view data" rel="tooltip" title="">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">npce</a>
+		      </td>
+		      <td class="count text-right">41.68</td>
+		    </tr>
+		  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+        <!-- end of row -->
+
+      <div class="row row3">
+        <div class="col-md-12">
+          <div class="widget widget-blue">
+            <div class="widget-title news-thirdrow-title">
+              <h3>
+                 WORDCLOUD
+                 <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Share via Email" data-original-title="Remove"><i class="fa fa-telegram"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+                 </span>
+              </h3>
+            </div>
+            <div class="widget-content news-third-row">
+              <div class="wordclouddata">
+                <div class="tagcloud text-justify">
+                  <a href="#" rel="831" style="font-size: 26.648px; color: rgb(130, 151, 191); position: relative;">analysts</a>
+		  <a href="#" rel="928" style="font-size: 32.067px; color: rgb(153, 131, 157); position: relative;">over</a>
+		  <a href="#" rel="868" style="font-size: 28.7151px; color: rgb(139, 143, 178); position: relative;">recent</a>
+		  <a href="#" rel="728" style="font-size: 20.8939px; color: rgb(106, 172, 227); position: relative;">latest</a>
+		  <a href="#" rel="825" style="font-size: 26.3128px; color: rgb(129, 152, 193); position: relative;">investment</a>
+		  <a href="#" rel="1006" style="font-size: 36.4246px; color: rgb(172, 115, 130); position: relative;">first</a>
+	 	  <a href="#" rel="908" style="font-size: 30.9497px; color: rgb(148, 135, 164); position: relative;">million</a>
+		  <a href="#" rel="773" style="font-size: 23.4078px; color: rgb(116, 163, 212); position: relative;">earnings</a>
+	     	  <a href="#" rel="863" style="font-size: 28.4358px; color: rgb(138, 144, 180); position: relative;">quarter</a>
+		  <a href="#" rel="916" style="font-size: 31.3966px; color: rgb(150, 133, 162); position: relative;">development</a>
+		  <a href="#" rel="750" style="font-size: 22.1229px; color: rgb(111, 167, 220); position: relative;">two</a>
+		  <a href="#" rel="924" style="font-size: 31.8436px; color: rgb(152, 132, 159); position: relative;">same</a>
+		  <a href="#" rel="935" style="font-size: 32.4581px; color: rgb(155, 129, 155); position: relative;">include</a>
+		  <a href="#" rel="776" style="font-size: 23.5754px; color: rgb(117, 162, 211); position: relative;">additional</a>
+		  <a href="#" rel="1056" style="font-size: 39.2179px; color: rgb(183, 105, 113); position: relative;">such</a>
+		  <a href="#" rel="895" style="font-size: 30.2235px; color: rgb(145, 138, 169); position: relative;">compared</a>
+		  <a href="#" rel="712" style="font-size: 20px; color: rgb(102, 175, 233); position: relative;">hold</a>
+		  <a href="#" rel="726" style="font-size: 20.7821px; color: rgb(105, 172, 228); position: relative;">through</a>
+		  <a href="#" rel="754" style="font-size: 22.3464px; color: rgb(112, 166, 218); position: relative;">metformin</a>
+		  <a href="#" rel="751" style="font-size: 22.1788px; color: rgb(111, 167, 219); position: relative;">consensus</a>
+		  <a href="#" rel="1003" style="font-size: 36.257px; color: rgb(171, 115, 131); position: relative;">products</a>
+		  <a href="#" rel="760" style="font-size: 22.6816px; color: rgb(113, 165, 216); position: relative;">revenue</a>
+		  <a href="#" rel="776" style="font-size: 23.5754px; color: rgb(117, 162, 211); position: relative;">well</a>
+		  <a href="#" rel="723" style="font-size: 20.6145px; color: rgb(105, 173, 229); position: relative;">estimate</a>
+		  <a href="#" rel="1223" style="font-size: 48.5475px; color: rgb(223, 70, 54); position: relative;">more</a>
+		  <a href="#" rel="810" style="font-size: 25.4749px; color: rgb(125, 155, 199); position: relative;">day</a>
+		  <a href="#" rel="832" style="font-size: 26.7039px; color: rgb(130, 150, 191); position: relative;">diabetes</a>
+		  <a href="#" rel="819" style="font-size: 25.9777px; color: rgb(127, 153, 196); position: relative;">patients</a>
+		  <a href="#" rel="997" style="font-size: 35.9218px; color: rgb(169, 117, 133); position: relative;">price</a>
+		  <a href="#" rel="776" style="font-size: 23.5754px; color: rgb(117, 162, 211); position: relative;">three</a>
+		  <a href="#" rel="793" style="font-size: 24.5251px; color: rgb(121, 158, 205); position: relative;">study</a>
+		  <a href="#" rel="1112" style="font-size: 42.3464px; color: rgb(197, 93, 93); position: relative;">last</a>
+	  	  <a href="#" rel="1057" style="font-size: 39.2737px; color: rgb(184, 104, 112); position: relative;">one</a>
+		  <a href="#" rel="1053" style="font-size: 39.0503px; color: rgb(183, 105, 114); position: relative;">diseases</a>
+		  <a href="#" rel="1115" style="font-size: 42.514px; color: rgb(197, 92, 92); position: relative;">including</a>
+		  <a href="#" rel="1177" style="font-size: 45.9777px; color: rgb(212, 80, 70); position: relative;">during</a>
+		  <a href="#" rel="777" style="font-size: 23.6313px; color: rgb(117, 162, 210); position: relative;">blood</a>
+		  <a href="#" rel="1218" style="font-size: 48.2682px; color: rgb(222, 71, 56); position: relative;">inc</a>
+		  <a href="#" rel="939" style="font-size: 32.6816px; color: rgb(156, 129, 154); position: relative;">heart</a>
+		  <a href="#" rel="780" style="font-size: 23.7989px; color: rgb(118, 161, 209); position: relative;">areas</a>
+		  <a href="#" rel="905" style="font-size: 30.7821px; color: rgb(148, 135, 165); position: relative;">management</a>
+		  <a href="#" rel="884" style="font-size: 29.6089px; color: rgb(143, 140, 173); position: relative;">market</a>
+		  <a href="#" rel="973" style="font-size: 34.581px; color: rgb(164, 122, 142); position: relative;">post</a>
+		  <a href="#" rel="1001" style="font-size: 36.1453px; color: rgb(170, 116, 132); position: relative;">based</a>
+		  <a href="#" rel="733" style="font-size: 21.1732px; color: rgb(107, 171, 226); position: relative;">average</a>
+		  <a href="#" rel="814" style="font-size: 25.6983px; color: rgb(126, 154, 197); position: relative;">total</a>
+		  <a href="#" rel="852" style="font-size: 27.8212px; color: rgb(135, 146, 184); position: relative;">according</a>
+		  <a href="#" rel="778" style="font-size: 23.6872px; color: rgb(118, 161, 210); position: relative;">announced</a>
+		  <a href="#" rel="755" style="font-size: 22.4022px; color: rgb(112, 166, 218); position: relative;">out</a>
+		  <a href="#" rel="1249" style="font-size: 50px; color: rgb(229, 65, 45); position: relative;">now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- end of row --> 
+    </div>
   </div>
   <div class="tab-pane" role="tabpanel" 
     ng-if="$ctrl.activeTab === 'Diabetes World' ">
+    <div class="diabetes-world container-fluid center-block">
+      <div class="row">
+        <div class="col-md-8">
+          <!-- start of widget -->
+          <div class="widget geoloc">
+            <div class="widget-title geoloc-title">
+              <h3>
+                 Geo Location Spread
+                 <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Share via Email" data-original-title="Remove"><i class="fa fa-telegram"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+                 </span>
+              </h3>
+            </div>
+            <div class="widget-content geoloc-content">
+            </div>
+          </div>
+          <!-- end of widget-->
 
-    Description of Diabetes World
+          <!-- start of widget -->
+          <div class="widget genderclassification">
+            <div class="widget-title gender-classify-title">
+              <h3>
+                 Gender Classification
+                 <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Share via Email" data-original-title="Remove"><i class="fa fa-telegram"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+                 </span>
+              </h3>
+            </div>
+            <div class="widget-content gender-classify-content">
+            </div>
+          </div>
+          <!-- end of widget -->
+ 
+          <!-- start of widget -->
+          <div class="widget wordcloud">
+            <div class="widget-title wordcloud-title">
+              <h3>
+                 Word Cloud
+                 <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Share via Email" data-original-title="Remove"><i class="fa fa-telegram"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+                 </span>
+              </h3>
+            </div>
+            <div class="widget-content  word-cloud-content">
+              <div class="tagcloud text-justify">
+                <a href="#" rel="1269" style="font-size: 20.5057px; color: rgb(104, 173, 230); position: relative;">control</a>
+		<a href="#" rel="3427" style="font-size: 50px; color: rgb(229, 65, 45); position: relative;">risk</a>
+		<a href="#" rel="1603" style="font-size: 25.0706px; color: rgb(123, 156, 201); position: relative;">diet</a>
+		<a href="#" rel="1292" style="font-size: 20.82px; color: rgb(105, 172, 228); position: relative;">make</a>
+		<a href="#" rel="1321" style="font-size: 21.2164px; color: rgb(107, 171, 225); position: relative;">even</a>
+		<a href="#" rel="1756" style="font-size: 27.1617px; color: rgb(132, 149, 188); position: relative;">medical</a>
+		<a href="#" rel="1642" style="font-size: 25.6036px; color: rgb(126, 154, 198); position: relative;">know</a>
+		<a href="#" rel="1318" style="font-size: 21.1754px; color: rgb(107, 171, 226); position: relative;">much</a>
+		<a href="#" rel="2217" style="font-size: 33.4624px; color: rgb(159, 126, 149); position: relative;">day</a>
+		<a href="#" rel="1666" style="font-size: 25.9317px; color: rgb(127, 153, 196); position: relative;">life</a>
+		<a href="#" rel="1278" style="font-size: 20.6287px; color: rgb(105, 173, 229); position: relative;">use</a>
+		<a href="#" rel="1600" style="font-size: 25.0296px; color: rgb(123, 157, 201); position: relative;">many</a>
+		<a href="#" rel="1775" style="font-size: 27.4214px; color: rgb(133, 148, 186); position: relative;">month</a>
+		<a href="#" rel="1696" style="font-size: 26.3417px; color: rgb(129, 152, 193); position: relative;">time</a>
+		<a href="#" rel="1662" style="font-size: 25.877px; color: rgb(127, 153, 196); position: relative;">sugar</a>
+		<a href="#" rel="1426" style="font-size: 22.6515px; color: rgb(113, 165, 216); position: relative;">tipos</a>
+		<a href="#" rel="2634" style="font-size: 39.1617px; color: rgb(183, 105, 113); position: relative;">help</a>
+		<a href="#" rel="1264" style="font-size: 20.4374px; color: rgb(104, 173, 230); position: relative;">saúde</a>
+		<a href="#" rel="1542" style="font-size: 24.2369px; color: rgb(120, 159, 206); position: relative;">million</a>
+		<a href="#" rel="1428" style="font-size: 22.6788px; color: rgb(113, 165, 216); position: relative;">awareness</a>
+		<a href="#" rel="1252" style="font-size: 20.2733px; color: rgb(103, 174, 231); position: relative;">including</a>
+		<a href="#" rel="1535" style="font-size: 24.1412px; color: rgb(120, 160, 207); position: relative;">years</a>
+		<a href="#" rel="1807" style="font-size: 27.8588px; color: rgb(135, 146, 184); position: relative;">obesity</a>
+		<a href="#" rel="1927" style="font-size: 29.4989px; color: rgb(142, 140, 173); position: relative;">blood</a>
+		<a href="#" rel="1248" style="font-size: 20.2187px; color: rgb(103, 174, 232); position: relative;">tenho</a>
+		<a href="#" rel="1294" style="font-size: 20.8474px; color: rgb(106, 172, 228); position: relative;">news</a>
+		<a href="#" rel="1387" style="font-size: 22.1185px; color: rgb(111, 167, 220); position: relative;">today</a>
+		<a href="#" rel="1695" style="font-size: 26.328px; color: rgb(129, 152, 193); position: relative;">diabetic</a>
+		<a href="#" rel="1368" style="font-size: 21.8588px; color: rgb(110, 168, 221); position: relative;">healthy</a>
+		<a href="#" rel="2008" style="font-size: 30.6059px; color: rgb(147, 136, 167); position: relative;">research</a>
+		<a href="#" rel="1260" style="font-size: 20.3827px; color: rgb(104, 174, 231); position: relative;">mas</a>
+		<a href="#" rel="1232" style="font-size: 20px; color: rgb(102, 175, 233); position: relative;">see</a>
+		<a href="#" rel="1566" style="font-size: 24.5649px; color: rgb(121, 158, 204); position: relative;">american</a>
+		<a href="#" rel="1277" style="font-size: 20.615px; color: rgb(105, 173, 229); position: relative;">free</a>
+		<a href="#" rel="1435" style="font-size: 22.7745px; color: rgb(114, 165, 216); position: relative;">insulin</a>
+		<a href="#" rel="1267" style="font-size: 20.4784px; color: rgb(104, 173, 230); position: relative;">during</a>
+		<a href="#" rel="1535" style="font-size: 24.1412px; color: rgb(120, 160, 207); position: relative;">patients</a>
+		<a href="#" rel="1483" style="font-size: 23.4305px; color: rgb(117, 162, 212); position: relative;">need</a>
+		<a href="#" rel="1715" style="font-size: 26.6014px; color: rgb(130, 151, 192); position: relative;">first</a>
+		<a href="#" rel="1574" style="font-size: 24.6743px; color: rgb(122, 158, 204); position: relative;">those</a>
+		<a href="#" rel="1745" style="font-size: 27.0114px; color: rgb(132, 149, 189); position: relative;">prediabetes</a>
+		<a href="#" rel="1476" style="font-size: 23.3349px; color: rgb(116, 163, 212); position: relative;">november</a>
+		<a href="#" rel="1281" style="font-size: 20.6697px; color: rgb(105, 173, 229); position: relative;">food</a>
+		<a href="#" rel="1489" style="font-size: 23.5125px; color: rgb(117, 162, 211); position: relative;">aprendinoenem</a>
+		<a href="#" rel="1586" style="font-size: 24.8383px; color: rgb(122, 157, 203); position: relative;">take</a>
+		<a href="#" rel="1832" style="font-size: 28.2005px; color: rgb(137, 145, 182); position: relative;">heart</a>
+		<a href="#" rel="1327" style="font-size: 21.2984px; color: rgb(107, 170, 225); position: relative;">profissionais</a>
+		<a href="#" rel="1840" style="font-size: 28.3098px; color: rgb(137, 145, 181); position: relative;">care</a>
+		<a href="#" rel="1782" style="font-size: 27.5171px; color: rgb(134, 147, 186); position: relative;">year</a>
+		<a href="#" rel="2115" style="font-size: 32.0683px; color: rgb(153, 131, 157); position: relative;">study</a> 
+              </div>
+            </div>
+          </div>
+          <!-- end of widget -->
+
+        </div>
+        <div class="col-md-4">
+
+          <!-- start of widget -->
+          <div class="widget source-distribution">
+            <div class="widget-title source-dist-title">
+              <h3>
+                 Source Distribution
+                 <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Share via Email" data-original-title="Remove"><i class="fa fa-telegram"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+                 </span>
+              </h3>
+            </div>
+            <div class="widget-content source-dist-content">
+            </div>
+          </div>
+          <!-- end of widget --> 
+          
+          <!-- start of widget -->
+          <div class="widget top-influencers">
+            <div class="widget-title top-influencers-title">
+              <h3>
+                 Top Influencers
+                 <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Share via Email" data-original-title="Remove"><i class="fa fa-telegram"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+                 </span>
+              </h3>
+            </div>
+            <div class="widget-content top-influencers-content">
+              <div class="influencers-rows">
+                <table class="table" id="influencers-table">
+		  <thead>
+		    <tr>
+		      <th>Influencer Name</th>
+		      <th class="text-right">Klout Score</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
+                        data-title="click to view data" rel="tooltip" title="">
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">the new york times</a>
+		      </td>
+		      <td class="count text-right">99.00</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="FiU5GX" data-original-title="" data-placement="top" data-source="twitter" 
+                        data-title="click to view data" rel="tooltip" title="">
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">aol.com</a>
+		      </td>
+		      <td class="count text-right">93.48</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="km4zsB" data-original-title="" data-placement="top" data-source="twitter" 
+                        data-title="click to view data" rel="tooltip" title="">
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">boston celtics</a>
+		      </td>
+		      <td class="count text-right">91.30</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="FfisIu" data-original-title="" data-placement="top" data-source="twitter" 
+                       data-title="click to view data" rel="tooltip" title="">
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">slashdot</a>
+		      </td>
+		      <td class="count text-right">89.01</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="Nld5zT" data-original-title="" data-placement="top" data-source="twitter" 
+                      data-title="click to view data" rel="tooltip" title="">
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">tufts university</a>
+		      </td>
+		      <td class="count text-right">87.90</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="dHZiqQ" data-original-title="" data-placement="top" data-source="twitter" 
+                      data-title="click to view data" rel="tooltip" title="">
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">reba</a>
+		      </td>
+		      <td class="count text-right">87.12</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="7vL39x" data-original-title="" data-placement="top" data-source="twitter" 
+                      data-title="click to view data" rel="tooltip" title="">
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">cleveland clinic</a>
+		      </td>
+		      <td class="count text-right">85.85</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="CrnKih" data-original-title="" data-placement="top" data-source="twitter" 
+                      data-title="click to view data" rel="tooltip" title="">
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">black enterprise</a>
+		      </td>
+		      <td class="count text-right">85.70</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="BLXSaw" data-original-title="" data-placement="top" data-source="twitter" 
+                       data-title="click to view data" rel="tooltip" title="">
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">debra ruh</a>
+		      </td>
+		      <td class="count text-right">82.28</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="iZlQOp" data-original-title="" data-placement="top" data-source="twitter" 
+                       data-title="click to view data" rel="tooltip" title="">
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">ahrq</a>
+		      </td>
+		      <td class="count text-right">81.93</td>
+		    </tr>
+		  </tbody>
+		</table>
+              </div>
+            </div>
+          </div>
+          <!-- end of widget -->
+
+          <!-- start of the widget -->
+          <div class="widget languages">
+            <div class="widget-title languages-title">
+              <h3>
+                 Languages
+                 <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Share via Email" data-original-title="Remove"><i class="fa fa-telegram"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+                 </span>
+              </h3>
+            </div>
+            <div class="widget-content languages-content">
+              <div class="influencers-rows">
+               
+                <table class="table" id="influencers-table">
+		  <tbody>
+		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter"
+                           data-title="click to view data" rel="tooltip" title="">
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">English</a>
+		      </td>
+		      <td class="count text-right">70.26%</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter"
+                       data-title="click to view data" rel="tooltip" title="">
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">Spanish</a>
+		      </td>
+		      <td class="count text-right">7.04%</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
+                       data-title="click to view data" rel="tooltip" title="">
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">Portuguese</a>
+		      </td>
+		      <td class="count text-right">4.44%</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
+                       data-title="click to view data" rel="tooltip" title="">
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">Indonesian</a>
+		      </td>
+		      <td class="count text-right">0.73%</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
+                      data-title="click to view data" rel="tooltip" title="">
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">Malay</a>
+		      </td>
+		      <td class="count text-right">0.32%</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
+                      data-title="click to view data" rel="tooltip" title="">
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">Norwegian</a>
+		      </td>
+		      <td class="count text-right">0.20%</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
+                      data-title="click to view data" rel="tooltip" title="">
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">Italian</a>
+		      </td>
+		      <td class="count text-right">0.18%</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
+                      data-title="click to view data" rel="tooltip" title="">
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">Dutch</a>
+		      </td>
+		      <td class="count text-right">0.11%</td>
+		    </tr>
+		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
+                      data-title="click to view data" rel="tooltip" title="">
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">German</a>
+		      </td>
+		      <td class="count text-right">0.11%</td>
+		    </tr>
+		  </tbody>
+	        </table> 
+              </div>
+            </div>
+          </div> 
+          <!--end of the widget -->
+
+        </div>
+      </div>
+    </div>
   </div>
   <div class="tab-pane" role="tabpanel" 
     ng-if="$ctrl.activeTab === 'Intarcia' ">
-  
-    Description of Intarcia
+    
+    <div class="intarcia conatainer-fluid center-block">  
+      <div class="row number-widgets">
+        <div class="col-md-3">
+          <div class="white-bloc clearfix">
+             <img src="img/positive.png">
+             <div class="value-block">
+
+
+             </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+      </div>
+    </div>
   </div>
  
 </div>
