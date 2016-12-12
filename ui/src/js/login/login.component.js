@@ -9,6 +9,8 @@
 
              function ($rootScope, Auth, AUTH_EVENTS) {
 
+	      Auth.status();
+
               var self=this;
 
               this.credentials = {
