@@ -32,9 +32,12 @@ tracksocial {
     div.widget {
 
       div.news-first-row {
-        min-height:316px;
+        min-height:200px;
         overflow-y:auto;
         overflow-x:hidden; 
+        div {
+          height:250px;
+        }
       }
        
       div.news-second-row {
@@ -82,19 +85,61 @@ tracksocial {
     div.geoloc {
       div.geoloc-content {
         min-height:425px;
+        div {
+          svg {
+          
+          }
+        }
       }
     }
 
     div.source-distribution {
       div.source-dist-content {
-         min-height:400px;
+         min-height:625px;
+
+         div.source-chart-legend {
+           table {
+             margin:0px auto;
+             min-width:50%;
+
+             tr {
+               cursor:pointer;
+               padding: 0px 5px;
+
+               td.color-code-td {
+                 span {
+                   display:inline-block;
+                   width:16px;
+                   height:12px;
+                   border-radius:2px;
+                 }
+               }
+               td.source-name {
+                 span {
+                   margin-left:5px;
+                 }
+               }
+               td.source-count {
+                 span {
+                   margin-left:10px;
+                 }
+               }
+             }
+           }
+         }
       }
     }
 
     div.genderclassification {
       div.gender-classify-content {
-         min-height:300px;
+         min-height:250px;
+
+         div.row {
+          
+           padding:25px;
+         }
       }
+
     }
 
     div.wordcloud {
@@ -188,11 +233,77 @@ tracksocial {
     }
 
     div.timeline {
-      min-height:350px;
+      min-height:300px;
+
+      div.timeline-content {
+        padding:10px;
+        height:250px;
+      }
       
     }
+
+    div.source {
+    
+    div.source-content {
+
+      div.source-chart-legend {
+        table {
+          margin:0px auto;
+          margin-width:50%;
+          
+          tr {
+            cursor:pointer;
+            padding:0px 5px;
+
+            a:hover { 
+              color:#23527x;
+            }
+
+            td.color-code-td {
+            
+              span.color-code {
+               display:inline-block;
+               width:16px;
+               height:12px;
+               border-radius:2px;
+              }
+              
+            }
+
+            td.source-count {
+
+              span {
+                margin-left:10px;
+              }
+            }
+
+            td.source-name {
+              span {
+                margin-left:5px;
+              }
+            }
+          
+          }
+
+          tr:hover {
+            background-color:rgba(75, 170, 211, 0.55);
+          }
+        
+        }
+      }
+    
+    }
+    
+    }
+
     div.gender-classification {
-      min-height:350px;
+      min-height:280px;
+
+      div.gender-content {
+        div.row {
+          padding:25px;
+        } 
+      }
     }
     div.wordcloud {
       min-height:350px;
@@ -200,10 +311,9 @@ tracksocial {
       div.wordcloud-content {
          
         div.tagcloud {
-          
+          padding:5px;
           a{
-           margin-left:15px;
-           margin-right:15px;
+           margin-left:5px;
           }
         }
       }

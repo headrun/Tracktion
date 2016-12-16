@@ -33,6 +33,8 @@
             </div>
             <div class="widget-content news-first-row">
               <div id="timeline-chart">
+                <highcharts options="$ctrl.highchartoption">
+                </highcharts>
               </div>
             </div>
           </div>
@@ -468,6 +470,18 @@
               </h3>
             </div>
             <div class="widget-content geoloc-content">
+              <div id="map" class="">
+                <us-map>
+                   <map-data state="VA" color="lightgreen" hover-bg-color="grey">
+                    <p>Virginia</p>
+                   </map-data>
+
+                   <map-data state="WV" color="gold" hover-padding="20px" hover-bg-color="grey" hover-color="yellow">
+                       West <br>
+                       Virginia
+                   </map-data>
+                </us-map>
+              </div>
             </div>
           </div>
           <!-- end of widget-->
@@ -488,6 +502,55 @@
               </h3>
             </div>
             <div class="widget-content gender-classify-content">
+              <div class="row roundgauge">
+                <div class="col-sm-4">
+                  <div class="guage-title text-center">
+                    <i class="fa fa-male"></i> 
+                       <a class="articles-link state-sensitive" data-state="{&quot;gender&quot;:[&quot;male&quot;]}"
+                             href="?show_articles=1#gender%5B%5D=male">Male(%)
+                       </a> 
+                  </div>
+                  <div class="guage-intarcia-male">
+                     <just-gage id="test1" min=0 max=100 value="5"options="{
+                      title: 'Dynamic, using options, with default min and max',
+                      levelColors: ['rgb(66, 139, 202)'],
+                      levelGradiant: false
+                     }"></just-gage>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="guage-title text-center">
+                    <i class="fa fa-female"></i> 
+                       <a class="articles-link state-sensitive" data-state="{&quot;gender&quot;:[&quot;male&quot;]}"
+                             href="?show_articles=1#gender%5B%5D=female">female(%)
+                       </a> 
+                  </div>
+                  <div class="guage-intarcia-female">
+                     <just-gage id="test2" min=0 max=100 value="2"options="{
+                      title: 'Dynamic, using options, with default min and max',
+                      levelColors: ['rgb(217, 83, 79)'],
+                      levelGradiant: false
+                     }"></just-gage>  
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="guage-title text-center">
+                    <i class="fa fa-male"></i> 
+                    <i class="fa fa-female"></i>
+                       <a class="articles-link state-sensitive" data-state="{&quot;gender&quot;:[&quot;male&quot;]}"
+                             href="?show_articles=1#gender%5B%5D=male">Not Classified(%)
+                       </a> 
+                  </div>
+                  <div class="guage-intarcia-male">
+                     <just-gage id="test3" min=0 max=100 value="93"options="{
+                      title: 'Dynamic, using options, with default min and max',
+                      levelColors: ['rgb(192, 152, 83)'],
+                      levelGradiant: false
+                     }"></just-gage>  
+                  </div>
+                </div>
+                <!-- end of  col-div -->
+              </div> 
             </div>
           </div>
           <!-- end of widget -->
@@ -583,6 +646,85 @@
               </h3>
             </div>
             <div class="widget-content source-dist-content">
+              <highcharts options="$ctrl.diabsourcedist"></highcharts>
+
+              <div class="source-chart-legend">
+                <table>
+                  <tbody>
+                    <tr class="source-tr" data-source="Twitter">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #00BEF6"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" data-state="{&quot;source&quot;: [&quot;twitter&quot;]}" 
+                           href="?show_articles=1#source%5B%5D=twitter"><span>Twitter</span></a>
+                      </td>
+                      <td class="source-count"><span>75.60%</span></td>
+                    </tr>
+                    <tr class="source-tr" data-source="Blogs">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #CC9900"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>News</span></a>
+                      </td>
+                      <td class="source-count"><span>15.10%</span></td>
+                    </tr>
+                    <tr class="source-tr" data-source="Googleplus">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #ff0084"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>Flickr</span></a>
+                      </td>
+                      <td class="source-count"><span>2.48%</span></td>
+                    </tr>
+                    <tr class="source-tr" data-source="Facebook">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #4C3D32"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>Instagram</span></a>
+                      </td>
+                      <td class="source-count"><span>2.43%</span></td>
+                    </tr>
+                    <tr class="source-tr" data-source="Instagram">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #FF8833"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>Blogs</span></a>
+                      </td>
+                      <td class="source-count"><span>1.43%</span></td>
+                    </tr>
+                    <tr class="source-tr" data-source="Forums">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #CC6600"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>Forums</span></a>
+                      </td>
+                      <td class="source-count"><span>1.11%</span></td>
+                    </tr>
+                    <tr class="source-tr" data-source="Flickr">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #3B5998"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>Facebook</span></a>
+                      </td>
+                      <td class="source-count"><span>0.85%</span></td>
+                    </tr>
+                    <tr class="source-tr" data-source="Flickr">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #DD4B39"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>Googleplus</span></a>
+                      </td>
+                      <td class="source-count"><span>0.43%</span></td>
+                    </tr>
+                    <tr class="source-tr" data-source="Flickr">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #cc181e"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>Youtube</span></a>
+                      </td>
+                      <td class="source-count"><span>0.36%</span></td>
+                    </tr>
+                    <tr class="source-tr" data-source="Flickr">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #529ECC"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>Tumblr</span></a>
+                      </td>
+                      <td class="source-count"><span>0.21%</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
           <!-- end of widget --> 
@@ -892,7 +1034,7 @@
               </h3>
             </div>
             <div class="widget-content timeline-content">
- 
+              <highcharts options="$ctrl.highchartintarciatimeline"></highcharts> 
             </div>
           </div>
           <!-- end of timline widget -->
@@ -911,7 +1053,55 @@
               </h3>
             </div>
             <div class="widget-content gender-content">
-
+               <div class="row roundgauge">
+                 <div class="col-sm-4">
+                   <div class="guage-title text-center">
+                     <i class="fa fa-male"></i> 
+                        <a class="articles-link state-sensitive" data-state="{&quot;gender&quot;:[&quot;male&quot;]}"
+                              href="?show_articles=1#gender%5B%5D=male">Male(%)
+                        </a> 
+                   </div>
+                   <div class="guage-intarcia-male">
+                      <just-gage id="test1" min=0 max=100 value="5"options="{
+                       title: 'Dynamic, using options, with default min and max',
+                       levelColors: ['rgb(66, 139, 202)'],
+                       levelGradiant: false
+                      }"></just-gage>
+                   </div>
+                 </div>
+                 <div class="col-sm-4">
+                   <div class="guage-title text-center">
+                     <i class="fa fa-female"></i> 
+                        <a class="articles-link state-sensitive" data-state="{&quot;gender&quot;:[&quot;male&quot;]}"
+                              href="?show_articles=1#gender%5B%5D=female">female(%)
+                        </a> 
+                   </div>
+                   <div class="guage-intarcia-female">
+                      <just-gage id="test2" min=0 max=100 value="2"options="{
+                       title: 'Dynamic, using options, with default min and max',
+                       levelColors: ['rgb(217, 83, 79)'],
+                       levelGradiant: false
+                      }"></just-gage>  
+                   </div>
+                 </div>
+                 <div class="col-sm-4">
+                   <div class="guage-title text-center">
+                     <i class="fa fa-male"></i> 
+                     <i class="fa fa-female"></i>
+                        <a class="articles-link state-sensitive" data-state="{&quot;gender&quot;:[&quot;male&quot;]}"
+                              href="?show_articles=1#gender%5B%5D=male">Not Classified(%)
+                        </a> 
+                   </div>
+                   <div class="guage-intarcia-male">
+                      <just-gage id="test3" min=0 max=100 value="93"options="{
+                       title: 'Dynamic, using options, with default min and max',
+                       levelColors: ['rgb(192, 152, 83)'],
+                       levelGradiant: false
+                      }"></just-gage>  
+                   </div>
+                 </div>
+                 <!-- end of  col-div -->
+               </div> 
             </div>
           </div>
           <!-- end of genderclassification widget -->
@@ -1002,6 +1192,42 @@
               </h3>
             </div>
             <div class="widget-content source-content">
+              <highcharts options="$ctrl.intarciasrc"></highcharts>
+              <div class="source-chart-legend">
+                <table>
+                  <tbody>
+                    <tr class="source-tr" data-source="Twitter">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #ff0084"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" data-state="{&quot;source&quot;: [&quot;twitter&quot;]}"
+                            href="?show_articles=1#source%5B%5D=twitter"><span>Flickr</span></a>
+                      </td>
+                      <td class="source-count"><span>90.77%</span></td>
+                    </tr>
+                    <tr class="source-tr" data-source="Blogs">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #CC9900"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>News</span></a>
+                      </td>
+                      <td class="source-count"><span>6.15%</span></td>
+                    </tr>
+                    <tr class="source-tr" data-source="Googleplus">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #CC6600"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>Forums</span></a>
+                      </td>
+                      <td class="source-count"><span>1.54%</span></td>
+                    </tr>
+                    <tr class="source-tr" data-source="Facebook">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #00BEF6"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>Twitter</span></a>
+                      </td>
+                      <td class="source-count"><span>1.54%</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
 
             </div>
           </div>
