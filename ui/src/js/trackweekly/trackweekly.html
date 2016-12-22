@@ -140,6 +140,49 @@
              </tr>
            </thead>
            <tbody>
+             <table class="table center-block drugrow1table">
+               <tbody>
+                 <tr ng-repeat="trialdrug in $ctrl.clinical_summary">
+                   <td class="main_row text-center"> {{trialdrug.drug_name}}</td>
+                   <td class="inside-trail-td">
+                   <table class="table trail-detail-data">
+                     <tbody>
+                       <tr ng-repeat="trial in trialdrug.trial_data">
+                         <td class="trail">
+                           <!-- status -->
+                           <div class="status completed"  ng-show="{{trial.trial_status=='Completed'}}">C</div>
+                           <div class="status recruiting" ng-show="{{trial.trial_status=='Recruiting'}}" >R</div>
+                           <div class="status ongoing" ng-show="{{trial.trial_status=='Ongoing'}}">O</div>
+                           <!-- status end -->
+                           <!--progress bar -->
+                           <div class="prog-bar">
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" aria-valuenow="70" 
+                                          aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                              </div>
+                            </div> 
+                           </div>
+                           <!-- progress bar end-->
+                           <!-- badges and countries -->
+                           <div class="full-results"><i class="fa fa-star" aria-hidden="true"></i></div>
+                           <div class="countries" >
+                             <div class="flag-ico " ng-repeat="country in trial.countries" ng-class="{'us':country=='USA','us':country=='US',
+                                'eu':country=='Europe'}"></div>
+                           </div>
+                           <!-- badges and countries end-->
+                           <p style="float:right"><a href="trial.source">{{trial.nct_id}}</a>
+                            <span ng-show="trial.othername!=''"> {{"("+trial.othername+");"}}</span>
+                            <span ng-show="trial.phase!=''"> {{"Phase: "+trial.phase+";"}}</span>
+                            <span ng-show="trial.patient_number!=''"> {{"N="+trial.patient_number+";"}}</span>
+                           </p>
+                         </td>
+                       </tr>
+                     </tbody>
+                   </table>
+                   </td>
+                 </tr>
+               </tbody>
+             </table>
              <table class="table drugrow1table center-block">
                <tbody>
                  <tr>

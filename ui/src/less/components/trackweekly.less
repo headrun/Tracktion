@@ -121,6 +121,10 @@ trackweekly {
             }
 
           }
+      table.trail-detail-data {
+        margin:0 0 0 0 ;
+      
+      }
 	  table {
 
             width:95%;
@@ -133,7 +137,8 @@ trackweekly {
                   width:25px;
                   border-radius:100%;
                   color:white;
-                  position:absolute;
+                  position:relative;
+                  display:inline-block;
                   padding:3px 7px;
               }
 
@@ -149,9 +154,19 @@ trackweekly {
                 background-color:#7B7B7B;
               }
 
+             &>div.recruiting {
+               background-color:#8296B0;
+             }
+             &>div.full-results {
+             
+               display:inline-block;
+               margin-left:10px;
+               color:#E63DCE;
+               position:relative;
+             }
               div.progress {
-		display:inline-block;
-                position:relative;
+                height:15px;
+                margin-bottom:0px;
               }
               div.prim-date {
 		height:20px;
@@ -164,17 +179,35 @@ trackweekly {
                 width:20px;
                 height:20px;
                 display:inline-block;
-                position:absolute;
+                position:relative;
+                float:left;
+              }
+              div.prog-bar{
+                position:relative;
+                display:inline-block;
+                width:20%;
+                verical-align:middle;
+                height:65%;
+              }
+              div.countries {
+               display:inline-block;
+               position:relative;
+               height:20px;
+               padding:5px;
               }
               
 	      div.us {
                     background:no-repeat url(/img/us.png) 100%;
                     background-size:contain;
+                    
+                    
               }
               div.eu {
 
                     background:no-repeat url(/img/eu.png) 100%;
                     background-size:contain;
+                
+                    
               }
               div.un1 {
                 background:no-repeat url(/img/un1.png) 100%;
@@ -356,7 +389,34 @@ trackweekly {
             }
 
              td.main_row {
-               width:10%;
+               width:8%;
+             }
+
+             td.inside-trail-td {
+               padding:0 0 0 0;
+
+               table.trail-detail-data{
+                 background-color:#fff;
+                 min-width:100%;
+
+                 tr {
+                    height:50px;
+                   td {
+                    padding-left:0px;
+
+                   }
+                   td.trail {
+                    
+                   
+                   }
+                 }
+                 tr:first-child {
+                   td:first-child {
+                     border-top:none;
+                   }
+                 }
+               
+               }
              }
             
              td.trail_r {
