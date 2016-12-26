@@ -21,13 +21,12 @@
       <div class="row">
         <div class="filter-container form-inline text-center">
           <div class="filter-item">
-            <input type="radio" name="track" >
+            <input type="radio" name="track" checked="checked" >
             <select class="form-control" id="select5">
-              <option> Select Trial Status</option>
+              <option>All</option>
               <option>Completed</option>
               <option>Ongoing</option>
               <option>Recruiting</option>
-              <option>All</option>
             </select> 
           </div>
           <div class="filter-item">
@@ -87,12 +86,12 @@
          <table class="table table-responsive drugtable center-block">
            <thead>
              <tr class="drugtr">
-               <th class="drugth">Drug</th>
+               <th class="drugth" colspan="2">Drug</th>
                <th class="druginnertable">
                  <table class="table table-bordered table-responsive">
                    <thead>
                      <tr>
-                       <th colspan="4" >Before 2014</th>
+                       <th colspan="4" > 2014 <br><-</th>
                        <th colspan="4">2014</th>
                        <th colspan="4">2015</th>
                        <th colspan="4">2016</th>
@@ -149,22 +148,23 @@
                      <tbody>
                        <tr ng-repeat="trial in trialdrug.trial_data">
                          <td class="trail">
+                           <!--progress bar -->
+                           <div class="prog-bar prgbar{{trial.nct_id}}">
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" aria-valuenow="70" 
+                                          aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                              </div>
+                            </div>
+                            <div class="yellowbar"></div> 
+                           </div>
+                           <!-- progress bar end-->
                            <!-- status -->
                            <div class="status completed"  ng-show="{{trial.trial_status=='Completed'}}">C</div>
                            <div class="status recruiting" ng-show="{{trial.trial_status=='Recruiting'}}" >R</div>
                            <div class="status ongoing" ng-show="{{trial.trial_status=='Ongoing'}}">O</div>
                            <!-- status end -->
-                           <!--progress bar -->
-                           <div class="prog-bar">
-                            <div class="progress">
-                              <div class="progress-bar" role="progressbar" aria-valuenow="70" 
-                                          aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                              </div>
-                            </div> 
-                           </div>
-                           <!-- progress bar end-->
                            <!-- badges and countries -->
-                           <div class="full-results"><i class="fa fa-star" aria-hidden="true"></i></div>
+                           <div class="full-results" ng-hide="{{trial.results==''}}"><i class="fa fa-star" aria-hidden="true"></i></div>
                            <div class="countries" >
                              <div class="flag-ico " ng-repeat="country in trial.countries" ng-class="{'us':country=='USA','us':country=='US',
                                 'eu':country=='Europe'}"></div>
@@ -174,6 +174,7 @@
                             <span ng-show="trial.othername!=''"> {{"("+trial.othername+");"}}</span>
                             <span ng-show="trial.phase!=''"> {{"Phase: "+trial.phase+";"}}</span>
                             <span ng-show="trial.patient_number!=''"> {{"N="+trial.patient_number+";"}}</span>
+                            <span ng-show="trial.truncated_title!=''">{{trial.truncated_title}}</span>
                            </p>
                          </td>
                        </tr>
@@ -183,230 +184,7 @@
                  </tr>
                </tbody>
              </table>
-             <table class="table drugrow1table center-block">
-               <tbody>
-                 <tr>
-                   <td rowspan="3" class="main_row text-center">Adlyxin / Lyxumia Lixisenatide (Sanofi)</td>
-                   <td class="trail_c">
-                     <div class="status completed">C</div>
-                     <div class="detail_wrapper sanofi-1">
-                       <div class="progress">
-                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                         </div>
-                       </div>
-                       <div class="prim-date"></div>
-                       <div class="flag-ico us"></div>
-                       <div class="flag-ico eu"></div>
-                       <p><a target="_blank" href="https://clinicaltrials.gov/ct2/show/NCT01798706?term=NCT01798706&rank=1">NCT01798706 </a>
-                             (GETGOAL-O); Phase III; N=350; Older subjects
-                       </p>
-                     </div>
-                   </td>
-                 </tr>
-                 <tr>
-                   <td class="trail_c">
-                     <div class="status completed">C</div>
-                     <div class="detail_wrapper sanofi-2">
-                       <div class="progress">
-                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                         </div>
-                       </div>
-                       <div class="prim-date"></div>
-                       <div class="full-results"><i class="fa fa-star" aria-hidden="true"></i></div>
-                       <div class="flag-ico us"></div>
-                       <div class="flag-ico eu"></div>
-                       <p><a target="_blank" 
-                            href="https://clinicaltrials.gov/ct2/show/study/NCT01147250?term=Lixisenatide+and+elixa&rank=1&show_locs=Y#locn">
-                            NCT01147250 
-                          </a>
-                           Phase III; N=6068; T2DM after ACS during treatment
-                       </p>
-                     </div>
-                   </td>
-                 </tr>
-                 <tr>
-                   <td class="trail_r">
-                   <div class="status recruiting">R</div>
-                     <div class="detail_wrapper sanofi-3">
-                       <div class="progress">
-                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                         </div>
-                       </div>
-                       <div class="prim-date"></div>
-                       <div class="flag-ico us"></div>
-                       <div class="flag-ico eu"></div>
-                       <p><a target="_blank" 
-                             href="https://clinicaltrials.gov/ct2/show/study/NCT02787551?term=Lixisenatide&rank=16&show_locs=Y#locn"> NCT02787551</a>
-                              ;(LIXILAN-G); Phase III; N=500; FDC with Insulin Glargine
-                       </p>
-                     </div>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-             <!--end of first  row -->
-             <table class="table center-block">
-               <tbody>
-                 <tr>
-                   <td rowspan="2" class="main_row text-center">Tanzeum / Eperzan Albiglutide (GSK)</td>
-                   <td class="trail_o">
-                     <div class="status ongoing">O</div>
-                     <div class="detail_wrapper gsk-1">
-                       <div class="progress">
-                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                         </div>
-                       </div>
-                       <div class="prim-date"></div>
-                       <div class="flag-ico us"></div>
-                       <p><a target="_blank" href="https://clinicaltrials.gov/ct2/show/study/NCT02683746?term=Albiglutide+and+phase+3&rank=1&show_locs=Y#locn">NCT02683746</a>
-                        ; Phase III; N=300; Safety and Efficacy of Liquid drug in T2DM
-                     </p>
-                     </div>
-                   </td>
-                 </tr>
-                 <tr>
-                   <td class="trail_r">
-                     <div class="status recruiting">R</div>
-                     <div class="detail_wrapper gsk-2">
-                       <div class="progress">
-                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                         </div>
-                       </div>
-                       <div class="prim-date"></div>
-                       <div class="flag-ico us"></div>
-                       <div class="flag-ico eu"></div>
-                       <p><a target="_blank" href="https://clinicaltrials.gov/ct2/show/NCT02229227?term=albiglutide&rank=16">NCT02229227</a>
-                        Phase III; N=704; Safety and Efficacy of Albiglutide Vs Insulin Lispro, (both FDC with Insulin Glargine
-                     </p>
-                     </div>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-             <!--end of 2nd row -->
-             <table class="table center-block">
-               <tbody>
-                 <tr>
-                   <td rowspan="2" class="main_row text-center">Trulicity Dulaglutide (Eli Lilly)</td>
-                   <td class="trail_c">
-                     <div class="status completed">C</div>
-                     <div class="detail_wrapper lilly-1">
-                       <div class="progress">
-                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                         </div>
-                       </div>
-                       <div class="full-results"><i class="fa fa-star" aria-hidden="true"></i></div>
-                       <div class="prim-date"></div>
-                       <div class="flag-ico un1"></div>
-                       <div class="flag-ico un2"></div>
-                       <p><a target="_blank" href="https://clinicaltrials.gov/ct2/show/NCT01648582?term=DULAGLUTIDE+AND+PHASE+3&rank=6">NCT01648582</a>
-                        ; Phase III; N=789; Safety and Efficacy study in comparison to Insulin Glargine
-                     </p>
-                     </div>
-                   </td>
-                 </tr>
-                 <tr>
-                   <td class="trail_o">
-                     <div class="status ongoing">O</div>
-                     <div class="detail_wrapper lilly-2">
-                       <div class="progress">
-                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                         </div>
-                       </div>
-                       <div class="prim-date"></div>
-                       <p><a target="_blank" href="https://clinicaltrials.gov/ct2/show/study/NCT02597049?term=DULAGLUTIDE+AND+PHASE+3&rank=9&show_locs=Y#locn"> NCT02597049 </a>
-                       (AWARD-10); Phase III; N=436; Safety and Efficacy of Dulaglutide when added to SGLT-2 inhibitor
-                     </p>
-                     </div>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>  
-             <!-- end of 3rd row -->
-             <table class="table center-block">
-               <tbody>
-                 <tr>
-                   <td rowspan="2" class="main_row text-center">Semaglutide (Novo Nordisk)</td>
-                   <td class="trail_c">
-                     <div class="status completed">C</div>
-                     <div class="detail_wrapper novo-1">
-                       <div class="progress">
-                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                         </div>
-                       </div>
-                       <div class="full-results"><i class="fa fa-star" aria-hidden="true"></i></div>
-                       <div class="prim-date"></div>
-                       <div class="flag-ico us"></div>
-                       <div class="flag-ico eu"></div>
-                       <p><a target="_blank" href="https://clinicaltrials.gov/ct2/show/study/NCT01720446?term=SEMAGLUTIDE+AND+PHASE+3&rank=1&show_locs=Y#locn"> NCT01720446 </a>
-                       (SUSTAIN-6); Phase III; N=3297; CV and long term outcomes
-                     </p>
-                     </div>
-                   </td>
-                 </tr>
-                 <tr>
-                   <td class="trail_r">
-                     <div class="status recruiting">R</div>
-                     <div class="detail_wrapper novo-2">
-                       <div class="progress">
-                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                         </div>
-                       </div>
-                       <div class="prim-date"></div>
-                       <div class="flag-ico us"></div>
-                       <div class="flag-ico un3"></div>
-                       <p><a target="_blank" href="https://clinicaltrials.gov/ct2/show/study/NCT02906930?term=SEMAGLUTIDE+AND+PHASE+3&rank=9&show_locs=Y#locn"> NCT02906930 </a>
-                       (PIONEER-1); Phase III; N=704; Safety and Efficacy in patients treated with diet and exercise only
-                     </p>
-                     </div>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-             <!-- 4throw-->
-             <table class="table center-block">
-               <tbody>
-                 <tr>
-                   <td rowspan="2" class="main_row text-center">ITCA 650 (Intarcia)</td>
-                   <td class="trail_c">
-                     <div class="status completed">C</div>
-                     <div class="detail_wrapper antarcia-1">
-                       <div class="progress">
-                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                         </div>
-                       </div>
-                       <div class="full-results"><i class="fa fa-star" aria-hidden="true"></i></div>
-                       <div class="prim-date"></div>
-                       <div class="flag-ico us"></div>
-                       <p><a target="_blank" href="https://clinicaltrials.gov/ct2/show/study/NCT01455870?term=ITCA-650+and+intarcia&rank=11&show_locs=Y#locn">NCT01455870 </a>
-                        (FREEDOM-2); Phase III; N=535; Safety and Efficacy in comparison to Sitagliptin
-                     </p>
-                     </div>
-                   </td>
-                 </tr>
-                 <tr>
-                   <td class="trail_r">
-                     <div class="status recruiting">R</div>
-                     <div class="detail_wrapper antarcia-2">
-                       <div class="progress">
-                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                         </div>
-                       </div>
-                       <div class="flag-ico us"></div>
-                       <div class="flag-ico eu"></div>
-                       <p><a target="_blank" href="https://clinicaltrials.gov/ct2/show/study/NCT01455896?term=ITCA-650+and+intarcia&rank=2&show_locs=Y#locn">NCT01455896 </a>
-                       ; Phase III; N=4000; CV Outcomes
-                     </p>
-                     </div>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-                <!-- end of 4throw -->
-                  <!-- end of last row -->
-           </tbody>
-          </table>
-
+             
           <div class="legend">
             <div class="item">
              <div class="status completed">C</div>
