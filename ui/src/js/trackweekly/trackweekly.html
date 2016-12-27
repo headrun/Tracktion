@@ -21,59 +21,49 @@
       <div class="row">
         <div class="filter-container form-inline text-center">
           <div class="filter-item">
-            <input type="radio" name="track" checked="checked" >
-            <select class="form-control" id="select5">
-              <option>All</option>
-              <option>Completed</option>
-              <option>Ongoing</option>
-              <option>Recruiting</option>
+            <input type="radio" name="track"  ng-checked="status"  
+                   ng-click="$ctrl.selected_filter='status';drug_class='';drugName='';year='';location='';$ctrl.searchbytype(status)" >
+            <select class="form-control" id="select5" ng-model="status" 
+                    ng-change="drug_class='';drugName='';year='';location='';$ctrl.selected_filter='status'; $ctrl.searchbytype(status)">
+              <option value="">select Status</option>
+              <option ng-repeat="status in $ctrl.filterkeys['trail_status']">{{status}}</option>
             </select> 
           </div>
           <div class="filter-item">
-            <input type="radio" name="track" >
-            <select class="form-control">
-              <option> Select Drug Class</option>
-              <option>GLP1</option>
-              <option>SGLT2</option>
-              <option>DPP4</option>
-              <option>Others</option>
-              <option>All</option>
+            <input type="radio" name="track" ng-checked="drug_class"
+                   ng-click="$ctrl.selected_filter='drug_class';status='';drugName='';year='';location='';$ctrl.searchbytype(drug_class)" >
+            <select class="form-control" ng-model="drug_class" 
+                    ng-change="status=''; drugName=''; year=''; location=''; $ctrl.selected_filter='drug_class'; $ctrl.searchbytype(drug_class)" >
+              <option value=""> Select Drug Class</option>
+              <option ng-repeat="drug_class_key in $ctrl.filterkeys['drug_class']">{{drug_class_key}}</option>
             </select> 
           </div>
-	  <div class="filter-item">
-            <input type="radio" name="track" >
-            <select class="form-control">
-              <option> Select by Drug</option>
-              <option>Adlyxin/Lyxumia</option>
-              <option>Lixisenatide</option>
-              <option>Tanzeum/Eperzan</option>
-              <option>Albiglutide (GSK)</option>
-              <option>Semaglutide (Novo Nordisk)</option>
-              <option>ITCA 650 (Intarcia)</option>
-             </select> 
+	      <div class="filter-item">
+            <input type="radio" name="track" ng-checked="drugName" 
+                   ng-click="$ctrl.selected_filter='drugName';status='';drug_class='';year='';location='';$ctrl.searchbytype(drugName)" >
+            <select class="form-control" ng-model="drugName" 
+                    ng-change="status='';drug_class='';year='';location='';$ctrl.selected_filter='drugName';$ctrl.searchbytype(drugName)"> 
+              <option value=""> Select by Drug</option>
+              <option ng-repeat="drug in $ctrl.filterkeys['drug_name']">{{drug}}</option>
+            </select> 
           </div>
 
           <div class="filter-item">
-            <input type="radio" name="track" >
-            <select class="form-control">
-              <option> Select Year</option>
-              <option>2014</option>
-              <option>2015</option>
-              <option>2016</option>
-              <option>2017</option>
-              <option>2018</option>
-              <option>2019</option>
-              <option>2020</option>
+            <input type="radio" name="track" ng-checked="year" 
+                   ng-click="$ctrl.selected_filter='year';status='';drug_class='';drugName='';location='';$ctrl.searchbytype(year)" >
+            <select class="form-control" ng-model="year" 
+                    ng-change="status='';drug_class='';drugName='';location='';$ctrl.selected_filter='year';$ctrl.searchbytype(year)">
+              <option value=''> Select Year</option>
+              <option ng-repeat="year in $ctrl.filterkeys['year_list']">{{year}}</option>
              </select>
           </div>
           <div class="filter-item">
-            <input type="radio" name="track" >
-            <select class="form-control">
-              <option> Select Location</option>
-              <option>US</option>
-              <option>EU</option>
-              <option>China</option>
-              <option>Japan</option>
+            <input type="radio" name="track" ng-checked="location" 
+                   ng-click="$ctrl.selected_filter='location';status='';drug_class='';drugName='';location='';$ctrl.searchbytype(location)" >
+            <select class="form-control" ng-model="location"
+                    ng-change="status='';drug_class='';drugName='';year='';$ctrl.selected_filter='location';$ctrl.searchbytype(location)">
+              <option value=''> Select Location</option>
+              <option ng-repeat="country in $ctrl.filterkeys['countries']">{{country}}</option>
             </select>
           </div>
 
@@ -141,8 +131,8 @@
            <tbody>
              <table class="table center-block drugrow1table">
                <tbody>
-                 <tr ng-repeat="trialdrug in $ctrl.clinical_summary">
-                   <td class="main_row text-center"> {{trialdrug.drug_name}}</td>
+                 <tr ng-repeat="trialdrug in $ctrl.clinical_summary | filter:drugName">
+                   <td class="main_row text-center" > {{trialdrug.drug_name}}</td>
                    <td class="inside-trail-td">
                    <table class="table trail-detail-data">
                      <tbody>
@@ -170,7 +160,7 @@
                                 'eu':country=='Europe'}"></div>
                            </div>
                            <!-- badges and countries end-->
-                           <p style="float:right"><a href="trial.source">{{trial.nct_id}}</a>
+                           <p style="float:right"><a href="{{trial.source}}">{{trial.nct_id}}</a>
                             <span ng-show="trial.othername!=''"> {{"("+trial.othername+");"}}</span>
                             <span ng-show="trial.phase!=''"> {{"Phase: "+trial.phase+";"}}</span>
                             <span ng-show="trial.patient_number!=''"> {{"N="+trial.patient_number+";"}}</span>
