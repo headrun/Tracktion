@@ -12,6 +12,13 @@ from django.template import Context, loader
 
 from django.views.decorators.csrf import csrf_exempt
 
+from cloudlibs import proxy
+from settings import *
+
+size = 3
+search_fields =  ['title', 'text']
+search = proxy(SEARCH['host'], SEARCH['app_id'])
+
 def clinicaltrail(request):
     db= MySQLdb.connect(host="localhost",user="root",passwd="root",db="dcube",\
                 charset="utf8", use_unicode=True)
@@ -107,3 +114,42 @@ def clinicaltrail(request):
                 data_list.append(data_dict)
 
     return HttpResponse(json.dumps(data_list), content_type='application/json')
+
+def get_wordcloud(request):
+    return HttpResponse('Came here')
+
+def get_social_media(request):
+    if 'keys' in ''.join(request.GET.keys()):
+        records =  search.search(query={"query":{"query_string":{"query": word_query,"fields":["title","text"],"use_dis_max":True}},"size":0,"aggs":{"words":{"terms":{"field":'text', "size":10}}},"highlight":{"fields":{"title":{},"text":{}}}},indexes=SEARCH["indexes"],doc_types="item",query_params={"scroll":"15m"})
+        records = records["result"]["aggregations"]["words"]["buckets"]
+        num_results = len(records)
+        last_article_timestamp = None
+        count = 0
+        list_words = []
+        _freq_words = {}
+        words_mapping = {}
+        for record in records:
+             if count > 49: break
+             key = record["key"]
+             word_count = record["doc_count"]
+             if isinstance(key, unicode) or (len(key) > 2 and (key not in STOP_WORDS)):
+                _freq_words[key] = word_count
+                words_mapping[key] = key
+                count += 1
+             list_words.append(_freq_words)
+             list_words.append(word_count)
+        return HttpResponse(json.dumps(list_words), content_type='application/json')
+
+    else:
+        if 'facet' in ''.join(request.GET.keys()):
+            value = ''.join(request.GET.values())
+            key_value = facets[value]
+            facets_v = {value : key_value}
+        else:
+            facets_v = facets
+        records = search.search(query={"query":{"query_string":{"query":query,\
+            "fields":search_fields,"use_dis_max":True}},"size":size, "facets": facets_v,\
+            "sort":[{"dt_added":{"order":"desc"}}]},indexes=SEARCH["indexes"],\
+            doc_types="item",query_params={"scroll":"15m"})
+
+        return HttpResponse(json.dumps(records), content_type='application/json')
