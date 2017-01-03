@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.conf import settings
 import urllib
 import json
+import datetime
 
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
@@ -14,10 +15,14 @@ from django.views.decorators.csrf import csrf_exempt
 
 from cloudlibs import proxy
 from settings import *
+from models import *
 
-size = 3
+size = 0
 search_fields =  ['title', 'text']
 search = proxy(SEARCH['host'], SEARCH['app_id'])
+
+curdate = datetime.datetime.now()
+no_need_perc_cal = ['sentiment', 'updated_on', 'influencers']
 
 def clinicaltrail(request):
     db= MySQLdb.connect(host="localhost",user="root",passwd="root",db="dcube",\
@@ -116,40 +121,83 @@ def clinicaltrail(request):
     return HttpResponse(json.dumps(data_list), content_type='application/json')
 
 def get_wordcloud(request):
-    return HttpResponse('Came here')
+    source = request.GET.get('source', 'intarcia')
+
+    word_query = get_query(source)
+
+    records =  search.search(query={"query":{"query_string":{"query": word_query,"fields":["title","text"],"use_dis_max":True}},"size":0,"aggs":{"words":{"terms":{"field":'text', "size":200}}},"highlight":{"fields":{"title":{},"text":{}}}},indexes=SEARCH["indexes"],doc_types="item",query_params={"scroll":"15m"})
+
+    records = records["result"]["aggregations"]["words"]["buckets"]
+    num_results = len(records)
+    last_article_timestamp = None
+    count = 0
+    _freq_words = {}
+    words_mapping = {}
+    for record in records:
+         if count > 49: break
+         key = record["key"]
+         word_count = record["doc_count"]
+         if isinstance(key, unicode) or (len(key) > 2 and (key not in STOP_WORDS)):
+            _freq_words[key] = word_count
+            words_mapping[key] = key
+            count += 1
+
+    return HttpResponse(json.dumps(_freq_words), content_type='application/json')
 
 def get_social_media(request):
-    if 'keys' in ''.join(request.GET.keys()):
-        records =  search.search(query={"query":{"query_string":{"query": word_query,"fields":["title","text"],"use_dis_max":True}},"size":0,"aggs":{"words":{"terms":{"field":'text', "size":10}}},"highlight":{"fields":{"title":{},"text":{}}}},indexes=SEARCH["indexes"],doc_types="item",query_params={"scroll":"15m"})
-        records = records["result"]["aggregations"]["words"]["buckets"]
-        num_results = len(records)
-        last_article_timestamp = None
-        count = 0
-        list_words = []
-        _freq_words = {}
-        words_mapping = {}
-        for record in records:
-             if count > 49: break
-             key = record["key"]
-             word_count = record["doc_count"]
-             if isinstance(key, unicode) or (len(key) > 2 and (key not in STOP_WORDS)):
-                _freq_words[key] = word_count
-                words_mapping[key] = key
-                count += 1
-             list_words.append(_freq_words)
-             list_words.append(word_count)
-        return HttpResponse(json.dumps(list_words), content_type='application/json')
+    facet = request.GET.get('facet', '')
+    sentiment = request.GET.get('sentiment', '')
+    source = request.GET.get('source', 'intarcia')
 
-    else:
-        if 'facet' in ''.join(request.GET.keys()):
-            value = ''.join(request.GET.values())
-            key_value = facets[value]
-            facets_v = {value : key_value}
-        else:
-            facets_v = facets
-        records = search.search(query={"query":{"query_string":{"query":query,\
-            "fields":search_fields,"use_dis_max":True}},"size":size, "facets": facets_v,\
-            "sort":[{"dt_added":{"order":"desc"}}]},indexes=SEARCH["indexes"],\
-            doc_types="item",query_params={"scroll":"15m"})
+    facets_v = {}
 
-        return HttpResponse(json.dumps(records), content_type='application/json')
+    query_es = get_query(source)
+
+    if sentiment:
+        query_es += ' AND (xtags:' + sentiment + '_sentiment_final)'
+
+    if facet:
+        facet_value = facets[facet]
+        facets_v = {facet : facet_value}
+
+    if 'influencer' in facet:
+        query_es += '((xtags:twitter_search_sourcetype_manual OR \
+            xtags:twitter_streaming_sourcetype_manual) AND (  xtags:usa_country_auto ))'
+
+    records = search.search(query={"query":{"query_string":{"query":query_es,\
+        "fields":search_fields,"use_dis_max":True}},"size":size, "facets": facets_v,\
+        "sort":[{"dt_added":{"order":"desc"}}]},indexes=SEARCH["indexes"],\
+        doc_types="item",query_params={"scroll":"15m"})
+
+    if facet:
+        if facet not in no_need_perc_cal:
+            variable = records['result']['facets'][facet]['terms']
+            counts = sum([item['count'] for item in variable])
+            variable_list = []
+            for gen in variable:
+                count = gen['count']
+                category = gen['term']
+                perc = round(float(count)/float(counts)*100, 2)
+                gen['perc'] = perc
+                variable_list.append(gen)
+
+            records['result']['facets'][facet]['terms'] = variable_list
+
+    return HttpResponse(json.dumps(records), content_type='application/json')
+
+def get_query(source):
+    objs = SocialAPI.objects.filter(source=source)
+
+    wquery = ''
+    days = 1
+    values = objs.values_list('source', 'query', 'sources', 'days',\
+            'added_by', 'created_at', 'modified_at', 'last_seen')
+    if values:
+        source, wquery, sources, days, added_by, created_at,\
+            modified_at, last_seen = values[0]
+
+    old_date = str((curdate + datetime.timedelta(-days)).date())
+
+    wquery += " AND (dt_added :[" + old_date + " TO " + str(curdate.date()) + "])"
+
+    return wquery
