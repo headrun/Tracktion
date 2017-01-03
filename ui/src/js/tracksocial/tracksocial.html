@@ -935,7 +935,7 @@
              <img src="img/positive.png">
              <div class="value-block  text-right pull-right">
                <div class="value-self">
-                 10
+                 {{$ctrl.summarywidgets[2]['count']}}
                </div>
                <div class="value-sub value-sub-bigger pull-right">
                  Positive
@@ -956,7 +956,7 @@
              <img src="img/neutral.png">
              <div class="value-block  text-right pull-right">
                <div class="value-self">
-                 55
+                 {{$ctrl.summarywidgets[0]['count']}}
                </div>
                <div class="value-sub value-sub-bigger pull-right">
                  Neutral
@@ -977,7 +977,7 @@
              <img src="img/negative.png">
              <div class="value-block  text-right pull-right">
                <div class="value-self">
-                 0
+                 {{$ctrl.summarywidgets[1]['count']}}
                </div>
                <div class="value-sub value-sub-bigger pull-right">
                  Negative
@@ -998,7 +998,7 @@
              <img src="img/overall.png">
              <div class="value-block  text-right pull-right">
                <div class="value-self">
-                 65
+                 {{$ctrl.summarywidgets[0]['count']+$ctrl.summarywidgets[1]['count']+$ctrl.summarywidgets[2]['count']}}
                </div>
                <div class="value-sub value-sub-bigger pull-right">
                  Overall
@@ -1062,7 +1062,7 @@
                         </a> 
                    </div>
                    <div class="guage-intarcia-male">
-                      <just-gage id="test1" min=0 max=100 value="5"options="{
+                      <just-gage id="test1" min=0 max=100 value="{{$ctrl.gendersummary[0]['count']}}" options="{
                        title: 'Dynamic, using options, with default min and max',
                        levelColors: ['rgb(66, 139, 202)'],
                        levelGradiant: false
