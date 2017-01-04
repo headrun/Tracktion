@@ -151,53 +151,76 @@ def get_social_media(request):
 
     facets_v = {}
 
-    query_es = get_query(source)
+    query_eses = get_query(source)
 
-    if sentiment:
-        query_es += ' AND (xtags:' + sentiment + '_sentiment_final)'
+    variable_dict = {}
+    for query_es in query_eses:
+        if sentiment:
+            query_es += ' AND (xtags:' + sentiment + '_sentiment_final)'
 
-    if facet:
-        facet_value = facets[facet]
-        facets_v = {facet : facet_value}
+        if facet:
+            facet_value = facets[facet]
+            facets_v = {facet : facet_value}
 
-    if 'influencer' in facet:
-        query_es += '((xtags:twitter_search_sourcetype_manual OR \
-            xtags:twitter_streaming_sourcetype_manual) AND (  xtags:usa_country_auto ))'
+        if 'influencer' in facet:
+            query_es += '((xtags:twitter_search_sourcetype_manual OR \
+                xtags:twitter_streaming_sourcetype_manual) AND (  xtags:usa_country_auto ))'
 
-    records = search.search(query={"query":{"query_string":{"query":query_es,\
-        "fields":search_fields,"use_dis_max":True}},"size":size, "facets": facets_v,\
-        "sort":[{"dt_added":{"order":"desc"}}]},indexes=SEARCH["indexes"],\
-        doc_types="item",query_params={"scroll":"15m"})
+        if source == 'marketwatch':
+            var = query_es.split(' AND ')[0].replace('"', '').replace('(', '')
+        else:
+            var = source
 
-    if facet:
-        if facet not in no_need_perc_cal:
-            variable = records['result']['facets'][facet]['terms']
-            counts = sum([item['count'] for item in variable])
-            variable_list = []
-            for gen in variable:
-                count = gen['count']
-                category = gen['term']
-                perc = round(float(count)/float(counts)*100, 2)
-                gen['perc'] = perc
-                variable_list.append(gen)
+        records = search.search(query={"query":{"query_string":{"query":query_es,\
+            "fields":search_fields,"use_dis_max":True}},"size":size, "facets": facets_v,\
+            "sort":[{"dt_added":{"order":"desc"}}]},indexes=SEARCH["indexes"],\
+            doc_types="item",query_params={"scroll":"15m"})
 
-            records['result']['facets'][facet]['terms'] = variable_list
+        if facet:
+            if facet not in no_need_perc_cal:
+                variable = records['result']['facets'][facet]['terms']
+                counts = sum([item['count'] for item in variable])
+                variable_list = []
+                for gen in variable:
+                    count = gen['count']
+                    category = gen['term']
+                    perc = round(float(count)/float(counts)*100, 2)
+                    gen['perc'] = perc
+                    variable_list.append(gen)
+                variable_dict[var] = variable_list
+                records['result']['facets'][facet]['terms'] = variable_dict
+            else:
+                if 'updated_on' in facet:
+                    variable_dict[var] = records['result']['facets'][facet]['entries']
+                    records['result']['facets'][facet]['entries'] = variable_dict
 
     return HttpResponse(json.dumps(records), content_type='application/json')
 
 def get_query(source):
+    days = 30
+    wquery = ''
     objs = SocialAPI.objects.filter(source=source)
 
-    wquery = ''
-    days = 1
     values = objs.values_list('source', 'query', 'sources', 'days',\
-            'added_by', 'created_at', 'modified_at', 'last_seen')
+        'added_by', 'created_at', 'modified_at', 'last_seen')
     if values:
         source, wquery, sources, days, added_by, created_at,\
             modified_at, last_seen = values[0]
 
     old_date = str((curdate + datetime.timedelta(-days)).date())
+    dt_qry = " AND (dt_added :[" + old_date + " TO " + str(curdate.date()) + "])"
 
-    wquery += " AND (dt_added :[" + old_date + " TO " + str(curdate.date()) + "])"
+    qry_list = []
+    if source == 'marketwatch':
+        wquerys = wquery.split(' OR ')
+        for i in wquerys:
+            wqry = '(' + i + source_keys + dt_qry + ')'
+            qry_list.append(wqry)
+
+        wquery = qry_list
+
+    else:
+        wquery += dt_qry
+        wquery = [wquery]
 
     return wquery
