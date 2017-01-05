@@ -13,6 +13,10 @@
 
     this.intarciasrc = {};
 
+    this.highchartintarciatimeline = {};
+   
+    this.intarciatimelinedata=[];
+
     this.sourcedist_total=0;
 
     $scope.parseFloat = parseFloat;
@@ -58,49 +62,10 @@
 
 
 
-    this.highchartintarciatimeline={"chart":{"type":"areaspline","margin":[0,15,60,60],"backgroundColor":"transparent","spacingLeft":0,"spacingRight":0},"credits":{"enabled":false},"title":{"text":""},"xAxis":{"type":"datetime","dateTimeLabelFormats":{"day":"%b %e"},"title":{"enabled":false},"gridLineColor":"#ddd","gridLineWidth":1,"lineWidth":1},"yAxis":{"endOnTick":false,"maxPadding":0.3,"title":{"text": "Mentions"},"gridLineColor":"#ddd","gridLineWidth":1},"plotOptions":{"areaspline":{"fillOpacity":0.45,"dashStyle":"Solid","lineWidth":3,"marker":{"symbol":"circle"},"cursor":"pointer"}},"series":[{"data":[[1476230400000,0],[1476316800000,2],[1476403200000,0],[1476489600000,0],[1476576000000,0],[1476662400000,0],[1476748800000,0],[1476835200000,0],[1476921600000,0],[1477008000000,0],[1477094400000,0],[1477180800000,0],[1477267200000,0],[1477353600000,0],[1477440000000,0],[1477526400000,0],[1477612800000,0],[1477699200000,0],[1477785600000,0],[1477872000000,0],[1477958400000,0],[1478044800000,59],[1478131200000,2],[1478217600000,0],[1478304000000,1],[1478390400000,0],[1478476800000,0],[1478563200000,0],[1478649600000,1],[1478736000000,0],[1478822400000,0]],"name":"overall","color":"#258cd1"},{"name":"positive","data":[[1476230400000,0],[1476316800000,0],[1476403200000,0],[1476489600000,0],[1476576000000,0],[1476662400000,0],[1476748800000,0],[1476835200000,0],[1476921600000,0],[1477008000000,0],[1477094400000,0],[1477180800000,0],[1477267200000,0],[1477353600000,0],[1477440000000,0],[1477526400000,0],[1477612800000,0],[1477699200000,0],[1477785600000,0],[1477872000000,0],[1477958400000,0],[1478044800000,0],[1478131200000,0],[1478217600000,0],[1478304000000,0],[1478390400000,0],[1478476800000,0],[1478563200000,0],[1478649600000,0],[1478736000000,0],[1478822400000,0]],"color":"#5cb85c"},{"name":"negative","data":[[1476230400000,0],[1476316800000,0],[1476403200000,0],[1476489600000,0],[1476576000000,0],[1476662400000,0],[1476748800000,0],[1476835200000,0],[1476921600000,0],[1477008000000,0],[1477094400000,0],[1477180800000,0],[1477267200000,0],[1477353600000,0],[1477440000000,0],[1477526400000,0],[1477612800000,0],[1477699200000,0],[1477785600000,0],[1477872000000,0],[1477958400000,0],[1478044800000,0],[1478131200000,0],[1478217600000,0],[1478304000000,0],[1478390400000,0],[1478476800000,0],[1478563200000,0],[1478649600000,0],[1478736000000,0],[1478822400000,0]],"color":"#e5412d"},{"name":"neutral","data":[[1476230400000,0],[1476316800000,2],[1476403200000,0],[1476489600000,0],[1476576000000,0],[1476662400000,0],[1476748800000,0],[1476835200000,0],[1476921600000,0],[1477008000000,0],[1477094400000,0],[1477180800000,0],[1477267200000,0],[1477353600000,0],[1477440000000,0],[1477526400000,0],[1477612800000,0],[1477699200000,0],[1477785600000,0],[1477872000000,0],[1477958400000,0],[1478044800000,59],[1478131200000,2],[1478217600000,0],[1478304000000,1],[1478390400000,0],[1478476800000,0],[1478563200000,0],[1478649600000,1],[1478736000000,0],[1478822400000,0]],"color":"#f0ad4e"}],"tooltip":{"shared":true}}
-;
-
-/*
-    this.intarciasrc={
-        "series": [{
-            "name": 'Brands',
-            "colorByPoint": true,
-            "data": [{
-                "name": 'Microsoft Internet Explorer',
-                "y": 56.33
-            }, {
-                "name": 'Chrome',
-                "y": 24.03,
-                "sliced": true,
-                "selected": true
-            }, {
-                "name": 'Firefox',
-                "y": 10.38
-            }, {
-                "name": 'Safari',
-                "y": 4.77
-            }, {
-                "name": 'Opera',
-                "y": 0.91
-            }, {
-                "name": 'Proprietary or Undetectable',
-                "y": 0.2
-            }]
-        }]                     
-    };
-*/
-/*
-    this.intarciasrc= {
-                       "chart":{"backgroundColor": "transparent"},"credits":{"enabled":false},"title":{"text":""},"plotOptions":{"pie":{"borderWidth":1,"allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":false},"showInLegend":true,"slicedOffset":0,"innerSize":"60%","series":{"shadow":true}}},"legend":{"enabled":false},"series": [{"data":[{"name":"Flickr","y":59,"color":"#ff0084","visible":true},{"name":"News","y":4,"color":"#CC9900","visible":true},{"name":"Forums","y":1,"color":"#CC6600","visible":true},{"name":"Twitter","y":1,"color":"#00BEF6","visible":true}],"type":"pie","name":"<small>#Articles</small>","num_articles":65}]
-
-    };
-*/    
-   /*raphel-gauge */
-    //$scope.value1 = 49;
+this.diabsourcedist= {
+                            "chart":{"backgroundColor": "transparent"},"credits":{"enabled":false},"title":{"text":""},"plotOptions":{"pie":{"borderWidth":1,"allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":false},"showInLegend":true,"slicedOffset":0,"innerSize":"60%","series":{"shadow":true}}},"legend":{"enabled":false},"series": [{"data":[{"name":"Twitter","y":29723,"color":"#00BEF6","visible":true},{"name":"News","y":5935,"color":"#CC9900","visible":true},{"name":"Flickr","y":974,"color":"#ff0084","visible":true},{"name":"Instagram","y":955,"color":"#4C3D32","visible":true},{"name":"Blogs","y":564,"color":"#FF8833","visible":true},{"name":"Forums","y":436,"color":"#CC6600","visible":true},{"name":"Facebook","y":335,"color":"#3B5998","visible":true},{"name":"Googleplus","y":168,"color":"#DD4B39","visible":true},{"name":"Youtube","y":142,"color":"#cc181e","visible":true},{"name":"Tumblr","y":84,"color":"#529ECC","visible":true}],"type":"pie","name":"<small>#Articles</small>","num_articles":39316}]
     
-    
-    
+     };
 
     this.updatePaneState = function (filters,tabName) {
 	  updateFilters(filters, tabName);
@@ -127,14 +92,133 @@
     }
 
     if(tabName=='Intarcia'){
+
+      that.timelineparams=[{'facet':'updated_on','source':tabName},
+                          {'facet':'updated_on','source':tabName,'sentiment':'positive'},
+                          {'facet':'updated_on','source':tabName,'sentiment':'negative'},
+                          {'facet':'updated_on','source':tabName,'sentiment':'neutral'}
+                        ];
+
       that.params=[
                    {'facet':'sentiment','source':tabName},
-                   {'facet':'updated_on','source':tabName},
                    {'facet':'sources','source':tabName},
                    {'facet':'gender','source':tabName},
                    {'facet':'influencers','source':tabName},
                    {'facet':'lang','source':tabName},
-                  ]
+                  ];
+
+      for(var j=0;j<that.timelineparams.length;j++){
+        (function(j){ 
+          $http.get("http://176.9.181.36:2222/clinicalapi/get_social_media/",{"params":that.timelineparams[j]})
+          .then(function (resp){
+                if(resp.data.error) {
+                  return;
+                }
+               // console.log(resp.data);
+                that.intarciatimelinedata[j]=resp.data.result.facets.updated_on.entries.Intarcia;
+                if(that.intarciatimelinedata.length==that.timelineparams.length){
+                  that.series=[];
+                  for(var z=0;z<that.intarciatimelinedata.length;z++){
+                    that.data=[];
+                    angular.forEach(that.intarciatimelinedata[z], function(value, key) {
+                      that.data.push([value.time , value.count]);
+                    });
+                    if(z==0){
+                      that.series[z]={"color":"#258cd1","name":"overall","data":that.data};
+                    } 
+                    if(z==1){
+                      that.series[z]={"color":"#5cb85c","name":"positive","data":that.data};
+                    }
+                    if(z==2){
+                      that.series[z]={"color":"#e5412d","name":"negative","data":that.data};
+                    }
+                    if(z==3){
+                      that.series[z]={"color":"#f0ad4e","name":"netural","data":that.data};
+                    }
+                  }
+                  console.log(that.series);
+                 angular.extend(that.highchartintarciatimeline, {
+                                        "chart":{
+                                                  "type":"areaspline",
+                                                  "margin":[0,15,60,60],
+                                                  "backgroundColor":"transparent",
+                                                  "spacingLeft":0,"spacingRight":0
+                                                },
+                                        "credits":{"enabled":false},
+                                        "title":{"text":""},
+                                        "xAxis":{
+                                                 "type":"datetime",
+                                                 "dateTimeLabelFormats":{"day":"%b %e"},
+                                                 "title":{"enabled":false},
+                                                 "gridLineColor":"#ddd",
+                                                 "gridLineWidth":1,
+                                                 "lineWidth":1
+                                                },
+                                        "yAxis":{
+                                                 "endOnTick":false,
+                                                 "maxPadding":0.3,
+                                                 "title":{"text": "Mentions"},
+                                                 "gridLineColor":"#ddd","gridLineWidth":1},
+                                                 "plotOptions":{
+                                                                "areaspline":{
+                                                                              "fillOpacity":0.45,
+                                                                              "dashStyle":"Solid",
+                                                                              "lineWidth":3,
+                                                                              "marker":{"symbol":"circle"},
+                                                                              "cursor":"pointer"}
+                                                               },
+                                                 "series":[ that.series[0],that.series[1],that.series[2],that.series[3]/*{"data":[],"name":"overall","color":"#258cd1"},{"name":"positive","data":[],"color":"#5cb85c"},{"name":"negative","data":[],"color":"#e5412d"},{"name":"neutral","data":[],"color":"#f0ad4e"}*/],
+                                                  "tooltip":{"shared":true}
+                                           });
+                }
+               /* 
+                 
+                that.data=[];
+                angular.forEach(resp.data.result.facets.updated_on.entries.Intarcia, function(value, key) {
+                   that.data.push([value.time , value.count]);
+                });
+                console.log(that.data);
+                that.series[j]={"color":"#5cb85c","name":"positive","data":that.data};
+               */
+                if(0){
+                angular.extend(that.highchartintarciatimeline, {
+                                        "chart":{
+                                                  "type":"areaspline",
+                                                  "margin":[0,15,60,60],
+                                                  "backgroundColor":"transparent",
+                                                  "spacingLeft":0,"spacingRight":0
+                                                },
+                                        "credits":{"enabled":false},
+                                        "title":{"text":""},
+                                        "xAxis":{
+                                                 "type":"datetime",
+                                                 "dateTimeLabelFormats":{"day":"%b %e"},
+                                                 "title":{"enabled":false},
+                                                 "gridLineColor":"#ddd",
+                                                 "gridLineWidth":1,
+                                                 "lineWidth":1
+                                                },
+                                        "yAxis":{
+                                                 "endOnTick":false,
+                                                 "maxPadding":0.3,
+                                                 "title":{"text": "Mentions"},
+                                                 "gridLineColor":"#ddd","gridLineWidth":1},
+                                                 "plotOptions":{
+                                                                "areaspline":{
+                                                                              "fillOpacity":0.45,
+                                                                              "dashStyle":"Solid",
+                                                                              "lineWidth":3,
+                                                                              "marker":{"symbol":"circle"},
+                                                                              "cursor":"pointer"}
+                                                               },
+                                                 "series":[ that.series[0],that.series[1],that.series[2]/*{"data":[],"name":"overall","color":"#258cd1"},{"name":"positive","data":[],"color":"#5cb85c"},{"name":"negative","data":[],"color":"#e5412d"},{"name":"neutral","data":[],"color":"#f0ad4e"}*/],
+                                                  "tooltip":{"shared":true}
+                                           });
+                }
+                //console.log(that.highchartintarciatimeline);
+            });
+         })(j);
+      }
       for(var i=0;i<that.params.length;i++){
       (function(i){
         $http.get("http://176.9.181.36:2222/clinicalapi/get_social_media/",{"params":that.params[i]}) 
@@ -150,10 +234,6 @@
                      that.summarywidgets=resp.data.result.facets.sentiment.terms;
                      break;
               case 1:
-                    //timeline, updated_on
-                    console.log(resp.data.result.facets);
-                    break;
-              case 2:
                     //source distribution
                     // console.log(resp.data.result.facets);
                      that.source_dist=resp.data.result.facets.sources.terms.Intarcia;
@@ -198,18 +278,18 @@
                      });
 
                     break;
-              case 3:
+              case 2:
                     //gender classification
                     //console.log(resp.data.result.facets);
                     that.gendersummary=resp.data.result.facets.gender.terms.Intarcia;
                     break;
-              case 4:
+              case 3:
                     //twitter top influencers
                     //console.log(resp.data.result.facets);
                     that.top_influencers=resp.data.result.facets.influencers.terms;
                     //console.log(that.top_influencers);
                     break;
-              case 5:
+              case 4:
                     //languages
                     //console.log(resp.data.result.facets);
                     that.languages=resp.data.result.facets.lang.terms.Intarcia;
@@ -223,6 +303,10 @@
       }
 
     }
+    if(tabName=='Diabetes World'){
+      
+    }
+
   }
 
   angular.module("tracksocial")
