@@ -167,54 +167,10 @@ this.diabsourcedist= {
                                                                               "marker":{"symbol":"circle"},
                                                                               "cursor":"pointer"}
                                                                },
-                                                 "series":[ that.series[0],that.series[1],that.series[2],that.series[3]/*{"data":[],"name":"overall","color":"#258cd1"},{"name":"positive","data":[],"color":"#5cb85c"},{"name":"negative","data":[],"color":"#e5412d"},{"name":"neutral","data":[],"color":"#f0ad4e"}*/],
+                                                 "series":[ that.series[0],that.series[1],that.series[2],that.series[3]],
                                                   "tooltip":{"shared":true}
-                                           });
-                }
-               /* 
-                 
-                that.data=[];
-                angular.forEach(resp.data.result.facets.updated_on.entries.Intarcia, function(value, key) {
-                   that.data.push([value.time , value.count]);
-                });
-                console.log(that.data);
-                that.series[j]={"color":"#5cb85c","name":"positive","data":that.data};
-               */
-                if(0){
-                angular.extend(that.highchartintarciatimeline, {
-                                        "chart":{
-                                                  "type":"areaspline",
-                                                  "margin":[0,15,60,60],
-                                                  "backgroundColor":"transparent",
-                                                  "spacingLeft":0,"spacingRight":0
-                                                },
-                                        "credits":{"enabled":false},
-                                        "title":{"text":""},
-                                        "xAxis":{
-                                                 "type":"datetime",
-                                                 "dateTimeLabelFormats":{"day":"%b %e"},
-                                                 "title":{"enabled":false},
-                                                 "gridLineColor":"#ddd",
-                                                 "gridLineWidth":1,
-                                                 "lineWidth":1
-                                                },
-                                        "yAxis":{
-                                                 "endOnTick":false,
-                                                 "maxPadding":0.3,
-                                                 "title":{"text": "Mentions"},
-                                                 "gridLineColor":"#ddd","gridLineWidth":1},
-                                                 "plotOptions":{
-                                                                "areaspline":{
-                                                                              "fillOpacity":0.45,
-                                                                              "dashStyle":"Solid",
-                                                                              "lineWidth":3,
-                                                                              "marker":{"symbol":"circle"},
-                                                                              "cursor":"pointer"}
-                                                               },
-                                                 "series":[ that.series[0],that.series[1],that.series[2]/*{"data":[],"name":"overall","color":"#258cd1"},{"name":"positive","data":[],"color":"#5cb85c"},{"name":"negative","data":[],"color":"#e5412d"},{"name":"neutral","data":[],"color":"#f0ad4e"}*/],
-                                                  "tooltip":{"shared":true}
-                                           });
-                }
+                                           }); 
+                               }
                 //console.log(that.highchartintarciatimeline);
             });
          })(j);

@@ -188,6 +188,7 @@
            // that.selected_filter='status';
             console.log(this.selected_filter);
             console.log(searchelement);
+            if(searchelement=='all'){searchelement='';}
             var pa;
             if(that.selected_filter=='status'){
               pa={'trail_status':searchelement};
