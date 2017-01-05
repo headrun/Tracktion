@@ -1062,7 +1062,7 @@
                         </a> 
                    </div>
                    <div class="guage-intarcia-male">
-                      <just-gage id="test1" min=0 max=100 value="{{$ctrl.gendersummary[0]['count']}}" options="{
+                      <just-gage id="test1" min=0 max=100 value="{{$ctrl.gendersummary[0]['perc']}}" options="{
                        title: 'Dynamic, using options, with default min and max',
                        levelColors: ['rgb(66, 139, 202)'],
                        levelGradiant: false
@@ -1077,7 +1077,7 @@
                         </a> 
                    </div>
                    <div class="guage-intarcia-female">
-                      <just-gage id="test2" min=0 max=100 value="2"options="{
+                      <just-gage id="test2" min=0 max=100 value="{{$ctrl.gendersummary[1]['perc']}}"options="{
                        title: 'Dynamic, using options, with default min and max',
                        levelColors: ['rgb(217, 83, 79)'],
                        levelGradiant: false
@@ -1093,7 +1093,7 @@
                         </a> 
                    </div>
                    <div class="guage-intarcia-male">
-                      <just-gage id="test3" min=0 max=100 value="93"options="{
+                      <just-gage id="test3" min=0 max=100 value="{{$ctrl.gendersummary[2]['perc']}}"options="{
                        title: 'Dynamic, using options, with default min and max',
                        levelColors: ['rgb(192, 152, 83)'],
                        levelGradiant: false
@@ -1197,33 +1197,86 @@
                 <table>
                   <tbody>
                     <tr class="source-tr" data-source="Twitter">
-                      <td class="color-code-td"><span class="color-code" style="background-color: #ff0084"></span></td>
-                      <td class="source-name">
-                        <a class="articles-link state-sensitive" data-state="{&quot;source&quot;: [&quot;twitter&quot;]}"
-                            href="?show_articles=1#source%5B%5D=twitter"><span>Flickr</span></a>
-                      </td>
-                      <td class="source-count"><span>90.77%</span></td>
-                    </tr>
-                    <tr class="source-tr" data-source="Blogs">
-                      <td class="color-code-td"><span class="color-code" style="background-color: #CC9900"></span></td>
-                      <td class="source-name">
-                        <a class="articles-link state-sensitive" href="#"><span>News</span></a>
-                      </td>
-                      <td class="source-count"><span>6.15%</span></td>
-                    </tr>
-                    <tr class="source-tr" data-source="Googleplus">
-                      <td class="color-code-td"><span class="color-code" style="background-color: #CC6600"></span></td>
-                      <td class="source-name">
-                        <a class="articles-link state-sensitive" href="#"><span>Forums</span></a>
-                      </td>
-                      <td class="source-count"><span>1.54%</span></td>
-                    </tr>
-                    <tr class="source-tr" data-source="Facebook">
                       <td class="color-code-td"><span class="color-code" style="background-color: #00BEF6"></span></td>
                       <td class="source-name">
                         <a class="articles-link state-sensitive" href="#"><span>Twitter</span></a>
                       </td>
-                      <td class="source-count"><span>1.54%</span></td>
+                      <td class="source-count">
+                        <span>{{parseFloat(($ctrl.source_dist[0]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
+                      </td>
+                    </tr>
+                    <tr class="source-tr" data-source="Flickr">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #ff0084"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" data-state="{&quot;source&quot;: [&quot;twitter&quot;]}"
+                            href="?show_articles=1#source%5B%5D=twitter"><span>RSS</span></a>
+                      </td>
+                      <td class="source-count">
+                         <span>{{parseFloat(($ctrl.source_dist[1]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
+                      </td>
+                    </tr>
+                    <tr class="source-tr" data-source="News">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #CC9900"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>News</span></a>
+                      </td>
+                      <td class="source-count">
+                        <span>{{parseFloat(($ctrl.source_dist[2]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
+                      </td>
+                    </tr>
+                    <tr class="source-tr" data-source="Instagram">
+                      <td class="color-code-td"><span class="color-code" style="background-color:#4C3D32"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>Instagram</span></a>
+                      </td>
+                      <td class="source-count">
+                         <span>{{parseFloat(($ctrl.source_dist[3]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
+                      </td>
+                    </tr>
+                    <tr class="source-tr" data-source="Googleplus">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #DD4B39"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>Googleplus</span></a>
+                      </td>
+                      <td class="source-count">
+                        <span>{{parseFloat(($ctrl.source_dist[4]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
+                      </td>
+                    </tr>
+                    <tr class="source-tr" data-source="Blogs">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #FF8833"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>Blogs</span></a>
+                      </td>
+                      <td class="source-count">
+                        <span>{{parseFloat(($ctrl.source_dist[5]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
+                      </td>
+                    </tr>
+                    <tr class="source-tr" data-source="Tumblr">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #529ECC"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>Tumblr</span></a>
+                      </td>
+                      <td class="source-count">
+                        <span>{{parseFloat(($ctrl.source_dist[6]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
+                      </td>
+                    </tr>
+                    <tr class="source-tr" data-source="Forums">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #CC6600"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>Forums</span></a>
+                      </td>
+                      <td class="source-count">
+                        <span>{{parseFloat(($ctrl.source_dist[8]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
+                      </td>
+                    </tr>
+                    <tr class="source-tr" data-source="Facebook">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #3B5998"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>Facebook</span></a>
+                      </td>
+                      <td class="source-count">
+                        <span>{{parseFloat(($ctrl.source_dist[10]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -1271,13 +1324,12 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
-                        data-title="click to view data" rel="tooltip" title="">
+		    <tr class="tw-influencer" ng-repeat="influencer in $ctrl.top_influencers">
 
 		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-		        <a class="articles-link state-sensitive" data-encoded="true" href="#">intarciatherapeutics</a>
+		        <a class="articles-link state-sensitive" data-encoded="true" href="#">{{influencer.term}}</a>
 		      </td>
-		      <td class="count text-right">40.43</td>
+		      <td class="count text-right">{{parseFloat(influencer.max).toFixed(2)}}</td>
 		    </tr>
 		  </tbody>
 		</table>
@@ -1303,13 +1355,12 @@
               <div class="influencers-rows">
 		<table class="table" id="influencers-table">
 		  <tbody>
-		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
-                        data-title="click to view data" rel="tooltip" title="">
+		    <tr class="tw-influencer" ng-repeat="language in $ctrl.languages">
 
 		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-		        <a class="articles-link state-sensitive" data-encoded="true" href="#">English</a>
+		        <a class="articles-link state-sensitive" data-encoded="true" href="#">{{language.term}}</a>
 		      </td>
-		      <td class="count text-right">100%</td>
+		      <td class="count text-right">{{language.perc}}%</td>
 		    </tr>
 		  </tbody>
 		</table>

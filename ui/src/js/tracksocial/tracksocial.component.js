@@ -3,13 +3,19 @@
 
   var _ = window._; //underscore.js
 
-  function controller ($state, $http, Highcharts, utils ) {
+  function controller ($scope, $state, $http, Highcharts, utils ) {
 
     var that = this;
 
     this.stateName = $state.current.name;
 
     this.tabName = $state.params.tabName;
+
+    this.intarciasrc = {};
+
+    this.sourcedist_total=0;
+
+    $scope.parseFloat = parseFloat;
 
     var scopeName = this.stateName.split(".")[1];
 
@@ -84,16 +90,12 @@
         }]                     
     };
 */
+/*
     this.intarciasrc= {
                        "chart":{"backgroundColor": "transparent"},"credits":{"enabled":false},"title":{"text":""},"plotOptions":{"pie":{"borderWidth":1,"allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":false},"showInLegend":true,"slicedOffset":0,"innerSize":"60%","series":{"shadow":true}}},"legend":{"enabled":false},"series": [{"data":[{"name":"Flickr","y":59,"color":"#ff0084","visible":true},{"name":"News","y":4,"color":"#CC9900","visible":true},{"name":"Forums","y":1,"color":"#CC6600","visible":true},{"name":"Twitter","y":1,"color":"#00BEF6","visible":true}],"type":"pie","name":"<small>#Articles</small>","num_articles":65}]
 
     };
-
-    this.diabsourcedist= {
-                            "chart":{"backgroundColor": "transparent"},"credits":{"enabled":false},"title":{"text":""},"plotOptions":{"pie":{"borderWidth":1,"allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":false},"showInLegend":true,"slicedOffset":0,"innerSize":"60%","series":{"shadow":true}}},"legend":{"enabled":false},"series": [{"data":[{"name":"Twitter","y":29723,"color":"#00BEF6","visible":true},{"name":"News","y":5935,"color":"#CC9900","visible":true},{"name":"Flickr","y":974,"color":"#ff0084","visible":true},{"name":"Instagram","y":955,"color":"#4C3D32","visible":true},{"name":"Blogs","y":564,"color":"#FF8833","visible":true},{"name":"Forums","y":436,"color":"#CC6600","visible":true},{"name":"Facebook","y":335,"color":"#3B5998","visible":true},{"name":"Googleplus","y":168,"color":"#DD4B39","visible":true},{"name":"Youtube","y":142,"color":"#cc181e","visible":true},{"name":"Tumblr","y":84,"color":"#529ECC","visible":true}],"type":"pie","name":"<small>#Articles</small>","num_articles":39316}]
-    
-     };
-
+*/    
    /*raphel-gauge */
     //$scope.value1 = 49;
     
@@ -125,23 +127,108 @@
     }
 
     if(tabName=='Intarcia'){
-      $http.get("http://176.9.181.36:2222/clinicalapi/get_social_media/") 
-        .then(function (resp){
-          if(resp.data.error) {
-            return;
-          }
-          console.log(resp.data.result.facets);
-          that.summarywidgets=resp.data.result.facets.sentiment.terms;
-          that.gendersummary=resp.data.result.facets.gender.terms; 
-          console.log(that.gendersummary);
-        })
+      that.params=[
+                   {'facet':'sentiment','source':tabName},
+                   {'facet':'updated_on','source':tabName},
+                   {'facet':'sources','source':tabName},
+                   {'facet':'gender','source':tabName},
+                   {'facet':'influencers','source':tabName},
+                   {'facet':'lang','source':tabName},
+                  ]
+      for(var i=0;i<that.params.length;i++){
+      (function(i){
+        $http.get("http://176.9.181.36:2222/clinicalapi/get_social_media/",{"params":that.params[i]}) 
+          .then(function (resp){
+            if(resp.data.error) {
+              return;
+            }
+            //console.log(resp.data.result.facets);
+            switch(i){
+              case 0:
+                     //sentiment
+                     //console.log(resp.data.result.facets);
+                     that.summarywidgets=resp.data.result.facets.sentiment.terms;
+                     break;
+              case 1:
+                    //timeline, updated_on
+                    console.log(resp.data.result.facets);
+                    break;
+              case 2:
+                    //source distribution
+                    // console.log(resp.data.result.facets);
+                     that.source_dist=resp.data.result.facets.sources.terms.Intarcia;
+                     for(var j=0;j<that.source_dist.length;j++){
+                       if((i!=7)&&(i!=9)){
+                         that.sourcedist_total+=that.source_dist[j]['count'];
+                       }
+                     }
+                     angular.extend(that.intarciasrc, {
+                                "chart":{"backgroundColor": "transparent"},
+                                "credits":{"enabled":false},
+                                "title":{"text":""},
+                                "plotOptions":{
+                                               "pie":{
+
+                                                       "borderWidth":1,
+                                                       "allowPointSelect":true,
+                                                       "cursor":"pointer",
+                                                       "dataLabels":{"enabled":false},
+                                                       "showInLegend":true,
+                                                       "slicedOffset":0,
+                                                       "innerSize":"60%",
+                                                       "series":{"shadow":true}
+                                                    }   
+                                              },  
+                                "legend":{"enabled":false},
+                                "series": [{"data":[
+                                                   {"name":"Twitter","y":that.source_dist[0]['count'],"color":"#00BEF6","visible":true},
+                                                   {"name":"Rss","y":that.source_dist[1]['count'],"color":"#ff0084","visible":true},
+                                                   {"name":"News","y":that.source_dist[2]['count'],"color":"#CC9900","visible":true},
+                                                   {"name":"Instagram","y":that.source_dist[3]['count'],"color":"#4C3D32","visible":true},
+                                                   {"name":"Googleplus","y":that.source_dist[4]['count'],"color":"#DD4B39","visible":true},
+                                                   {"name":"Blogs","y":that.source_dist[5]['count'],"color":"#FF8833","visible":true},
+                                                   {"name":"Tumblr","y":that.source_dist[6]['count'],"color":"#529ECC","visible":true},
+                                                   {"name":"Forums","y":that.source_dist[8]['count'],"color":"#CC6600","visible":true},
+                                                   {"name":"Facebook","y":that.source_dist[10]['count'],"color":"#3B5998","visible":true},
+                                                   ],  
+                                            "type":"pie",
+                                            "name":"<small>#Articles</small>",
+                                            "num_articles":39316
+                                            }]  
+                     });
+
+                    break;
+              case 3:
+                    //gender classification
+                    //console.log(resp.data.result.facets);
+                    that.gendersummary=resp.data.result.facets.gender.terms.Intarcia;
+                    break;
+              case 4:
+                    //twitter top influencers
+                    //console.log(resp.data.result.facets);
+                    that.top_influencers=resp.data.result.facets.influencers.terms;
+                    //console.log(that.top_influencers);
+                    break;
+              case 5:
+                    //languages
+                    //console.log(resp.data.result.facets);
+                    that.languages=resp.data.result.facets.lang.terms.Intarcia;
+                    //console.log(that.languages);
+                    break;
+              default:
+                    break;
+            }
+          })
+        })(i);
+      }
+
     }
   }
 
   angular.module("tracksocial")
          .component("tracksocial", {
            "templateUrl": "/js/tracksocial/tracksocial.html",
-           "controller" : ["$state", "$http", "Highcharts", "utils",
+           "controller" : ["$scope","$state", "$http", "Highcharts", "utils",
                            controller],
            "bindings": {
 
