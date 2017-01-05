@@ -32,20 +32,22 @@ for emailid in items:
     email_body = data[0][1]
     mail = email.message_from_string(email_body)
     sub = mail['Subject']
-    date = mail['Date']
+    date = mail['Date'].replace('+0530', '').strip()
     if 'Fwd' in sub:
-        print mail['Subject']
-        print mail['Date']
-        filename = (sub + date).replace('+', '').replace(' ', '_') + '.doc'
-        filename = filename.replace('/', '').replace('-', '')
-        filename = filename.replace('=E2=80=9C', '').replace('=?utf8?Q?', '').replace('?=??_=?utf8?Q?=E2=80=9D', '')
-        filebody = ''.join(re.findall('Hi Anshuman.*by clicking here',
-            email_body.replace('\r', '').replace('\n', '')))
+        filename = sub.strip().replace('+', '') + '.doc'
+        filename = filename.replace('=E2=80=9C', '').replace('?utf8?Q?', '')\
+            .replace('=?utf8?Q?', '').replace('?=??_=?utf8?Q?=E2=80=9D', '')
+        filename = filename.replace('/', '').replace('-', '').replace(':', '').replace('=', '')
+        filebody = ''.join(re.findall('Hi Anshuman,(.*)Access the map at https://www.fenixpharma.com/', email_body.replace('\r', '').replace('\n', '')))
 
+        filename = filename.replace('?utf8?Q?', '').replace('\r', '')\
+            .replace('\n', '').lstrip('Fwd_').strip()
+        print filename
         if not os.path.exists('reports'):
             os.makedirs('reports')
         os.chdir('reports')
-        filebody = BeautifulSoup(filebody).text.replace('=20>', '\n').replace('>', '\n')
+        filebody = BeautifulSoup(filebody).text.replace('=20>', '\n')\
+            .replace('>', '\n').replace('=', '')
         with open(filename, 'wb') as filename:
             filename.write(filebody)
         os.chdir(cur_dir)
