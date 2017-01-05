@@ -33,13 +33,13 @@ def clinicaltrail(request):
         if 'keys' in ''.join(request.GET.keys()):
             query1 = "select distinct trail_status, drug_class, drug_name, start_date, countries from\
                 clinical_trail group by trail_status, drug_class, drug_name, start_date, countries;"
-            query = "select * from clinical_trail;"
+            query = "select * from clinical_trail_dev;"
         else:
             key = ''.join(request.GET.keys())
             value = '%' + ''.join(request.GET.values()) + '%'
-            query = "select * from clinical_trail where %s like '%s';" % (key, str(value))
+            query = "select * from clinical_trail_dev where %s like '%s';" % (key, str(value))
     else:
-        query = "select * from clinical_trail;"
+        query = "select * from clinical_trail_dev;"
 
     cursor.execute(query)
     rows = cursor.fetchall()
@@ -123,7 +123,7 @@ def clinicaltrail(request):
 def get_wordcloud(request):
     source = request.GET.get('source', 'intarcia')
 
-    word_query = get_query(source)
+    word_query = ''.join(get_query(source))
 
     records =  search.search(query={"query":{"query_string":{"query": word_query,"fields":["title","text"],"use_dis_max":True}},"size":0,"aggs":{"words":{"terms":{"field":'text', "size":200}}},"highlight":{"fields":{"title":{},"text":{}}}},indexes=SEARCH["indexes"],doc_types="item",query_params={"scroll":"15m"})
 
@@ -184,6 +184,8 @@ def get_social_media(request):
                 for gen in variable:
                     count = gen['count']
                     category = gen['term']
+                    if 'lang' in facet:
+                        gen['term'] = category.split('_')[0]
                     perc = round(float(count)/float(counts)*100, 2)
                     gen['perc'] = perc
                     variable_list.append(gen)
