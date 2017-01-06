@@ -14,7 +14,7 @@
     this.intarciasrc = {};
 
     this.highchartintarciatimeline = {};
-   
+
     this.intarciatimelinedata=[];
 
     this.sourcedist_total=0;
@@ -136,7 +136,7 @@ this.diabsourcedist= {
                       that.series[z]={"color":"#f0ad4e","name":"netural","data":that.data};
                     }
                   }
-                  console.log(that.series);
+                 // console.log(that.series);
                  angular.extend(that.highchartintarciatimeline, {
                                         "chart":{
                                                   "type":"areaspline",
@@ -260,7 +260,79 @@ this.diabsourcedist= {
 
     }
     if(tabName=='Diabetes World'){
-      
+      that.params=[
+                   {'facet':'sources','source':'diabetes'},
+                   {'facet':'gender','source':'diabetes'},
+                   {'facet':'influencers','source':'diabetes'},
+                   {'facet':'lang','source':'diabetes'},
+                  ];
+      for(var i=0;i<that.params.length;i++){
+        (function(i){
+          $http.get("http://176.9.181.36:2222/clinicalapi/get_social_media/",{"params":that.params[i]}) 
+            .then(function (resp){
+              if(resp.data.error) {
+                return;
+              }
+
+              switch(i){
+
+                case 0: //sources
+                        that.source_dist=resp.data.result.facets.sources.terms.diabetes;
+                        console.log(that.source_dist);
+                        for(var j=0;j<that.source_dist.length;j++){
+                          if((i!=7)&&(i!=9)){
+                            that.sourcedist_total+=that.source_dist[j]['count'];
+                          }
+                        }
+                        angular.extend(that.intarciasrc, {
+                                "chart":{"backgroundColor": "transparent"},
+                                "credits":{"enabled":false},
+                                "title":{"text":""},
+                                "plotOptions":{
+                                               "pie":{
+
+                                                       "borderWidth":1,
+                                                       "allowPointSelect":true,
+                                                       "cursor":"pointer",
+                                                       "dataLabels":{"enabled":false},
+                                                       "showInLegend":true,
+                                                       "slicedOffset":0,
+                                                       "innerSize":"60%",
+                                                       "series":{"shadow":true}
+                                                    }   
+                                              },  
+                                "legend":{"enabled":false},
+                                "series": [{"data":[
+                                                   {"name":"Twitter","y":that.source_dist[0]['count'],"color":"#00BEF6","visible":true},
+                                                   {"name":"Rss","y":that.source_dist[1]['count'],"color":"#ff0084","visible":true},
+                                                   {"name":"News","y":that.source_dist[2]['count'],"color":"#CC9900","visible":true},
+                                                   {"name":"Instagram","y":that.source_dist[3]['count'],"color":"#4C3D32","visible":true},
+                                                   {"name":"Googleplus","y":that.source_dist[4]['count'],"color":"#DD4B39","visible":true},
+                                                   {"name":"Blogs","y":that.source_dist[5]['count'],"color":"#FF8833","visible":true},
+                                                   {"name":"Tumblr","y":that.source_dist[6]['count'],"color":"#529ECC","visible":true},
+                                                   {"name":"Forums","y":that.source_dist[8]['count'],"color":"#CC6600","visible":true},
+                                                   {"name":"Facebook","y":that.source_dist[10]['count'],"color":"#3B5998","visible":true},
+                                                   ],  
+                                            "type":"pie",
+                                            "name":"<small>#Articles</small>",
+                                            "num_articles":39316
+                                            }]  
+                     });
+                        break;
+
+                case 1: //gender
+                        break;
+
+                case 2: //influencers
+                        break;
+
+                case 3: //lang
+                        break;
+              }
+            });
+        })(i);
+
+      }
     }
 
   }
