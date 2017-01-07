@@ -511,7 +511,7 @@
                        </a> 
                   </div>
                   <div class="guage-intarcia-male">
-                     <just-gage id="test1" min=0 max=100 value="5"options="{
+                     <just-gage id="test1" min=0 max=100 value="{{$ctrl.diabetes_gender[1]['perc']}}"options="{
                       title: 'Dynamic, using options, with default min and max',
                       levelColors: ['rgb(66, 139, 202)'],
                       levelGradiant: false
@@ -526,7 +526,7 @@
                        </a> 
                   </div>
                   <div class="guage-intarcia-female">
-                     <just-gage id="test2" min=0 max=100 value="2"options="{
+                     <just-gage id="test2" min=0 max=100 value="{{$ctrl.diabetes_gender[0]['perc']}}"options="{
                       title: 'Dynamic, using options, with default min and max',
                       levelColors: ['rgb(217, 83, 79)'],
                       levelGradiant: false
@@ -542,7 +542,7 @@
                        </a> 
                   </div>
                   <div class="guage-intarcia-male">
-                     <just-gage id="test3" min=0 max=100 value="93"options="{
+                     <just-gage id="test3" min=0 max=100 value="{{$ctrl.diabetes_gender[2]['perc']}}"options="{
                       title: 'Dynamic, using options, with default min and max',
                       levelColors: ['rgb(192, 152, 83)'],
                       levelGradiant: false
@@ -571,57 +571,8 @@
               </h3>
             </div>
             <div class="widget-content  word-cloud-content">
-              <div class="tagcloud text-justify">
-                <a href="#" rel="1269" style="font-size: 20.5057px; color: rgb(104, 173, 230); position: relative;">control</a>
-		<a href="#" rel="3427" style="font-size: 50px; color: rgb(229, 65, 45); position: relative;">risk</a>
-		<a href="#" rel="1603" style="font-size: 25.0706px; color: rgb(123, 156, 201); position: relative;">diet</a>
-		<a href="#" rel="1292" style="font-size: 20.82px; color: rgb(105, 172, 228); position: relative;">make</a>
-		<a href="#" rel="1321" style="font-size: 21.2164px; color: rgb(107, 171, 225); position: relative;">even</a>
-		<a href="#" rel="1756" style="font-size: 27.1617px; color: rgb(132, 149, 188); position: relative;">medical</a>
-		<a href="#" rel="1642" style="font-size: 25.6036px; color: rgb(126, 154, 198); position: relative;">know</a>
-		<a href="#" rel="1318" style="font-size: 21.1754px; color: rgb(107, 171, 226); position: relative;">much</a>
-		<a href="#" rel="2217" style="font-size: 33.4624px; color: rgb(159, 126, 149); position: relative;">day</a>
-		<a href="#" rel="1666" style="font-size: 25.9317px; color: rgb(127, 153, 196); position: relative;">life</a>
-		<a href="#" rel="1278" style="font-size: 20.6287px; color: rgb(105, 173, 229); position: relative;">use</a>
-		<a href="#" rel="1600" style="font-size: 25.0296px; color: rgb(123, 157, 201); position: relative;">many</a>
-		<a href="#" rel="1775" style="font-size: 27.4214px; color: rgb(133, 148, 186); position: relative;">month</a>
-		<a href="#" rel="1696" style="font-size: 26.3417px; color: rgb(129, 152, 193); position: relative;">time</a>
-		<a href="#" rel="1662" style="font-size: 25.877px; color: rgb(127, 153, 196); position: relative;">sugar</a>
-		<a href="#" rel="1426" style="font-size: 22.6515px; color: rgb(113, 165, 216); position: relative;">tipos</a>
-		<a href="#" rel="2634" style="font-size: 39.1617px; color: rgb(183, 105, 113); position: relative;">help</a>
-		<a href="#" rel="1264" style="font-size: 20.4374px; color: rgb(104, 173, 230); position: relative;">saúde</a>
-		<a href="#" rel="1542" style="font-size: 24.2369px; color: rgb(120, 159, 206); position: relative;">million</a>
-		<a href="#" rel="1428" style="font-size: 22.6788px; color: rgb(113, 165, 216); position: relative;">awareness</a>
-		<a href="#" rel="1252" style="font-size: 20.2733px; color: rgb(103, 174, 231); position: relative;">including</a>
-		<a href="#" rel="1535" style="font-size: 24.1412px; color: rgb(120, 160, 207); position: relative;">years</a>
-		<a href="#" rel="1807" style="font-size: 27.8588px; color: rgb(135, 146, 184); position: relative;">obesity</a>
-		<a href="#" rel="1927" style="font-size: 29.4989px; color: rgb(142, 140, 173); position: relative;">blood</a>
-		<a href="#" rel="1248" style="font-size: 20.2187px; color: rgb(103, 174, 232); position: relative;">tenho</a>
-		<a href="#" rel="1294" style="font-size: 20.8474px; color: rgb(106, 172, 228); position: relative;">news</a>
-		<a href="#" rel="1387" style="font-size: 22.1185px; color: rgb(111, 167, 220); position: relative;">today</a>
-		<a href="#" rel="1695" style="font-size: 26.328px; color: rgb(129, 152, 193); position: relative;">diabetic</a>
-		<a href="#" rel="1368" style="font-size: 21.8588px; color: rgb(110, 168, 221); position: relative;">healthy</a>
-		<a href="#" rel="2008" style="font-size: 30.6059px; color: rgb(147, 136, 167); position: relative;">research</a>
-		<a href="#" rel="1260" style="font-size: 20.3827px; color: rgb(104, 174, 231); position: relative;">mas</a>
-		<a href="#" rel="1232" style="font-size: 20px; color: rgb(102, 175, 233); position: relative;">see</a>
-		<a href="#" rel="1566" style="font-size: 24.5649px; color: rgb(121, 158, 204); position: relative;">american</a>
-		<a href="#" rel="1277" style="font-size: 20.615px; color: rgb(105, 173, 229); position: relative;">free</a>
-		<a href="#" rel="1435" style="font-size: 22.7745px; color: rgb(114, 165, 216); position: relative;">insulin</a>
-		<a href="#" rel="1267" style="font-size: 20.4784px; color: rgb(104, 173, 230); position: relative;">during</a>
-		<a href="#" rel="1535" style="font-size: 24.1412px; color: rgb(120, 160, 207); position: relative;">patients</a>
-		<a href="#" rel="1483" style="font-size: 23.4305px; color: rgb(117, 162, 212); position: relative;">need</a>
-		<a href="#" rel="1715" style="font-size: 26.6014px; color: rgb(130, 151, 192); position: relative;">first</a>
-		<a href="#" rel="1574" style="font-size: 24.6743px; color: rgb(122, 158, 204); position: relative;">those</a>
-		<a href="#" rel="1745" style="font-size: 27.0114px; color: rgb(132, 149, 189); position: relative;">prediabetes</a>
-		<a href="#" rel="1476" style="font-size: 23.3349px; color: rgb(116, 163, 212); position: relative;">november</a>
-		<a href="#" rel="1281" style="font-size: 20.6697px; color: rgb(105, 173, 229); position: relative;">food</a>
-		<a href="#" rel="1489" style="font-size: 23.5125px; color: rgb(117, 162, 211); position: relative;">aprendinoenem</a>
-		<a href="#" rel="1586" style="font-size: 24.8383px; color: rgb(122, 157, 203); position: relative;">take</a>
-		<a href="#" rel="1832" style="font-size: 28.2005px; color: rgb(137, 145, 182); position: relative;">heart</a>
-		<a href="#" rel="1327" style="font-size: 21.2984px; color: rgb(107, 170, 225); position: relative;">profissionais</a>
-		<a href="#" rel="1840" style="font-size: 28.3098px; color: rgb(137, 145, 181); position: relative;">care</a>
-		<a href="#" rel="1782" style="font-size: 27.5171px; color: rgb(134, 147, 186); position: relative;">year</a>
-		<a href="#" rel="2115" style="font-size: 32.0683px; color: rgb(153, 131, 157); position: relative;">study</a> 
+              <div class="tagcloud text-justify diabetes-word-cloud ">
+                <a href="#" ng-repeat="(key, value) in $ctrl.diabetes_word_cloud"  rel="{{value}}">{{key}}</a> 
               </div>
             </div>
           </div>
@@ -654,74 +605,86 @@
                     <tr class="source-tr" data-source="Twitter">
                       <td class="color-code-td"><span class="color-code" style="background-color: #00BEF6"></span></td>
                       <td class="source-name">
-                        <a class="articles-link state-sensitive" data-state="{&quot;source&quot;: [&quot;twitter&quot;]}" 
-                           href="?show_articles=1#source%5B%5D=twitter"><span>Twitter</span></a>
+                        <a class="articles-link state-sensitive" href="#"><span>Twitter</span></a>
                       </td>
-                      <td class="source-count"><span>75.60%</span></td>
+                      <td class="source-count">
+                        <span>{{parseFloat(($ctrl.source_dist[0]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
+                      </td>
                     </tr>
-                    <tr class="source-tr" data-source="Blogs">
+                    <tr class="source-tr" data-source="Flickr">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #ff0084"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" data-state="{&quot;source&quot;: [&quot;twitter&quot;]}"
+                            href="?show_articles=1#source%5B%5D=twitter"><span>RSS</span></a>
+                      </td>
+                      <td class="source-count">
+                         <span>{{parseFloat(($ctrl.source_dist[1]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
+                      </td>
+                    </tr>
+                    <tr class="source-tr" data-source="News">
                       <td class="color-code-td"><span class="color-code" style="background-color: #CC9900"></span></td>
                       <td class="source-name">
                         <a class="articles-link state-sensitive" href="#"><span>News</span></a>
                       </td>
-                      <td class="source-count"><span>15.10%</span></td>
-                    </tr>
-                    <tr class="source-tr" data-source="Googleplus">
-                      <td class="color-code-td"><span class="color-code" style="background-color: #ff0084"></span></td>
-                      <td class="source-name">
-                        <a class="articles-link state-sensitive" href="#"><span>Flickr</span></a>
+                      <td class="source-count">
+                        <span>{{parseFloat(($ctrl.source_dist[2]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
                       </td>
-                      <td class="source-count"><span>2.48%</span></td>
                     </tr>
-                    <tr class="source-tr" data-source="Facebook">
-                      <td class="color-code-td"><span class="color-code" style="background-color: #4C3D32"></span></td>
+                    <tr class="source-tr" data-source="Instagram">
+                      <td class="color-code-td"><span class="color-code" style="background-color:#4C3D32"></span></td>
                       <td class="source-name">
                         <a class="articles-link state-sensitive" href="#"><span>Instagram</span></a>
                       </td>
-                      <td class="source-count"><span>2.43%</span></td>
+                      <td class="source-count">
+                         <span>{{parseFloat(($ctrl.source_dist[3]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
+                      </td>
                     </tr>
-                    <tr class="source-tr" data-source="Instagram">
+                    <tr class="source-tr" data-source="Googleplus">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #DD4B39"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>Googleplus</span></a>
+                      </td>
+                      <td class="source-count">
+                        <span>{{parseFloat(($ctrl.source_dist[4]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
+                      </td>
+                    </tr>
+                    <tr class="source-tr" data-source="Blogs">
                       <td class="color-code-td"><span class="color-code" style="background-color: #FF8833"></span></td>
                       <td class="source-name">
                         <a class="articles-link state-sensitive" href="#"><span>Blogs</span></a>
                       </td>
-                      <td class="source-count"><span>1.43%</span></td>
+                      <td class="source-count">
+                        <span>{{parseFloat(($ctrl.source_dist[5]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
+                      </td>
+                    </tr>
+                    <tr class="source-tr" data-source="Tumblr">
+                      <td class="color-code-td"><span class="color-code" style="background-color: #529ECC"></span></td>
+                      <td class="source-name">
+                        <a class="articles-link state-sensitive" href="#"><span>Tumblr</span></a>
+                      </td>
+                      <td class="source-count">
+                        <span>{{parseFloat(($ctrl.source_dist[6]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
+                      </td>
                     </tr>
                     <tr class="source-tr" data-source="Forums">
                       <td class="color-code-td"><span class="color-code" style="background-color: #CC6600"></span></td>
                       <td class="source-name">
                         <a class="articles-link state-sensitive" href="#"><span>Forums</span></a>
                       </td>
-                      <td class="source-count"><span>1.11%</span></td>
+                      <td class="source-count">
+                        <span>{{parseFloat(($ctrl.source_dist[8]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
+                      </td>
                     </tr>
-                    <tr class="source-tr" data-source="Flickr">
+                    <tr class="source-tr" data-source="Facebook">
                       <td class="color-code-td"><span class="color-code" style="background-color: #3B5998"></span></td>
                       <td class="source-name">
                         <a class="articles-link state-sensitive" href="#"><span>Facebook</span></a>
                       </td>
-                      <td class="source-count"><span>0.85%</span></td>
-                    </tr>
-                    <tr class="source-tr" data-source="Flickr">
-                      <td class="color-code-td"><span class="color-code" style="background-color: #DD4B39"></span></td>
-                      <td class="source-name">
-                        <a class="articles-link state-sensitive" href="#"><span>Googleplus</span></a>
+                      <td class="source-count">
+                        <span>{{parseFloat(($ctrl.source_dist[10]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
                       </td>
-                      <td class="source-count"><span>0.43%</span></td>
                     </tr>
-                    <tr class="source-tr" data-source="Flickr">
-                      <td class="color-code-td"><span class="color-code" style="background-color: #cc181e"></span></td>
-                      <td class="source-name">
-                        <a class="articles-link state-sensitive" href="#"><span>Youtube</span></a>
-                      </td>
-                      <td class="source-count"><span>0.36%</span></td>
-                    </tr>
-                    <tr class="source-tr" data-source="Flickr">
-                      <td class="color-code-td"><span class="color-code" style="background-color: #529ECC"></span></td>
-                      <td class="source-name">
-                        <a class="articles-link state-sensitive" href="#"><span>Tumblr</span></a>
-                      </td>
-                      <td class="source-count"><span>0.21%</span></td>
-                    </tr>
+
                   </tbody>
                 </table>
               </div>
@@ -754,77 +717,13 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
-                        data-title="click to view data" rel="tooltip" title="">
+		    <tr class="tw-influencer" ng-repeat="influencer in $ctrl.diabetes_influencers">
 		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">the new york times</a>
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">{{influencer.term}}</a>
 		      </td>
-		      <td class="count text-right">99.00</td>
+		      <td class="count text-right">{{influencer.max}}</td>
 		    </tr>
-		    <tr class="tw-influencer" data-id="FiU5GX" data-original-title="" data-placement="top" data-source="twitter" 
-                        data-title="click to view data" rel="tooltip" title="">
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">aol.com</a>
-		      </td>
-		      <td class="count text-right">93.48</td>
-		    </tr>
-		    <tr class="tw-influencer" data-id="km4zsB" data-original-title="" data-placement="top" data-source="twitter" 
-                        data-title="click to view data" rel="tooltip" title="">
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">boston celtics</a>
-		      </td>
-		      <td class="count text-right">91.30</td>
-		    </tr>
-		    <tr class="tw-influencer" data-id="FfisIu" data-original-title="" data-placement="top" data-source="twitter" 
-                       data-title="click to view data" rel="tooltip" title="">
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">slashdot</a>
-		      </td>
-		      <td class="count text-right">89.01</td>
-		    </tr>
-		    <tr class="tw-influencer" data-id="Nld5zT" data-original-title="" data-placement="top" data-source="twitter" 
-                      data-title="click to view data" rel="tooltip" title="">
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">tufts university</a>
-		      </td>
-		      <td class="count text-right">87.90</td>
-		    </tr>
-		    <tr class="tw-influencer" data-id="dHZiqQ" data-original-title="" data-placement="top" data-source="twitter" 
-                      data-title="click to view data" rel="tooltip" title="">
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">reba</a>
-		      </td>
-		      <td class="count text-right">87.12</td>
-		    </tr>
-		    <tr class="tw-influencer" data-id="7vL39x" data-original-title="" data-placement="top" data-source="twitter" 
-                      data-title="click to view data" rel="tooltip" title="">
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">cleveland clinic</a>
-		      </td>
-		      <td class="count text-right">85.85</td>
-		    </tr>
-		    <tr class="tw-influencer" data-id="CrnKih" data-original-title="" data-placement="top" data-source="twitter" 
-                      data-title="click to view data" rel="tooltip" title="">
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">black enterprise</a>
-		      </td>
-		      <td class="count text-right">85.70</td>
-		    </tr>
-		    <tr class="tw-influencer" data-id="BLXSaw" data-original-title="" data-placement="top" data-source="twitter" 
-                       data-title="click to view data" rel="tooltip" title="">
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">debra ruh</a>
-		      </td>
-		      <td class="count text-right">82.28</td>
-		    </tr>
-		    <tr class="tw-influencer" data-id="iZlQOp" data-original-title="" data-placement="top" data-source="twitter" 
-                       data-title="click to view data" rel="tooltip" title="">
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">ahrq</a>
-		      </td>
-		      <td class="count text-right">81.93</td>
-		    </tr>
-		  </tbody>
+		   </tbody>
 		</table>
               </div>
             </div>
@@ -851,68 +750,11 @@
                
                 <table class="table" id="influencers-table">
 		  <tbody>
-		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter"
-                           data-title="click to view data" rel="tooltip" title="">
+		    <tr class="tw-influencer" ng-repeat="lang in $ctrl.diabetes_lang">
 		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">English</a>
+			<a class="articles-link state-sensitive" data-encoded="true" href="#">{{lang.term}}</a>
 		      </td>
-		      <td class="count text-right">70.26%</td>
-		    </tr>
-		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter"
-                       data-title="click to view data" rel="tooltip" title="">
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">Spanish</a>
-		      </td>
-		      <td class="count text-right">7.04%</td>
-		    </tr>
-		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
-                       data-title="click to view data" rel="tooltip" title="">
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">Portuguese</a>
-		      </td>
-		      <td class="count text-right">4.44%</td>
-		    </tr>
-		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
-                       data-title="click to view data" rel="tooltip" title="">
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">Indonesian</a>
-		      </td>
-		      <td class="count text-right">0.73%</td>
-		    </tr>
-		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
-                      data-title="click to view data" rel="tooltip" title="">
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">Malay</a>
-		      </td>
-		      <td class="count text-right">0.32%</td>
-		    </tr>
-		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
-                      data-title="click to view data" rel="tooltip" title="">
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">Norwegian</a>
-		      </td>
-		      <td class="count text-right">0.20%</td>
-		    </tr>
-		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
-                      data-title="click to view data" rel="tooltip" title="">
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">Italian</a>
-		      </td>
-		      <td class="count text-right">0.18%</td>
-		    </tr>
-		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
-                      data-title="click to view data" rel="tooltip" title="">
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">Dutch</a>
-		      </td>
-		      <td class="count text-right">0.11%</td>
-		    </tr>
-		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" 
-                      data-title="click to view data" rel="tooltip" title="">
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">German</a>
-		      </td>
-		      <td class="count text-right">0.11%</td>
+		      <td class="count text-right">{{lang.perc}}%</td>
 		    </tr>
 		  </tbody>
 	        </table> 
@@ -1120,58 +962,9 @@
               </h3>
             </div>
             <div class="widget-content wordcloud-content">
-              <div class="tagcloud text-justify text-center">
-		<a href="#" rel="59" style="font-size: 20px; color: rgb(102, 175, 233); position: relative;">tufts</a>
-		<a href="#" rel="59" style="font-size: 20px; color: rgb(102, 175, 233); position: relative;">strange</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">discovery</a>
-		<a href="#" rel="59" style="font-size: 20px; color: rgb(102, 175, 233); position: relative;">u2014and</a>
-		<a href="#" rel="61" style="font-size: 32px; color: rgb(153, 131, 158); position: relative;">health</a>
-		<a href="#" rel="61" style="font-size: 32px; color: rgb(153, 131, 158); position: relative;">investment</a>
-		<a href="#" rel="62" style="font-size: 38px; color: rgb(178, 109, 120); position: relative;">california</a>
-		<a href="#" rel="59" style="font-size: 20px; color: rgb(102, 175, 233); position: relative;">medicines</a>
-		<a href="#" rel="63" style="font-size: 44px; color: rgb(204, 87, 83); position: relative;">companies</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">lesley</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">san</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">jonathan</a>
-		<a href="#" rel="59" style="font-size: 20px; color: rgb(102, 175, 233); position: relative;">u2014but</a>
-		<a href="#" rel="59" style="font-size: 20px; color: rgb(102, 175, 233); position: relative;">upwards</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">stolz</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">adam</a>
-		<a href="#" rel="63" style="font-size: 44px; color: rgb(204, 87, 83); position: relative;">billion</a>
-		<a href="#" rel="61" style="font-size: 32px; color: rgb(153, 131, 158); position: relative;">study</a>
-		<a href="#" rel="59" style="font-size: 20px; color: rgb(102, 175, 233); position: relative;">isett</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">powerful</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">brainstorm</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">diego</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">fortune</a>
-		<a href="#" rel="62" style="font-size: 38px; color: rgb(178, 109, 120); position: relative;">time</a>
-		<a href="#" rel="61" style="font-size: 32px; color: rgb(153, 131, 158); position: relative;">technology</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">intelligence</a>
-		<a href="#" rel="62" style="font-size: 38px; color: rgb(178, 109, 120); position: relative;">three</a>
-		<a href="#" rel="59" style="font-size: 20px; color: rgb(102, 175, 233); position: relative;">stuart</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">moore</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">jlabs</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">commercialization</a>
-		<a href="#" rel="64" style="font-size: 50px; color: rgb(229, 65, 45); position: relative;">intarcia</a>
-		<a href="#" rel="59" style="font-size: 20px; color: rgb(102, 175, 233); position: relative;">president</a>
-		<a href="#" rel="59" style="font-size: 20px; color: rgb(102, 175, 233); position: relative;">consumer</a>
-		<a href="#" rel="59" style="font-size: 20px; color: rgb(102, 175, 233); position: relative;">risen</a>
-		<a href="#" rel="59" style="font-size: 20px; color: rgb(102, 175, 233); position: relative;">u2014getting</a>
-		<a href="#" rel="61" style="font-size: 32px; color: rgb(153, 131, 158); position: relative;">both</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">usuka</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">november</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">mckinsey</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">graves</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">artificial</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">kurt</a>
-		<a href="#" rel="59" style="font-size: 20px; color: rgb(102, 175, 233); position: relative;">paradigm</a>
-		<a href="#" rel="59" style="font-size: 20px; color: rgb(102, 175, 233); position: relative;">u2019s</a>
-		<a href="#" rel="61" style="font-size: 32px; color: rgb(153, 131, 158); position: relative;">drug</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">innovation</a>
-		<a href="#" rel="60" style="font-size: 26px; color: rgb(127, 153, 195); position: relative;">speeding</a>
-		<a href="#" rel="63" style="font-size: 44px; color: rgb(204, 87, 83); position: relative;">2016</a>
-		<a href="#" rel="59" style="font-size: 20px; color: rgb(102, 175, 233); position: relative;">biotechnology</a>
-	      </div>
+              <div class="tagcloud intarcia-word-cloud text-justify text-center">
+		         <a  ng-repeat="(key, value) in $ctrl.intarcia_word_cloud" href="#" rel="{{value}}">{{key}}</a>
+			  </div>
             </div>
           </div>
           <!-- end of wordcloud -->

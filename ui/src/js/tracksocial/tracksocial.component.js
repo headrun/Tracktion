@@ -13,6 +13,8 @@
 
     this.intarciasrc = {};
 
+    this.diabsourcedist= {};
+
     this.highchartintarciatimeline = {};
 
     this.intarciatimelinedata=[];
@@ -59,13 +61,6 @@
     /*chart data */
     this.highchartoption={"chart":{"type":"areaspline","margin":[0,15,60,60],"backgroundColor":"transparent","spacingLeft":0,"spacingRight":0},"credits":{"enabled":false},"title":{"text":""},"xAxis":{"type":"datetime","dateTimeLabelFormats":{"day":"%b %e"},"title":{"enabled":false},"gridLineColor":"#ddd","gridLineWidth":1,"lineWidth":1},"yAxis":{"endOnTick":false,"maxPadding":0.3,"title":{"text": "Mentions"},"gridLineColor":"#ddd","gridLineWidth":1},"plotOptions":{"areaspline":{"fillOpacity":0.45,"dashStyle":"Solid","lineWidth":3,"marker":{"symbol":"circle"},"cursor":"pointer"}},"series": [{"name":"Victoza","color":"#dd301b","data":[[1476489600000,4],[1476576000000,2],[1476662400000,9],[1476748800000,5],[1476835200000,3],[1476921600000,4],[1477008000000,9],[1477094400000,8],[1477180800000,3],[1477267200000,5],[1477353600000,7],[1477440000000,16],[1477526400000,4],[1477612800000,13],[1477699200000,7],[1477785600000,6],[1477872000000,2],[1477958400000,4],[1478044800000,10],[1478131200000,2],[1478217600000,1],[1478304000000,2],[1478390400000,1],[1478476800000,1],[1478563200000,1],[1478649600000,3],[1478736000000,0],[1478822400000,0],[1478908800000,3],[1478995200000,5],[1479081600000,2]]},{"name":"Insulin Glargine","color":"#3498db","data":[[1476489600000,5],[1476576000000,1],[1476662400000,4],[1476748800000,7],[1476835200000,4],[1476921600000,6],[1477008000000,7],[1477094400000,3],[1477180800000,3],[1477267200000,7],[1477353600000,12],[1477440000000,5],[1477526400000,11],[1477612800000,8],[1477699200000,2],[1477785600000,0],[1477872000000,9],[1477958400000,6],[1478044800000,7],[1478131200000,25],[1478217600000,19],[1478304000000,8],[1478390400000,4],[1478476800000,9],[1478563200000,13],[1478649600000,22],[1478736000000,47],[1478822400000,33],[1478908800000,11],[1478995200000,9],[1479081600000,7]]},{"name":"Metformin","color":"#c09853","data":[[1476489600000,9],[1476576000000,7],[1476662400000,14],[1476748800000,7],[1476835200000,10],[1476921600000,9],[1477008000000,9],[1477094400000,14],[1477180800000,15],[1477267200000,4],[1477353600000,9],[1477440000000,8],[1477526400000,41],[1477612800000,49],[1477699200000,32],[1477785600000,43],[1477872000000,39],[1477958400000,40],[1478044800000,34],[1478131200000,31],[1478217600000,53],[1478304000000,28],[1478390400000,29],[1478476800000,28],[1478563200000,43],[1478649600000,41],[1478736000000,64],[1478822400000,47],[1478908800000,31],[1478995200000,40],[1479081600000,19]]},{"name":"Tresiba","color":"#90ed7d","data":[[1476489600000,0],[1476576000000,0],[1476662400000,2],[1476748800000,0],[1476835200000,1],[1476921600000,2],[1477008000000,1],[1477094400000,1],[1477180800000,2],[1477267200000,1],[1477353600000,3],[1477440000000,0],[1477526400000,4],[1477612800000,7],[1477699200000,2],[1477785600000,0],[1477872000000,4],[1477958400000,4],[1478044800000,6],[1478131200000,9],[1478217600000,8],[1478304000000,10],[1478390400000,5],[1478476800000,1],[1478563200000,5],[1478649600000,11],[1478736000000,52],[1478822400000,17],[1478908800000,23],[1478995200000,7],[1479081600000,6]]},{"name":"PDUFA","color":"orange","data":[[1476489600000,1],[1476576000000,1],[1476662400000,3],[1476748800000,15],[1476835200000,2],[1476921600000,1],[1477008000000,5],[1477094400000,5],[1477180800000,0],[1477267200000,4],[1477353600000,3],[1477440000000,3],[1477526400000,3],[1477612800000,7],[1477699200000,0],[1477785600000,0],[1477872000000,3],[1477958400000,6],[1478044800000,13],[1478131200000,31],[1478217600000,36],[1478304000000,8],[1478390400000,2],[1478476800000,34],[1478563200000,23],[1478649600000,18],[1478736000000,12],[1478822400000,5],[1478908800000,7],[1478995200000,7],[1479081600000,4]]},{"name":"Semaglutide","color":"#f7a35c","data":[[1476489600000,2],[1476576000000,0],[1476662400000,0],[1476748800000,0],[1476835200000,0],[1476921600000,0],[1477008000000,0],[1477094400000,0],[1477180800000,0],[1477267200000,1],[1477353600000,0],[1477440000000,0],[1477526400000,0],[1477612800000,1],[1477699200000,1],[1477785600000,0],[1477872000000,1],[1477958400000,0],[1478044800000,0],[1478131200000,0],[1478217600000,0],[1478304000000,0],[1478390400000,0],[1478476800000,0],[1478563200000,0],[1478649600000,1],[1478736000000,22],[1478822400000,31],[1478908800000,15],[1478995200000,0],[1479081600000,3]]}],"tooltip":{"shared":true}}
 ;
-
-
-
-this.diabsourcedist= {
-                            "chart":{"backgroundColor": "transparent"},"credits":{"enabled":false},"title":{"text":""},"plotOptions":{"pie":{"borderWidth":1,"allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":false},"showInLegend":true,"slicedOffset":0,"innerSize":"60%","series":{"shadow":true}}},"legend":{"enabled":false},"series": [{"data":[{"name":"Twitter","y":29723,"color":"#00BEF6","visible":true},{"name":"News","y":5935,"color":"#CC9900","visible":true},{"name":"Flickr","y":974,"color":"#ff0084","visible":true},{"name":"Instagram","y":955,"color":"#4C3D32","visible":true},{"name":"Blogs","y":564,"color":"#FF8833","visible":true},{"name":"Forums","y":436,"color":"#CC6600","visible":true},{"name":"Facebook","y":335,"color":"#3B5998","visible":true},{"name":"Googleplus","y":168,"color":"#DD4B39","visible":true},{"name":"Youtube","y":142,"color":"#cc181e","visible":true},{"name":"Tumblr","y":84,"color":"#529ECC","visible":true}],"type":"pie","name":"<small>#Articles</small>","num_articles":39316}]
-    
-     };
 
     this.updatePaneState = function (filters,tabName) {
 	  updateFilters(filters, tabName);
@@ -257,7 +252,25 @@ this.diabsourcedist= {
           })
         })(i);
       }
-
+      // for word cloud
+      $http.get("http://176.9.181.36:2222/clinicalapi/get_wordcloud/",{"params":{'source':'intarcia'}})
+      .then(function(resp){
+        if(resp.data.error){
+          return;
+        }
+        console.log(resp.data);
+        that.intarcia_word_cloud=resp.data;
+        setTimeout(function(){
+        $.fn.tagcloud.defaults = {
+          size: {start: 14, end: 18, unit: 'pt'},
+          color: {start: '#cde', end: '#f52'}
+        };
+        //$(function () {
+          $('.intarcia-word-cloud a').tagcloud();
+        //});
+        },0);
+        
+      });
     }
     if(tabName=='Diabetes World'){
       that.params=[
@@ -278,13 +291,13 @@ this.diabsourcedist= {
 
                 case 0: //sources
                         that.source_dist=resp.data.result.facets.sources.terms.diabetes;
-                        console.log(that.source_dist);
+                        //console.log(that.source_dist);
                         for(var j=0;j<that.source_dist.length;j++){
                           if((i!=7)&&(i!=9)){
                             that.sourcedist_total+=that.source_dist[j]['count'];
                           }
-                        }
-                        angular.extend(that.intarciasrc, {
+                        
+                        angular.extend(that.diabsourcedist, {
                                 "chart":{"backgroundColor": "transparent"},
                                 "credits":{"enabled":false},
                                 "title":{"text":""},
@@ -318,21 +331,44 @@ this.diabsourcedist= {
                                             "num_articles":39316
                                             }]  
                      });
+                    }
                         break;
 
                 case 1: //gender
+                        that.diabetes_gender=resp.data.result.facets.gender.terms.diabetes;
                         break;
 
                 case 2: //influencers
+                        that.diabetes_influencers=resp.data.result.facets.influencers.terms;
                         break;
 
                 case 3: //lang
+                        that.diabetes_lang=resp.data.result.facets.lang.terms.diabetes;
                         break;
               }
             });
         })(i);
 
       }
+       // for word cloud
+      $http.get("http://176.9.181.36:2222/clinicalapi/get_wordcloud/",{"params":{'source':'diabetes'}})
+      .then(function(resp){
+        if(resp.data.error){
+          return;
+        }   
+        console.log(resp.data);
+        that.diabetes_word_cloud=resp.data;
+        setTimeout(function(){
+        $.fn.tagcloud.defaults = { 
+          size: {start: 14, end: 18, unit: 'pt'},
+          color: {start: '#cde', end: '#f52'}
+        };  
+        //$(function () {
+          $('.diabetes-word-cloud a').tagcloud();
+        //});
+        },0);
+        
+      }); 
     }
 
   }
