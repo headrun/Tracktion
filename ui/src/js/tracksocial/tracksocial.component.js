@@ -21,6 +21,8 @@
 
     this.sourcedist_total=0;
 
+    this.highchartoption={};
+
     $scope.parseFloat = parseFloat;
 
     var scopeName = this.stateName.split(".")[1];
@@ -58,10 +60,7 @@
 
     console.log(tabName);
 
-    /*chart data */
-    this.highchartoption={"chart":{"type":"areaspline","margin":[0,15,60,60],"backgroundColor":"transparent","spacingLeft":0,"spacingRight":0},"credits":{"enabled":false},"title":{"text":""},"xAxis":{"type":"datetime","dateTimeLabelFormats":{"day":"%b %e"},"title":{"enabled":false},"gridLineColor":"#ddd","gridLineWidth":1,"lineWidth":1},"yAxis":{"endOnTick":false,"maxPadding":0.3,"title":{"text": "Mentions"},"gridLineColor":"#ddd","gridLineWidth":1},"plotOptions":{"areaspline":{"fillOpacity":0.45,"dashStyle":"Solid","lineWidth":3,"marker":{"symbol":"circle"},"cursor":"pointer"}},"series": [{"name":"Victoza","color":"#dd301b","data":[[1476489600000,4],[1476576000000,2],[1476662400000,9],[1476748800000,5],[1476835200000,3],[1476921600000,4],[1477008000000,9],[1477094400000,8],[1477180800000,3],[1477267200000,5],[1477353600000,7],[1477440000000,16],[1477526400000,4],[1477612800000,13],[1477699200000,7],[1477785600000,6],[1477872000000,2],[1477958400000,4],[1478044800000,10],[1478131200000,2],[1478217600000,1],[1478304000000,2],[1478390400000,1],[1478476800000,1],[1478563200000,1],[1478649600000,3],[1478736000000,0],[1478822400000,0],[1478908800000,3],[1478995200000,5],[1479081600000,2]]},{"name":"Insulin Glargine","color":"#3498db","data":[[1476489600000,5],[1476576000000,1],[1476662400000,4],[1476748800000,7],[1476835200000,4],[1476921600000,6],[1477008000000,7],[1477094400000,3],[1477180800000,3],[1477267200000,7],[1477353600000,12],[1477440000000,5],[1477526400000,11],[1477612800000,8],[1477699200000,2],[1477785600000,0],[1477872000000,9],[1477958400000,6],[1478044800000,7],[1478131200000,25],[1478217600000,19],[1478304000000,8],[1478390400000,4],[1478476800000,9],[1478563200000,13],[1478649600000,22],[1478736000000,47],[1478822400000,33],[1478908800000,11],[1478995200000,9],[1479081600000,7]]},{"name":"Metformin","color":"#c09853","data":[[1476489600000,9],[1476576000000,7],[1476662400000,14],[1476748800000,7],[1476835200000,10],[1476921600000,9],[1477008000000,9],[1477094400000,14],[1477180800000,15],[1477267200000,4],[1477353600000,9],[1477440000000,8],[1477526400000,41],[1477612800000,49],[1477699200000,32],[1477785600000,43],[1477872000000,39],[1477958400000,40],[1478044800000,34],[1478131200000,31],[1478217600000,53],[1478304000000,28],[1478390400000,29],[1478476800000,28],[1478563200000,43],[1478649600000,41],[1478736000000,64],[1478822400000,47],[1478908800000,31],[1478995200000,40],[1479081600000,19]]},{"name":"Tresiba","color":"#90ed7d","data":[[1476489600000,0],[1476576000000,0],[1476662400000,2],[1476748800000,0],[1476835200000,1],[1476921600000,2],[1477008000000,1],[1477094400000,1],[1477180800000,2],[1477267200000,1],[1477353600000,3],[1477440000000,0],[1477526400000,4],[1477612800000,7],[1477699200000,2],[1477785600000,0],[1477872000000,4],[1477958400000,4],[1478044800000,6],[1478131200000,9],[1478217600000,8],[1478304000000,10],[1478390400000,5],[1478476800000,1],[1478563200000,5],[1478649600000,11],[1478736000000,52],[1478822400000,17],[1478908800000,23],[1478995200000,7],[1479081600000,6]]},{"name":"PDUFA","color":"orange","data":[[1476489600000,1],[1476576000000,1],[1476662400000,3],[1476748800000,15],[1476835200000,2],[1476921600000,1],[1477008000000,5],[1477094400000,5],[1477180800000,0],[1477267200000,4],[1477353600000,3],[1477440000000,3],[1477526400000,3],[1477612800000,7],[1477699200000,0],[1477785600000,0],[1477872000000,3],[1477958400000,6],[1478044800000,13],[1478131200000,31],[1478217600000,36],[1478304000000,8],[1478390400000,2],[1478476800000,34],[1478563200000,23],[1478649600000,18],[1478736000000,12],[1478822400000,5],[1478908800000,7],[1478995200000,7],[1479081600000,4]]},{"name":"Semaglutide","color":"#f7a35c","data":[[1476489600000,2],[1476576000000,0],[1476662400000,0],[1476748800000,0],[1476835200000,0],[1476921600000,0],[1477008000000,0],[1477094400000,0],[1477180800000,0],[1477267200000,1],[1477353600000,0],[1477440000000,0],[1477526400000,0],[1477612800000,1],[1477699200000,1],[1477785600000,0],[1477872000000,1],[1477958400000,0],[1478044800000,0],[1478131200000,0],[1478217600000,0],[1478304000000,0],[1478390400000,0],[1478476800000,0],[1478563200000,0],[1478649600000,1],[1478736000000,22],[1478822400000,31],[1478908800000,15],[1478995200000,0],[1479081600000,3]]}],"tooltip":{"shared":true}}
-;
-
+ 
     this.updatePaneState = function (filters,tabName) {
 	  updateFilters(filters, tabName);
 
@@ -369,6 +368,96 @@
         },0);
         
       }); 
+    }
+
+
+    if(tabName=='Market Watch'){
+
+      that.params=[
+                   {'facet':'updated_on','source':'marketwatch'},
+                   {'facet':'influencers','source':'marketwatch'},
+                  ];
+
+      for(var i=0;i<that.params.length;i++){
+        (function(i){
+          $http.get("http://176.9.181.36:2222/clinicalapi/get_social_media/",{"params":that.params[i]}) 
+            .then(function (resp){
+              if(resp.data.error) {
+                return;
+              }
+               switch(i){
+
+                case 0: //sources
+                        that.market_watch_timeline_data=resp.data.result.facets.updated_on.entries;
+                        that.series=[];
+                        console.log(that.market_watch_timeline_data);
+                        angular.forEach(that.market_watch_timeline_data,function(value,key){
+                          that.data=[];
+                          angular.forEach(value, function(value1, key1) {
+                            that.data.push([value1.time , value1.count]);
+                          });
+                          that.series.push({"color":'#'+(Math.random()*0xFFFFFF<<0).toString(16),"name":key,"data":that.data});
+                        });
+                        console.log(that.series);
+                        angular.extend(that.highchartoption, {
+                                        "chart":{
+                                                  "type":"areaspline",
+                                                  "margin":[0,15,60,60],
+                                                  "backgroundColor":"transparent",
+                                                  "spacingLeft":0,"spacingRight":0
+                                                },
+                                        "credits":{"enabled":false},
+                                        "title":{"text":""},
+                                        "xAxis":{
+                                                 "type":"datetime",
+                                                 "dateTimeLabelFormats":{"day":"%b %e"},
+                                                 "title":{"enabled":false},
+                                                 "gridLineColor":"#ddd",
+                                                 "gridLineWidth":1,
+                                                 "lineWidth":1
+                                                },
+                                        "yAxis":{
+                                                 "endOnTick":false,
+                                                 "maxPadding":0.3,
+                                                 "title":{"text": "Mentions"},
+                                                 "gridLineColor":"#ddd","gridLineWidth":1},
+                                                 "plotOptions":{
+                                                                "areaspline":{
+                                                                              "fillOpacity":0.45,
+                                                                              "dashStyle":"Solid",
+                                                                              "lineWidth":3,
+                                                                              "marker":{"symbol":"circle"},
+                                                                              "cursor":"pointer"}
+                                                               },
+                                                 "series":that.series,
+                                                  "tooltip":{"shared":true}
+                                           });
+                        break;
+               }
+            });
+        })(i);
+       }
+
+    // for word cloud
+      $http.get("http://176.9.181.36:2222/clinicalapi/get_wordcloud/",{"params":{'source':'marketwatch'}})
+      .then(function(resp){
+        if(resp.data.error){
+          return;
+        }   
+        console.log(resp.data);
+        that.market_word_cloud=resp.data;
+        setTimeout(function(){
+        $.fn.tagcloud.defaults = { 
+          size: {start: 14, end: 18, unit: 'pt'},
+          color: {start: '#cde', end: '#f52'}
+        };  
+        //$(function () 
+          $('.marketwatch-word-cloud a').tagcloud();
+        //});
+        },0);
+        
+      }); 
+    
     }
 
   }
