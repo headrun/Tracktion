@@ -23,6 +23,8 @@
 
     this.highchartoption={};
 
+    this.highchartoptionloader=true;
+
     $scope.parseFloat = parseFloat;
 
     var scopeName = this.stateName.split(".")[1];
@@ -86,7 +88,7 @@
     }
 
     if(tabName=='Intarcia'){
-
+      that.showLoading();
       that.timelineparams=[{'facet':'updated_on','source':tabName},
                           {'facet':'updated_on','source':tabName,'sentiment':'positive'},
                           {'facet':'updated_on','source':tabName,'sentiment':'negative'},
@@ -164,6 +166,7 @@
                                                  "series":[ that.series[0],that.series[1],that.series[2],that.series[3]],
                                                   "tooltip":{"shared":true}
                                            }); 
+                               that.hideLoading();
                                }
                 //console.log(that.highchartintarciatimeline);
             });
@@ -261,8 +264,8 @@
         that.intarcia_word_cloud=resp.data;
         setTimeout(function(){
         $.fn.tagcloud.defaults = {
-          size: {start: 14, end: 18, unit: 'pt'},
-          color: {start: '#cde', end: '#f52'}
+          size: {start: 18, end: 30, unit: 'pt'},
+          color: {start: '#327fc5', end: '#f52'}
         };
         //$(function () {
           $('.intarcia-word-cloud a').tagcloud();
@@ -272,6 +275,7 @@
       });
     }
     if(tabName=='Diabetes World'){
+      that.showLoading();
       that.params=[
                    {'facet':'sources','source':'diabetes'},
                    {'facet':'gender','source':'diabetes'},
@@ -330,6 +334,7 @@
                                             "num_articles":39316
                                             }]  
                      });
+                     that.hideLoading();
                     }
                         break;
 
@@ -359,8 +364,8 @@
         that.diabetes_word_cloud=resp.data;
         setTimeout(function(){
         $.fn.tagcloud.defaults = { 
-          size: {start: 14, end: 18, unit: 'pt'},
-          color: {start: '#cde', end: '#f52'}
+          size: {start: 18, end: 30, unit: 'pt'},
+          color: {start: '#327fc5', end: '#f52'}
         };  
         //$(function () {
           $('.diabetes-word-cloud a').tagcloud();
@@ -372,10 +377,10 @@
 
 
     if(tabName=='Market Watch'){
-
+      that.showLoading();
       that.params=[
                    {'facet':'updated_on','source':'marketwatch'},
-                   {'facet':'influencers','source':'marketwatch'},
+                  // {'facet':'influencers','source':'marketwatch'},
                   ];
 
       for(var i=0;i<that.params.length;i++){
@@ -432,7 +437,9 @@
                                                  "series":that.series,
                                                   "tooltip":{"shared":true}
                                            });
-                        break;
+                       // that.highchartoptionloader=false;
+                       that.hideLoading();
+                       break;
                }
             });
         })(i);
@@ -448,8 +455,8 @@
         that.market_word_cloud=resp.data;
         setTimeout(function(){
         $.fn.tagcloud.defaults = { 
-          size: {start: 14, end: 18, unit: 'pt'},
-          color: {start: '#cde', end: '#f52'}
+          size: {start: 18, end: 30, unit: 'pt'},
+          color: {start: '#327fc5', end: '#f52'}
         };  
         //$(function () 
           $('.marketwatch-word-cloud a').tagcloud();

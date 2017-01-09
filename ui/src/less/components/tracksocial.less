@@ -35,9 +35,10 @@ tracksocial {
         min-height:200px;
         overflow-y:auto;
         overflow-x:hidden; 
-        div {
-          height:250px;
-        }
+          div.timeline-chart {
+           height:250px;
+
+          }
       }
        
       div.news-second-row {
@@ -46,7 +47,6 @@ tracksocial {
       }
     
     }
-
     div.row-2 {
       margin-top:20px;
     }
@@ -67,6 +67,7 @@ tracksocial {
   
            a { 
              display:inline-block;
+             padding:5px;
              position: relative;
              margin-right:8px;
            }
@@ -151,11 +152,21 @@ tracksocial {
            a {
              margin-left:5px;
              position:relative;
+             padding:5px;
              display:inline-block;
                
            }
          }
       }
+    }
+   div.languages {
+      min-height:150px;
+      div.languages-content {
+        div.influencers-rows {
+          height:250px;
+          overflow-y:scroll;
+        }   
+      }   
     }
 
     div.top-influencers {
@@ -322,6 +333,7 @@ tracksocial {
            margin-left:5px;
            position:relative;
            display:inline-block;
+           padding:5px;
           }
         }
       }
