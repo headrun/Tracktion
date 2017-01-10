@@ -282,6 +282,45 @@
                    {'facet':'influencers','source':'diabetes'},
                    {'facet':'lang','source':'diabetes'},
                   ];
+          setTimeout(function(){
+            var map_container = $('#map').parent();
+            var p_height = $(map_container).height();
+            var p_width = $(map_container).width();
+            $('#map').css({'height' : p_height,'width' : p_width,'padding-left': '45px'})
+               .find('svg').attr('width', p_width);
+            var stateDetails = {"WA":{"count":123,"name":"Washington"},"DE":{"count":30,"name":"Delaware"},"DC":{"count":0,"name":"District Of Columbia"},"WI":{"count":345,"name":"Wisconsin"},"WV":{"count":38,"name":"West Virginia"},"HI":{"count":0,"name":"Hawaii"},"FL":{"count":674,"name":"Florida"},"WY":{"count":15,"name":"Wyoming"},"NH":{"count":94,"name":"New Hampshire"},"NJ":{"count":87,"name":"New Jersey"},"NM":{"count":13,"name":"New Mexico"},"TX":{"count":1651,"name":"Texas"},"LA":{"count":538,"name":"Louisiana"},"NC":{"count":968,"name":"North Carolina"},"ND":{"count":0,"name":"North Dakota"},"NE":{"count":163,"name":"Nebraska"},"TN":{"count":314,"name":"Tennessee"},"NY":{"count":194,"name":"New York"},"PA":{"count":924,"name":"Pennsylvania"},"AK":{"count":0,"name":"Alaska"},"NV":{"count":4,"name":"Nevada"},"VA":{"count":123,"name":"Virginia"},"GU":{"count":0,"name":"Guam"},"CO":{"count":266,"name":"Colorado"},"VI":{"count":0,"name":"Virgin Islands"},"CA":{"count":397,"name":"California"},"AL":{"count":174,"name":"Alabama"},"AR":{"count":84,"name":"Arkansas"},"VT":{"count":50,"name":"Vermont"},"IL":{"count":1067,"name":"Illinois"},"GA":{"count":955,"name":"Georgia"},"IN":{"count":725,"name":"Indiana"},"IA":{"count":224,"name":"Iowa"},"MA":{"count":273,"name":"Massachusetts"},"AZ":{"count":260,"name":"Arizona"},"ID":{"count":7,"name":"Idaho"},"CT":{"count":22,"name":"Connecticut"},"ME":{"count":34,"name":"Maine"},"MD":{"count":93,"name":"Maryland"},"OK":{"count":502,"name":"Oklahoma"},"OH":{"count":806,"name":"Ohio"},"UT":{"count":549,"name":"Utah"},"MO":{"count":706,"name":"Missouri"},"MN":{"count":674,"name":"Minnesota"},"MI":{"count":416,"name":"Michigan"},"RI":{"count":9,"name":"Rhode Island"},"KS":{"count":139,"name":"Kansas"},"MT":{"count":0,"name":"Montana"},"MS":{"count":158,"name":"Mississippi"},"PR":{"count":0,"name":"Puerto Rico"},"SC":{"count":116,"name":"South Carolina"},"KY":{"count":173,"name":"Kentucky"},"OR":{"count":484,"name":"Oregon"},"SD":{"count":58,"name":"South Dakota"}};
+           
+           var $tooltip = $("#map-tooltip");
+//           $('#map').usmap({});
+           $('#map').usmap({
+
+    showLabels: false,
+    stateSpecificStyles: {"WA":{"fill":"#ecffec"},"DE":{"fill":"#fafffa"},"DC":{"fill":"#ffffff"},"WI":{"fill":"#caffca"},"WV":{"fill":"#f9fff9"},"HI":{"fill":"#ffffff"},"FL":{"fill":"#97ff97"},"WY":{"fill":"#fdfffd"},"NH":{"fill":"#f0fff0"},"NJ":{"fill":"#f2fff2"},"NM":{"fill":"#fdfffd"},"TX":{"fill":"#00ff00"},"LA":{"fill":"#acffac"},"NC":{"fill":"#69ff69"},"ND":{"fill":"#ffffff"},"NE":{"fill":"#e6ffe6"},"TN":{"fill":"#cfffcf"},"NY":{"fill":"#e1ffe1"},"PA":{"fill":"#70ff70"},"AK":{"fill":"#ffffff"},"NV":{"fill":"#fefffe"},"VA":{"fill":"#ecffec"},"GU":{"fill":"#ffffff"},"CO":{"fill":"#d6ffd6"},"VI":{"fill":"#ffffff"},"CA":{"fill":"#c2ffc2"},"AL":{"fill":"#e4ffe4"},"AR":{"fill":"#f2fff2"},"VT":{"fill":"#f7fff7"},"IL":{"fill":"#5aff5a"},"GA":{"fill":"#6bff6b"},"IN":{"fill":"#8fff8f"},"IA":{"fill":"#dcffdc"},"MA":{"fill":"#d5ffd5"},"AZ":{"fill":"#d7ffd7"},"ID":{"fill":"#fefffe"},"CT":{"fill":"#fcfffc"},"ME":{"fill":"#fafffa"},"MD":{"fill":"#f1fff1"},"OK":{"fill":"#b1ffb1"},"OH":{"fill":"#83ff83"},"UT":{"fill":"#aaffaa"},"MO":{"fill":"#92ff92"},"MN":{"fill":"#97ff97"},"MI":{"fill":"#bfffbf"},"RI":{"fill":"#fefffe"},"KS":{"fill":"#eaffea"},"MT":{"fill":"#ffffff"},"MS":{"fill":"#e7ffe7"},"PR":{"fill":"#ffffff"},"SC":{"fill":"#edffed"},"KY":{"fill":"#e4ffe4"},"OR":{"fill":"#b4ffb4"},"SD":{"fill":"#f6fff6"}},
+    mouseover: function(event, data) {
+      var detail = stateDetails[data.name];
+      
+      var position = $(data.hitArea.node).offset();
+      event = event.originalEvent;
+      
+      
+      $tooltip.css({
+        
+                "position": "fixed",
+                "top": position.top + 20 + "px",
+                "left": position.left + 100 + "px"
+              })
+              .addClass("fade in")
+              .find(".tooltip-inner")
+              .text(detail.name + " : "
+                    + detail.count
+                    + " Articles");
+    },
+    mouseout: function(event, data) {
+      $tooltip.removeClass("fade in");
+    }
+  });
+
+            }, 0);
       for(var i=0;i<that.params.length;i++){
         (function(i){
           $http.get("http://176.9.181.36:2222/clinicalapi/get_social_media/",{"params":that.params[i]}) 

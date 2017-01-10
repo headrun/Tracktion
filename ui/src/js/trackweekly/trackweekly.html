@@ -25,7 +25,7 @@
                    ng-click="$ctrl.selected_filter='status';drug_class='';drugName='';year='';location='';$ctrl.searchbytype(status)" >
             <select class="form-control" id="select5" ng-model="status" 
                     ng-change="drug_class='';drugName='';year='';location='';$ctrl.selected_filter='status'; $ctrl.searchbytype(status)">
-              <option value="">select Status</option>
+              <option value="">Select Status</option>
               <option value="all" >All</option>
               <option ng-repeat="status in $ctrl.filterkeys['trail_status']">{{status}}</option>
             </select> 
@@ -56,7 +56,7 @@
                    ng-click="$ctrl.selected_filter='year';status='';drug_class='';drugName='';location='';$ctrl.searchbytype(year)" >
             <select class="form-control" ng-model="year" 
                     ng-change="status='';drug_class='';drugName='';location='';$ctrl.selected_filter='year';$ctrl.searchbytype(year)">
-              <option value=''> Select Year</option>
+              <option value=''> Start Date</option>
               <option value="all">All</option>
               <option ng-repeat="year in $ctrl.filterkeys['year_list']">{{year}}</option>
              </select>
@@ -199,7 +199,7 @@
              </div>
              <div class="item">
                 <div class="full-results"><i class="fa fa-star" aria-hidden="true"></i></div>
-                <p>Full Results</p>
+                <p>Results</p>
              </div>
            </div> 
         </div>

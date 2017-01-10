@@ -421,17 +421,11 @@
               </h3>
             </div>
             <div class="widget-content geoloc-content">
-              <div id="map" class="">
-                <us-map>
-                   <map-data state="VA" color="lightgreen" hover-bg-color="grey">
-                    <p>Virginia</p>
-                   </map-data>
-
-                   <map-data state="WV" color="gold" hover-padding="20px" hover-bg-color="grey" hover-color="yellow">
-                       West <br>
-                       Virginia
-                   </map-data>
-                </us-map>
+              <div id="map-tooltip" class="tooltip right" role="tooltip" style="position: fixed; top: 402.083px; left: 413.169px;">
+                <div class="tooltip-arrow"></div>
+              </div>
+              <div id="map">
+                
               </div>
             </div>
           </div>
@@ -672,7 +666,7 @@
 		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
 			<a class="articles-link state-sensitive" data-encoded="true" href="#">{{influencer.term}}</a>
 		      </td>
-		      <td class="count text-right">{{influencer.max}}</td>
+		      <td class="count text-right">{{influencer.max.toFixed(2)}}</td>
 		    </tr>
 		   </tbody>
 		</table>

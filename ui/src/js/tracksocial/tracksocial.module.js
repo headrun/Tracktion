@@ -2,5 +2,5 @@
   "use strict";
 
   angular.module("tracksocial", ["ui.router", "filterBar", "highcharts",
-                                "layout", "utils", "tab", "ngJustGage", "usMap" ]);
+                                "layout", "utils", "tab", "ngJustGage" ]);
 }(window.angular));

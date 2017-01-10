@@ -28,14 +28,14 @@
       "Clinical Trail Summary": {
 
         "name" : "Clinical Trail Summary",
-        "title": "Clinical Trail Summary",
+        "title": "Clinical Trial Summary Map",
         "state": "{}"
       },
 
       "Clinical Data": {
 
         "name" : "clinical Data",
-        "title": "Clinical Data",
+        "title": "Clinical Trial Summary",
         "state": "{}"
       },
 
