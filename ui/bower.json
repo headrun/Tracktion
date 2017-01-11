@@ -31,6 +31,7 @@
     "angular-ui-bootstrap": "^1.3.3",
     "raphael": "^2.2.7",
     "justgage-toorshia": "^1.2.9",
-    "angular-us-map": "^1.0.0"
+    "angular-us-map": "^1.0.0",
+    "tag-cloud": "^1.0.11"
   }
 }
