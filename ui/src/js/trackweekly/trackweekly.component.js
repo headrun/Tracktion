@@ -95,32 +95,6 @@
               if(start_qtr=='3Q'){ marginleft+=76;}
               if(start_qtr=='4Q'){ marginleft+=114;}
                 
-             /*
-             var  x=(((end_yr-start_yr)+1)*4)*38;
-              marginleft+=x;
-              //marginleft+= (((end_yr-start_yr)+1)*4)*38;
-             // console.log(nct_id+ "   (" + end_yr +"-" +start_yr+")+1 *4 * 38  "+  start_qtr +"   "+ end_qtr+ "  "+ marginleft );
-            
-            if(start_qtr=='2Q'){
-              marginleft-=38;
-            }   
-            if(start_qtr=='3Q'){
-              marginleft-=76;
-            }   
-            if(start_qtr=='4Q'){
-              marginleft-=114;
-            }*/
-            /*
-            if(end_qtr=='3Q'){
-              marginleft-=38;
-            }
-            if(end_qtr=='2Q'){
-              marginleft-=76;
-            }
-            if(end_qtr=='1Q'){
-              marginleft-=114;
-            }
-         */
              // console.log(nct_id+ "   (" + end_yr +"-" +start_yr+")+1 *4 * 38  "+  start_qtr +"   "+ end_qtr+ "  "+ marginleft ); 
             }
             var prog_size=(((end_yr-start_yr)+1)*4)*38;
@@ -147,7 +121,11 @@
               prog_size+=50;
             }
             $(".prgbar"+nct_id).css('width',prog_size+"px");
-            $(".prgbar"+nct_id).css('margin-left',marginleft+"px");
+            prog_size=prog_size+30;
+            $(".status-prgbar-container"+nct_id).css('width',prog_size+"px");
+            $(".status-prgbar-container"+nct_id).css('margin-left',marginleft+"px");
+            $(".status-prgbar-container"+nct_id).css('float',"left");
+            
           }
         }
       },0);

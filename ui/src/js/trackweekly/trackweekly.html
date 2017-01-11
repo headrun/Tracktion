@@ -23,7 +23,7 @@
           <div class="filter-item">
             <input type="radio" name="track"  ng-checked="status"  
                    ng-click="$ctrl.selected_filter='status';drug_class='';drugName='';year='';location='';$ctrl.searchbytype(status)" >
-            <select class="form-control" id="select5" ng-model="status" 
+            <select multiple class="form-control" id="select5" ng-model="status" 
                     ng-change="drug_class='';drugName='';year='';location='';$ctrl.selected_filter='status'; $ctrl.searchbytype(status)">
               <option value="">Select Status</option>
               <option value="all" >All</option>
@@ -33,7 +33,7 @@
           <div class="filter-item">
             <input type="radio" name="track" ng-checked="drug_class"
                    ng-click="$ctrl.selected_filter='drug_class';status='';drugName='';year='';location='';$ctrl.searchbytype(drug_class)" >
-            <select class="form-control" ng-model="drug_class" 
+            <select multiple class="form-control" ng-model="drug_class" 
                     ng-change="status=''; drugName=''; year=''; location=''; $ctrl.selected_filter='drug_class'; $ctrl.searchbytype(drug_class)" >
               <option value=""> Select Drug Class</option>
               <option value="all" >All</option>
@@ -43,7 +43,7 @@
 	      <div class="filter-item">
             <input type="radio" name="track" ng-checked="drugName" 
                    ng-click="$ctrl.selected_filter='drugName';status='';drug_class='';year='';location='';$ctrl.searchbytype(drugName)" >
-            <select class="form-control" ng-model="drugName" 
+            <select  multiple class="form-control" ng-model="drugName" 
                     ng-change="status='';drug_class='';year='';location='';$ctrl.selected_filter='drugName';$ctrl.searchbytype(drugName)"> 
               <option value=""> Select by Drug</option>
               <option value="all" >All</option>
@@ -54,7 +54,7 @@
           <div class="filter-item">
             <input type="radio" name="track" ng-checked="year" 
                    ng-click="$ctrl.selected_filter='year';status='';drug_class='';drugName='';location='';$ctrl.searchbytype(year)" >
-            <select class="form-control" ng-model="year" 
+            <select multiple class="form-control" ng-model="year" 
                     ng-change="status='';drug_class='';drugName='';location='';$ctrl.selected_filter='year';$ctrl.searchbytype(year)">
               <option value=''> Start Date</option>
               <option value="all">All</option>
@@ -64,12 +64,15 @@
           <div class="filter-item">
             <input type="radio" name="track" ng-checked="location" 
                    ng-click="$ctrl.selected_filter='location';status='';drug_class='';drugName='';location='';$ctrl.searchbytype(location)" >
-            <select class="form-control" ng-model="location"
+            <select multiple class="form-control" ng-model="location"
                     ng-change="status='';drug_class='';drugName='';year='';$ctrl.selected_filter='location';$ctrl.searchbytype(location)">
               <option value=''> Select Location</option>
               <option value="all">All</option>
               <option ng-repeat="country in $ctrl.filterkeys['countries']">{{country}}</option>
             </select>
+          </div>
+          <div class="filter-item">
+              <button type="submit" class="btn btn-primary">Search</button>
           </div>
 
 
@@ -87,13 +90,13 @@
                    <thead>
                      <tr>
                        <th colspan="4" > 2014 <br><-</th>
-                       <th colspan="4">2014</th>
-                       <th colspan="4">2015</th>
-                       <th colspan="4">2016</th>
-                       <th colspan="4">2017</th>
-                       <th colspan="4">2018</th>
-                       <th colspan="4">2019</th>
-                       <th colspan="4">2020</th>
+                       <th colspan="4" class="text-center">2014</th>
+                       <th colspan="4" class="text-center">2015</th>
+                       <th colspan="4" class="text-center">2016</th>
+                       <th colspan="4" class="text-center">2017</th>
+                       <th colspan="4" class="text-center">2018</th>
+                       <th colspan="4" class="text-center">2019</th>
+                       <th colspan="4" class="text-center">2020</th>
                      </tr>
                    </thead>
                    <tbody>
@@ -143,21 +146,23 @@
                      <tbody>
                        <tr ng-repeat="trial in trialdrug.trial_data">
                          <td class="trail">
-                           <!--progress bar -->
-                           <div class="prog-bar prgbar{{trial.nct_id}}">
-                            <div class="progress">
-                              <div class="progress-bar" role="progressbar" aria-valuenow="70" 
-                                          aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                              </div>
-                            </div>
-                            <div class="yellowbar"></div> 
+                           <div class="status-prgbar-container{{trial.nct_id}}">
+                               <!-- status -->
+                               <div class="status completed"  ng-show="{{trial.trial_status=='Completed'}}">C</div>
+                               <div class="status recruiting" ng-show="{{trial.trial_status=='Recruiting'}}" >R</div>
+                               <div class="status ongoing" ng-show="{{trial.trial_status=='Ongoing'}}">O</div>
+                               <!-- status end -->
+                               <!--progress bar -->
+                               <div class="prog-bar prgbar{{trial.nct_id}}">
+                                <div class="progress">
+                                  <div class="progress-bar" role="progressbar" aria-valuenow="70" 
+                                              aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                  </div>
+                                </div>
+                                <div class="yellowbar"></div> 
+                               </div>
+                               <!-- progress bar end-->
                            </div>
-                           <!-- progress bar end-->
-                           <!-- status -->
-                           <div class="status completed"  ng-show="{{trial.trial_status=='Completed'}}">C</div>
-                           <div class="status recruiting" ng-show="{{trial.trial_status=='Recruiting'}}" >R</div>
-                           <div class="status ongoing" ng-show="{{trial.trial_status=='Ongoing'}}">O</div>
-                           <!-- status end -->
                            <!-- badges and countries -->
                            <div class="full-results" ng-hide="{{trial.results==''}}"><i class="fa fa-star" aria-hidden="true"></i></div>
                            <div class="countries" >
