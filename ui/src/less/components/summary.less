@@ -101,7 +101,6 @@ summary {
              }
            }
            div.widget-body {
-             
 
            }
         
@@ -129,11 +128,10 @@ summary {
     height:51px!important;
     padding: 5px 10px 5px 10px !important;
     border-bottom:3px solid #eaeaeb !important;
-    background-color: #fff!important;
     z-index: 1;
 
     a {
-      color:black;
+      color:white;
       vertical-align: middle;
       font-weight: bold;
       font-size:16px;
@@ -202,24 +200,30 @@ summary {
     padding-top: 41px !important;
     position: relative;
 
-    &> table {
+   div.key-widget {
+     margin-top:15px;
 
-      margin-top: 8px;
+     div.small-widget {
+      padding:5px;
+      border:solid black 1px;
+      margin-top:5px;
+      min-height:75px;
+     }
+   }
+   div.key-widget-2 {
+    margin-top:15px;
 
-      thead {
-
-        tr > th {
-
-          border-bottom: none;
-          text-align: right;
-        }
-      }
-
-      td {
-        border-top:none;
-      }
+    div.small-widget {
+      padding:5px;
+      border:solid black 1px;
+      margin-top:5px;
+      min-height:75px;
     }
+   }
 
+   table.table-condensed {
+    margin-top:15px;
+   }
     &> a.btn {
 
       position: absolute;
