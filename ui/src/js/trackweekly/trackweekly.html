@@ -21,51 +21,41 @@
       <div class="row">
         <div class="filter-container form-inline text-center">
           <div class="filter-item">
-            <input type="radio" name="track"  ng-checked="status"  
-                   ng-click="$ctrl.selected_filter='status';drug_class='';drugName='';year='';location='';$ctrl.searchbytype(status)" >
-            <select multiple class="form-control" id="select5" ng-model="status" 
-                    ng-change="drug_class='';drugName='';year='';location='';$ctrl.selected_filter='status'; $ctrl.searchbytype(status)">
+            <select multiple class="form-control" id="select5" ng-model="status"
+                    ng-change="">
               <option value="">Select Status</option>
               <option value="all" >All</option>
               <option ng-repeat="status in $ctrl.filterkeys['trail_status']">{{status}}</option>
             </select> 
           </div>
           <div class="filter-item">
-            <input type="radio" name="track" ng-checked="drug_class"
-                   ng-click="$ctrl.selected_filter='drug_class';status='';drugName='';year='';location='';$ctrl.searchbytype(drug_class)" >
             <select multiple class="form-control" ng-model="drug_class" 
-                    ng-change="status=''; drugName=''; year=''; location=''; $ctrl.selected_filter='drug_class'; $ctrl.searchbytype(drug_class)" >
+                    ng-change="" >
               <option value=""> Select Drug Class</option>
               <option value="all" >All</option>
               <option ng-repeat="drug_class_key in $ctrl.filterkeys['drug_class']">{{drug_class_key}}</option>
             </select> 
           </div>
 	      <div class="filter-item">
-            <input type="radio" name="track" ng-checked="drugName" 
-                   ng-click="$ctrl.selected_filter='drugName';status='';drug_class='';year='';location='';$ctrl.searchbytype(drugName)" >
-            <select  multiple class="form-control" ng-model="drugName" 
-                    ng-change="status='';drug_class='';year='';location='';$ctrl.selected_filter='drugName';$ctrl.searchbytype(drugName)"> 
+            <select  multiple class="form-control" ng-model="drug_name" 
+                    ng-change="">
               <option value=""> Select by Drug</option>
               <option value="all" >All</option>
-              <option ng-repeat="drug in $ctrl.filterkeys['drug_name']">{{drug}}</option>
+              <option ng-repeat="drug_t in $ctrl.filterkeys['drug_name']">{{drug_t}}</option>
             </select> 
           </div>
 
           <div class="filter-item">
-            <input type="radio" name="track" ng-checked="year" 
-                   ng-click="$ctrl.selected_filter='year';status='';drug_class='';drugName='';location='';$ctrl.searchbytype(year)" >
             <select multiple class="form-control" ng-model="year" 
-                    ng-change="status='';drug_class='';drugName='';location='';$ctrl.selected_filter='year';$ctrl.searchbytype(year)">
+                    ng-change="">
               <option value=''> Start Date</option>
               <option value="all">All</option>
               <option ng-repeat="year in $ctrl.filterkeys['year_list']">{{year}}</option>
              </select>
           </div>
           <div class="filter-item">
-            <input type="radio" name="track" ng-checked="location" 
-                   ng-click="$ctrl.selected_filter='location';status='';drug_class='';drugName='';location='';$ctrl.searchbytype(location)" >
             <select multiple class="form-control" ng-model="location"
-                    ng-change="status='';drug_class='';drugName='';year='';$ctrl.selected_filter='location';$ctrl.searchbytype(location)">
+                    ng-change="">
               <option value=''> Select Location</option>
               <option value="all">All</option>
               <option ng-repeat="country in $ctrl.filterkeys['countries']">{{country}}</option>
