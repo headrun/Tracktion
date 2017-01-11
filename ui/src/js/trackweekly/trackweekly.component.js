@@ -28,7 +28,7 @@
       "Clinical Trail Summary": {
 
         "name" : "Clinical Trail Summary",
-        "title": "Clinical Trial Summary Map",
+        "title": "Clinical Trial Map",
         "state": "{}"
       },
 
