@@ -116,14 +116,15 @@
             if(end_qtr=='1Q'){
               prog_size-=114;
             }
-            console.log(nct_id+ "   (" + end_yr +"-" +start_yr+")+1 *4 * 38  "+  start_qtr +"   "+ end_qtr+ "  "+ prog_size );
+            //console.log(nct_id+ "   (" + end_yr +"-" +start_yr+")+1 *4 * 38  "+  start_qtr +"   "+ end_qtr+ "  "+ prog_size );
             if(flag){
               prog_size+=50;
             }
+            prog_size=prog_size-18;
             $(".prgbar"+nct_id).css('width',prog_size+"px");
             prog_size=prog_size+30;
-            $(".status-prgbar-container"+nct_id).css('width',prog_size+"px");
-            $(".status-prgbar-container"+nct_id).css('margin-left',marginleft+"px");
+            //$(".status-prgbar-container"+nct_id).css('width',prog_size+"px");
+            $(".prgbar"+nct_id).css('margin-left',marginleft+"px");
             $(".status-prgbar-container"+nct_id).css('float',"left");
             
           }
@@ -148,7 +149,7 @@
             if(resp.data.error) {
                return;
             }
-            console.log(resp.data);
+            //console.log(resp.data);
             that.clinical_summary=resp.data;
             that.adjustbars();
            })
@@ -158,48 +159,28 @@
               return;
             }
             that.filterkeys=resp.data[0];
-            console.log(resp.data[0].trail_status);
-            console.log(that.filterkeys);
+            //console.log(resp.data[0].trail_status);
+            //console.log(that.filterkeys);
           })
 
-        that.searchbytype=function(searchelement){
-           // that.selected_filter='status';
-            console.log(this.selected_filter);
-            console.log(searchelement);
-            if(searchelement=='all'){searchelement='';}
-            var pa;
-            if(that.selected_filter=='status'){
-              pa={'trail_status':searchelement};
-            }
-            if(that.selected_filter=='drug_class'){
-              pa={'drug_class':searchelement};
-            }
-            if(that.selected_filter=='year'){
-              pa={'start_date':searchelement};
-            }
-            if(that.selected_filter=='location'){
-              pa={'countries':searchelement};
-            }
-            if(that.selected_filter=='drugName'){
-              pa={'drug_name':searchelement}; 
-            }
-            console.log(pa);
+        that.filterformsubmit=function(filtersdata){
+          if(typeof(filtersdata)!="undefined"){
+            console.log(filtersdata);
             $http.get("http://176.9.181.36:2222/clinicalapi/clinicaltrail/",
-                     {"params":pa })
-              .then(function (resp){
-                if(resp.data.error) {
-                return;
-                }
-               // console.log(resp.data);
-                setTimeout(function(){
-                $scope.$apply(function(){
-                    that.clinical_summary=resp.data;
-                    that.adjustbars();
-                });
-                },0);
-                console.log(resp.data);
-              });
-          };
+                      {"params":{"filters":filtersdata}})
+               .then(function (resp){
+                 if(resp.data.error) {
+                 return;
+                 }   
+                 setTimeout(function(){
+                 $scope.$apply(function(){
+                     that.clinical_summary=resp.data;
+                     that.adjustbars();
+                 }); 
+                 },0);
+            });
+          }
+        }
 
         this.hideLoading();
       }

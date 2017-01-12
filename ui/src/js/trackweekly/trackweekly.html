@@ -20,51 +20,52 @@
       <!-- Description of Clinical-trail-summary-->
       <div class="row">
         <div class="filter-container form-inline text-center">
-          <div class="filter-item">
-            <select multiple class="form-control" id="select5" ng-model="status"
-                    ng-change="">
-              <option value="">Select Status</option>
-              <option value="all" >All</option>
-              <option ng-repeat="status in $ctrl.filterkeys['trail_status']">{{status}}</option>
-            </select> 
-          </div>
-          <div class="filter-item">
-            <select multiple class="form-control" ng-model="drug_class" 
-                    ng-change="" >
-              <option value=""> Select Drug Class</option>
-              <option value="all" >All</option>
-              <option ng-repeat="drug_class_key in $ctrl.filterkeys['drug_class']">{{drug_class_key}}</option>
-            </select> 
-          </div>
-	      <div class="filter-item">
-            <select  multiple class="form-control" ng-model="drug_name" 
-                    ng-change="">
-              <option value=""> Select by Drug</option>
-              <option value="all" >All</option>
-              <option ng-repeat="drug_t in $ctrl.filterkeys['drug_name']">{{drug_t}}</option>
-            </select> 
-          </div>
+          <form  name="filterform" ng-model="filter" novalidate>
+            <div class="filter-item">
+              <select multiple class="form-control" id="select5" ng-model="filter.status"
+                      ng-change="">
+                <option value="">Select Status</option>
+                <option value="all" >All</option>
+                <option ng-repeat="status in $ctrl.filterkeys['trail_status']">{{status}}</option>
+              </select> 
+            </div>
+            <div class="filter-item">
+              <select multiple class="form-control" ng-model="filter.drug_class" 
+                      ng-change="" >
+                <option value=""> Select Drug Class</option>
+                <option value="all" >All</option>
+                <option ng-repeat="drug_class_key in $ctrl.filterkeys['drug_class']">{{drug_class_key}}</option>
+              </select> 
+            </div>
+            <div class="filter-item">
+              <select  multiple class="form-control" ng-model="filter.drug_name" 
+                      ng-change="">
+                <option value=""> Select by Drug</option>
+                <option value="all" >All</option>
+                <option ng-repeat="drug_t in $ctrl.filterkeys['drug_name']">{{drug_t}}</option>
+              </select> 
+            </div>
 
-          <div class="filter-item">
-            <select multiple class="form-control" ng-model="year" 
-                    ng-change="">
-              <option value=''> Start Date</option>
-              <option value="all">All</option>
-              <option ng-repeat="year in $ctrl.filterkeys['year_list']">{{year}}</option>
-             </select>
-          </div>
-          <div class="filter-item">
-            <select multiple class="form-control" ng-model="location"
-                    ng-change="">
-              <option value=''> Select Location</option>
-              <option value="all">All</option>
-              <option ng-repeat="country in $ctrl.filterkeys['countries']">{{country}}</option>
-            </select>
-          </div>
-          <div class="filter-item">
-              <button type="submit" class="btn btn-primary">Search</button>
-          </div>
-
+            <div class="filter-item">
+              <select multiple class="form-control" ng-model="filter.year" 
+                      ng-change="">
+                <option value=''> End Date</option>
+                <option value="all">All</option>
+                <option ng-repeat="year in $ctrl.filterkeys['year_list']">{{year}}</option>
+               </select>
+            </div>
+            <div class="filter-item">
+              <select multiple class="form-control" ng-model="filter.location"
+                      ng-change="">
+                <option value=''> Select Location</option>
+                <option value="all">All</option>
+                <option ng-repeat="country in $ctrl.filterkeys['countries']">{{country}}</option>
+              </select>
+            </div>
+            <div class="filter-item">
+                <button type="submit" class="btn btn-primary"  ng-click="$ctrl.filterformsubmit(filter)">Search</button>
+            </div>
+          </form>
 
         </div>
       </div>
