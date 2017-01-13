@@ -73,10 +73,10 @@
             var end_yr= parseInt(end_temp[1]);
             var start_qtr= start_temp[0];
             var end_qtr= end_temp[0];
-            var flag=0;
             var marginleft=0;
+            var marginextra=0;
             var nct_id=that.clinical_summary[i].trial_data[j].nct_id;
-
+            var flag2=0;
             if(end_yr > 2020) {
               end_yr=2020;
               end_qtr="4Q";
@@ -84,47 +84,49 @@
             if(start_yr < 2014){
               start_yr=2014;
               start_qtr='1Q';
-              flag=1;
+              flag2=1; 
             }
+            var qtr=$(".qtr").outerWidth();
+            var extraspace=$(".extraspace").outerWidth();
+            var statusspace=$(".status").outerWidth();
             if(start_yr >= 2014){
-              if(!flag){
-                marginleft+=50;
-              }
-              marginleft+=((start_yr-2014)*4)*38;
-              if(start_qtr=='2Q'){ marginleft+=38;}
-              if(start_qtr=='3Q'){ marginleft+=76;}
-              if(start_qtr=='4Q'){ marginleft+=114;}
+                marginextra=(extraspace-statusspace);
+                marginextra-=10;
+
+              marginleft+=((start_yr-2014)*4);
+              if(start_qtr=='2Q'){ marginleft+=1;}
+              if(start_qtr=='3Q'){ marginleft+=2;}
+              if(start_qtr=='4Q'){ marginleft+=3;}
                 
              // console.log(nct_id+ "   (" + end_yr +"-" +start_yr+")+1 *4 * 38  "+  start_qtr +"   "+ end_qtr+ "  "+ marginleft ); 
             }
-            var prog_size=(((end_yr-start_yr)+1)*4)*38;
+            var prog_size=(((end_yr-start_yr)+1)*4);
             if(start_qtr=='2Q') {
-              prog_size-=38;
+              prog_size-=1;
             }
             if(start_qtr=='3Q') {
-              prog_size-=76;
+              prog_size-=2;
             }
             if(start_qtr=='4Q'){
-              prog_size-=114;
+              prog_size-=3;
             }
             if(end_qtr=='3Q') {
-              prog_size-=38;
+              prog_size-=1;
             }
             if(end_qtr=='2Q') {
-              prog_size-=76;
+              prog_size-=2;
             }
             if(end_qtr=='1Q'){
-              prog_size-=114;
+              prog_size-=3;
             }
             //console.log(nct_id+ "   (" + end_yr +"-" +start_yr+")+1 *4 * 38  "+  start_qtr +"   "+ end_qtr+ "  "+ prog_size );
-            if(flag){
-              prog_size+=50;
-            }
-            prog_size=prog_size-18;
+            prog_size=prog_size*qtr;
+            marginleft=marginleft*qtr;
+            if(flag2){marginleft-=((extraspace-statusspace)-8);prog_size+=((extraspace-statusspace)-8);}
             $(".prgbar"+nct_id).css('width',prog_size+"px");
-            prog_size=prog_size+30;
+            prog_size=prog_size+qtr;
             //$(".status-prgbar-container"+nct_id).css('width',prog_size+"px");
-            $(".prgbar"+nct_id).css('margin-left',marginleft+"px");
+            $(".prgbar"+nct_id).css('margin-left',(marginleft+marginextra)+"px");
             $(".status-prgbar-container"+nct_id).css('float',"left");
             
           }
@@ -149,7 +151,7 @@
             if(resp.data.error) {
                return;
             }
-            //console.log(resp.data);
+            console.log(resp.data);
             that.clinical_summary=resp.data;
             that.adjustbars();
            })
