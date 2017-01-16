@@ -389,7 +389,9 @@
             <div class="widget-content news-third-row">
               <div class="wordclouddata">
                 <div class="tagcloud text-justify marketwatch-word-cloud">
-                  <a href="#" ng-repeat=" (key,value) in $ctrl.market_word_cloud" rel="{{value}}">{{key}}</a>
+                  <a href="#" ng-if="!$ctrl.marketwatch_word_cloud_loading" ng-repeat=" (key,value) in $ctrl.market_word_cloud" 
+                     rel="{{value}}">{{key}}</a>
+                  <span ng-if="$ctrl.marketwatch_word_cloud_loading" class="diabetes-wordcloud-loading text-center center-block">Loading...</span>
 		        </div>
               </div>
             </div>
@@ -421,8 +423,10 @@
               </h3>
             </div>
             <div class="widget-content geoloc-content">
-              <div id="map-tooltip" class="tooltip right" role="tooltip" style="position: fixed; top: 402.083px; left: 413.169px;">
+              <div id="map-tooltip" class="tooltip right" role="tooltip" 
+                    >
                 <div class="tooltip-arrow"></div>
+                <div class="tooltip-inner"></div>
               </div>
               <div id="map">
                 
@@ -517,7 +521,10 @@
             </div>
             <div class="widget-content  word-cloud-content">
               <div class="tagcloud text-justify diabetes-word-cloud ">
-                <a href="#" ng-repeat="(key, value) in $ctrl.diabetes_word_cloud"  rel="{{value}}">{{key}}</a> 
+                <a href="#"ng-if="!$ctrl.diabetes_word_cloud_loading"  ng-repeat="(key, value) in $ctrl.diabetes_word_cloud"  
+                        rel="{{value}}">{{key}}</a>
+                <span ng-if="$ctrl.diabetes_word_cloud_loading" class="diabetes-wordcloud-loading text-center center-block">Loading...</span>
+
               </div>
             </div>
           </div>
@@ -908,7 +915,9 @@
             </div>
             <div class="widget-content wordcloud-content">
               <div class="tagcloud intarcia-word-cloud text-justify text-center">
-		         <a  ng-repeat="(key, value) in $ctrl.intarcia_word_cloud" href="#" rel="{{value}}">{{key}}</a>
+		         <a  ng-if="!$ctrl.intarcia_word_cloud_loading" ng-repeat="(key, value) in $ctrl.intarcia_word_cloud" 
+                     href="#" rel="{{value}}">{{key}}</a>
+                 <span ng-if="$ctrl.intarcia_word_cloud_loading" class="intarcia-wordcloud-loading text-center center-block">Loading...</span>
 			  </div>
             </div>
           </div>

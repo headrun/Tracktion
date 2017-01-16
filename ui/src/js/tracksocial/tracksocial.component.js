@@ -255,12 +255,14 @@
         })(i);
       }
       // for word cloud
+      that.intarcia_word_cloud_loading=true;
       $http.get("http://176.9.181.36:2222/clinicalapi/get_wordcloud/",{"params":{'source':'intarcia'}})
       .then(function(resp){
         if(resp.data.error){
           return;
         }
         console.log(resp.data);
+        that.intarcia_word_cloud_loading=false;
         that.intarcia_word_cloud=resp.data;
         setTimeout(function(){
         $.fn.tagcloud.defaults = {
@@ -286,7 +288,7 @@
             var map_container = $('#map').parent();
             var p_height = $(map_container).height();
             var p_width = $(map_container).width();
-            $('#map').css({'height' : p_height,'width' : p_width,'padding-left': '45px'})
+            $('#map').css({'height' : p_height,'width' : p_width,'padding-left': '120px'})
                .find('svg').attr('width', p_width);
             var stateDetails = {"WA":{"count":123,"name":"Washington"},"DE":{"count":30,"name":"Delaware"},"DC":{"count":0,"name":"District Of Columbia"},"WI":{"count":345,"name":"Wisconsin"},"WV":{"count":38,"name":"West Virginia"},"HI":{"count":0,"name":"Hawaii"},"FL":{"count":674,"name":"Florida"},"WY":{"count":15,"name":"Wyoming"},"NH":{"count":94,"name":"New Hampshire"},"NJ":{"count":87,"name":"New Jersey"},"NM":{"count":13,"name":"New Mexico"},"TX":{"count":1651,"name":"Texas"},"LA":{"count":538,"name":"Louisiana"},"NC":{"count":968,"name":"North Carolina"},"ND":{"count":0,"name":"North Dakota"},"NE":{"count":163,"name":"Nebraska"},"TN":{"count":314,"name":"Tennessee"},"NY":{"count":194,"name":"New York"},"PA":{"count":924,"name":"Pennsylvania"},"AK":{"count":0,"name":"Alaska"},"NV":{"count":4,"name":"Nevada"},"VA":{"count":123,"name":"Virginia"},"GU":{"count":0,"name":"Guam"},"CO":{"count":266,"name":"Colorado"},"VI":{"count":0,"name":"Virgin Islands"},"CA":{"count":397,"name":"California"},"AL":{"count":174,"name":"Alabama"},"AR":{"count":84,"name":"Arkansas"},"VT":{"count":50,"name":"Vermont"},"IL":{"count":1067,"name":"Illinois"},"GA":{"count":955,"name":"Georgia"},"IN":{"count":725,"name":"Indiana"},"IA":{"count":224,"name":"Iowa"},"MA":{"count":273,"name":"Massachusetts"},"AZ":{"count":260,"name":"Arizona"},"ID":{"count":7,"name":"Idaho"},"CT":{"count":22,"name":"Connecticut"},"ME":{"count":34,"name":"Maine"},"MD":{"count":93,"name":"Maryland"},"OK":{"count":502,"name":"Oklahoma"},"OH":{"count":806,"name":"Ohio"},"UT":{"count":549,"name":"Utah"},"MO":{"count":706,"name":"Missouri"},"MN":{"count":674,"name":"Minnesota"},"MI":{"count":416,"name":"Michigan"},"RI":{"count":9,"name":"Rhode Island"},"KS":{"count":139,"name":"Kansas"},"MT":{"count":0,"name":"Montana"},"MS":{"count":158,"name":"Mississippi"},"PR":{"count":0,"name":"Puerto Rico"},"SC":{"count":116,"name":"South Carolina"},"KY":{"count":173,"name":"Kentucky"},"OR":{"count":484,"name":"Oregon"},"SD":{"count":58,"name":"South Dakota"}};
            
@@ -302,18 +304,15 @@
       var position = $(data.hitArea.node).offset();
       event = event.originalEvent;
       
-      
       $tooltip.css({
-        
                 "position": "fixed",
                 "top": position.top + 20 + "px",
-                "left": position.left + 100 + "px"
+                "left": position.left + 50 + "px"
               })
               .addClass("fade in")
               .find(".tooltip-inner")
               .text(detail.name + " : "
-                    + detail.count
-                    + " Articles");
+                    +detail.count+" Articles");
     },
     mouseout: function(event, data) {
       $tooltip.removeClass("fade in");
@@ -394,12 +393,14 @@
 
       }
        // for word cloud
+      that.diabetes_word_cloud_loading=true;
       $http.get("http://176.9.181.36:2222/clinicalapi/get_wordcloud/",{"params":{'source':'diabetes'}})
       .then(function(resp){
         if(resp.data.error){
           return;
         }   
-        console.log(resp.data);
+        //console.log(resp.data);
+        that.diabetes_word_cloud_loading=false;
         that.diabetes_word_cloud=resp.data;
         setTimeout(function(){
         $.fn.tagcloud.defaults = { 
@@ -488,12 +489,14 @@
        }
 
     // for word cloud
+      that.marketwatch_word_cloud_loading=true;
       $http.get("http://176.9.181.36:2222/clinicalapi/get_wordcloud/",{"params":{'source':'marketwatch'}})
       .then(function(resp){
         if(resp.data.error){
           return;
-        }   
-        console.log(resp.data);
+        }
+        that.marketwatch_word_cloud_loading=false;
+        //console.log(resp.data);
         that.market_word_cloud=resp.data;
         setTimeout(function(){
         $.fn.tagcloud.defaults = { 
