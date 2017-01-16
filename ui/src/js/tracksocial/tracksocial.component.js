@@ -434,13 +434,16 @@
                 case 0: //sources
                         that.market_watch_timeline_data=resp.data.result.facets.updated_on.entries;
                         that.series=[];
+                        that.timelinecolor=["#dd301b","#3498db","#c09853","#90ed7d","orange","#f7a35c"];
+                        that.index=0;
                         console.log(that.market_watch_timeline_data);
                         angular.forEach(that.market_watch_timeline_data,function(value,key){
                           that.data=[];
                           angular.forEach(value, function(value1, key1) {
                             that.data.push([value1.time , value1.count]);
                           });
-                          that.series.push({"color":'#'+(Math.random()*0xFFFFFF<<0).toString(16),"name":key,"data":that.data});
+                          that.series.push({"color":that.timelinecolor[that.index],"name":key,"data":that.data});
+                          that.index++;
                         });
                         console.log(that.series);
                         angular.extend(that.highchartoption, {

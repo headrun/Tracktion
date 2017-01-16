@@ -157,8 +157,11 @@
                            <!-- badges and countries -->
                            <div class="full-results" ng-hide="{{trial.results==''}}"><i class="fa fa-star" aria-hidden="true"></i></div>
                            <div class="countries" >
-                             <div class="flag-ico " ng-repeat="country in trial.countries" ng-class="{'us':country=='USA','us':country=='US',
-                                'eu':country=='Europe'}"></div>
+                             <div class="flag" ng-repeat="country in trial.countries" ng-class="{'flag-us':country=='USA','flag-us':country=='US',
+                                'flag-eu':country=='Europe','flag-na':country=='North America','flag-as':country=='Asia',
+                                'flag-ca':country=='Canada','flag-ko':country=='Korea','flag-tu':country=='Turkey',
+                                'flag-as':country=='Philippines','flag-sa':country=='South America','flag-ch':country=='China',
+                                'flag-ja':country=='Japan','flag-ta':country=='Taiwan'}"></div>
                            </div>
                            <!-- badges and countries end-->
                            <p style="float:right"><a href="{{trial.source}}">{{trial.nct_id}}</a>
