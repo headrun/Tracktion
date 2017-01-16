@@ -65,14 +65,23 @@
           for(var j=0;j<that.clinical_summary[i].trial_data.length;j++){
             var enc_start_year=that.clinical_summary[i].trial_data[j].start_date;
             var enc_end_year=that.clinical_summary[i].trial_data[j].end_date;
+            var enc_pcd_year=that.clinical_summary[i].trial_data[j].pcd;
 
             var start_temp= enc_start_year.split("-");
             var end_temp= enc_end_year.split("-");
-
+            if(enc_pcd_year!=''){
+              var pcd_temp=enc_pcd_year.split("-");
+            }
             var start_yr= parseInt(start_temp[1]);
             var end_yr= parseInt(end_temp[1]);
+            if(enc_pcd_year!=''){
+              var pcd_yr= parseInt(pcd_temp[1]);
+            }
             var start_qtr= start_temp[0];
             var end_qtr= end_temp[0];
+            if(enc_pcd_year!=''){
+              var pcd_qtr= pcd_temp[0];
+            }
             var marginleft=0;
             var marginextra=0;
             var nct_id=that.clinical_summary[i].trial_data[j].nct_id;
@@ -89,6 +98,7 @@
             var qtr=$(".qtr").outerWidth();
             var extraspace=$(".extraspace").outerWidth();
             var statusspace=$(".status").outerWidth();
+            var yearspace=$(".year").outerWidth();
             if(start_yr >= 2014){
                 marginextra=(extraspace-statusspace);
                 marginextra-=10;
@@ -128,7 +138,29 @@
             //$(".status-prgbar-container"+nct_id).css('width',prog_size+"px");
             $(".prgbar"+nct_id).css('margin-left',(marginleft+marginextra)+"px");
             $(".status-prgbar-container"+nct_id).css('float',"left");
-            
+            var pcd_margin=5;
+            if(enc_pcd_year!=''){
+              if(end_yr-pcd_yr!=0){
+                pcd_margin+=(end_yr-pcd_yr)*yearspace;
+              }
+              console.log('working');
+              switch(end_qtr){
+                case '2Q':
+                         if(pcd_qtr=='1Q'){pcd_margin+=qtr;}
+                         break;
+                case '3Q':
+                         if(pcd_qtr=='1Q'){pcd_margin+=(2*qtr);}
+                         if(pcd_qtr=='2Q'){pcd_margin+=qtr;}
+                         break;
+                case '4Q':
+                         if(pcd_qtr=='1Q'){pcd_margin+=(3*qtr);}
+                         if(pcd_qtr=='2Q'){pcd_margin+=(2*qtr);}
+                         if(pcd_qtr=='3Q'){pcd_margin+=qtr;}
+                         break;
+              }
+            }
+            pcd_margin+=qtr/2;
+            $(".yellowbar"+nct_id).css("margin-left",-pcd_margin+"px");
           }
         }
       },0);
