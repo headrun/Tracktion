@@ -319,7 +319,7 @@
     }
   });
 
-            }, 0);
+      }, 0);
       for(var i=0;i<that.params.length;i++){
         (function(i){
           $http.get("http://176.9.181.36:2222/clinicalapi/get_social_media/",{"params":that.params[i]}) 

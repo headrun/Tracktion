@@ -22,26 +22,26 @@
         <div class="filter-container form-inline text-center">
           <form  name="filterform" ng-model="filter" novalidate>
             <div class="filter-item">
-              <select multiple class="form-control" id="select5" ng-model="filter.status"
+              <select multiple class="form-control" id="select5" ng-model="filter.trail_status"
                       ng-change="">
-                <option value="">Select Status</option>
-                <option value="all" >All</option>
+                <option value="{{$ctrl.filterkeys['trail_status']}}">Select Status</option>
+                <option value="{{$ctrl.filterkeys['trail_status']}}" >All</option>
                 <option ng-repeat="status in $ctrl.filterkeys['trail_status']">{{status}}</option>
               </select> 
             </div>
             <div class="filter-item">
               <select multiple class="form-control" ng-model="filter.drug_class" 
                       ng-change="" >
-                <option value=""> Select Drug Class</option>
-                <option value="all" >All</option>
+                <option value="{{ $ctrl.filterkeys['drug_class']}}"> Select Drug Class</option>
+                <option value="{{ $ctrl.filterkeys['drug_class']}}" >All</option>
                 <option ng-repeat="drug_class_key in $ctrl.filterkeys['drug_class']">{{drug_class_key}}</option>
               </select> 
             </div>
             <div class="filter-item">
               <select  multiple class="form-control" ng-model="filter.drug_name" 
                       ng-change="">
-                <option value=""> Select by Drug</option>
-                <option value="all" >All</option>
+                <option value="{{$ctrl.filterkeys['drug_name']}}"> Select by Drug</option>
+                <option value="{{$ctrl.filterkeys['drug_name']}}" >All</option>
                 <option ng-repeat="drug_t in $ctrl.filterkeys['drug_name']">{{drug_t}}</option>
               </select> 
             </div>
@@ -49,16 +49,16 @@
             <div class="filter-item">
               <select multiple class="form-control" ng-model="filter.end_date" 
                       ng-change="">
-                <option value=''> End Date</option>
-                <option value="all">All</option>
+                <option value="{{$ctrl.filterkeys['year_list']}}"> End Date</option>
+                <option value="{{$ctrl.filterkeys['year_list']}}">All</option>
                 <option ng-repeat="year in $ctrl.filterkeys['year_list']">{{year}}</option>
                </select>
             </div>
             <div class="filter-item">
               <select multiple class="form-control" ng-model="filter.location"
                       ng-change="">
-                <option value=''> Select Location</option>
-                <option value="all">All</option>
+                <option value="{{$ctrl.filterkeys['countries']}}"> Select Location</option>
+                <option value="{{$ctrl.filterkeys['countries']}}">All</option>
                 <option ng-repeat="country in $ctrl.filterkeys['countries']">{{country}}</option>
               </select>
             </div>
@@ -157,11 +157,7 @@
                            <!-- badges and countries -->
                            <div class="full-results" ng-hide="{{trial.results==''}}"><i class="fa fa-star" aria-hidden="true"></i></div>
                            <div class="countries" >
-                             <div class="flag" ng-repeat="country in trial.countries" ng-class="{'flag-us':country=='USA','flag-us':country=='US',
-                                'flag-eu':country=='Europe','flag-na':country=='North America','flag-as':country=='Asia',
-                                'flag-ca':country=='Canada','flag-ko':country=='Korea','flag-tu':country=='Turkey',
-                                'flag-as':country=='Philippines','flag-sa':country=='South America','flag-ch':country=='China',
-                                'flag-ja':country=='Japan','flag-ta':country=='Taiwan'}"></div>
+                             <div  ng-repeat="country in trial.countries" class="flag flag-{{country}}"></div>
                            </div>
                            <!-- badges and countries end-->
                            <p style="float:right"><a href="{{trial.source}}">{{trial.nct_id}}</a>
