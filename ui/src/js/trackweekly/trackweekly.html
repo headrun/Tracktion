@@ -165,6 +165,7 @@
                             <span ng-show="trial.phase!=''"> {{"Phase: "+trial.phase+";"}}</span>
                             <span ng-show="trial.patient_number!=''"> {{"N="+trial.patient_number+";"}}</span>
                             <span ng-show="trial.truncated_title!=''">{{trial.truncated_title}}</span>
+                            <span><a  ui-sref='dashboard.trackweekly({tabName: "Clinical Data", state: "{\"id\": \"" + trial.nct_id + "\"}"})'>Read More</a></span>
                            </p>
                          </td>
                        </tr>
@@ -219,80 +220,36 @@
 	  <th>Primary Endpoint</th>
 	  <th>Results</th>
 	  <th>Summary</th>
+      <th>Report</th>
 	</tr>
       </thead>
       <tbody>
-	<tr>
-	  <td>1</td>
-	  <td>Lixisenatide</td>
-	  <td>NCT01798706 (GETGOAL-O)</td>
-	  <td>III</td>
-	  <td>Jun'13/Feb'15</td>
-	  <td>350</td>
-	  <td>Change in HbA1c From Baseline</td>
-	    <td>
-	      <ul>
-		<li>Mean HbA1c at baseline:  8%</li>
-		<li>Mean change in HbA1c from baseline to Week 24: -0.64%</li>
-		<li>Safety profile consistent with other studies of drug</li>
-	      </ul>
-	    </td>
-	    <td>Trial met primary endpoint. No unexpected safety findings1</td>
-	  </tr>
-	  <tr>
-	    <td>2</td>
-	    <td>Albiglutide</td>
-	    <td>NCT02683746</td>
-	    <td>III</td>
-	    <td>Mar'16/May'17</td>
-	    <td>300</td>
-	    <td>Change from baseline in HbA1c at Wk 26</td>
-	    <td>
-	      <ul>
-	         <li>Trial ongoing</li>
-	      </ul>
-	     </td>
-	     <td>Trial ongoing2</td>
-	   </tr>
-	   <tr>
-	     <td>3</td>
-	     <td>Dulaglutide</td>
-	     <td>NCT01648582</td>
-	     <td>III</td>
-	     <td>Jul'12/Aug'14</td>
-	     <td>789</td>
-	     <td>Change from baseline in HbA1c at Wk 26</td>
-	     <td>
-		<ul>
-		  <li>Mean change at Week 26:-1.70  (0.067) for 1.5mg 
-			   Dulaglutide Vs -1.15  (0.067) for insulin glargine
-		  </li>
-		</ul>
-	     </td>
-	     <td>Trial met primary endpoint3</td>
-	   </tr>
-	   <tr>
-	     <td>4</td>
-	     <td>Semaglutide</td>
-	     <td>NCT01720446</td>
-	     <td>III</td>
-	     <td>Feb'13/Ma'16</td>
-	     <td>3297</td>
-	     <td>Noninferiority of major cardiovascular events</td>
-	     <td>
-	       <ul>
-		 <li>Patients receiving drug showed 26% lower risk of first 
-			   occurrence of CV death, nonfatal MI, or stroke compared
-		        with those receiving placebo
-                 </li>
-		 <li>Vitreous hemorrhage, blindness occurred in 3% of patients 
-                  on the active drug compared with 1.8% of the placebo
-		        group
-                 </li>
-	       </ul>
-	     </td>
-	     <td>Trial met primary endpoint, showed statistically significant reduction in CV risk4</td>
-	   </tr>
+	    <tr ng-repeat="trial in $ctrl.trials" ng-model="test=0">
+          <td>
+            {{$index + 1}}
+          </td>
+          <td>
+            {{trial.drug_name}}
+          </td>
+          <td>
+            {{trial.nct_id}}
+          </td>
+          <td>
+            {{trial.phase}}
+          </td>
+          <td>
+            {{trial.start_date}}
+          </td>
+          <td>
+            {{trial.patient_number}}
+          </td>
+          <td>
+            {{trial.primary_endpoint}}
+          </td>
+          <td> </td>
+          <td> </td>
+          <td><a href="http://176.9.181.46/nct/{{trial.nct_id}}.docx" target="_blank">Download Report</td>
+        </tr>
 	 </tbody>
        </table>
      

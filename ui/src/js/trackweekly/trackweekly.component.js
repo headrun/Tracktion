@@ -7,6 +7,8 @@
 
     var that = this;
 
+    var stateData = this.state.dashboard.trackweekly && JSON.parse(this.state.dashboard.trackweekly) || {};
+
     this.stateName = $state.current.name;
 
     this.tabName = $state.params.tabName;
@@ -217,6 +219,50 @@
         }
 
         this.hideLoading();
+      } else {
+
+        if(typeof(stateData.id) != "undefined"){
+          that.showLoading();
+          console.log(stateData.id);
+          $http.get("http://176.9.181.36:2222/clinicalapi/clinicaltrail_summary",
+                      {"params":{"nct_id":stateData.id}})
+               .then(function (resp){
+                 if(resp.data.error) {
+                 return;
+                 }
+                 console.log(resp.data);
+                 that.trials=resp.data;
+                 /* 
+                 setTimeout(function(){  
+                 $scope.$apply(function(){
+                     that.clinical_summary=resp.data;
+                     that.adjustbars();
+                 }); 
+                 },0);
+                 */
+          });
+          that.hideLoading();
+        }else{
+          that.showLoading();
+          $http.get("http://176.9.181.36:2222/clinicalapi/clinicaltrail_summary")
+               .then(function (resp){
+                 if(resp.data.error) {
+                 return;
+                 }   
+                 console.log(resp.data);
+                 that.trials=resp.data;
+                 /*  
+                 setTimeout(function(){  
+                 $scope.$apply(function(){
+                     that.clinical_summary=resp.data;
+                     that.adjustbars();
+                 }); 
+                 },0);
+                 */
+          }); 
+          that.hideLoading(); 
+        }
+
       }
     }
   }
