@@ -899,31 +899,6 @@
             </div>
           </div>
           <!-- end of genderclassification widget -->
-          <div class="widget wordcloud">
-            <div class="widget-title wordcloud-title">
-              <h3>
-                 Word Cloud
-                 <span class="pull-right">
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="Download" 
-                    data-original-title="Remove"><i class="fa fa-download"></i></a>
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="Share via Email" 
-                    data-original-title="Remove"><i class="fa fa-telegram"></i></a>
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title=""
-                     data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
-                 </span>
-              </h3>
-            </div>
-            <div class="widget-content wordcloud-content">
-              <div class="tagcloud intarcia-word-cloud text-justify text-center">
-		         <a  ng-if="!$ctrl.intarcia_word_cloud_loading" ng-repeat="(key, value) in $ctrl.intarcia_word_cloud" 
-                     href="#" rel="{{value}}">{{key}}</a>
-                 <span ng-if="$ctrl.intarcia_word_cloud_loading" class="intarcia-wordcloud-loading text-center center-block">Loading...</span>
-			  </div>
-            </div>
-          </div>
-          <!-- end of wordcloud -->
-        </div>
-        <div class="col-md-4">
           <div class="widget source">
             <div class="widget-title source-title">
               <h3>
@@ -1031,7 +1006,33 @@
 
             </div>
           </div>
-          <!-- end of source-distribution -->
+          <!-- end of source dist -->
+        </div>
+        <div class="col-md-4">
+         <div class="widget wordcloud">
+            <div class="widget-title wordcloud-title">
+              <h3>
+                 Word Cloud
+                 <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="Download" 
+                    data-original-title="Remove"><i class="fa fa-download"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="Share via Email" 
+                    data-original-title="Remove"><i class="fa fa-telegram"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title=""
+                     data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+                 </span>
+              </h3>
+            </div>
+            <div class="widget-content wordcloud-content">
+              <div class="tagcloud intarcia-word-cloud text-justify text-center">
+                 <a  ng-if="!$ctrl.intarcia_word_cloud_loading" ng-repeat="(key, value) in $ctrl.intarcia_word_cloud" 
+                     href="#" rel="{{value}}">{{key}}</a>
+                 <span ng-if="$ctrl.intarcia_word_cloud_loading" class="intarcia-wordcloud-loading text-center center-block">Loading...</span>
+              </div>
+            </div>
+          </div>
+          <!-- end of wordcloud -->
+ 
           <div class="widget twitter-top-influencers">
             <div class="widget-title twitter-top-influencers-title">
               <h3>

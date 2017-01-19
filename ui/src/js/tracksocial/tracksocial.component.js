@@ -33,7 +33,7 @@
 
     var tabName = $state.params.tabName;
 
-    this.tabsOrder = ["Market Watch", "Diabetes World","Intarcia"];
+    this.tabsOrder = ["Intarcia","Market Watch"];
 
     this.tabs = {
 
