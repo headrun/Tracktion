@@ -726,6 +726,27 @@
       <div class="row number-widgets">
         <div class="col-md-3">
           <div class="white-block  commonwid clearfix">
+             <img src="img/overall.png">
+             <div class="value-block  text-right pull-right">
+               <div class="value-self">
+                 {{$ctrl.summarywidgets[0]['count']+$ctrl.summarywidgets[1]['count']+$ctrl.summarywidgets[2]['count']}}
+               </div>
+               <div class="value-sub value-sub-bigger pull-right">
+                 Overall
+               </div>
+             </div>
+             <div class="block-footer clearfix">
+                <div class="pull-left">
+                  View More
+                </div>
+                <div class="pull-right">
+                 <i class="fa fa-chevron-right custom-arrow"></i> 
+                </div>
+             </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="lightgreen-block  commonwid clearfix">
              <img src="img/positive.png">
              <div class="value-block  text-right pull-right">
                <div class="value-self">
@@ -740,34 +761,13 @@
                   View More
                 </div>
                 <div class="pull-right">
-                 <i class="fa fa-chevron-right custom-arrow"></i> 
-                </div>
-             </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="violet-block  commonwid clearfix">
-             <img src="img/neutral.png">
-             <div class="value-block  text-right pull-right">
-               <div class="value-self">
-                 {{$ctrl.summarywidgets[0]['count']}}
-               </div>
-               <div class="value-sub value-sub-bigger pull-right">
-                 Neutral
-               </div>
-             </div>
-             <div class="block-footer clearfix">
-                <div class="pull-left">
-                  View More
-                </div>
-                <div class="pull-right">
                  <i class="fa fa-chevron-right custom-arrow"></i>
                 </div>
              </div>
           </div>
         </div>
         <div class="col-md-3">
-          <div class="lightgreen-block  commonwid clearfix">
+          <div class="red-block  commonwid clearfix">
              <img src="img/negative.png">
              <div class="value-block  text-right pull-right">
                <div class="value-self">
@@ -789,13 +789,13 @@
         </div>
         <div class="col-md-3">
           <div class="orange-block  commonwid clearfix">
-             <img src="img/overall.png">
+             <img src="img/neutral.png">
              <div class="value-block  text-right pull-right">
                <div class="value-self">
-                 {{$ctrl.summarywidgets[0]['count']+$ctrl.summarywidgets[1]['count']+$ctrl.summarywidgets[2]['count']}}
+                 {{$ctrl.summarywidgets[0]['count']}}
                </div>
                <div class="value-sub value-sub-bigger pull-right">
-                 Overall
+                 Neutral
                </div>
              </div>
              <div class="block-footer clearfix">
