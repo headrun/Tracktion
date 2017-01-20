@@ -5,9 +5,9 @@
          .component("login", {
 
            "templateUrl" : "/js/login/login.html",
-           "controller"  : ["$rootScope", "Auth", "AUTH_EVENTS",
+           "controller"  : ["$rootScope", "Auth", "AUTH_EVENTS", "$state",
 
-             function ($rootScope, Auth, AUTH_EVENTS) {
+             function ($rootScope, Auth, AUTH_EVENTS, $state) {
 
 	      Auth.status();
 
@@ -28,7 +28,7 @@
                 self.viewSubmit = "disabled";
 
                 Auth.login(credentials).then(function () {
-
+                    $state.go("dashboard");
                     $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
                 }, function () {
 

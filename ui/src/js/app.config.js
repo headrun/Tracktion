@@ -40,8 +40,8 @@
     ]);
   });
 
-  angular.module("dcube")
-         .config(["$locationProvider", "$stateProvider",
+  var app = angular.module("dcube")
+         app.config(["$locationProvider", "$stateProvider",
                   "$httpProvider", "$urlRouterProvider",
 
            function ($lp, $sp, $hp, $urp) {
@@ -121,4 +121,36 @@
             $rootScope.$on(AUTH_EVENTS.logoutSuccess, goToLogin);
           }
          ]);
+         app.config(['$httpProvider', function($httpProvider) {
+   $httpProvider.defaults.withCredentials = true;
+ }]) 
+
+ app.provider('myCSRF',[function(){
+ var headerName = 'X-CSRFToken';
+ var cookieName = 'csrftoken';
+ var allowedMethods = ['GET', 'POST'];
+
+ this.setHeaderName = function(n) {
+   headerName = n;
+ }
+ this.setCookieName = function(n) {
+   cookieName = n;
+ }
+ this.setAllowedMethods = function(n) {
+   allowedMethods = n;
+ }
+ this.$get = ['$cookies', function($cookies){
+   return {
+     'request': function(config) {
+       if(allowedMethods.indexOf(config.method) === -1) {
+         // do something on success
+         config.headers[headerName] = $cookies[cookieName];
+       }
+       return config;
+     }   
+   }   
+ }]; 
+}]).config(function($httpProvider) {
+ $httpProvider.interceptors.push('myCSRF');
+});
 }(window.angular));
