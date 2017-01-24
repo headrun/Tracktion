@@ -180,7 +180,7 @@
       this.activeTab = tabName;
 
       if(tabName == "Clinical Trail Summary"){
-        $http.get("http://176.9.181.36:2222/clinicalapi/clinicaltrail/")
+        $http.get(domainUrl+"clinicalapi/clinicaltrail/")
           .then(function (resp){
             if(resp.data.error) {
                return;
@@ -189,7 +189,7 @@
             that.clinical_summary=resp.data;
             that.adjustbars();
            })
-        $http.get("http://176.9.181.36:2222/clinicalapi/clinicaltrail/",{"params":{'keys':'filterkeys'}})
+        $http.get(domainUrl+"clinicalapi/clinicaltrail/",{"params":{'keys':'filterkeys'}})
           .then(function(resp){
             if(resp.data.error) {
               return;
@@ -202,7 +202,7 @@
         that.filterformsubmit=function(filtersdata){
           if(typeof(filtersdata)!="undefined"){
             console.log(filtersdata);
-            $http.get("http://176.9.181.36:2222/clinicalapi/clinicaltrail/",
+            $http.get(domainUrl+"clinicalapi/clinicaltrail/",
                       {"params":{"filters":filtersdata}})
                .then(function (resp){
                  if(resp.data.error) {
@@ -224,7 +224,7 @@
         if(typeof(stateData.id) != "undefined"){
           that.showLoading();
           console.log(stateData.id);
-          $http.get("http://176.9.181.36:2222/clinicalapi/clinicaltrail_summary",
+          $http.get(domainUrl+"clinicalapi/clinicaltrail_summary",
                       {"params":{"nct_id":stateData.id}})
                .then(function (resp){
                  if(resp.data.error) {
@@ -244,7 +244,7 @@
           that.hideLoading();
         }else{
           that.showLoading();
-          $http.get("http://176.9.181.36:2222/clinicalapi/clinicaltrail_summary")
+          $http.get(domainUrl+"clinicalapi/clinicaltrail_summary")
                .then(function (resp){
                  if(resp.data.error) {
                  return;

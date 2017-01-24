@@ -105,7 +105,7 @@
 
       for(var j=0;j<that.timelineparams.length;j++){
         (function(j){ 
-          $http.get("http://176.9.181.36:2222/clinicalapi/get_social_media/",{"params":that.timelineparams[j]})
+          $http.get(domainUrl+"clinicalapi/get_social_media/",{"params":that.timelineparams[j]})
           .then(function (resp){
                 if(resp.data.error) {
                   return;
@@ -174,7 +174,7 @@
       }
       for(var i=0;i<that.params.length;i++){
       (function(i){
-        $http.get("http://176.9.181.36:2222/clinicalapi/get_social_media/",{"params":that.params[i]}) 
+        $http.get(domainUrl+"clinicalapi/get_social_media/",{"params":that.params[i]}) 
           .then(function (resp){
             if(resp.data.error) {
               return;
@@ -256,7 +256,7 @@
       }
       // for word cloud
       that.intarcia_word_cloud_loading=true;
-      $http.get("http://176.9.181.36:2222/clinicalapi/get_wordcloud/",{"params":{'source':'intarcia'}})
+      $http.get(domainUrl+"clinicalapi/get_wordcloud/",{"params":{'source':'intarcia'}})
       .then(function(resp){
         if(resp.data.error){
           return;
@@ -322,7 +322,7 @@
       }, 0);
       for(var i=0;i<that.params.length;i++){
         (function(i){
-          $http.get("http://176.9.181.36:2222/clinicalapi/get_social_media/",{"params":that.params[i]}) 
+          $http.get(domainUrl+"clinicalapi/get_social_media/",{"params":that.params[i]}) 
             .then(function (resp){
               if(resp.data.error) {
                 return;
@@ -394,7 +394,7 @@
       }
        // for word cloud
       that.diabetes_word_cloud_loading=true;
-      $http.get("http://176.9.181.36:2222/clinicalapi/get_wordcloud/",{"params":{'source':'diabetes'}})
+      $http.get(domainUrl+"clinicalapi/get_wordcloud/",{"params":{'source':'diabetes'}})
       .then(function(resp){
         if(resp.data.error){
           return;
@@ -425,7 +425,7 @@
 
       for(var i=0;i<that.params.length;i++){
         (function(i){
-          $http.get("http://176.9.181.36:2222/clinicalapi/get_social_media/",{"params":that.params[i]}) 
+          $http.get(domainUrl+"clinicalapi/get_social_media/",{"params":that.params[i]}) 
             .then(function (resp){
               if(resp.data.error) {
                 return;
@@ -490,7 +490,7 @@
 
     // for word cloud
       that.marketwatch_word_cloud_loading=true;
-      $http.get("http://176.9.181.36:2222/clinicalapi/get_wordcloud/",{"params":{'source':'marketwatch'}})
+      $http.get(domainUrl+"clinicalapi/get_wordcloud/",{"params":{'source':'marketwatch'}})
       .then(function(resp){
         if(resp.data.error){
           return;
