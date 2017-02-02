@@ -375,7 +375,15 @@
           <div class="widget widget-blue">
             <div class="widget-title news-thirdrow-title">
               <h3>
-                 WORDCLOUD
+              	WORDCLOUD
+				    <select class="form-control drugsDropdown" 
+				    ng-model="drugs"
+				    ng-change="$ctrl.loadMarketwatchWordCloud(drugs)">
+					   <option  ng-repeat="drugs in $ctrl.drugsDropdown" 
+					   			value="{{ drugs }}">
+					   	{{ drugs }}
+					   </option>
+					</select>
                  <span class="pull-right">
                  <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
                     title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
@@ -389,8 +397,8 @@
             <div class="widget-content news-third-row">
               <div class="wordclouddata">
                 <div class="tagcloud text-justify marketwatch-word-cloud">
-                  <a href="#" ng-if="!$ctrl.marketwatch_word_cloud_loading" ng-repeat=" (key,value) in $ctrl.market_word_cloud" 
-                     rel="{{value}}">{{key}}</a>
+                  <a ng-if="!$ctrl.marketwatch_word_cloud_loading" ng-repeat=" (key,value) in $ctrl.market_word_cloud" 
+                     rel="{{value}}" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?key_word='+key+'&source=marketwatch', 'Impressions on '+key)">{{key}}</a>
                   <span ng-if="$ctrl.marketwatch_word_cloud_loading" class="diabetes-wordcloud-loading text-center center-block">Loading...</span>
 		        </div>
               </div>
@@ -403,16 +411,40 @@
     </div>
   </div>
   <div class="tab-pane" role="tabpanel" 
-    ng-if="$ctrl.activeTab === 'Diabetes World' ">
-    <div class="diabetes-world container-fluid center-block">
+    ng-if="$ctrl.activeTab === 'Influencers' ">
+    <div class="marketwatch-content  container-fluid center-block">
       <div class="row">
-        <div class="col-md-8">
-          <!-- start of widget -->
-          <div class="widget geoloc">
-            <div class="widget-title geoloc-title">
+        <div class="col-md-12">
+          <div class="widget widget-blue">
+            <div class="widget-title news-firstrow-title">
               <h3>
-                 Geo Location Spread
+                 Timeline
                  <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Share via Email" data-original-title="Remove"><i class="fa fa-telegram"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+                 </span>
+              </h3> 
+            </div>
+            <div class="widget-content news-first-row">
+              <div class="timeline-chart">
+                <highcharts options="$ctrl.highchartoption" >
+                </highcharts>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row row-2">
+        <div class="col-md-4">
+          <div class="widget">
+            <div class="widget-title top">
+              <h3>
+                Top Doctor Influencers
+                <span class="pull-right">
                  <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
                     title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
                  <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
@@ -422,123 +454,34 @@
                  </span>
               </h3>
             </div>
-            <div class="widget-content geoloc-content">
-              <div id="map-tooltip" class="tooltip right" role="tooltip" 
-                    >
-                <div class="tooltip-arrow"></div>
-                <div class="tooltip-inner"></div>
-              </div>
-              <div id="map">
-                
-              </div>
-            </div>
-          </div>
-          <!-- end of widget-->
-
-          <!-- start of widget -->
-          <div class="widget genderclassification">
-            <div class="widget-title gender-classify-title">
-              <h3>
-                 Gender Classification
-                 <span class="pull-right">
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
-                    title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
-                    title="Share via Email" data-original-title="Remove"><i class="fa fa-telegram"></i></a>
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
-                    title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
-                 </span>
-              </h3>
-            </div>
-            <div class="widget-content gender-classify-content">
-              <div class="row roundgauge">
-                <div class="col-sm-4">
-                  <div class="guage-title text-center">
-                    <i class="fa fa-male"></i> 
-                       <a class="articles-link state-sensitive" data-state="{&quot;gender&quot;:[&quot;male&quot;]}"
-                             href="?show_articles=1#gender%5B%5D=male">Male(%)
-                       </a> 
-                  </div>
-                  <div class="guage-intarcia-male">
-                     <just-gage id="test1" min=0 max=100 value="{{$ctrl.diabetes_gender[1]['perc']}}"options="{
-                      title: 'Dynamic, using options, with default min and max',
-                      levelColors: ['rgb(66, 139, 202)'],
-                      levelGradiant: false
-                     }"></just-gage>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="guage-title text-center">
-                    <i class="fa fa-female"></i> 
-                       <a class="articles-link state-sensitive" data-state="{&quot;gender&quot;:[&quot;male&quot;]}"
-                             href="?show_articles=1#gender%5B%5D=female">female(%)
-                       </a> 
-                  </div>
-                  <div class="guage-intarcia-female">
-                     <just-gage id="test2" min=0 max=100 value="{{$ctrl.diabetes_gender[0]['perc']}}"options="{
-                      title: 'Dynamic, using options, with default min and max',
-                      levelColors: ['rgb(217, 83, 79)'],
-                      levelGradiant: false
-                     }"></just-gage>  
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="guage-title text-center">
-                    <i class="fa fa-male"></i> 
-                    <i class="fa fa-female"></i>
-                       <a class="articles-link state-sensitive" data-state="{&quot;gender&quot;:[&quot;male&quot;]}"
-                             href="?show_articles=1#gender%5B%5D=male">Not Classified(%)
-                       </a> 
-                  </div>
-                  <div class="guage-intarcia-male">
-                     <just-gage id="test3" min=0 max=100 value="{{$ctrl.diabetes_gender[2]['perc']}}"options="{
-                      title: 'Dynamic, using options, with default min and max',
-                      levelColors: ['rgb(192, 152, 83)'],
-                      levelGradiant: false
-                     }"></just-gage>  
-                  </div>
-                </div>
-                <!-- end of  col-div -->
-              </div> 
-            </div>
-          </div>
-          <!-- end of widget -->
- 
-          <!-- start of widget -->
-          <div class="widget wordcloud">
-            <div class="widget-title wordcloud-title">
-              <h3>
-                 Word Cloud
-                 <span class="pull-right">
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
-                    title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
-                    title="Share via Email" data-original-title="Remove"><i class="fa fa-telegram"></i></a>
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
-                    title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
-                 </span>
-              </h3>
-            </div>
-            <div class="widget-content  word-cloud-content">
-              <div class="tagcloud text-justify diabetes-word-cloud ">
-                <a href="#"ng-if="!$ctrl.diabetes_word_cloud_loading"  ng-repeat="(key, value) in $ctrl.diabetes_word_cloud"  
-                        rel="{{value}}">{{key}}</a>
-                <span ng-if="$ctrl.diabetes_word_cloud_loading" class="diabetes-wordcloud-loading text-center center-block">Loading...</span>
-
+            <div class="widget-content top-social-content news-second-row">
+              <div class="influencers-rows">
+                  <table class="table" id="influencers-table">
+	             <thead>
+		       <tr>
+			 <th>Influencer Name</th>
+			 <th class="text-right">Klout Score</th>
+		       </tr>
+	             </thead>
+	             <tbody>
+		       <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" data-title="click to view data" rel="tooltip" title="" ng-repeat="doctor in $ctrl.topDoctors">
+			 <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+				<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?author_name='+doctor.term+'&source=influencers', 'Impressions on '+doctor.term)">{{ doctor.term }}</a>
+			 </td>
+			 <td class="count text-right">{{ doctor.min.toFixed(2) }}</td>
+		       </tr>
+	            </tbody>
+                  </table>
               </div>
             </div>
           </div>
-          <!-- end of widget -->
-
         </div>
         <div class="col-md-4">
-
-          <!-- start of widget -->
-          <div class="widget source-distribution">
-            <div class="widget-title source-dist-title">
+          <div class="widget">
+            <div class="widget-title top">
               <h3>
-                 Source Distribution
-                 <span class="pull-right">
+                Top Patient Influencers
+                <span class="pull-right">
                  <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
                     title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
                  <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
@@ -548,118 +491,7 @@
                  </span>
               </h3>
             </div>
-            <div class="widget-content source-dist-content">
-              <highcharts options="$ctrl.diabsourcedist"></highcharts>
-
-              <div class="source-chart-legend">
-                <table>
-                  <tbody>
-                    <tr class="source-tr" data-source="Twitter">
-                      <td class="color-code-td"><span class="color-code" style="background-color: #00BEF6"></span></td>
-                      <td class="source-name">
-                        <a class="articles-link state-sensitive" href="#"><span>Twitter</span></a>
-                      </td>
-                      <td class="source-count">
-                        <span>{{parseFloat(($ctrl.source_dist[0]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
-                      </td>
-                    </tr>
-                    <tr class="source-tr" data-source="Flickr">
-                      <td class="color-code-td"><span class="color-code" style="background-color: #ff0084"></span></td>
-                      <td class="source-name">
-                        <a class="articles-link state-sensitive" data-state="{&quot;source&quot;: [&quot;twitter&quot;]}"
-                            href="?show_articles=1#source%5B%5D=twitter"><span>RSS</span></a>
-                      </td>
-                      <td class="source-count">
-                         <span>{{parseFloat(($ctrl.source_dist[1]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
-                      </td>
-                    </tr>
-                    <tr class="source-tr" data-source="News">
-                      <td class="color-code-td"><span class="color-code" style="background-color: #CC9900"></span></td>
-                      <td class="source-name">
-                        <a class="articles-link state-sensitive" href="#"><span>News</span></a>
-                      </td>
-                      <td class="source-count">
-                        <span>{{parseFloat(($ctrl.source_dist[2]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
-                      </td>
-                    </tr>
-                    <tr class="source-tr" data-source="Instagram">
-                      <td class="color-code-td"><span class="color-code" style="background-color:#4C3D32"></span></td>
-                      <td class="source-name">
-                        <a class="articles-link state-sensitive" href="#"><span>Instagram</span></a>
-                      </td>
-                      <td class="source-count">
-                         <span>{{parseFloat(($ctrl.source_dist[3]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
-                      </td>
-                    </tr>
-                    <tr class="source-tr" data-source="Googleplus">
-                      <td class="color-code-td"><span class="color-code" style="background-color: #DD4B39"></span></td>
-                      <td class="source-name">
-                        <a class="articles-link state-sensitive" href="#"><span>Googleplus</span></a>
-                      </td>
-                      <td class="source-count">
-                        <span>{{parseFloat(($ctrl.source_dist[4]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
-                      </td>
-                    </tr>
-                    <tr class="source-tr" data-source="Blogs">
-                      <td class="color-code-td"><span class="color-code" style="background-color: #FF8833"></span></td>
-                      <td class="source-name">
-                        <a class="articles-link state-sensitive" href="#"><span>Blogs</span></a>
-                      </td>
-                      <td class="source-count">
-                        <span>{{parseFloat(($ctrl.source_dist[5]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
-                      </td>
-                    </tr>
-                    <tr class="source-tr" data-source="Tumblr">
-                      <td class="color-code-td"><span class="color-code" style="background-color: #529ECC"></span></td>
-                      <td class="source-name">
-                        <a class="articles-link state-sensitive" href="#"><span>Tumblr</span></a>
-                      </td>
-                      <td class="source-count">
-                        <span>{{parseFloat(($ctrl.source_dist[6]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
-                      </td>
-                    </tr>
-                    <tr class="source-tr" data-source="Forums">
-                      <td class="color-code-td"><span class="color-code" style="background-color: #CC6600"></span></td>
-                      <td class="source-name">
-                        <a class="articles-link state-sensitive" href="#"><span>Forums</span></a>
-                      </td>
-                      <td class="source-count">
-                        <span>{{parseFloat(($ctrl.source_dist[8]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
-                      </td>
-                    </tr>
-                    <tr class="source-tr" data-source="Facebook">
-                      <td class="color-code-td"><span class="color-code" style="background-color: #3B5998"></span></td>
-                      <td class="source-name">
-                        <a class="articles-link state-sensitive" href="#"><span>Facebook</span></a>
-                      </td>
-                      <td class="source-count">
-                        <span>{{parseFloat(($ctrl.source_dist[10]['count']/$ctrl.sourcedist_total)*100).toFixed(2)}}%</span>
-                      </td>
-                    </tr>
-
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <!-- end of widget --> 
-          
-          <!-- start of widget -->
-          <div class="widget top-influencers">
-            <div class="widget-title top-influencers-title">
-              <h3>
-                 Top Influencers
-                 <span class="pull-right">
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
-                    title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
-                    title="Share via Email" data-original-title="Remove"><i class="fa fa-telegram"></i></a>
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
-                    title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
-                 </span>
-              </h3>
-            </div>
-            <div class="widget-content top-influencers-content">
+            <div class="widget-content top-social-content news-second-row">
               <div class="influencers-rows">
                 <table class="table" id="influencers-table">
 		  <thead>
@@ -669,24 +501,75 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr class="tw-influencer" ng-repeat="influencer in $ctrl.diabetes_influencers">
+		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" data-title="click to view data" rel="tooltip" title="" ng-repeat="patient in $ctrl.topPatients">
+
 		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">{{influencer.term}}</a>
+			<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?author_name='+patient.term+'&source=influencers', 'Impressions on '+patient.term)">{{ patient.term }}</a>
 		      </td>
-		      <td class="count text-right">{{influencer.max.toFixed(2)}}</td>
+		      <td class="count text-right">{{ patient.min.toFixed(2) }}</td>
 		    </tr>
-		   </tbody>
-		</table>
+		  </tbody>
+                </table>
               </div>
             </div>
           </div>
-          <!-- end of widget -->
-
-          <!-- start of the widget -->
-          <div class="widget languages">
-            <div class="widget-title languages-title">
+        </div>
+        <div class="col-md-4">
+          <div class="widget">
+            <div class="widget-title top">
               <h3>
-                 Languages
+                Top Allied HCP Influencers
+                <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Share via Email" data-original-title="Remove"><i class="fa fa-telegram"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+                 </span>
+              </h3>
+            </div>
+            <div class="widget-content top-social-content news-second-row">
+              <div class="influencers-row"> 
+                <table class="table" id="influencers-table">
+		  <thead>
+		    <tr>
+		      <th>Influencer Name</th>
+		      <th class="text-right">Klout Score</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" data-title="click to view data" rel="tooltip" title="" ng-repeat="alliedHps in $ctrl.topAlliedHps">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+			<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?author_name='+alliedHps.term+'&source=influencers', 'Impressions on '+alliedHps.term)">{{ alliedHps.term }}</a>
+		      </td>
+		      <td class="count text-right">{{ alliedHps.min.toFixed(2) }}</td>
+		    </tr>
+		  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+        <!-- end of row -->
+
+      <div class="row row3">
+        <div class="col-md-12">
+          <div class="widget widget-blue">
+            <div class="widget-title news-thirdrow-title">
+              <h3>
+              	WORDCLOUD
+				    <select class="form-control drugsDropdown" 
+				    ng-model="drugs"
+				    ng-change="$ctrl.loadMarketwatchWordCloud(drugs)">
+					   <option  ng-repeat="drugs in $ctrl.drugsDropdown" 
+					   			value="{{ drugs }}">
+					   	{{ drugs }}
+					   </option>
+					</select>
                  <span class="pull-right">
                  <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
                     title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
@@ -697,26 +580,20 @@
                  </span>
               </h3>
             </div>
-            <div class="widget-content languages-content">
-              <div class="influencers-rows">
-               
-                <table class="table" id="influencers-table">
-		  <tbody>
-		    <tr class="tw-influencer" ng-repeat="lang in $ctrl.diabetes_lang">
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" href="#">{{lang.term}}</a>
-		      </td>
-		      <td class="count text-right">{{lang.perc}}%</td>
-		    </tr>
-		  </tbody>
-	        </table> 
+            <div class="widget-content news-third-row">
+              <div class="wordclouddata">
+                <div class="tagcloud text-justify marketwatch-word-cloud">
+                  <a ng-if="!$ctrl.marketwatch_word_cloud_loading" ng-repeat=" (key,value) in $ctrl.market_word_cloud" 
+                     rel="{{value}}" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?key_word='+key+'&source=marketwatch', 'Impressions on '+key)">{{key}}</a>
+                  <span ng-if="$ctrl.marketwatch_word_cloud_loading" class="diabetes-wordcloud-loading text-center center-block">Loading...</span>
+		        </div>
               </div>
             </div>
-          </div> 
-          <!--end of the widget -->
+          </div>
 
         </div>
       </div>
+      <!-- end of row --> 
     </div>
   </div>
   <div class="tab-pane" role="tabpanel" 
@@ -725,88 +602,96 @@
     <div class="intarcia conatainer-fluid center-block">  
       <div class="row number-widgets">
         <div class="col-md-3">
-          <div class="white-block  commonwid clearfix">
-             <img src="img/overall.png">
-             <div class="value-block  text-right pull-right">
-               <div class="value-self">
-                 {{$ctrl.summarywidgets[0]['count']+$ctrl.summarywidgets[1]['count']+$ctrl.summarywidgets[2]['count']}}
-               </div>
-               <div class="value-sub value-sub-bigger pull-right">
-                 Overall
-               </div>
-             </div>
-             <div class="block-footer clearfix">
-                <div class="pull-left">
-                  View More
-                </div>
-                <div class="pull-right">
-                 <i class="fa fa-chevron-right custom-arrow"></i> 
-                </div>
-             </div>
-          </div>
+           <a ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?source=intarcia', 'Overall Impressions')">	
+	          <div class="white-block  commonwid clearfix">
+	             <img src="img/overall.png">
+	             <div class="value-block  text-right pull-right">
+	               <div class="value-self">
+	                 {{$ctrl.summarywidgets[0]['count']+$ctrl.summarywidgets[1]['count']+$ctrl.summarywidgets[2]['count']}}
+	               </div>
+	               <div class="value-sub value-sub-bigger pull-right">
+	                 Overall
+	               </div>
+	             </div>
+	             <div class="block-footer clearfix">
+	                <div class="pull-left">
+	                  View More
+	                </div>
+	                <div class="pull-right">
+	                 <i class="fa fa-chevron-right custom-arrow"></i> 
+	                </div>
+	             </div>
+	          </div>
+	       </a>   
         </div>
         <div class="col-md-3">
-          <div class="lightgreen-block  commonwid clearfix">
-             <img src="img/positive.png">
-             <div class="value-block  text-right pull-right">
-               <div class="value-self">
-                 {{$ctrl.summarywidgets[2]['count']}}
-               </div>
-               <div class="value-sub value-sub-bigger pull-right">
-                 Positive
-               </div>
-             </div>
-             <div class="block-footer clearfix">
-                <div class="pull-left">
-                  View More
-                </div>
-                <div class="pull-right">
-                 <i class="fa fa-chevron-right custom-arrow"></i>
-                </div>
-             </div>
-          </div>
+           <a ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?sentiment=positive&source=intarcia', 'Positive Impressions')">
+	          <div class="lightgreen-block  commonwid clearfix">
+	             <img src="img/positive.png">
+	             <div class="value-block  text-right pull-right">
+	               <div class="value-self">
+	                 {{$ctrl.summarywidgets[2]['count']}}
+	               </div>
+	               <div class="value-sub value-sub-bigger pull-right">
+	                 Positive
+	               </div>
+	             </div>
+	             <div class="block-footer clearfix">
+	                <div class="pull-left">
+	                  View More
+	                </div>
+	                <div class="pull-right">
+	                 <i class="fa fa-chevron-right custom-arrow"></i>
+	                </div>
+	             </div>
+	          </div>
+           </a>
         </div>
         <div class="col-md-3">
-          <div class="red-block  commonwid clearfix">
-             <img src="img/negative.png">
-             <div class="value-block  text-right pull-right">
-               <div class="value-self">
-                 {{$ctrl.summarywidgets[1]['count']}}
-               </div>
-               <div class="value-sub value-sub-bigger pull-right">
-                 Negative
-               </div>
-             </div>
-             <div class="block-footer clearfix">
-                <div class="pull-left">
-                  View More
-                </div>
-                <div class="pull-right">
-                 <i class="fa fa-chevron-right custom-arrow"></i>
-                </div>
-             </div>
-          </div>
+          <a ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?sentiment=negative&source=intarcia', 'Negative Impressions')">
+	          <div class="red-block  commonwid clearfix">
+	             <img src="img/negative.png">
+	             <div class="value-block  text-right pull-right">
+	               <div class="value-self">
+	                 {{$ctrl.summarywidgets[1]['count']}}
+	               </div>
+	               <div class="value-sub value-sub-bigger pull-right">
+	                 Negative
+	               </div>
+	             </div>
+	             <div class="block-footer clearfix">
+	                <div class="pull-left">
+	                  View More
+	                </div>
+	                <div class="pull-right">
+	                 <i class="fa fa-chevron-right custom-arrow"></i>
+	                </div>
+	             </div>
+	          </div>
+	       </a>
         </div>
         <div class="col-md-3">
-          <div class="orange-block  commonwid clearfix">
-             <img src="img/neutral.png">
-             <div class="value-block  text-right pull-right">
-               <div class="value-self">
-                 {{$ctrl.summarywidgets[0]['count']}}
-               </div>
-               <div class="value-sub value-sub-bigger pull-right">
-                 Neutral
-               </div>
-             </div>
-             <div class="block-footer clearfix">
-                <div class="pull-left">
-                  View More
-                </div>
-                <div class="pull-right">
-                 <i class="fa fa-chevron-right custom-arrow"></i>
-                </div>
-             </div>
-          </div>
+          <a ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?sentiment=neutral&source=intarcia', 'Neutral Impressions')">
+	          <div class="orange-block  commonwid clearfix">
+	             <img src="img/neutral.png">
+	             <div class="value-block  text-right pull-right">
+	               <div class="value-self">
+	                 {{$ctrl.summarywidgets[0]['count']}}
+	               </div>
+	               <div class="value-sub value-sub-bigger pull-right">
+	                 Neutral
+	               </div>
+	             </div>
+	             <div class="block-footer clearfix">
+	                <div class="pull-left">
+	                  View More
+	                </div>
+	                <div class="pull-right">
+	                 <i class="fa fa-chevron-right custom-arrow"></i>
+	                </div>
+	             </div>
+	          </div>
+	       </a>
         </div>
          <!-- end of col of small blocks -->
       </div>
@@ -830,9 +715,132 @@
             <div class="widget-content timeline-content">
               <highcharts options="$ctrl.highchartintarciatimeline"></highcharts> 
             </div>
+          
+
+
+
+          <div class="col-md-6">
+          <div class="widget twitter-top-influencers">
+            <div class="widget-title twitter-top-influencers-title">
+              <h3>
+                 <a href="javascript void(0)" data-toggle="dropdown" aria-expanded="true" 
+                    style="color:white;">Twitter Top Influencers <span class="caret"></span></a>
+                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                   <li><a href="#" data-val="facebook"><i class="source fb-img"></i>Facebook</a></li>
+                   <li><a href="#" data-val="twitter"><i class="source tw-img"></i>Twitter</a></li>
+                   <li><a href="#" data-val="googleplus"><i class="source gp-img"></i>Google+</a></li>
+                   <li><a href="#" data-val="news"><i class="source news-img"></i>News</a></li>
+                   <li><a href="#" data-val="blogs"><i class="source blogs-img"></i>Blogs</a></li>
+                   <li><a href="#" data-val="forums"><i class="source forums-img"></i>Forums</a></li>
+                   <li><a href="#" data-val="youtube"><i class="source yt-img"></i>Youtube</a></li>
+                   <li><a href="#" data-val="flickr"><i class="source fl-img"></i>Flickr</a></li>
+                   <li><a href="#" data-val="instagram"><i class="source in-img"></i>Instagram</a></li>
+                   <li><a href="#" data-val="tumblr"><i class="source tu-img"></i>Tumblr</a></li>
+                   <li><a href="#" data-val="linkedin" class="disabled"><i class="source ln-img"></i>Linkedin</a></li>
+                   <li><a href="#" data-val="quora" class="disabled"><i class="source quora-img"></i>Quora</a></li>
+                 </ul>
+                 <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="Download" 
+                    data-original-title="Remove"><i class="fa fa-download"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="Share via Email" 
+                    data-original-title="Remove"><i class="fa fa-telegram"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title=""
+                     data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+                 </span>
+              </h3>
+            </div>
+            <div class="widget-content twitter-top-influencer-content">
+              <div class="influencers-rows">
+		<table class="table" id="influencers-table">
+		  <thead>
+		    <tr>
+		      <th>Influencer Name</th>
+		      <th class="text-right">Klout Score</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr class="tw-influencer" ng-repeat="influencer in $ctrl.top_influencers">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+		        <a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?author_name='+influencer.term+'&source=intarcia', 'Impressions by '+term)">{{influencer.term}}</a>
+		      </td>
+		      <td class="count text-right">{{parseFloat(influencer.max).toFixed(2)}}</td>
+		    </tr>
+		  </tbody>
+		</table>
+	      </div>
+            </div>
+          </div>
+          </div>
+
+          <div class="col-md-6">
+          <div class="widget languages">
+            <div class="widget-title languages-title">
+              <h3>
+                 Languages
+                 <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="Download" 
+                    data-original-title="Remove"><i class="fa fa-download"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="Share via Email" 
+                    data-original-title="Remove"><i class="fa fa-telegram"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title=""
+                     data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+                 </span>
+              </h3>
+            </div>
+            <div class="widget-content languages-content">
+              <div class="influencers-rows">
+		<table class="table" id="influencers-table">
+		  <tbody>
+		    <tr class="tw-influencer" ng-repeat="language in $ctrl.languages">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+		        <a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?lang_name='+language.term+'&source=intarcia', 'Languages Impressions')">{{language.term}}</a>
+		      </td>
+		      <td class="count text-right">{{language.perc}}%</td>
+		    </tr>
+		  </tbody>
+		</table>
+              </div>
+            </div>
+          </div> 
+          </div> 
+
+
+
+
+          </div>
           </div>
           <!-- end of timline widget -->
-          <div class="widget gender-classification">
+          <div class="col-md-4">
+         <div class="widget wordcloud">
+            <div class="widget-title wordcloud-title">
+              <h3>
+                 Word Cloud
+                 <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="Download" 
+                    data-original-title="Remove"><i class="fa fa-download"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="Share via Email" 
+                    data-original-title="Remove"><i class="fa fa-telegram"></i></a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title=""
+                     data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+                 </span>
+              </h3>
+            </div>
+            <div class="widget-content wordcloud-content">
+              <div class="tagcloud intarcia-word-cloud text-justify text-center">
+                 <a  ng-if="!$ctrl.intarcia_word_cloud_loading" ng-repeat="(key, value) in $ctrl.intarcia_word_cloud" 
+                      rel="{{value}}" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?key_word='+key+'&source=intarcia', 'Impressions on '+key)">{{key}}</a>
+                 <span ng-if="$ctrl.intarcia_word_cloud_loading" class="intarcia-wordcloud-loading text-center center-block">Loading...</span>
+              </div>
+            </div>
+          </div>
+          <!-- end of wordcloud -->
+
+
+           <!-- end of last widget -->
+          <!-- end of twitter-top influencers -->
+          <!--<div class="widget gender-classification">
             <div class="widget-title gender-title">
               <h3>
                  Gender Classification
@@ -894,12 +902,11 @@
                       }"></just-gage>  
                    </div>
                  </div>
-                 <!-- end of  col-div -->
                </div> 
             </div>
-          </div>
-          <!-- end of genderclassification widget -->
-          <div class="widget source">
+          </div>-->
+           <!--end of genderclassification widget -->
+          <!--<div class="widget source">
             <div class="widget-title source-title">
               <h3>
                  Source Distribution
@@ -1005,120 +1012,70 @@
               </div>
 
             </div>
-          </div>
+          </div>-->
           <!-- end of source dist -->
-        </div>
-        <div class="col-md-4">
-         <div class="widget wordcloud">
-            <div class="widget-title wordcloud-title">
-              <h3>
-                 Word Cloud
-                 <span class="pull-right">
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="Download" 
-                    data-original-title="Remove"><i class="fa fa-download"></i></a>
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="Share via Email" 
-                    data-original-title="Remove"><i class="fa fa-telegram"></i></a>
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title=""
-                     data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
-                 </span>
-              </h3>
-            </div>
-            <div class="widget-content wordcloud-content">
-              <div class="tagcloud intarcia-word-cloud text-justify text-center">
-                 <a  ng-if="!$ctrl.intarcia_word_cloud_loading" ng-repeat="(key, value) in $ctrl.intarcia_word_cloud" 
-                     href="#" rel="{{value}}">{{key}}</a>
-                 <span ng-if="$ctrl.intarcia_word_cloud_loading" class="intarcia-wordcloud-loading text-center center-block">Loading...</span>
-              </div>
-            </div>
-          </div>
-          <!-- end of wordcloud -->
- 
-          <div class="widget twitter-top-influencers">
-            <div class="widget-title twitter-top-influencers-title">
-              <h3>
-                 <a href="javascript void(0)" data-toggle="dropdown" aria-expanded="true" 
-                    style="color:white;">Twitter Top Influencers <span class="caret"></span></a>
-                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                   <li><a href="#" data-val="facebook"><i class="source fb-img"></i>Facebook</a></li>
-                   <li><a href="#" data-val="twitter"><i class="source tw-img"></i>Twitter</a></li>
-                   <li><a href="#" data-val="googleplus"><i class="source gp-img"></i>Google+</a></li>
-                   <li><a href="#" data-val="news"><i class="source news-img"></i>News</a></li>
-                   <li><a href="#" data-val="blogs"><i class="source blogs-img"></i>Blogs</a></li>
-                   <li><a href="#" data-val="forums"><i class="source forums-img"></i>Forums</a></li>
-                   <li><a href="#" data-val="youtube"><i class="source yt-img"></i>Youtube</a></li>
-                   <li><a href="#" data-val="flickr"><i class="source fl-img"></i>Flickr</a></li>
-                   <li><a href="#" data-val="instagram"><i class="source in-img"></i>Instagram</a></li>
-                   <li><a href="#" data-val="tumblr"><i class="source tu-img"></i>Tumblr</a></li>
-                   <li><a href="#" data-val="linkedin" class="disabled"><i class="source ln-img"></i>Linkedin</a></li>
-                   <li><a href="#" data-val="quora" class="disabled"><i class="source quora-img"></i>Quora</a></li>
-                 </ul>
-                 <span class="pull-right">
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="Download" 
-                    data-original-title="Remove"><i class="fa fa-download"></i></a>
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="Share via Email" 
-                    data-original-title="Remove"><i class="fa fa-telegram"></i></a>
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title=""
-                     data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
-                 </span>
-              </h3>
-            </div>
-            <div class="widget-content twitter-top-influencer-content">
-              <div class="influencers-rows">
-		<table class="table" id="influencers-table">
-		  <thead>
-		    <tr>
-		      <th>Influencer Name</th>
-		      <th class="text-right">Klout Score</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    <tr class="tw-influencer" ng-repeat="influencer in $ctrl.top_influencers">
-
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-		        <a class="articles-link state-sensitive" data-encoded="true" href="#">{{influencer.term}}</a>
-		      </td>
-		      <td class="count text-right">{{parseFloat(influencer.max).toFixed(2)}}</td>
-		    </tr>
-		  </tbody>
-		</table>
-	      </div>
-            </div>
-          </div>
-          <!-- end of twitter-top influencers -->
-          <div class="widget languages">
-            <div class="widget-title languages-title">
-              <h3>
-                 Languages
-                 <span class="pull-right">
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="Download" 
-                    data-original-title="Remove"><i class="fa fa-download"></i></a>
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="Share via Email" 
-                    data-original-title="Remove"><i class="fa fa-telegram"></i></a>
-                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title=""
-                     data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
-                 </span>
-              </h3>
-            </div>
-            <div class="widget-content languages-content">
-              <div class="influencers-rows">
-		<table class="table" id="influencers-table">
-		  <tbody>
-		    <tr class="tw-influencer" ng-repeat="language in $ctrl.languages">
-
-		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-		        <a class="articles-link state-sensitive" data-encoded="true" href="#">{{language.term}}</a>
-		      </td>
-		      <td class="count text-right">{{language.perc}}%</td>
-		    </tr>
-		  </tbody>
-		</table>
-              </div>
-            </div>
-          </div> 
-           <!-- end of last widget -->
+        
+          
         </div>
       </div>
     </div>
   </div>
  
+</div>
+
+<!-- Modal -->
+  <div class="modal fade" id="articleModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <!--<h5 class="pull-right articleCount"><span class="badge">{{ $ctrl.respTotal }}</span> Impressions</h5>-->
+          <h4 class="modal-title">{{ $ctrl.modalHeading }}</h4>
+        </div>
+        <div class="modal-body">
+        	<div class="articlediv">
+        		<ul class="list-group">
+				  <li class="list-group-item " ng-repeat="article in $ctrl.articles">
+					<article>
+						<div id="kloudScore" class="pull-right" ng-if="article._source.author_rank" >
+							<span>
+								Kloud Score: {{ article._source.author_rank.toFixed(2) }}
+							</span>
+						</div>
+						<div id="heading"> 
+							<a href="{{ article._source.url }}">
+								<i class="source {{article._id.split(':')[0]}}-img"></i>
+
+								<span style="font-size: 17px;" ng-if="article._id.split(':')[0] != 'tw' && article._source.title != ''">
+									{{ z = article._source.title.length > 60 ? article._source.title.slice(0, 60) + "..." : article._source.title ; }}	
+								</span>
+								<span style="font-size: 17px;" ng-if="article._id.split(':')[0] == 'tw' && article._source.title == ''">
+									{{ "@"+article._source.original_data.user.screen_name }}	
+								</span>
+							</a>
+						</div>
+						<div id="link">
+							<a href="{{ article._source.url }}">
+								{{ z = article._source.url.length > 100 ? article._source.url.slice(0, 100) + "..." : article._source.url ; }}
+							</a>
+						</div>
+						<div id="content">
+							{{ z = article._source.text.length > 256 ? article._source.text.slice(0, 253) + "..." : article._source.text ; }}
+						</div>
+						<div id="timestamp" class="pull-right">
+							<small>
+								{{ article._source.dt_added * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }} - by : {{ article._source.author.name }}
+							</small>
+						</div>
+					</article>
+				  </li>
+				</ul>
+				<div ng-if="$ctrl.scrollId">
+					<button type="button" ng-click="$ctrl.loadMore($ctrl.scrollId)" class="btn btn-primary btn-xs center-block">Load More</button>
+				</div>
+        	</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
