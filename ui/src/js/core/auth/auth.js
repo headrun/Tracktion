@@ -1,7 +1,7 @@
 ;(function (angular) {
   "use strict";
 
-  var endPoint = "https://tracktion.headrun.com/auth";
+  var endPoint = "https://demo.headrun.com/auth";
 
   angular.module("auth", []).service("Auth", ["$q", "$http", "Session",
 
