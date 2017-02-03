@@ -1,10 +1,10 @@
-;(function (angular) {
+;(function (global, angular) {
   "use strict";
 
   angular.module("highcharts")
          .component("highcharts", {
 
-           "templateUrl": "/js/highcharts/highcharts.html",
+           "templateUrl": global.templateUrl + "/highcharts.html",
            "controller" : ["Highcharts", "$element", "$scope", "$q",
 
            function (Highcharts, $element, $scope, $q) {
@@ -18,7 +18,7 @@
              var rendered = $q.defer();
 
              this.onRender = function () {
-            
+
                rendered.resolve();
              };
 
@@ -54,4 +54,4 @@
              "options": "<"
            }
          })
-}(window.angular));
+}(window.APP = window.APP || {}, window.angular));

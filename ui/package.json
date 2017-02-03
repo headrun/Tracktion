@@ -1,0 +1,29 @@
+{
+  "name": "tracktion",
+  "version": "0.0.1",
+  "description": "Tracktion",
+  "environment": "!production",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/headrun/Tracktion.git"
+  },
+  "author": "prashanth.pamidi@headrun.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/headrun/Tracktion/issues"
+  },
+  "homepage": "https://github.com/headrun/Tracktion#readme",
+  "devDependencies": {
+
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-less": "^1.4.0",
+    "html-minifier": "^3.0.2",
+    "jsdom": "^9.4.2",
+    "less-plugin-autoprefix": "^1.5.1",
+    "less-plugin-clean-css": "^1.5.1",
+    "uglify": "^0.1.5",
+    "uglify-js": "^2.7.0"
+  }
+}

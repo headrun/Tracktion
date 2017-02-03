@@ -1,10 +1,10 @@
-;(function (angular) {
+;(function (global, angular) {
   "use strict";
 
   angular.module("filterBar")
          .component("filterBar", {
 
-           "templateUrl": "/js/filterBar/filterBar.html",
+           "templateUrl": global.templateUrl + "/filterBar.html",
            "controller": function () {
 
              this.updateFilter = function (filterName, filterVal) {
@@ -30,4 +30,4 @@
              "updateSelectedFilters" : "&"
            }
          });
-}(window.angular));
+}(window.APP = window.APP || {}, window.angular));

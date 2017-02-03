@@ -1,18 +1,21 @@
-;(function (angular) {
+;(function (global, angular) {
   "use strict";
 
   var _ = window._; //underscore.js
 
   angular.module("summary")
          .component("summary", {
-           "templateUrl": "/js/summary/summary.html",
+           "templateUrl": global.templateUrl + "/summary.html",
            "controller" : ["$state", "$http", "utils",
              function ($state, $http,  utils) {
 
                var that = this;
 
-               this.hideLoading();
-               this.updateActiveTab({"tabName": "dashboard.summary"});
+               this.$onInit = function () {
+
+                 this.hideLoading();
+                 this.updateActiveTab({"tabName": "dashboard.summary"});
+               };
              }],
            "bindings": {
 
@@ -21,4 +24,4 @@
              "hideLoading": "&"
            }
          });
-}(window.angular));
+}(window.APP = window.APP || {}, window.angular));

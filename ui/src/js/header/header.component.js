@@ -1,9 +1,9 @@
-;(function (angular) {
+;(function (global, angular) {
   "use strict";
 
   angular.module("header")
          .component("header", {
-           "templateUrl": "/js/header/header.html",
+           "templateUrl": global.templateUrl + "/header.html",
            "controller" : ["$rootScope", "$state", "$filter", "$interval",
              function ($rootScope, $state, $filter, $interval) {
 
@@ -82,4 +82,4 @@
              "activeTab": "<"
            }
          });
-}(window.angular));
+}(window.APP = window.APP || {}, window.angular));

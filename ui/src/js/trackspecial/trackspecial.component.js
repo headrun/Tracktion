@@ -1,4 +1,4 @@
-;(function (angular) {
+;(function (global, angular) {
   "use strict";
 
   var _ = window._;
@@ -33,7 +33,7 @@
   angular.module("trackspecial")
          .component("trackspecial", {
 
-           "templateUrl": "/js/trackspecial/trackspecial.html",
+           "templateUrl": global.templateUrl + "/trackspecial.html",
            "controller" : ["$state", "$http", "Highcharts", "utils",
                            controller],
            "bindings": {
@@ -46,4 +46,4 @@
            }
          });
 
-}(window.angular));
+}(window.APP = window.APP || {}, window.angular));

@@ -1,10 +1,10 @@
-;(function (angular) {
+;(function (global, angular) {
   "use strict";
 
   angular.module("filter")
          .component("filter", {
 
-           "templateUrl": "/js/filter/filter.html",
+           "templateUrl": global.templateUrl + "/filter.html",
            "controller" : function () {
 
              this.onChange = function (value) {
@@ -23,4 +23,4 @@
              "update"     : "&"
            }
          });
-}(window.angular));
+}(window.APP = window.APP || {}, window.angular));

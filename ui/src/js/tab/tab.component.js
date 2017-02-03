@@ -1,10 +1,10 @@
-;(function (angular) {
+;(function (global, angular) {
   "use strict";
 
   angular.module("tab")
          .component("tab", {
 
-           templateUrl: "/js/tab/tab.html",
+           templateUrl: global.templateUrl + "/tab.html",
            controller : ["$anchorScroll", "$window",
              function ($anchorScroll, $window) {
 
@@ -45,4 +45,4 @@
            }
          });
 
-}(window.angular));
+}(window.APP = window.APP || {}, window.angular));

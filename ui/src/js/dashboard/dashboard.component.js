@@ -1,10 +1,10 @@
-;(function (angular) {
+;(function (global, angular) {
   "use strict";
 
   angular.module("dashboard")
          .component("dashboard", {
 
-           "templateUrl": "/js/dashboard/dashboard.html",
+           "templateUrl": global.templateUrl + "/dashboard.html",
            "controller" : ["Session", "$state", "$rootScope",
 
              function (Session, $state, $rootScope) {
@@ -29,7 +29,7 @@
                                   "dashboard": {"trackweekly": "{}",
 						"trackspecial": "{}",
 						"tracksocial": "{}",
-						"reports": "{}",                                                
+						"reports": "{}",
                                                 }
                                 };
 
@@ -89,4 +89,4 @@
                                 JSON.parse($state.params.state || "{}"));
              }]
          });
-}(window.angular));
+}(window.APP = window.APP || {}, window.angular));

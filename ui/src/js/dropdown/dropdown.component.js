@@ -1,9 +1,9 @@
-;(function (angular) {
+;(function (global, angular) {
   "use strict";
 
   angular.module("dropdown")
          .component("dropdown", {
-           "templateUrl": "/js/dropdown/dropdown.html",
+           "templateUrl": global.templateUrl + "/dropdown.html",
            "controller" : function () {
 
              this.isOpen = false;
@@ -24,4 +24,4 @@
              "size": "<",
            }
          });
-}(window.angular));
+}(window.APP = window.APP || {}, window.angular));

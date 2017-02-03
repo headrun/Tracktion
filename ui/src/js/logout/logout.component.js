@@ -1,10 +1,10 @@
-;(function (angular) {
+;(function (global, angular) {
   "use strict";
 
   angular.module("logout")
          .component("logout", {
 
-           "templateUrl": "/js/logout/logout.html",
+           "templateUrl": global.templateUrl + "/logout.html",
            "controller" : ["$rootScope",
                            "Auth", "AUTH_EVENTS",
              function ($rootScope, Auth, AUTH_EVENTS) {
@@ -20,4 +20,4 @@
            ]
          });
 
-}(window.angular));
+}(window.APP = window.APP || {}, window.angular));

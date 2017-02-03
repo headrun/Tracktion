@@ -1,4 +1,4 @@
-;(function (angular) {
+;(function (global, angular) {
   "use strict";
 
   var _ = window._; //underscore.js
@@ -516,7 +516,7 @@
 
   angular.module("tracksocial")
          .component("tracksocial", {
-           "templateUrl": "/js/tracksocial/tracksocial.html",
+           "templateUrl": global.templateUrl + "/tracksocial.html",
            "controller" : ["$scope","$state", "$http", "Highcharts", "utils",
                            controller],
            "bindings": {
@@ -528,4 +528,4 @@
              "hideLoading": "&"
            }
          });
-}(window.angular));
+}(window.APP = window.APP || {}, window.angular));

@@ -1,4 +1,4 @@
-;(function (angular) {
+;(function (global, angular) {
   "use strict";
 
   var _ = window._;
@@ -45,7 +45,7 @@
   angular.module("reports")
          .component("reports", {
 
-           "templateUrl": "/js/reports/reports.html",
+           "templateUrl": global.templateUrl + "/reports.html",
            "controller" : ["$state", "$http", "Highcharts", "utils",
                            controller],
            "bindings": {
@@ -58,4 +58,4 @@
            }
          });
 
-}(window.angular));
+}(window.APP = window.APP || {}, window.angular));

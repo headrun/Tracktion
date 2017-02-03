@@ -1,4 +1,4 @@
-;(function () {
+;(function (global, angular) {
   "use strict";
 
   var NUM_COLS   = 4,
@@ -8,7 +8,7 @@
   angular.module("layout")
          .component("layout", {
 
-           "templateUrl": "/js/layout/layout.html",
+           "templateUrl": global.templateUrl + "/layout.html",
            "controller" : ["$scope", "$interval", function ($scope, $interval) {
 
              var that = this;
@@ -95,4 +95,4 @@
              "elementsOrder": "<"
            }
          });
-}());
+}(window.APP = window.APP || {}, window.angular));
