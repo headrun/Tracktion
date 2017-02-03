@@ -1,7 +1,7 @@
 ;(function (angular) {
   "use strict";
 
-  var endPoint = "http://healthex.headrun.com:7000/auth";
+  var endPoint = "https://tracktion.headrun.com/auth";
 
   angular.module("auth", []).service("Auth", ["$q", "$http", "Session",
 

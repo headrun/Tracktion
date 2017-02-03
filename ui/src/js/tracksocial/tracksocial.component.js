@@ -663,7 +663,7 @@
 
   angular.module("tracksocial")
          .component("tracksocial", {
-           "templateUrl": "/js/tracksocial/tracksocial.html",
+           "templateUrl": global.templateUrl + "/tracksocial.html",
            "controller" : ["$scope","$state", "$http", "Highcharts", "utils", "$timeout",
                            controller],
            "bindings": {

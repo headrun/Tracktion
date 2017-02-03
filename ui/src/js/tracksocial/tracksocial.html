@@ -398,7 +398,7 @@
               <div class="wordclouddata">
                 <div class="tagcloud text-justify marketwatch-word-cloud">
                   <a ng-if="!$ctrl.marketwatch_word_cloud_loading" ng-repeat=" (key,value) in $ctrl.market_word_cloud" 
-                     rel="{{value}}" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?key_word='+key+'&source=marketwatch', 'Impressions on '+key)">{{key}}</a>
+                     rel="{{value}}" ng-click="$ctrl.loadArticleModal('https://tracktion.headrun.com/clinicalapi/get_articles/?key_word='+key+'&source=marketwatch', 'Impressions on '+key)">{{key}}</a>
                   <span ng-if="$ctrl.marketwatch_word_cloud_loading" class="diabetes-wordcloud-loading text-center center-block">Loading...</span>
 		        </div>
               </div>
@@ -466,7 +466,7 @@
 	             <tbody>
 		       <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" data-title="click to view data" rel="tooltip" title="" ng-repeat="doctor in $ctrl.topDoctors">
 			 <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-				<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?author_name='+doctor.term+'&source=influencers', 'Impressions on '+doctor.term)">{{ doctor.term }}</a>
+				<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('https://tracktion.headrun.com/clinicalapi/get_articles/?author_name='+doctor.term+'&source=influencers', 'Impressions on '+doctor.term)">{{ doctor.term }}</a>
 			 </td>
 			 <td class="count text-right">{{ doctor.min.toFixed(2) }}</td>
 		       </tr>
@@ -504,7 +504,7 @@
 		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" data-title="click to view data" rel="tooltip" title="" ng-repeat="patient in $ctrl.topPatients">
 
 		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?author_name='+patient.term+'&source=influencers', 'Impressions on '+patient.term)">{{ patient.term }}</a>
+			<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('https://tracktion.headrun.com/clinicalapi/get_articles/?author_name='+patient.term+'&source=influencers', 'Impressions on '+patient.term)">{{ patient.term }}</a>
 		      </td>
 		      <td class="count text-right">{{ patient.min.toFixed(2) }}</td>
 		    </tr>
@@ -542,7 +542,7 @@
 		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" data-title="click to view data" rel="tooltip" title="" ng-repeat="alliedHps in $ctrl.topAlliedHps">
 
 		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?author_name='+alliedHps.term+'&source=influencers', 'Impressions on '+alliedHps.term)">{{ alliedHps.term }}</a>
+			<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('https://tracktion.headrun.com/clinicalapi/get_articles/?author_name='+alliedHps.term+'&source=influencers', 'Impressions on '+alliedHps.term)">{{ alliedHps.term }}</a>
 		      </td>
 		      <td class="count text-right">{{ alliedHps.min.toFixed(2) }}</td>
 		    </tr>
@@ -584,7 +584,7 @@
               <div class="wordclouddata">
                 <div class="tagcloud text-justify marketwatch-word-cloud">
                   <a ng-if="!$ctrl.marketwatch_word_cloud_loading" ng-repeat=" (key,value) in $ctrl.market_word_cloud" 
-                     rel="{{value}}" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?key_word='+key+'&source=marketwatch', 'Impressions on '+key)">{{key}}</a>
+                     rel="{{value}}" ng-click="$ctrl.loadArticleModal('https://tracktion.headrun.com/clinicalapi/get_articles/?key_word='+key+'&source=marketwatch', 'Impressions on '+key)">{{key}}</a>
                   <span ng-if="$ctrl.marketwatch_word_cloud_loading" class="diabetes-wordcloud-loading text-center center-block">Loading...</span>
 		        </div>
               </div>
@@ -602,7 +602,7 @@
     <div class="intarcia conatainer-fluid center-block">  
       <div class="row number-widgets">
         <div class="col-md-3">
-           <a ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?source=intarcia', 'Overall Impressions')">	
+           <a ng-click="$ctrl.loadArticleModal('https://tracktion.headrun.com/clinicalapi/get_articles/?source=intarcia', 'Overall Impressions')">	
 	          <div class="white-block  commonwid clearfix">
 	             <img src="img/overall.png">
 	             <div class="value-block  text-right pull-right">
@@ -625,7 +625,7 @@
 	       </a>   
         </div>
         <div class="col-md-3">
-           <a ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?sentiment=positive&source=intarcia', 'Positive Impressions')">
+           <a ng-click="$ctrl.loadArticleModal('https://tracktion.headrun.com/clinicalapi/get_articles/?sentiment=positive&source=intarcia', 'Positive Impressions')">
 	          <div class="lightgreen-block  commonwid clearfix">
 	             <img src="img/positive.png">
 	             <div class="value-block  text-right pull-right">
@@ -648,7 +648,7 @@
            </a>
         </div>
         <div class="col-md-3">
-          <a ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?sentiment=negative&source=intarcia', 'Negative Impressions')">
+          <a ng-click="$ctrl.loadArticleModal('https://tracktion.headrun.com/clinicalapi/get_articles/?sentiment=negative&source=intarcia', 'Negative Impressions')">
 	          <div class="red-block  commonwid clearfix">
 	             <img src="img/negative.png">
 	             <div class="value-block  text-right pull-right">
@@ -671,7 +671,7 @@
 	       </a>
         </div>
         <div class="col-md-3">
-          <a ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?sentiment=neutral&source=intarcia', 'Neutral Impressions')">
+          <a ng-click="$ctrl.loadArticleModal('https://tracktion.headrun.com/clinicalapi/get_articles/?sentiment=neutral&source=intarcia', 'Neutral Impressions')">
 	          <div class="orange-block  commonwid clearfix">
 	             <img src="img/neutral.png">
 	             <div class="value-block  text-right pull-right">
@@ -762,7 +762,7 @@
 		    <tr class="tw-influencer" ng-repeat="influencer in $ctrl.top_influencers">
 
 		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-		        <a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?author_name='+influencer.term+'&source=intarcia', 'Impressions by '+term)">{{influencer.term}}</a>
+		        <a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('https://tracktion.headrun.com/clinicalapi/get_articles/?author_name='+influencer.term+'&source=intarcia', 'Impressions by '+term)">{{influencer.term}}</a>
 		      </td>
 		      <td class="count text-right">{{parseFloat(influencer.max).toFixed(2)}}</td>
 		    </tr>
@@ -795,7 +795,7 @@
 		    <tr class="tw-influencer" ng-repeat="language in $ctrl.languages">
 
 		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-		        <a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?lang_name='+language.term+'&source=intarcia', 'Languages Impressions')">{{language.term}}</a>
+		        <a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('https://tracktion.headrun.com/clinicalapi/get_articles/?lang_name='+language.term+'&source=intarcia', 'Languages Impressions')">{{language.term}}</a>
 		      </td>
 		      <td class="count text-right">{{language.perc}}%</td>
 		    </tr>
@@ -830,7 +830,7 @@
             <div class="widget-content wordcloud-content">
               <div class="tagcloud intarcia-word-cloud text-justify text-center">
                  <a  ng-if="!$ctrl.intarcia_word_cloud_loading" ng-repeat="(key, value) in $ctrl.intarcia_word_cloud" 
-                      rel="{{value}}" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?key_word='+key+'&source=intarcia', 'Impressions on '+key)">{{key}}</a>
+                      rel="{{value}}" ng-click="$ctrl.loadArticleModal('https://tracktion.headrun.com/clinicalapi/get_articles/?key_word='+key+'&source=intarcia', 'Impressions on '+key)">{{key}}</a>
                  <span ng-if="$ctrl.intarcia_word_cloud_loading" class="intarcia-wordcloud-loading text-center center-block">Loading...</span>
               </div>
             </div>

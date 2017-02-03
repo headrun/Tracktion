@@ -26,7 +26,7 @@
         <div><span>Loading...</span></div>
       </div>
     </div>
-    <script>var domainUrl = "http://traction.headrun.com:2222/"</script>
+    <script>var domainUrl = "https://tracktion.headrun.com/"</script>
     <script>
       ;(function () {
 
