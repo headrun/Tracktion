@@ -199,6 +199,18 @@
             //console.log(that.filterkeys);
           })
 
+        this.uploadClinicFile = function(){
+          var f = document.getElementById('clinicFile').files[0],
+              r = new FileReader();
+          $http.get(domainUrl+"clinicalapi/upload_new/?fine="+f)
+               .then(function (resp){
+                console.log(resp);
+               });
+          /*r.onloadend = function(e){
+            var data = e.target.result;
+          }*/
+        }  
+
         that.filterformsubmit=function(filtersdata){
           if(typeof(filtersdata)!="undefined"){
             console.log(filtersdata);

@@ -20,6 +20,14 @@
       <!-- Description of Clinical-trail-summary-->
       <div class="row">
         <div class="filter-container form-inline text-center">
+          <!--<form class="form-horizontal" id="upload" enctype="multipart/form-data" method="post" autocomplete="off">-->
+               <span>Upload Excel :</span>
+               <label class="btn btn-primary btn-sm btn-responsive">
+                   <input type="file" id="clinicFile"> 
+               </label>
+               <button type="submit" class="btn btn-warning btn-sm" ng-click="$ctrl.uploadClinicFile()">Upload</button>
+           <!--</form>-->
+           <hr>
           <form  name="filterform" ng-model="filter" novalidate>
             <div class="filter-item">
               <select multiple class="form-control" id="select5" ng-model="filter.trail_status"
