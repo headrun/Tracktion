@@ -91,6 +91,7 @@
     this.articles = [];
     this.scrollId = "";
     this.respTotal = "";
+    this.defaultDrug = "";
 
     this.loadArticleModal = function(url, title, scroll){
       that.showLoading();
@@ -461,6 +462,8 @@
           return;
         }
         that.drugsDropdown = resp.data.dr_values;
+        that.defaultDrug =  resp.data.dr_values[0];
+        that.loadMarketwatchWordCloud();
       });
 
       // for word cloud
@@ -470,7 +473,7 @@
         if (drugName != "" && typeof drugName != "undefined") {
           url = domainUrl+"clinicalapi/get_wordcloud/?source=marketwatch&key_word="+drugName;
         }else{
-          url = domainUrl+"clinicalapi/get_wordcloud/?source=marketwatch&key_word=Januvia";
+          url = domainUrl+"clinicalapi/get_wordcloud/?source=marketwatch&key_word="+that.defaultDrug;
         }
         $http.get(url)
         .then(function(resp){
@@ -492,8 +495,6 @@
           
         });
       }
-
-      this.loadMarketwatchWordCloud();
     
     }
 
@@ -615,6 +616,14 @@
           that.topAlliedHps = resp.data.result.facets.influencers.terms;
         });  
 
+        //Top Other Influencers
+        $http.get(domainUrl+"clinicalapi/get_social_media/?facet=influencers&source=influencers&infr_type=other_dcube_influencers_project_manual")
+         .then(function(resp){
+           if(resp.data.error){
+             return;
+           }
+           that.topOther = resp.data.result.facets.influencers.terms;
+         });  
 
       // Drug Dropdown 
       $http.get(domainUrl+"clinicalapi/wordcloud_dropdown/?source=influencers")
@@ -623,6 +632,8 @@
           return;
         }
         that.drugsDropdown = resp.data.dr_values;
+        that.defaultDrug =  resp.data.dr_values[0];
+        that.loadMarketwatchWordCloud();
       });
 
       // for word cloud
@@ -632,7 +643,7 @@
         if (drugName != "" && typeof drugName != "undefined") {
           url = domainUrl+"clinicalapi/get_wordcloud/?source=influencers&key_word="+drugName+"_dcube_influencers_project_manual";
         }else{
-          url = domainUrl+"clinicalapi/get_wordcloud/?source=influencers&key_word=alliedhcp_dcube_influencers_project_manual";
+          url = domainUrl+"clinicalapi/get_wordcloud/?source=influencers&key_word="+this.defaultDrug+"_dcube_influencers_project_manual";
         }
         $http.get(url)
         .then(function(resp){
@@ -654,8 +665,6 @@
           
         });
       }
-
-      this.loadMarketwatchWordCloud();
     
     }
 

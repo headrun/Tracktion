@@ -377,9 +377,10 @@
               <h3>
               	WORDCLOUD
 				    <select class="form-control drugsDropdown" 
-				    ng-model="drugs"
-				    ng-change="$ctrl.loadMarketwatchWordCloud(drugs)">
-					   <option  ng-repeat="drugs in $ctrl.drugsDropdown" 
+				    ng-model="$ctrl.defaultDrug"
+ 				    ng-change="$ctrl.loadMarketwatchWordCloud($ctrl.defaultDrug)">
+ 					   <option  ng-repeat="drugs in $ctrl.drugsDropdown"
+ 					   			ng-selected="{{ drugs == $ctrl.defaultDrug }}" 
 					   			value="{{ drugs }}">
 					   	{{ drugs }}
 					   </option>
@@ -418,7 +419,7 @@
           <div class="widget widget-blue">
             <div class="widget-title news-firstrow-title">
               <h3>
-                 Timeline
+                 Influencer activity
                  <span class="pull-right">
                  <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
                     title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
@@ -466,7 +467,7 @@
 	             <tbody>
 		       <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" data-title="click to view data" rel="tooltip" title="" ng-repeat="doctor in $ctrl.topDoctors">
 			 <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-				<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('https://demo.headrun.com/clinicalapi/get_articles/?author_name='+doctor.term+'&source=influencers', 'Impressions on '+doctor.term)">{{ doctor.term }}</a>
+				<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?author_name='+doctor.term+'&source=influencers', 'Impressions by '+doctor.term)">{{ doctor.term }}</a>
 			 </td>
 			 <td class="count text-right">{{ doctor.min.toFixed(2) }}</td>
 		       </tr>
@@ -504,7 +505,7 @@
 		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" data-title="click to view data" rel="tooltip" title="" ng-repeat="patient in $ctrl.topPatients">
 
 		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('https://demo.headrun.com/clinicalapi/get_articles/?author_name='+patient.term+'&source=influencers', 'Impressions on '+patient.term)">{{ patient.term }}</a>
+				<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?author_name='+patient.term+'&source=influencers', 'Impressions by '+patient.term)">{{ patient.term }}</a>
 		      </td>
 		      <td class="count text-right">{{ patient.min.toFixed(2) }}</td>
 		    </tr>
@@ -542,7 +543,7 @@
 		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" data-title="click to view data" rel="tooltip" title="" ng-repeat="alliedHps in $ctrl.topAlliedHps">
 
 		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-			<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('https://demo.headrun.com/clinicalapi/get_articles/?author_name='+alliedHps.term+'&source=influencers', 'Impressions on '+alliedHps.term)">{{ alliedHps.term }}</a>
+				<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?author_name='+alliedHps.term+'&source=influencers', 'Impressions by '+alliedHps.term)">{{ alliedHps.term }}</a>
 		      </td>
 		      <td class="count text-right">{{ alliedHps.min.toFixed(2) }}</td>
 		    </tr>
@@ -557,16 +558,17 @@
         <!-- end of row -->
 
       <div class="row row3">
-        <div class="col-md-12">
+        <div class="col-md-8">
           <div class="widget widget-blue">
             <div class="widget-title news-thirdrow-title">
               <h3>
               	WORDCLOUD
 				    <select class="form-control drugsDropdown" 
-				    ng-model="drugs"
-				    ng-change="$ctrl.loadMarketwatchWordCloud(drugs)">
+				     ng-model="$ctrl.defaultDrug"
+ 				    ng-change="$ctrl.loadMarketwatchWordCloud($ctrl.defaultDrug)">
 					   <option  ng-repeat="drugs in $ctrl.drugsDropdown" 
-					   			value="{{ drugs }}">
+					   			value="{{ drugs }}"
+ 					   			ng-selected="{{ drugs == $ctrl.defaultDrug }}">
 					   	{{ drugs }}
 					   </option>
 					</select>
@@ -592,6 +594,45 @@
           </div>
 
         </div>
+        <div class="col-md-4">
+           <div class="widget">
+             <div class="widget-title top">
+               <h3>
+                 Top Other Influencers
+                 <span class="pull-right">
+                  <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                     title="Download" data-original-title="Remove"><i class="fa fa-download"></i></a>
+                  <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                     title="Share via Email" data-original-title="Remove"><i class="fa fa-telegram"></i></a>
+                  <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                     title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+                  </span>
+               </h3>
+             </div>
+             <div class="widget-content top-social-content news-second-row">
+               <div class="influencers-row"> 
+                 <table class="table" id="influencers-table">
+ 		  <thead>
+ 		    <tr>
+ 		      <th>Influencer Name</th>
+ 		      <th class="text-right">Klout Score</th>
+ 		    </tr>
+ 		  </thead>
+ 		  <tbody>
+ 		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" data-title="click to view data" rel="tooltip" title="" ng-repeat="others in $ctrl.topOther">
+ 
+ 		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+ 			<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?author_name='+others.term+'&source=influencers', 'Impressions by '+others.term)">{{ others.term }}</a>
+ 		      </td>
+ 		      <td class="count text-right">{{ others.min.toFixed(2) }}</td>
+ 		    </tr>
+ 		  </tbody>
+                 </table>
+               </div>
+             </div>
+           </div>
+ 
+         </div>
       </div>
       <!-- end of row --> 
     </div>
@@ -762,7 +803,7 @@
 		    <tr class="tw-influencer" ng-repeat="influencer in $ctrl.top_influencers">
 
 		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-		        <a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('https://demo.headrun.com/clinicalapi/get_articles/?author_name='+influencer.term+'&source=intarcia', 'Impressions by '+term)">{{influencer.term}}</a>
+		        <a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?author_name='+influencer.term+'&source=intarcia', 'Impressions by '+influencer.term)">{{influencer.term}}</a>
 		      </td>
 		      <td class="count text-right">{{parseFloat(influencer.max).toFixed(2)}}</td>
 		    </tr>
@@ -795,7 +836,7 @@
 		    <tr class="tw-influencer" ng-repeat="language in $ctrl.languages">
 
 		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
-		        <a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('https://demo.headrun.com/clinicalapi/get_articles/?lang_name='+language.term+'&source=intarcia', 'Languages Impressions')">{{language.term}}</a>
+		        <a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?lang_name='+language.term+'&source=intarcia', 'Impressions in '+ language.term)">{{language.term}}</a>
 		      </td>
 		      <td class="count text-right">{{language.perc}}%</td>
 		    </tr>
