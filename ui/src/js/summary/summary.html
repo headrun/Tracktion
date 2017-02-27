@@ -1,287 +1,237 @@
 <div class="container-fluid visualization">
-  <div class="summary-nav" style="color: white;position: absolute;width:200px;height:100%;background-color:rgb(16, 59, 108);"> 
-    <aside>
-      <ul class="nav">
-        <li class="active" >
-          <a ui-sref="dashboard.summary"><i class="fa fa-bars"></i>&nbsp; Summary
-          </a>
-        </li>
-        <li>
-          <a ui-sref="dashboard.trackweekly({tabName: ''})">Track Weekly
-            <i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>
-            <span style="background-color: #10cfbd"></span>
-          </a>
-        </li>
-        <li>
-          <a ui-sref="dashboard.trackspecial({tabName: ''})"> Track Special
-            <i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>
-            <span style="background-color: #6d5cae"></span>
-          </a>
-        </li>
-        <li>
-          <a ui-sref="dashboard.tracksocial({tabName: ''})">Track Social
-            <i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>
-            <span style="background-color: #327fc5"></span>
-          </a>
-        </li>
-        <li>
-          <a ui-sref="dashboard.reports({tabName: ''})">Reports
-            <i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>
-            <span style="background-color: #f7911e"></span>
-          </a>
-        </li>
-      </ul>
-    </aside>
-  </div>
 
-  <div class="summary-tabs" style="padding: 0 0 0 210px;">
-  <div class="widget-row">
-    <div class="widget" style="min-height: 340px">
-      <div class="widget-content">
-        <div class="widget-title">
-          <div class="enrollment summary"></div> 
-          <a ui-sref="dashboard.trackweekly({tabName: ''})">
-           KEY NEWS & COMPETITOR ALERTS <i class="arrow teal pull-right" ></i>
-          </a>
-        </div>
-        <div class="widget-body">
-
-          <div class="dec-bar">
-            <div style="background-color: #10cfbd"></div>
-          </div>
-          <div class="row">
-              <div class="key-widget col-md-6"> 
-                <div class="small-widget">
-                  <div class="small-widget-title">
-                    AACE/ACE Publish 2017 T2DM Treatment Algorithm
-                  </div>
-                  <div class="small-widget-body">
-                    <ul>
-                       <li>
-                           The GLP-1RA class remains recommended above SGLT-2i and DPP-IVi
-                       </li>
-                       <li>
-                           Liraglutide and empagliflozin have both been called out for a possible benefit in CHF, ASCVD, and renal outcomes
-                       </li>
-                    </ul>
-                    <br> 
-                    <p>
-                      <a class="pull-right">Link</a>
-                    </p>
-                  </div>
-                </div>
-                <div class="small-widget">
-                  <div class="small-widget-title">
-                   JPM Healthcare Conference Day 1 and 2 Coverage
-                  </div>
-                  <div class="small-widget-body">
-                    <ul>
-                      <li>
-                        The GLP-1RA class remains recommended above SGLT-2i and DPP-IVi  
-                      </li>
-                      <li>
-                        Liraglutide and empagliflozin have both been called out for a possible benefit in CHF, ASCVD, and renal outcomes
-                      </li>
-                    </ul>
-                    <p>
-                      <a class="pull-right">Link</a>
-                    </p>
-                  </div>
-                </div>
-                <div class="small-widget">
-                  <div class="small-widget-title">
-                    Sanofi has announced Soliqua 100/33 is now available in US pharmacies
-                  </div>
-                  <div class="small-widget-body">
-                      <ul>
-                        <li>
-                          Soliqua is a fixed-ration combination of Lantus and lixisenatide indicated for treatment of adults with T2DM who are inadequately controlled on basal insulin or lixisenatide
-                        </li>
-                      </ul>
-                      <br> 
-                    <p>
-                      <a class="pull-right">Link</a>
-                    </p>
-                  </div>
-                </div>
-                <a class="pull-right">Click for more</a>
+  <div class="top-div">
+    <div class="widget-div">
+      <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <div class="widget-headers">
+            <div class="panel-body">
+              <div class="widget-icon">
+                <img src="/img/summary_icons/key_note.png">
               </div>
-              <div class="key-widget-2 col-md-6">
-                <div class="small-widget">
-                  <div class="small-widget-title">
-                    Canagliflozin (CANVAS) trial
-                  </div>
-                  <div class="small-widget-body">
-                   <ul>
-                    <li>
-                    A Randomized, Multicenter, Double-Blind, Parallel, Placebo-Controlled Study of the Effects of JNJ-28431754 on Cardiovascular Outcomes in Adult Subjects with Type 2 Diabetes Mellitus
-                    </li>
-                   </ul>
-                     <br> 
-                    <p>
-                        <a class="pull-right">Link</a>
-                    </p>
-                  </div>
+              <a href="#">Key News & Competitor Alerts</a>
+            </div>
+          </div>
+          <div class="widget-data">
+            <div class="panel panel-default" style="border-bottom: 4px solid #8bc34a;">
+              <div class="panel-body">
+                <div class="title">
+                  AACE/ACE Publish 2017 T2DM Treatment Algorithm
                 </div>
-                <div class="small-widget">
-                  <div class="small-widget-title">
-                    Graph Here
-                  </div>
-                  <div class="small-widget-body">
-                       <br> 
-                       <a class="pull-right">Link</a>
-                    </p>
-                  </div>
+                <div class="content">
+                  Liraglutide and empagliflozin have both been called out for a possible benefit in CHF, ASCVD, and renal outcomes
                 </div>
-                <div class="small-widget">
-                  <div class="small-widget-title">
-                    Dapagliflozin (DERIVE) trial
-                  </div>
-                  <div class="small-widget-body">
-                    
-                    <ul>
-                        <li>
-                          A Multicenter, Double-Blind, Placebo-Controlled, Parallel Group, Randomized, Phase III Study to Evaluate the Glycemic Efficacy and Renal Safety of Dapagliflozin in Patients With Type 2 Diabetes Mellitus and Moderate Renal Impairment (CKD 3A) Who Have Inadequate Glycemic Contro
-                        </li>
-                    </ul>
-                    <br> 
-                    <p>
-                       <a class="pull-right">Link</a>
-                    </p>
-                  </div>
-                </div>
-                <a class="pull-right">Click for more</a>
+                <a href="#" style="color: #8bc34a; font-size: smaller;">Clinical trail Summary</a>
               </div>
+            </div>
+
+            <div class="panel panel-default" style="border-bottom: 4px solid #f8b118;">
+              <div class="panel-body">
+                <div class="title">
+                  Canagliflozin (CANVAS) trial
+                </div>
+                <div class="content">
+                  A Randomized, Multicenter, Double-Blind, Parallel, Placebo-Controlled Study of the Effects of JNJ-28431754 on Cardiovascular
+                </div>
+                <a href="#" style="color: #f8b118; font-size: smaller;">Reports</a>
+              </div>
+            </div>
+
+            <div class="panel panel-default" style="border-bottom: 4px solid #8bc34a;">
+              <div class="panel-body">
+                <div class="title">
+                  JPM Healthcare Conference Day 1 and 2 Coverage
+                </div>
+                <div class="content">
+                  Liraglutide and empagliflozin have both been called out for a possible benefit in CHF, ASCVD, and renal outcomes
+                </div>
+                <a href="#" style="color: #8bc34a; font-size: smaller;">Clinical trail Summary</a>
+              </div>
+            </div>
+
+            <div class="panel panel-default" style="border-bottom: 4px solid #f8b118;">
+              <div class="panel-body">
+                <div class="title">
+                  Dapagliflozin (DERIVE) trial
+                </div>
+                <div class="content">
+                  A Multicenter, Double-Blind, Placebo-Controlled, Parallel Group, Randomized, Phase III Study to Evaluate the Glycemic
+                </div>
+                <a href="#" style="color: #f8b118; font-size: smaller;">Reports</a>
+              </div>
+            </div>
+
+            <div class="panel panel-default" style="border-bottom: 4px solid #ededed;">
+              <div class="panel-body">
+                <div class="title">
+                  Dapagliflozin (DERIVE) trial
+                </div>
+                <div class="content">
+                  A Multicenter, Double-Blind, Placebo-Controlled, Parallel Group, Randomized, Phase III Study to Evaluate the Glycemic
+                </div>
+                <a href="#" style="color: #ededed; font-size: smaller;">Reports</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-5 col-sm-5 col-xs-5">
+          <div class="widget-headers">
+            <div class="panel-body">
+              <div class="widget-icon">
+                <img src="/img/summary_icons/social_pulse.png">
+              </div>
+              <a href="#">Social Pulse</a>
+            </div>
+          </div>
+          <div class="widget-data">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <table class="table table-striped">
+                  <thead>
+                    <tr style="color: #004269;">
+                      <th style="text-align: left"></th>
+                      <th>Overall Buzz</th>
+                      <th># of shares/retweets</th>
+                      <th>Mentions in target websites/ forums</th>
+                      <th>Sentiment</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td width="18%">Intarcia</td>
+                      <td ><i class="fa fa-long-arrow-up" aria-hidden="true" style="color: #8bc34a;"></i>19</td>
+                      <td ><i class="fa fa-long-arrow-down" aria-hidden="true" style="color: #fdd835;"></i>0</td>
+                      <td > <i class="fa fa-long-arrow-up" aria-hidden="true" style="color: #8bc34a;"></i>8</td>
+                      <td><img src="/img/summary_icons/happy.png"></td>
+                    </tr>
+                    <tr>
+                      <td width="18%">Jardiance</td>
+                      <td><i class="fa fa-long-arrow-down" aria-hidden="true" style="color: #fdd835;"></i>65</td>
+                      <td><i class="fa fa-long-arrow-down" aria-hidden="true" style="color: #fdd835;"></i>320</td>
+                      <td><i class="fa fa-long-arrow-down" aria-hidden="true" style="color: #fdd835;"></i>45
+                      </td>
+                      <td><img src="/img/summary_icons/sad.png"></td>
+                    </tr>
+                    <tr>
+                      <td width="18%">Invokana</td>
+                      <td ><i class="fa fa-long-arrow-down" aria-hidden="true" style="color: #fdd835;"></i>86</td>
+                      <td ><i class="fa fa-long-arrow-down" aria-hidden="true" style="color: #fdd835;"></i>432</td>
+                      <td><i class="fa fa-long-arrow-up" aria-hidden="true" style="color: #8bc34a;"></i>52
+                      </td>
+                      <td><img src="/img/summary_icons/zero.png"></td>
+                    </tr>
+                    <tr>
+                      <td width="18%">Janumet</td>
+                      <td ><i class="fa fa-long-arrow-up" aria-hidden="true" style="color: #8bc34a;"></i> 66</td>
+                      <td><i class="fa fa-long-arrow-up" aria-hidden="true" style="color: #8bc34a;"></i>467</td>
+                      <td><i class="fa fa-long-arrow-up" aria-hidden="true" style="color: #8bc34a;"></i>52
+                      </td>
+                      <td><img src="/img/summary_icons/happy.png"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <a href="#" class="pull-right" style="font-size: smaller;">View More</a>
+          </div>
+
+          <div class="widget-headers" style="padding-top: 15px;">
+            <div class="panel-body">
+              <div class="widget-icon">
+                <img src="/img/summary_icons/new_document_add.png">
+              </div>
+              <a href="#" style="color: #222222">New Documents Added</a>
+            </div>
+          </div>
+          <div class="widget-data">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="title">
+                  Novo Granted Orphan Status for Ph2 T1DM Anti-IL-21 + Victoza
+                </div>
+                <div class="content">
+                  The GLP-1RA class remains recommended above SGLT-2i
+                </div>
+              </div>
+              <div class="footer-btns">
+                  <button class="btn btn-default btn-xs">Adocia</button>
+                  <button class="btn btn-default btn-xs">Lilly</button>
+                  <button class="btn btn-default btn-xs">Hanml</button>
+                  <button class="btn btn-default btn-xs">Insulin</button>
+                  <a href="#"><img src="/img/summary_icons/down_bg.png" class="pull-right"></a>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="title">
+                  Adocia Initiates Two New Projects for Treatment of T1DM
+                </div>
+                <div class="content">
+                  Lonis Reports Positive Ph2 Result for LONIS-GCGR-Rx.
+                </div>
+              </div>
+              <div class="footer-btns">
+                  <button class="btn btn-default btn-xs">Lixisenatide</button>
+                  <button class="btn btn-default btn-xs">GLP-1</button>
+                  <a href="#"><img src="/img/summary_icons/down_bg.png" class="pull-right"></a>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="title">
+                  Sanofi's Soliqua Now Available in US Pharmacies
+                </div>
+                <div class="content">
+                  Lilly Announces Changes in its Organizational Structure
+                </div>
+              </div>
+              <div class="footer-btns">
+                  <button class="btn btn-default btn-xs">Novo Nordisk</button>
+                  <button class="btn btn-default btn-xs">Lilly</button>
+                  <button class="btn btn-default btn-xs">Trail Data</button>
+                  <button class="btn btn-default btn-xs">Guidelines</button>
+                  <a href="#"><img src="/img/summary_icons/down_bg.png" class="pull-right"></a>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3">
+          <div class="widget-headers">
+            <div class="panel-body">
+              <div class="widget-icon">
+                <img src="/img/summary_icons/trending.png">
+              </div>
+              <a href="#">Trending Topics</a>
+            </div>
+          </div>
+          <div class="widget-data">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <ul class="list-group">
+                  <li class="list-group-item">Diabetes</li>
+                  <li class="list-group-item">Xultrophy</li>
+                  <li class="list-group-item">Sanofi</li>
+                  <li class="list-group-item">Diabetes</li>
+                  <li class="list-group-item">Xultrophy</li>
+                  <li class="list-group-item">Intarcia</li>
+                  <li class="list-group-item">Implantable</li>
+                  <li class="list-group-item">Prophylatic</li>
+                  <li class="list-group-item">Therapeutic</li>
+                  <li class="list-group-item">Gatesfoundation</li>
+                  <li class="list-group-item">Preventior</li>
+                  <li class="list-group-item">Itca</li>
+                  <li class="list-group-item">Peptide</li>
+                  <li class="list-group-item">Collaboration</li>
+                </ul>
+              </div>
+            </div>
+            <a href="#" class="pull-right" style="font-size: smaller;">View More</a>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="widget" style=" height: 525px">
-      <div class="widget-content">
-        <div class="widget-title">
-          <div class="claims summary"></div>
-          <a ui-sref="dashboard.tracksocial({tabName: ''})">
-            SOCIAL PULSE <i class="arrow violet pull-right" aria-hidden="true"></i>
-          </a>
-        </div>
-        <div class="widget-body">
-
-          <div class="dec-bar">
-            <div style="background-color: #6d5cae"></div>
-          </div>
-          <table width="100%" height="30%"  class="table table-condensed">
-            <thead>
-              <tr>
-                <th style="text-align: left"></th>
-                <th>Overall Buzz</th>
-                <th># of shares/retweets</th>
-                <th>Mentions in target websites/ forums</th>
-                <th>Sentiment</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Intarcia</td>
-                <td class="text-center" >19</td>
-                <td class="text-center" >0</td>
-                <td class="text-center" >8
-                   
-                </td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Jardiance</td>
-                <td class="text-center" >65</td>
-                <td class="text-center" >320</td>
-                <td class="text-center" >45
-                </td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Invokana</td>
-                <td class="text-center" >86</td>
-                <td class="text-center" >432</td>
-                <td class="text-center">52
-                </td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Janumet</td>
-                <td class="text-center" >66</td>
-                <td class="text-center" >467</td>
-                <td class="text-center">52
-                </td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-          <a class="pull-right">click for more</a>
-          <br>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="widget-row last-row">
-    <div class="widget" style=" min-height: 140px">
-      <div class="widget-content">
-        <div class="widget-title">
-          <div class="summary centersofvalue"></div> 
-          <a ui-sref="dashboard.tracksocial({tabName: ''})">
-            TRENDING TOPICS <i class="arrow blue  pull-right" aria-hidden="true"></i>
-          </a>
-        </div>
-        <div class="widget-body">
-
-          <div class="dec-bar">
-            <div style="background-color: #327fc5"></div>
-          </div>
-          <img src="/img/word.png" height:200 width:540/>
-          <p>
-          <a class="pull-right">Explore More</a>
-          </p>
-          <br>
-        </div>
-      </div>
-    </div>
-
-    <div class="widget" style="min-height: 140px">
-      <div class="widget-content">
-        <div class="widget-title">
-          <div class="summary healthrisk"></div> 
-          <a ui-sref="dashboard.reports({tabName: ''})">
-            NEW REPORTS ADDED <i class="arrow yellow pull-right" aria-hidden="true"></i>
-          </a>
-        </div>
-        <div class="widget-body" style="height:282px">
-
-          <div class="dec-bar">
-            <div style="background-color: #f7911e;"></div>
-          </div>
-          <table width="100%" class="table table-condensed">
-            <tbody>
-              <tr>
-                <td>Novo Granted Orphan Status for Ph2 T1DM Anti-IL-21 + Victoza</td>
-                <td class="text-right">
-                     <a class="pull-right" href="http://176.9.181.46/track/NovoGrantedOrphanStatusforPh2T1DMAnti-IL-21Victoza.docx">Download</a></td>
-              </tr>
-              <tr>
-                <td>Adocia Initiates Two New Projects for Treatment of T1DM</td>
-                <td class="text-right">
-                   <a class="pull-right" href="http://176.9.181.46/track/AdociaInitiatesTwoNewProjectsforTreatmentofT1DM.docx">Download</a>
-                </td>
-              </tr> 
-            </tbody>
-          </table>
-          <a class="pull-right">Access All Documents</a>
-          <br>
-        </div>
-      </div>
-    </div>
-  </div>
-
-   
-  </div>
   </div>
 </div>

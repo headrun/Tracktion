@@ -1,15 +1,19 @@
 logout {
 
   display: block;
+  height: 70px;
+  color: #000;
 
-  &>a { 
+  &>div { 
      
-   background-color: @brand-primary;
-   padding: 14px 14px 14px 14px;
+	padding: 23px 20px;
 
-   &>img {
-     background-color: @brand-primary;
-   }
-  
+	&>span {
+		cursor: pointer;
+	}
+
+	&>.dropdown-menu {
+		min-width: 120px !important;
+	}
   }
 }

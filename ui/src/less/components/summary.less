@@ -8,6 +8,26 @@ summary {
 
     width: 100%!important;
     z-index: 1;
+
+    &> .top-div {
+      
+      height: 180px;
+      background-color: #2196f3;
+      box-shadow: 2px 3px 10px 0px rgba(0, 0, 0, 0.12);
+
+      &> .widget-div {
+        
+        padding: 35px 20px 0px 20px;
+
+        &> .row {
+
+          &> .col-md-4, .col-md-5, .col-md-3 {
+            padding-left: 8px;
+            padding-right: 8px;
+          }
+        }
+      }
+    }
     
     &> div.summary-nav {
 
@@ -112,6 +132,93 @@ summary {
     
  } 
 
+
+  .widget-headers {
+    
+    font-family: ProximaNova;
+    font-weight: 700;
+    color: #fff;
+    transform: scaleY(1.0011);
+
+    &> .panel-body {
+      
+      &> .widget-icon {
+      
+        width: 35px;
+        height: 35px;
+        position: absolute;
+
+        &> img {
+          width: 35px;
+          height: 35px;
+        }
+      }
+      &> a {
+      
+        margin-left: 45px;
+        line-height: 35px;
+        color: #fff;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .widget-data {
+    &> .panel {
+      
+      &> .panel-body {
+
+        &> .title {
+          color: #2196f3;
+          font-weight: 500;
+          padding-bottom: 10px;
+          font-size: 15px;
+        }
+
+        &> .table {
+          font-size: 14px; 
+          font-family: ProximaNova; 
+          margin-bottom: 0px;
+
+          &> tbody > tr > td {
+            
+            &> i.fa {
+              padding-right: 10px;
+            }
+
+            &> img {
+              width: 30px;
+            }
+
+          }
+        }
+
+        &> .content {
+          line-height: 25px;
+          font-size: 14px;
+          padding-bottom: 10px;
+        }
+
+        &> .list-group {
+
+          &> .list-group-item {
+            border: none !important;
+          }
+        }
+      }
+
+      &> .footer-btns {
+        padding: 10px 20px;
+        background-color: #f9f9f9;
+
+        &> a > img {
+          width: 45px;
+          margin-top: -30px;
+        }
+      }
+    }
+  }
+
   div.widget-row.last-row {
 
     margin-bottom: 0 !important;
@@ -122,6 +229,8 @@ summary {
     width: 100/2%;
     color: black !important;
   }
+
+
 
   .widget-title {
     
@@ -306,5 +415,14 @@ summary {
     background-image: url("/img/summary_icons/heart.png");
     width: 42px;
     height: 33px;
+  }
+}
+
+@media (min-width: 992px){
+  .col-md-4 {
+      width: 38.33333333%;
+  }
+  .col-md-3 {
+      width: 20%;
   }
 }

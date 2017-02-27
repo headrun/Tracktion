@@ -14,35 +14,40 @@
                this.tabs = [
                             {"name"  : "dashboard.summary",
                              "text"  : "Summary",
-                             "params": {"state": ""}
+                             "params": {"state": ""},
+                             "icon"  : "fa fa-th-large"
                             },
                             {"name"  : "dashboard.trackweekly",
                              "text"  : "Track Weekly",
                              "params": {
 
                                "state": this.states
-                             }
+                             },
+                             "icon"  : "fa fa-calendar"
                             },
 			    {"name"  : "dashboard.trackspecial",
                              "text"  : "Track Special",
                              "params": {
 
                                "state": this.states
-                             }
+                             },
+                             "icon"  : "fa fa-star-o"
                             },
 			    {"name"  : "dashboard.tracksocial",
                              "text"  : "Track Social",
                              "params": {
 
                                "state": this.states
-                             }
+                             },
+                             "icon"  : "fa fa-star-o"
                             },
 			    {"name"  : "dashboard.reports",
                              "text"  : "Reports",
                              "params": {
 
                                "state": this.states
-                             }
+                             },
+                             "icon"  : "fa fa-file-text-o"
                             }
                            ];
 
@@ -50,6 +55,18 @@
 
                  this.collapsed = !this.collapsed;
                };
+
+               this.toggleSidebar = function(){
+
+                  $('#mySidenav').css('display', 'block');
+                  $('.menubutton').css('display', 'none');
+               }
+
+               this.hideSidebar = function(){
+
+                  $('#mySidenav').css('display', 'none');
+                  $('.menubutton').css('display', 'block');
+               }
 
                function onNavigation (event, next, params) {
 

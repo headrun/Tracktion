@@ -27,7 +27,7 @@ header {
     background-color: @navbar-bg;
     box-shadow: 0 5px 24px -10px @navbar-shadow;
     border-bottom: none;
-    padding: 0 @gutter;
+    padding: 0 @gutter+10;
     height: @navbar-height;
     color: @body-bg;
 
@@ -48,10 +48,60 @@ header {
       left: 0px
     }
 
+    &> .sidenav {
+        display: none;
+        height: 100%;
+        width: 240px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #060612;
+        overflow-x: hidden;
+        padding-top: 35px;
+        margin-top: 70px;
+
+        &> a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 15px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+
+            &> .fa {
+              padding-right: 15px;
+            }
+
+            &.active {
+
+              a, a:hover, a:focus {
+                
+                text-transform: uppercase;
+                color: white;
+                background-color: @brand-primary;
+                border-bottom: 3px solid @brand-primary;
+                padding-bottom: 12px;
+
+                &>div {
+                  display:none;
+                }
+              }
+            }
+        }
+
+        &> .closebtn {
+            position: absolute;
+            top: 0;
+            right: 5px;
+            font-size: 25px;
+            margin-left: 55px;
+        }
+    }
 
     &.collapsed {
 
-      aside, div.aside-overlay {
+      mySidenav, aside, div.aside-overlay {
 
         display: none;
       }
@@ -87,7 +137,7 @@ header {
     }
     img.primarylogo {
       
-      padding-top:0px;
+      padding-top: 11px;
     }
     p.tag {
       font-size:9.4px;
@@ -97,12 +147,12 @@ header {
       &.secondary-logo {
 
         height: 70px;
-        padding: 10px 20px 10px 10px;
       }
       &> img{
-        padding-left: 20px;
-        border-left: 1px solid #eaeaeb;
-	width:auto;
+        padding-right: 20px;
+        border-right: 1px solid #eaeaeb;
+	      width: 100px;
+        padding-top: 25px;
       }
     }
 
@@ -135,12 +185,11 @@ header {
 
     &> a.brand {
 
-      padding: 10px;
+      padding: 12px;
       position: relative;
       display: block;
       height: 100%;
       text-decoration: none;
-      background-color:@brand-secondary;
     }
 
     aside {
@@ -234,4 +283,8 @@ header {
       }
     }
   }
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }
