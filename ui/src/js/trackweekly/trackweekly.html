@@ -1,11 +1,6 @@
-<ul class="nav nav-tabs">
-  <li ng-class="{active: $ctrl.activeTab === tabName}"
-      ng-repeat="tabName in $ctrl.tabsOrder">
-    <a ui-sref="{{ $ctrl.stateName +
-                   '({tabName: tabName,
-                      state: $ctrl.tabs[tabName].state
-                    })'
-                }}">
+<ul class="navs">
+  <li ng-class="{active: $ctrl.activeTab === tabName}" ng-repeat="tabName in $ctrl.tabsOrder">
+    <a ui-sref="{{ $ctrl.stateName +'({tabName: tabName, state: $ctrl.tabs[tabName].state})'}}">
       {{ $ctrl.tabs[tabName].title }}
     </a>
   </li>
@@ -16,60 +11,124 @@
   <div class="tab-pane clinical-trail-summary" role="tabpanel" 
     ng-if="$ctrl.activeTab === 'Clinical Trail Summary' ">
     <h3></h3>
-    <div class="clinical-trail-summary-data center-block">
-      <!-- Description of Clinical-trail-summary-->
-      <div class="row">
-        <div class="filter-container form-inline text-center">
-          <form  name="filterform" ng-model="filter" novalidate>
-            <div class="filter-item">
-              <select multiple class="form-control" id="select5" ng-model="filter.trail_status"
-                      ng-change="">
-                <option value="{{$ctrl.filterkeys['trail_status']}}">Select Status</option>
-                <option value="{{$ctrl.filterkeys['trail_status']}}" >All</option>
-                <option ng-repeat="status in $ctrl.filterkeys['trail_status']">{{status}}</option>
-              </select> 
-            </div>
-            <div class="filter-item">
-              <select multiple class="form-control" ng-model="filter.drug_class" 
-                      ng-change="" >
-                <option value="{{ $ctrl.filterkeys['drug_class']}}"> Select Drug Class</option>
-                <option value="{{ $ctrl.filterkeys['drug_class']}}" >All</option>
-                <option ng-repeat="drug_class_key in $ctrl.filterkeys['drug_class']">{{drug_class_key}}</option>
-              </select> 
-            </div>
-            <div class="filter-item">
-              <select  multiple class="form-control" ng-model="filter.drug_name" 
-                      ng-change="">
-                <option value="{{$ctrl.filterkeys['drug_name']}}"> Select by Drug</option>
-                <option value="{{$ctrl.filterkeys['drug_name']}}" >All</option>
-                <option ng-repeat="drug_t in $ctrl.filterkeys['drug_name']">{{drug_t}}</option>
-              </select> 
-            </div>
+<div class="center-block clinical-trail-summary-data">
+  <div class="row">
+    <div class="text-center filter-container form-inline">
+      
 
-            <div class="filter-item">
-              <select multiple class="form-control" ng-model="filter.end_date" 
-                      ng-change="">
-                <option value="{{$ctrl.filterkeys['year_list']}}"> End Date</option>
-                <option value="{{$ctrl.filterkeys['year_list']}}">All</option>
-                <option ng-repeat="year in $ctrl.filterkeys['year_list']">{{year}}</option>
-               </select>
-            </div>
-            <div class="filter-item">
-              <select multiple class="form-control" ng-model="filter.location"
-                      ng-change="">
-                <option value="{{$ctrl.filterkeys['countries']}}"> Select Location</option>
-                <option value="{{$ctrl.filterkeys['countries']}}">All</option>
-                <option ng-repeat="country in $ctrl.filterkeys['countries']">{{country}}</option>
-              </select>
-            </div>
-            <div class="filter-item">
-                <button type="submit" class="btn btn-primary"  ng-click="$ctrl.filterformsubmit(filter)">Search</button>
-            </div>
-          </form>
+  <form name="filterform" ng-model="filter" novalidate="" class="ng-untouched ng-valid ng-dirty ng-valid-parse ng-not-empty">
 
+	<div class="filter-item">
+	  <h5>Select Status</h5>
+	  <label id="check_box_label"><input id="check_box" type="checkbox" ng-model="allSelected" ng-click="toggleAll()"/> All </label>
+	  <div ng-repeat="status in $ctrl.filterkeys['trail_status']">
+	    <label id="check_box_label"><input id="check_box" type="checkbox" ng-model="cb.checked" ng-click="cbChecked()"/>{{status}}</label>
+	  </div>
+	</div>
+
+   <div class="vertical-row"></div>
+
+	 <div class="filter-item">
+	  <h5>Select Drug Class</h5>
+	  <label id="check_box_label"><input id="check_box" type="checkbox" ng-model="allSelected" ng-click="toggleAll()"/> All </label>
+	  <div ng-repeat="drug_class_key in $ctrl.filterkeys['drug_class']">
+	    <label id="check_box_label"><input id="check_box" type="checkbox" ng-model="cb.checked" ng-click="cbChecked()"/>{{drug_class_key}}
+	    </label>
+	  </div>
+	</div>
+
+   <div class="vertical-row"></div>
+
+	<div class="filter-item" style="width: 25%;" >
+	  <h5>Select by Drug</h5>
+	  <label id="check_box_label" style="width: 142px;"><input id="check_box" type="checkbox" ng-model="allSelected" ng-click="toggleAll()"/> All </label>
+	  <div ng-repeat="drug_t in $ctrl.filterkeys['drug_name']">
+	    <label id="check_box_label" style="width: 142px;"><input id="check_box" type="checkbox" ng-model="cb.checked" ng-click="cbChecked()"/>{{drug_t}}</label>
+	  </div>
+	</div>
+
+    <div class="vertical-row"></div>
+
+        <div class="filter-item">
+	  <h5>Select End Date</h5>
+	    <label id="check_box_label"><input id="check_box" type="checkbox" ng-model="allSelected" ng-click="toggleAll()"/> All </label>
+	    <div ng-repeat="year in $ctrl.filterkeys['year_list']">
+	      <label id="check_box_label"><input id="check_box" type="checkbox" ng-model="cb.checked" ng-click="cbChecked()"/>{{year}}</label>
+	    </div>
         </div>
-      </div>
+    
+    <div class="vertical-row"></div>
 
+    <div class="filter-item" style="width: 25%;">
+	    <h5>Select Location</h5>
+	    <label id="check_box_label" style="width: 142px;"><input id="check_box" type="checkbox" ng-model="allSelected" ng-click="toggleAll()"/> All </label>
+	    <div ng-repeat="country in $ctrl.filterkeys['countries']">
+	      <label id="check_box_label" style="width: 142px;"><input id="check_box" type="checkbox" ng-model="cb.checked" ng-click="cbChecked()"/>{{country}}</label>
+	    </div>
+	  </div>
+
+    <a href="#" style=""><img class="pull-right" src="/img/summary_icons/down_bg.png" style="width: 70px;position: absolute;height: 65px;bottom: -35px;right: 35px;"></a>
+
+  </form>
+
+
+    </div>
+  </div>
+</div>
+</div>
+
+<ul ng-if="$ctrl.activeTab === 'Clinical Trail Summary' " class="center-block" style="width: 95%;background-color: #ece9e9;padding: 20px;margin-bottom: 20px;height: 65px;margin-top: 30px;">
+  <li class="" style="display: inline;float: left;padding-left: 30px;padding-right: 10px;">
+  <span style="background-color: #ff0000;height: 25px;position: absolute;width: 25px;border-radius: 100%;color: #fff;padding: 3px 7px;margin-left: -30px;">C</span>
+  <span class="center-align" style="vertical-align: middle;">Completed</span>
+  </li>
+  <li class="" style="display: inline;float: left;padding-left: 30px;padding-right: 10px;">
+  <span style="background-color: #7b7b7b;height: 25px;position: absolute;width: 25px;
+    border-radius: 100%;
+    color: #fff;
+    padding: 3px 7px;
+    margin-left: -30px;
+">O</span>
+  
+  <span class="center-align" style="
+vertical-align: middle;
+">Ongoing</span></li><li class="" style="display: inline;float: left;padding-left: 30px;padding-right: 10px;"><span style="
+    background-color: #8296b0;
+    height: 25px;
+    position: absolute;
+    width: 25px;
+    border-radius: 100%;
+    color: #fff;
+    padding: 3px 7px;
+    margin-left: -30px;
+">R</span><span class="" style="
+    vertical-align: middle;
+">Recruiting</span></li><li class="" style="display: inline;float: left;padding-left: 30px;padding-right: 10px;">
+  <span style="
+    background-color: #ff0;
+    margin-left: -30px;
+    height: 20px;
+    display: inline-block;
+    width: 5px;
+"></span><span class="" style="
+    margin-left: 10px;
+">Primary Completion Date</span></li><li class="" style="display: inline;float: left;padding-left: 30px;padding-right: 10px;">
+  <span class="" style="
+"><i aria-hidden="true" class="fa fa-star" style="
+    color: #E63DCE;
+    margin-left: -30px;
+    display: inline-block;
+    padding-top: 7px;
+"></i></span>
+  <span>Results</span>
+</li></ul>
+
+<div class="">
+  <!-- Description for Clinical Trail Summary starts here -->
+  <div class="tab-pane clinical-trail-summary" role="tabpanel" ng-if="$ctrl.activeTab === 'Clinical Trail Summary' ">
+    <h3></h3>
+
+    <div class="clinical-trail-summary-data center-block">
       <div class="row">
         <div class="summary-container">
          <table class="table table-responsive drugtable center-block">
@@ -78,9 +137,9 @@
                <th class="drugth" colspan="2">Drug</th>
                <th class="druginnertable">
                  <table class="table table-bordered table-responsive">
-                   <thead>
+                   <thead style="">
                      <tr>
-                       <th colspan="4" > 2014 <br>&lt;-</th>
+                       <th colspan="4" ><a href="#" style=""><img src="/img/summary_icons/down_bg.png" class="pull-right" style="width: 40px;position: absolute;height: 35px;bottom: 20px;left: 7px;"></a></th>
                        <th colspan="4" class="text-center year">2014</th>
                        <th colspan="4" class="text-center">2015</th>
                        <th colspan="4" class="text-center">2016</th>
@@ -129,7 +188,7 @@
            </thead>
            <tbody>
              <table class="table center-block drugrow1table">
-               <tbody>
+               <tbody >
                  <tr ng-repeat="trialdrug in $ctrl.clinical_summary | filter:drugName">
                    <td class="main_row text-center" > {{trialdrug.drug_name}}</td>
                    <td class="inside-trail-td">
@@ -175,8 +234,9 @@
                  </tr>
                </tbody>
              </table>
+          
              
-          <div class="legend">
+          <div class="legend" style="display: none">
             <div class="item">
              <div class="status completed">C</div>
                <p class="center-align">Completed</p>
@@ -197,7 +257,11 @@
                 <div class="full-results"><i class="fa fa-star" aria-hidden="true"></i></div>
                 <p>Results</p>
              </div>
-           </div> 
+          </div>
+          
+
+
+
         </div>
       </div>
     </div>
