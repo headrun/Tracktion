@@ -30,15 +30,49 @@ login {
   &> div.login-form-container {
 
     .cover;
-    display: table-cell;
     vertical-align: middle;
+    background-image: url('/img/summary_icons/bg.jpg');
 
-    &> form {
+    &> .intarcia-logo {
+      padding: 20px;
+    }
+
+    &> .row > .col-md-6 {
+
+      &> .panel {
+        padding: 65px 85px;
+        width: 430px; 
+        margin-left: 340px; 
+        margin-top: 49px; 
+        position: absolute;
+      }
+
+      &> .login_bg {
+        background-image: url('/img/summary_icons/login_bg.png'); 
+        width: 460px; 
+        height: 430px;
+
+        &> .primarylogo {
+          width: 65%; 
+          padding-top: 200px; 
+          padding-left: 50px;
+        }
+        &> p {
+          font-size: 13.5px; 
+          color: #fff; 
+          padding-left: 48px;
+        }
+      }
+    }
+
+    &> div > form {
 
       display: block;
       text-align: center;
       margin: 0px auto;
       width: 300px;
+      height: 100%;
+      padding-top: 143px;
 
       &> div.logo-container {
 

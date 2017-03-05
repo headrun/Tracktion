@@ -547,20 +547,38 @@ trackweekly {
     div.clinical-data{
 	    
       table{
-	width:95%;
-    display:table;
+        width:98%;
+        display:table;
+        font-family: ProximaNova;
+        font-size: 14px;
 	     
-	th {
-	  background-color:@brand-primary;
-          color:#fff;
-	}
+      	th {
+      	  background-color: #fff;
+          color:#004269;
+          font-weight: 600;
+          padding: 20px 10px;
+      	}
 
-	tbody{
-	  
-          tr{
-	    background-color:#fff!important;
-	  }
-	}
+      	tbody{
+      	  
+            tr{
+              &:nth-child(even) {
+                background: #F8FAFD;
+              }
+
+              &:nth-child(odd) {
+                background: #fff;
+              }
+
+              td {
+                padding: 20px !important;
+
+                &> a img {
+                  width : 15px;
+                }
+              }
+      	  }
+      	}
 
       } 
 

@@ -208,7 +208,7 @@
     ng-if="$ctrl.activeTab === 'Clinical Data' ">
 
     <h3></h3>
-    <table class="table table-bordered table-striped center-block">
+    <table class="center-block">
       <thead>
 	<tr>
 	  <th>Sl.No</th>
@@ -243,12 +243,12 @@
           <td>
             {{trial.patient_number}}
           </td>
-          <td>
+          <td width="350">
             {{trial.primary_endpoint}}
           </td>
           <td> </td>
           <td> </td>
-          <td><a href="http://176.9.181.46/nct/{{trial.nct_id}}.docx" target="_blank">Download Report</td>
+          <td><a href="http://176.9.181.46/nct/{{trial.nct_id}}.docx" target="_blank"><img src="/img/summary_icons/blue_download.png"></td>
         </tr>
 	 </tbody>
        </table>
