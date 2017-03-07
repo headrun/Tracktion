@@ -7,7 +7,6 @@
 </ul>
 
 <div class="tabs-content">
-  <!-- Description for Clinical Trail Summary starts here -->
   <div class="tab-pane clinical-trail-summary" role="tabpanel" 
     ng-if="$ctrl.activeTab === 'Clinical Trail Summary' ">
     <h3></h3>
@@ -39,7 +38,6 @@
         </div>
         
 	<div class="filter-item">
-	  <!--<button type="submit" class="btn btn-primary"  ng-click="$ctrl.filterformsubmit(filter)">Search</button>-->
 	  <img class="pull-right" src="/img/summary_icons/track_weekly_funnel.png" style="width: 60px;position: absolute;height: 60px;cursor: pointer;bottom: -31px;right: 25px;" ng-click="$ctrl.click_toggle()">
 	</div>
         
@@ -51,54 +49,6 @@
         <div class="text-center filter-container form-inline">
 
           <form name="filterform" ng-model="filter" novalidate="" class="ng-untouched ng-valid ng-dirty ng-valid-parse ng-not-empty">
-
-          <!--
-            <div class="filter-item">
-              <select multiple class="form-control" id="select5" ng-model="filter.trail_status"
-                      ng-change="">
-                <option value="{{$ctrl.filterkeys['trail_status']}}">Select Status</option>
-                <option value="{{$ctrl.filterkeys['trail_status']}}" >All</option>
-                <option ng-repeat="status in $ctrl.filterkeys['trail_status']">{{status}}</option>
-              </select>
-            </div>
-            <div class="filter-item">
-              <select multiple class="form-control" ng-model="filter.drug_class" 
-                      ng-change="" >
-                <option value="{{ $ctrl.filterkeys['drug_class']}}"> Select Drug Class</option>
-                <option value="{{ $ctrl.filterkeys['drug_class']}}" >All</option>
-                <option ng-repeat="drug_class_key in $ctrl.filterkeys['drug_class']">{{drug_class_key}}</option>
-              </select>
-            </div>
-            <div class="filter-item">
-              <select  multiple class="form-control" ng-model="filter.drug_name" 
-                      ng-change="">
-                <option value="{{$ctrl.filterkeys['drug_name']}}"> Select by Drug</option>
-                <option value="{{$ctrl.filterkeys['drug_name']}}" >All</option>
-                <option ng-repeat="drug_t in $ctrl.filterkeys['drug_name']">{{drug_t}}</option>
-              </select>
-            </div>
-
-            <div class="filter-item">
-              <select multiple class="form-control" ng-model="filter.end_date" 
-                      ng-change="">
-                <option value="{{$ctrl.filterkeys['year_list']}}"> End Date</option>
-                <option value="{{$ctrl.filterkeys['year_list']}}">All</option>
-                <option ng-repeat="year in $ctrl.filterkeys['year_list']">{{year}}</option>
-               </select>
-            </div>
-
-            <div class="filter-item">
-              <select multiple class="form-control" ng-model="filter.location"
-                      ng-change="">
-                <option value="{{$ctrl.filterkeys['countries']}}"> Select Location</option>
-                <option value="{{$ctrl.filterkeys['countries']}}">All</option>
-                <option ng-repeat="country in $ctrl.filterkeys['countries']">{{country}}</option>
-              </select>
-            </div>
-            -->
-
-            
-            
             <div class="filter-item">
               <h5>Select Status</h5>
               <label id="check_box_label">
@@ -223,15 +173,17 @@
     <div class="clinical-trail-summary-data center-block table-responsive" style="overflow-y: hidden;">
       <div class="row">
         <div class="summary-container">
+
          <table class="table drugtable center-block" style="margin: 0px">
            <thead>
              <tr class="drugtr">
                <th class="drugth" colspan="2">Drug</th>
                <th class="druginnertable">
+                 <img src="/img/summary_icons/track_weekly_left_arrow.png" class="pull-right" style="width: 4%;position: absolute;height: 50%;bottom: 23%;left: -2%;z-index:1;">
                  <table class="table table-bordered table-responsive">
                    <thead>
                      <tr>
-                       <th colspan="4" class="text-center year"><img src="/img/summary_icons/track_weekly_left_arrow.png" class="pull-right" style="width: 4%;position: absolute;height: 50%;bottom: 23%;left: -2%;">2014</th>
+                       <th colspan="4" class="text-center year">2014</th>
                        <th colspan="4" class="text-center">2015</th>
                        <th colspan="4" class="text-center">2016</th>
                        <th colspan="4" class="text-center">2017</th>
@@ -283,7 +235,8 @@
                    <td class="main_row text-center" > {{trialdrug.drug_name}}</td>
                    <td class="inside-trail-td">
 
-                   <div id="vertical" style="display: none; width: 1px; height: 100%; z-index: 300; position: absolute;background-color: black;"></div>
+                   <div style="width: 1px; height: 100%; z-index: 300; position: absolute; left: 864px; display: none; border: 1px dashed #032753;" id="vertical"></div>
+
                    <div id="horizontal"></div>
                    <table class="table trail-detail-data" ng-mouseover="$ctrl.vertical_line_appear()">
                      <tbody>
@@ -353,31 +306,6 @@
                  </tr>
                </tbody>
              </table>
-          
-             
-          <div class="legend" style="display: none">
-            <div class="item">
-             <div class="status completed">C</div>
-               <p class="center-align">Completed</p>
-             </div>
-             <div class="item">
-               <div class="status ongoing">O</div>
-               <p class="center-align">Ongoing</p>
-             </div>
-             <div class="item">
-               <div class="status recruiting">R</div>
-               <p class="center-align">Recruiting</p>
-             </div>
-             <div class="item">
-               <div class="prim-date align-style"></div>
-               <p class="para-align">Primary Completion Date</p>
-             </div>
-             <div class="item">
-                <div class="full-results"><i class="fa fa-star" aria-hidden="true"></i></div>
-                <p>Results</p>
-             </div>
-          </div>
-          
         </div>
       </div>
     </div>

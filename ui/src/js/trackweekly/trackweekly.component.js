@@ -252,9 +252,13 @@
 
         that.vertical_line_appear = function() {
           $('.trail-detail-data').on('mousemove', null, [$('#vertical')],function(e){
-              e.data[0].css('left', e.originalEvent.layerX);
+              e.data[0].css('left', e.originalEvent.screenX - 100);
               //e.data[0].css('top', e.offsetY==undefined?e.originalEvent.layerY:e.offsetY);
-              console.log(e.offsetX==undefined?e.originalEvent.layerX:e.offsetX);
+              
+              //console.log(e.offsetX==undefined?e.originalEvent.layerX:e.offsetX);
+              //console.log(e.offsetX==undefined?e.layerX:e.offsetX;)
+
+
               //e.data[0].hide();
           });
           $('.trail-detail-data').on('mouseenter', null, [$('#vertical')], function(e){
