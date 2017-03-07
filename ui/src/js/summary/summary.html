@@ -9,7 +9,7 @@
               <div class="widget-icon">
                 <img src="/img/summary_icons/key_note.png">
               </div>
-              <a href="#">Key News & Competitor Alerts</a>
+              <a ui-sref="dashboard.trackweekly({tabName: ''})">Key News & Competitor Alerts</a>
             </div>
           </div>
           <div class="widget-data">
@@ -69,7 +69,7 @@
                 <div class="content">
                   A Multicenter, Double-Blind, Placebo-Controlled, Parallel Group, Randomized, Phase III Study to Evaluate the Glycemic
                 </div>
-                <a href="#" style="color: #ededed; font-size: smaller;">Reports</a>
+                <a href="#" style="color: #8bc34a; font-size: smaller;">Reports</a>
               </div>
             </div>
 
@@ -81,7 +81,7 @@
               <div class="widget-icon">
                 <img src="/img/summary_icons/social_pulse.png">
               </div>
-              <a href="#">Social Pulse</a>
+              <a ui-sref="dashboard.tracksocial({tabName: ''})">Social Pulse</a>
             </div>
           </div>
           <div class="widget-data">
@@ -133,15 +133,15 @@
                 </table>
               </div>
             </div>
-            <a href="#" class="pull-right" style="font-size: smaller;">View More</a>
+            <a ui-sref="dashboard.trackweekly({tabName: ''})" class="pull-right" style="font-size: smaller;">View More</a>
           </div>
 
-          <div class="widget-headers" style="padding-top: 15px;">
+          <div class="widget-headers" style="margin-top: 40px;">
             <div class="panel-body">
               <div class="widget-icon">
                 <img src="/img/summary_icons/new_document_add.png">
               </div>
-              <a href="#" style="color: #222222">New Documents Added</a>
+              <a ui-sref="dashboard.reports({tabName: ''})" style="color: #222222">New Documents Added</a>
             </div>
           </div>
           <div class="widget-data">
@@ -204,7 +204,7 @@
               <div class="widget-icon">
                 <img src="/img/summary_icons/trending.png">
               </div>
-              <a href="#">Trending Topics</a>
+              <a ui-sref="dashboard.tracksocial({tabName: ''})">Trending Topics</a>
             </div>
           </div>
           <div class="widget-data">
@@ -228,7 +228,7 @@
                 </ul>
               </div>
             </div>
-            <a href="#" class="pull-right" style="font-size: smaller;">View More</a>
+            <a ui-sref="dashboard.tracksocial({tabName: ''})" class="pull-right" style="font-size: smaller;">View More</a>
           </div>
         </div>
       </div>
