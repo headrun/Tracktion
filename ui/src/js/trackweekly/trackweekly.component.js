@@ -7,6 +7,11 @@
 
     var that = this;
 
+
+    this.select_first = false;
+    this.select_filter = true;
+
+
     var stateData = this.state.dashboard.trackweekly && JSON.parse(this.state.dashboard.trackweekly) || {};
 
     this.stateName = $state.current.name;
@@ -20,6 +25,10 @@
     var tabName = $state.params.tabName;
 
     this.filterkeys;
+    this.ang_list;
+    this.ang_dict;
+    this.allSelected = false;
+    this.cbChecked;
 
     this.selected_filter='status';
 
@@ -60,6 +69,11 @@
     this.updateActiveTab({"tabName": "dashboard.trackweekly"});
 
     var selectedFilters = this.state.dashboard[scopeName];
+
+    that.click_toggle = function(){
+      this.select_first = true;
+      this.select_filter = false;
+    }
 
     that.adjustbars=function(){
       setTimeout(function(){
@@ -136,6 +150,7 @@
             marginleft=marginleft*qtr;
             if(flag2){marginleft-=((extraspace-statusspace)-8);prog_size+=((extraspace-statusspace)-8);}
             $(".prgbar"+nct_id).css('width',prog_size+"px");
+            var prog_size_store = prog_size;
             prog_size=prog_size+qtr;
             //$(".status-prgbar-container"+nct_id).css('width',prog_size+"px");
             $(".prgbar"+nct_id).css('margin-left',(marginleft+marginextra)+"px");
@@ -163,6 +178,7 @@
             }
             pcd_margin+=qtr/2;
             $(".yellowbar"+nct_id).css("margin-left",-pcd_margin+"px");
+            $(".progress-bar"+nct_id).css("width", (prog_size_store-pcd_margin)+"px");
           }
         }
       },0);
@@ -194,12 +210,89 @@
             if(resp.data.error) {
               return;
             }
+            var ang_list = [];
+            that.ang_dict = {};
+            var ang_dict_keys = [];
+            angular.forEach( resp.data[0], function(val, key) {
+              ang_list=[];
+              angular.forEach( val, function(v) {
+                ang_list.push({ 'label' : v, 'checked' : false });
+              });
+              that.ang_dict[key] = ang_list;
+              ang_dict_keys.push(key);
+            });
             that.filterkeys=resp.data[0];
+            
+            angular.forEach(ang_dict_keys, function(values) {
+              that.toggleAll(values);
+            });
             //console.log(resp.data[0].trail_status);
             //console.log(that.filterkeys);
           })
 
+          that.cbChecked = function(key_name){
+            that.allSelected[key_name] = true;
+            angular.forEach(that.ang_dict[key_name], function(v, k) {
+              if(!v.checked){
+                that.allSelected[key_name] = false;
+              }
+            });
+          }
+    
+          that.toggleAll = function(key_name) {
+            var bool = true;
+            if (that.allSelected[key_name]) {
+              bool = false;
+            }
+            angular.forEach(that.ang_dict[key_name], function(v, k) {
+              v.checked = !bool;
+              that.allSelected[key_name] = !bool;
+            });
+          }
+
+        that.vertical_line_appear = function() {
+          $('.trail-detail-data').on('mousemove', null, [$('#vertical')],function(e){
+              e.data[0].css('left', e.originalEvent.layerX);
+              //e.data[0].css('top', e.offsetY==undefined?e.originalEvent.layerY:e.offsetY);
+              console.log(e.offsetX==undefined?e.originalEvent.layerX:e.offsetX);
+              //e.data[0].hide();
+          });
+          $('.trail-detail-data').on('mouseenter', null, [$('#vertical')], function(e){
+              e.data[0].show();
+              //e.data[1].show();
+              //e.data[0].hide();
+            }).on('mouseleave', null, [$('#vertical')], function(e){
+              e.data[0].hide();
+              //e.data[1].hide();
+            });
+        }
+
         that.filterformsubmit=function(filtersdata){
+          
+          var filtersdata = {};
+          angular.forEach(that.ang_dict, function(val, key) {
+            var data_list = [];
+            angular.forEach(val, function(arr) {
+              if(arr.checked == true) {
+                data_list.push(arr.label);
+              }
+            })
+            if(data_list.length>=1){
+              filtersdata[key] = [];
+              
+              if (key=="year_list"){
+                filtersdata["end_date"] = data_list;
+              }
+              else if (key=="countries"){
+                filtersdata["location"] = data_list;
+              }
+              else{
+                filtersdata[key] = data_list;
+              }
+            }
+          });
+          
+
           if(typeof(filtersdata)!="undefined"){
             console.log(filtersdata);
             $http.get(domainUrl+"clinicalapi/clinicaltrail/",

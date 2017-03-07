@@ -1,68 +1,66 @@
 trackweekly {
- 
-  div.tabs-content{
+
+  font-family: ProximaNova;
+
+  div.tabs-content {
 
    overflow:auto;
 
-   div.legend{
-             
-            width:100%;
-            height:80px;
-            margin-top:20px;
-            justify-content:center; 
-            display:flex;
-            div.item {
+   ul#legend  {
+              width: 95%;
+              background-color: #f8f8f8;
+              padding: 2%;
+              margin-bottom: 20px;
+              height: 40px;
+
+              li {
+                display: inline;
+                float: left;
+                padding-right: 10px;
               
-              display:inline-block;
-              padding:25px;  
+                 img{
+                    height: 14px;
+                    width: 14px;
+                  }
+                  span{
+                  vertical-align: top;
+                  font-size: 12px;
+                  padding-left: 10px;
+                  }
+              }
 
-              div.status {
-                height:25px;
-                position:absolute;
-                width:25px;
-                border-radius:100%;
-                color:white;
-                padding:3px 7px;             
-              }
-  
-              div.completed {
-                background-color:red;
-                margin-left:-30px;
-              }
-              div.ongoing {
-                background-color:#7B7B7B;
-                margin-left:-30px;
-              }
-              div.recruiting {
-                background-color:#8296B0;
-                margin-left:-30px;
-              }
-              div.prim-date {
-                background-color:yellow;
-                margin-left:-30px;
-                height:15px;
-                display:inline-block;
-                width:5px;
-              }
-              div.full-results {
-                color:#E63DCE;
-                margin-left:-30px;
-                display:inline-block;
-              }
-              p{
-                display:inline-block;
-                vertical-align:middle;
-                margin-top:2px;
-              }
             }
-
-          }
 
 
 
     div.clinical-trail-summary {
 
-      div.clinical-trail-summary-data{
+      div.clinical-trail-summary-data-select-first {
+        width:95%;
+        background-color:#fff;
+        padding:2%;
+        margin-bottom:2%;
+        position : relative;
+        
+        div.all_data {
+          color:  #000000;
+          font-size: 14px;/* Approximation due to font substitution */
+          font-weight: 400;
+          text-align: left;
+          transform: scaleY(1.0033);/* width and height properties ommitted due to transform */
+        }
+
+        div.select_values{
+          color:  #999999;
+          font-size: 14px;/* Approximation due to font substitution */
+          font-weight: 400;
+          text-align: left;
+          transform: scaleY(1.0033);/* width and height properties ommitted due to transform */
+        }
+
+      }
+
+      div.clinical-trail-summary-data {
 
         width:95%;
         background-color:#fff;
@@ -74,29 +72,36 @@ trackweekly {
         div.filter-container{
           .vertical-row {
             float:left;
-            height:200px;
-            width:1px;
-            background-color: #e8e9ea;
             margin: 45px 15px 0px 15px;
+            background-color: rgba(238, 238, 238, 0.4);
+            width: 1px;
+            height: 161px;
           }
 
           div.filter-item{
+            
             display:inline-block;
             padding:12px;
 	          float:left;
+            color:  #999999;
+            font-size: 14px;
             
             input{
+
               margin-left:25px;
               height:25px;
               width:15px;
               vertical-align:middle;
+
             }
 
       	    label#check_box_label{
       	      float:left;
       	      margin-bottom:-5px;
-      	      font-size: 14px;
+              color: #000000;
               text-align: left;
+              transform: scaleY(1.0005);
+              font-weight: 400;
       	    }
         
       	    #check_box{
@@ -125,7 +130,7 @@ trackweekly {
             div.item {
               
               display:inline-block;
-              padding:25px;  
+              padding:25px;
 
               div.status {
                 height:25px;
@@ -171,7 +176,7 @@ trackweekly {
           table.drugtable {
 
             width: 100%;
-            padding: 0px 0px 5px 19px;
+            padding: 0px 0px 0px 15px;
 
             tr.drugtr{
 
@@ -179,7 +184,7 @@ trackweekly {
 
               th.drugth {
                 background-color: #eff3f8;
-                width:10%;
+                width:14%;
                 text-align:center;
                 vertical-align:middle;
                 border:none;
@@ -222,7 +227,7 @@ trackweekly {
       }
 	  table {
 
-            width:95%;
+            width:97%;
          
             td {
               vertical-align:middle;
@@ -244,6 +249,7 @@ trackweekly {
                 display:inline-block;
                 margin-left:0px;
                 float:left;
+                margin-top: 10px;
               }
               div.completed {
                 background-color:red;
@@ -257,10 +263,9 @@ trackweekly {
                background-color:#8296B0;
              }
              &>div.full-results {
-             
                display:inline-block;
                margin-left:10px;
-               color:#E63DCE;
+               margin-top: 10px;
                position:relative;
                float:left;
              }
@@ -270,10 +275,58 @@ trackweekly {
                width:4px;
                height:15px;
                display:inline-block;
+               background-color: #2196f3;
+               width: 2px;
              }
               div.progress {
                 height:15px;
                 margin-bottom:0px;
+                /*
+                border-radius: 2px;
+                border-style: solid;
+                border-width: 1px;
+                border-color: #add87c;
+                box-sizing: border-box;
+                background-color: #aed581;
+                */
+                div.progress-bar{
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  border-color: #add87c;
+                  box-sizing: border-box;
+                  background-color: #aed581;
+                  img{
+                    margin-top: 2px;
+                    margin-left: 3px;
+                    float: left;
+                  }
+                }
+                div.completed{
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  border-color: #add87c;
+                  box-sizing: border-box;
+                  background-color: #aed581;
+                }
+                div.ongoing{
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  border-color:  #76d0f9;
+                  box-sizing: border-box;
+                  background-color:  #81d4fa;
+                }
+                div.recruit{
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  border-color: #ffd966;
+                  box-sizing: border-box;
+                  background-color: #ffd966;
+                }
+
               }
               div.prim-date {
 		height:20px;
@@ -300,6 +353,22 @@ trackweekly {
                display:inline-block;
                height:20px;
                margin-left:5px;
+               float:left;
+               margin-top: 7px;
+                div.flag {
+                  width: 16px;
+                  height: 11px;
+                  border-radius: 50%;
+                  display: inline-block;
+                  margin-left: 5px;
+                  color:  #333333;
+                  font-size: 10px;
+                  font-weight: 600;
+                  line-height: 24px;
+                  text-align: left;
+                  transform: scaleY(1.0005);
+                  margin-right: 20px;
+                }
               }
               
 	      div.us {
@@ -330,7 +399,45 @@ trackweekly {
               p{
                 position:relative;
                 display:inline-block;
-                float:right;
+                float:left;
+                margin-left: 15px;
+                padding: 5px;
+                font-size: 12px;
+                border-radius: 12px;
+                background-color: #ffffff;
+                box-shadow: 0px 1px 7.84px 0.16px rgba(0, 0, 0, 0.08);
+                margin-top: 5px;
+                
+                a.id_link{
+                  color: rgb(33, 150, 243);
+                  font-size: 12px;
+                  font-weight: 600;
+                  text-align: left;
+                  transform: scaleY(1.0005);
+                }
+                span.trial_phase{
+                  font-family: ProximaNova;
+                  color: #999999;
+                  font-size: 12px;
+                  font-weight: 300;
+                  text-align: left;
+                  span.trial_phase_value{
+                    font-family: ProximaNova;
+                    color:  #333333;
+                    font-size: 12px;
+                    font-weight: 600;
+                    text-align: left;
+                    transform: scaleY(1.0005);
+                  }
+                }
+                span.truncated_title{
+                  font-family: ProximaNova;
+                  color: #666666;
+                  font-size: 11.87px;
+                  font-weight: 400;
+                  text-align: left;
+                }
+              
               }
 
             }
@@ -377,6 +484,7 @@ trackweekly {
                     display:inline-block;
                     position:absolute;
                     margin-left:10px;
+                    margin-top:10px;
                     color:#E63DCE;
                   }
                   div.us {
@@ -495,11 +603,20 @@ trackweekly {
             }
 
              td.main_row {
-               width:8%;
+               width:15%;
              }
 
              td.inside-trail-td {
                padding:0 0 0 0;
+               position:relative
+               
+               #vertical{
+                width:1px;
+                height:100%;
+                z-index:33000;
+                background-color:black;
+                position:absolute;
+               }
 
                table.trail-detail-data{
                  background-color:#fff;

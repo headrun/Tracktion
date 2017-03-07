@@ -11,65 +11,168 @@
   <div class="tab-pane clinical-trail-summary" role="tabpanel" 
     ng-if="$ctrl.activeTab === 'Clinical Trail Summary' ">
     <h3></h3>
-<div class="center-block clinical-trail-summary-data">
-  <div class="row">
-    <div class="text-center filter-container form-inline">
-      
 
-  <form name="filterform" ng-model="filter" novalidate="" class="ng-untouched ng-valid ng-dirty ng-valid-parse ng-not-empty">
+    <div class="center-block clinical-trail-summary-data-select-first" ng-hide="$ctrl.select_first">
+      <div class="row">
+        <div class="col-md-12">
 
-	<div class="filter-item">
-	  <h5>Select Status</h5>
-	  <label id="check_box_label"><input id="check_box" type="checkbox" ng-model="allSelected" ng-click="toggleAll()"/> All </label>
-	  <div ng-repeat="status in $ctrl.filterkeys['trail_status']">
-	    <label id="check_box_label"><input id="check_box" type="checkbox" ng-model="cb.checked" ng-click="cbChecked()"/>{{status}}</label>
-	  </div>
-	</div>
-
-   <div class="vertical-row"></div>
-
-	 <div class="filter-item">
-	  <h5>Select Drug Class</h5>
-	  <label id="check_box_label"><input id="check_box" type="checkbox" ng-model="allSelected" ng-click="toggleAll()"/> All </label>
-	  <div ng-repeat="drug_class_key in $ctrl.filterkeys['drug_class']">
-	    <label id="check_box_label"><input id="check_box" type="checkbox" ng-model="cb.checked" ng-click="cbChecked()"/>{{drug_class_key}}
-	    </label>
-	  </div>
-	</div>
-
-   <div class="vertical-row"></div>
-
-	<div class="filter-item" style="width: 25%;" >
-	  <h5>Select by Drug</h5>
-	  <label id="check_box_label" style="width: 142px;"><input id="check_box" type="checkbox" ng-model="allSelected" ng-click="toggleAll()"/> All </label>
-	  <div ng-repeat="drug_t in $ctrl.filterkeys['drug_name']">
-	    <label id="check_box_label" style="width: 142px;"><input id="check_box" type="checkbox" ng-model="cb.checked" ng-click="cbChecked()"/>{{drug_t}}</label>
-	  </div>
-	</div>
-
-    <div class="vertical-row"></div>
-
-        <div class="filter-item">
-	  <h5>Select End Date</h5>
-	    <label id="check_box_label"><input id="check_box" type="checkbox" ng-model="allSelected" ng-click="toggleAll()"/> All </label>
-	    <div ng-repeat="year in $ctrl.filterkeys['year_list']">
-	      <label id="check_box_label"><input id="check_box" type="checkbox" ng-model="cb.checked" ng-click="cbChecked()"/>{{year}}</label>
-	    </div>
+          <div class="col-md-2">
+            <div class="col-md-8 select_values"><p>Select Status</p></li></div>
+            <div class="col-md-4 all_data"><p>All</p></li></div>
+          </div>
+          <div class="col-md-3">
+            <div class="col-md-7 select_values"><p>Select Drug Class</p></li></div>
+            <div class="col-md-5 all_data"><p>All</p></li></div>
+          </div>
+          <div class="col-md-3">
+            <div class="col-md-6 select_values"><p>Select by Drug</p></li></div>
+            <div class="col-md-6 all_data"><p>All</p></li></div>
+          </div>
+          <div class="col-md-2">
+            <div class="col-md-7 select_values"><p>End Date</p></li></div>
+            <div class="col-md-5 all_data"><p>All</p></li></div>
+          </div>
+          <div class="col-md-2">
+            <div class="col-md-9 select_values"><p>Select Location</p></li></div>
+            <div class="col-md-3 all_data"><p>All</p></li></div>
+          </div>
         </div>
+        
+	<div class="filter-item">
+	  <!--<button type="submit" class="btn btn-primary"  ng-click="$ctrl.filterformsubmit(filter)">Search</button>-->
+	  <img class="pull-right" src="/img/summary_icons/track_weekly_funnel.png" style="width: 60px;position: absolute;height: 60px;cursor: pointer;bottom: -31px;right: 25px;" ng-click="$ctrl.click_toggle()">
+	</div>
+        
+      </div>
+    </div>
+
+    <div class="center-block clinical-trail-summary-data" ng-hide="$ctrl.select_filter">
+      <div class="row">
+        <div class="text-center filter-container form-inline">
+
+          <form name="filterform" ng-model="filter" novalidate="" class="ng-untouched ng-valid ng-dirty ng-valid-parse ng-not-empty">
+
+          <!--
+            <div class="filter-item">
+              <select multiple class="form-control" id="select5" ng-model="filter.trail_status"
+                      ng-change="">
+                <option value="{{$ctrl.filterkeys['trail_status']}}">Select Status</option>
+                <option value="{{$ctrl.filterkeys['trail_status']}}" >All</option>
+                <option ng-repeat="status in $ctrl.filterkeys['trail_status']">{{status}}</option>
+              </select>
+            </div>
+            <div class="filter-item">
+              <select multiple class="form-control" ng-model="filter.drug_class" 
+                      ng-change="" >
+                <option value="{{ $ctrl.filterkeys['drug_class']}}"> Select Drug Class</option>
+                <option value="{{ $ctrl.filterkeys['drug_class']}}" >All</option>
+                <option ng-repeat="drug_class_key in $ctrl.filterkeys['drug_class']">{{drug_class_key}}</option>
+              </select>
+            </div>
+            <div class="filter-item">
+              <select  multiple class="form-control" ng-model="filter.drug_name" 
+                      ng-change="">
+                <option value="{{$ctrl.filterkeys['drug_name']}}"> Select by Drug</option>
+                <option value="{{$ctrl.filterkeys['drug_name']}}" >All</option>
+                <option ng-repeat="drug_t in $ctrl.filterkeys['drug_name']">{{drug_t}}</option>
+              </select>
+            </div>
+
+            <div class="filter-item">
+              <select multiple class="form-control" ng-model="filter.end_date" 
+                      ng-change="">
+                <option value="{{$ctrl.filterkeys['year_list']}}"> End Date</option>
+                <option value="{{$ctrl.filterkeys['year_list']}}">All</option>
+                <option ng-repeat="year in $ctrl.filterkeys['year_list']">{{year}}</option>
+               </select>
+            </div>
+
+            <div class="filter-item">
+              <select multiple class="form-control" ng-model="filter.location"
+                      ng-change="">
+                <option value="{{$ctrl.filterkeys['countries']}}"> Select Location</option>
+                <option value="{{$ctrl.filterkeys['countries']}}">All</option>
+                <option ng-repeat="country in $ctrl.filterkeys['countries']">{{country}}</option>
+              </select>
+            </div>
+            -->
+
+            
+            
+            <div class="filter-item">
+              <h5>Select Status</h5>
+              <label id="check_box_label">
+                <input id="check_box" type="checkbox" ng-model="$ctrl.allSelected.trail_status" ng-click="$ctrl.toggleAll('trail_status')" ng-init="$ctrl.allSelected.trail_status=true"/> All 
+              </label>
+              <div ng-repeat="status in $ctrl.ang_dict['trail_status']">
+                  <label id="check_box_label">
+                    <input id="check_box" type="checkbox" ng-model="status.checked" ng-click="$ctrl.cbChecked('trail_status')"/>{{status.label}}
+                  </label>
+              </div>
+            </div>
+
+             <div class="vertical-row"></div>
+
+               <div class="filter-item">
+                <h5>Select Drug Class</h5>
+                <label id="check_box_label">
+                  <input id="check_box" type="checkbox" ng-model="$ctrl.allSelected.drug_class" ng-click="$ctrl.toggleAll('drug_class')" ng-init="$ctrl.allSelected.drug_class=true"/> All 
+                </label>
+                <div ng-repeat="drug_class_key in $ctrl.ang_dict['drug_class']">
+                  <label id="check_box_label">
+                    <input id="check_box" type="checkbox" ng-model="drug_class_key.checked" ng-click="$ctrl.cbChecked('drug_class')"/>{{drug_class_key.label}}
+                  </label>
+                </div>
+             </div>
+
+             <div class="vertical-row"></div>
+
+            <div class="filter-item" style="width: 25%;" >
+              <h5>Select by Drug</h5>
+              <label id="check_box_label" style="width: 142px;">
+                <input id="check_box" type="checkbox" ng-model="$ctrl.allSelected.drug_name" ng-click="$ctrl.toggleAll('drug_name')" ng-init="$ctrl.allSelected.drug_name=true"/> All
+              </label>
+              <div ng-repeat="drug_t in $ctrl.ang_dict['drug_name']">
+                <label id="check_box_label" style="width: 142px;">
+                  <input id="check_box" type="checkbox" ng-model="drug_t.checked" ng-click="$ctrl.cbChecked('drug_name')"/>
+                  {{drug_t.label}}
+                </label>
+              </div>
+            </div>
+
+            <div class="vertical-row"></div>
+
+            <div class="filter-item">
+              <h5>Select End Date</h5>
+              <label id="check_box_label">
+                <input id="check_box" type="checkbox" ng-model="$ctrl.allSelected.year_list" ng-click="$ctrl.toggleAll('year_list')" ng-init = "$ctrl.allSelected.year_list=true"/> All 
+              </label>
+              <div ng-repeat="year in $ctrl.ang_dict['year_list']">
+                <label id="check_box_label">
+                  <input id="check_box" type="checkbox" ng-model="year.checked" ng-click="$ctrl.cbChecked('year_list')"/>{{year.label}}
+                </label>
+              </div>
+            </div>
     
-    <div class="vertical-row"></div>
+            <div class="vertical-row"></div>
 
-    <div class="filter-item" style="width: 25%;">
-	    <h5>Select Location</h5>
-	    <label id="check_box_label" style="width: 142px;"><input id="check_box" type="checkbox" ng-model="allSelected" ng-click="toggleAll()"/> All </label>
-	    <div ng-repeat="country in $ctrl.filterkeys['countries']">
-	      <label id="check_box_label" style="width: 142px;"><input id="check_box" type="checkbox" ng-model="cb.checked" ng-click="cbChecked()"/>{{country}}</label>
-	    </div>
-	  </div>
-
-    <a href="#" style=""><img class="pull-right" src="/img/summary_icons/down_bg.png" style="width: 70px;position: absolute;height: 65px;bottom: -35px;right: 35px;"></a>
-
-  </form>
+            <div class="filter-item" style="width: 25%;">
+              <h5>Select Location</h5>
+              <label id="check_box_label" style="width: 142px;">
+                <input id="check_box" type="checkbox" ng-model="$ctrl.allSelected.countries" ng-click="$ctrl.toggleAll('countries')" ng-init = "$ctrl.allSelected.countries=true"/> All 
+              </label>
+              <div ng-repeat="country in $ctrl.ang_dict['countries']">
+                <label id="check_box_label" style="width: 142px;">
+                  <input id="check_box" type="checkbox" ng-model="country.checked" ng-click="$ctrl.cbChecked('countries')"/>{{country.label}}
+                </label>
+              </div>
+            </div>
+            
+            <div class="filter-item">
+                <button type="submit" class="btn btn-primary"  ng-click="$ctrl.filterformsubmit(filter)" style="border-radius: 50px;width: 60px;position: absolute;height: 60px;bottom: -31px;right: 25px;"><img src="/img/summary_icons/tick.png"></button>
+            </div>
+	          
+          </form>
 
 
     </div>
@@ -77,70 +180,58 @@
 </div>
 </div>
 
-<ul ng-if="$ctrl.activeTab === 'Clinical Trail Summary' " class="center-block" style="width: 95%;background-color: #ece9e9;padding: 20px;margin-bottom: 20px;height: 65px;margin-top: 30px;">
-  <li class="" style="display: inline;float: left;padding-left: 30px;padding-right: 10px;">
-  <span style="background-color: #ff0000;height: 25px;position: absolute;width: 25px;border-radius: 100%;color: #fff;padding: 3px 7px;margin-left: -30px;">C</span>
-  <span class="center-align" style="vertical-align: middle;">Completed</span>
+<div class="col-md-6">
+<ul id="legend" class="center-block ng-scope" ng-if="$ctrl.activeTab === 'Clinical Trail Summary' " >
+  <li>
+    <img src="/img/summary_icons/track_weekly_C.png" class="pull-left">
+    <span class="center-align">Completed
+    </span>
   </li>
-  <li class="" style="display: inline;float: left;padding-left: 30px;padding-right: 10px;">
-  <span style="background-color: #7b7b7b;height: 25px;position: absolute;width: 25px;
-    border-radius: 100%;
-    color: #fff;
-    padding: 3px 7px;
-    margin-left: -30px;
-">O</span>
-  
-  <span class="center-align" style="
-vertical-align: middle;
-">Ongoing</span></li><li class="" style="display: inline;float: left;padding-left: 30px;padding-right: 10px;"><span style="
-    background-color: #8296b0;
-    height: 25px;
-    position: absolute;
-    width: 25px;
-    border-radius: 100%;
-    color: #fff;
-    padding: 3px 7px;
-    margin-left: -30px;
-">R</span><span class="" style="
-    vertical-align: middle;
-">Recruiting</span></li><li class="" style="display: inline;float: left;padding-left: 30px;padding-right: 10px;">
-  <span style="
-    background-color: #ff0;
-    margin-left: -30px;
-    height: 20px;
-    display: inline-block;
-    width: 5px;
-"></span><span class="" style="
-    margin-left: 10px;
-">Primary Completion Date</span></li><li class="" style="display: inline;float: left;padding-left: 30px;padding-right: 10px;">
-  <span class="" style="
-"><i aria-hidden="true" class="fa fa-star" style="
-    color: #E63DCE;
-    margin-left: -30px;
-    display: inline-block;
-    padding-top: 7px;
-"></i></span>
-  <span>Results</span>
-</li></ul>
+
+  <li>
+    <img src="/img/summary_icons/track_weekly_O.png" class="pull-left">
+    <span class="center-align">Ongoing
+    </span>
+  </li>
+
+  <li>
+    <img src="/img/summary_icons/track_weekly_R.png" class="pull-left">
+    <span class="center-align">Recruiting
+    </span>
+  </li>
+
+  <li>
+    <img src="/img/summary_icons/track_weekly_blue.png" class="pull-left">
+    <span class="center-align">Primary Completion Date
+    </span>
+  </li>
+
+  <li>
+    <img src="/img/summary_icons/track_weekly_star.png" class="pull-left">
+    <span class="center-align">Results
+    </span>
+  </li>
+
+</ul>
+</div>
 
 <div class="">
   <!-- Description for Clinical Trail Summary starts here -->
   <div class="tab-pane clinical-trail-summary" role="tabpanel" ng-if="$ctrl.activeTab === 'Clinical Trail Summary' ">
     <h3></h3>
 
-    <div class="clinical-trail-summary-data center-block">
+    <div class="clinical-trail-summary-data center-block table-responsive" style="overflow-y: hidden;">
       <div class="row">
         <div class="summary-container">
-         <table class="table table-responsive drugtable center-block">
+         <table class="table drugtable center-block" style="margin: 0px">
            <thead>
              <tr class="drugtr">
                <th class="drugth" colspan="2">Drug</th>
                <th class="druginnertable">
                  <table class="table table-bordered table-responsive">
-                   <thead style="">
+                   <thead>
                      <tr>
-                       <th colspan="4" ><a href="#" style=""><img src="/img/summary_icons/down_bg.png" class="pull-right" style="width: 40px;position: absolute;height: 35px;bottom: 20px;left: 7px;"></a></th>
-                       <th colspan="4" class="text-center year">2014</th>
+                       <th colspan="4" class="text-center year"><img src="/img/summary_icons/track_weekly_left_arrow.png" class="pull-right" style="width: 4%;position: absolute;height: 50%;bottom: 23%;left: -2%;">2014</th>
                        <th colspan="4" class="text-center">2015</th>
                        <th colspan="4" class="text-center">2016</th>
                        <th colspan="4" class="text-center">2017</th>
@@ -151,7 +242,6 @@ vertical-align: middle;
                    </thead>
                    <tbody>
                      <tr>
-                       <td colspan="4" class="extraspace">...</td>
                        <td class="qtr">1Q</td>
                        <td>2Q</td>
                        <td>3Q</td>
@@ -192,39 +282,68 @@ vertical-align: middle;
                  <tr ng-repeat="trialdrug in $ctrl.clinical_summary | filter:drugName">
                    <td class="main_row text-center" > {{trialdrug.drug_name}}</td>
                    <td class="inside-trail-td">
-                   <table class="table trail-detail-data">
+
+                   <div id="vertical" style="display: none; width: 1px; height: 100%; z-index: 300; position: absolute;background-color: black;"></div>
+                   <div id="horizontal"></div>
+                   <table class="table trail-detail-data" ng-mouseover="$ctrl.vertical_line_appear()">
                      <tbody>
                        <tr ng-repeat="trial in trialdrug.trial_data">
+
+
+
+                       
                          <td class="trail">
-                           <div class="status-prgbar-container{{trial.nct_id}}">
+                           <div class="status-prgbar-container{{trial.nct_id}}" style="margin-top: 10px">
                                <!-- status -->
-                               <div class="status completed"  ng-show="{{trial.trial_status=='Completed'}}">C</div>
-                               <div class="status recruiting" ng-show="{{trial.trial_status=='Recruiting'}}" >R</div>
-                               <div class="status ongoing" ng-show="{{trial.trial_status=='Ongoing'}}">O</div>
+                               
                                <!-- status end -->
                                <!--progress bar -->
+
                                <div class="prog-bar prgbar{{trial.nct_id}}">
-                               <div class="progress">
-                                  <div class="progress-bar" role="progressbar" aria-valuenow="70" 
-                                              aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                 <div class="progress">
+
+
+
+                                    <div ng-show="{{trial.trial_status=='Completed'}}" class="progress-bar{{trial.nct_id}} completed" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">                           
+                                      <div ng-show="{{trial.trial_status=='Completed'}}">
+                                        <img style="margin-bottom: 10px;margin-left: 3px;" src="/img/summary_icons/alpha_c.png">
+                                      </div>
+                                    </div>
+
+
+
+                                    <div ng-show="{{trial.trial_status=='Recruiting'}}" class="progress-bar{{trial.nct_id}} recruit" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                      <div ng-show="{{trial.trial_status=='Recruiting'}}" >
+                                        <img style="margin-bottom: 10px;margin-left: 3px;" src="/img/summary_icons/alpha_r.png">
+                                      </div>
+                                    </div>
+
+
+
+                                    <div ng-show="{{trial.trial_status=='Ongoing'}}" class="progress-bar{{trial.nct_id}} ongoing" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                      <div ng-show="{{trial.trial_status=='Ongoing'}}">
+                                        <img style="margin-bottom: 10px;margin-left: 3px;" src="/img/summary_icons/alpha_o.png">
+                                      </div>
+                                    </div>
+
+
                                   </div>
-                                </div>
                                </div>
                                <div class="yellowbar{{trial.nct_id}} yellowbar"></div> 
                                <!-- progress bar end-->
                            </div>
                            <!-- badges and countries -->
-                           <div class="full-results" ng-hide="{{trial.results==''}}"><i class="fa fa-star" aria-hidden="true"></i></div>
+                           <div class="full-results" ng-hide="{{trial.results==''}}"><img src="/img/summary_icons/track_weekly_star.png" class="pull-left"></div>
                            <div class="countries" >
-                             <div  ng-repeat="country in trial.countries" class="flag flag-{{country}}"></div>
+                             <div  ng-repeat="country in trial.countries" class="flag"><span style="text-transform: uppercase;"> {{country}} </span></div>
                            </div>
                            <!-- badges and countries end-->
-                           <p style="float:right"><a href="{{trial.source}}">{{trial.nct_id}}</a>
+                           <p><a class="id_link" href="{{trial.source}}">{{trial.nct_id}}</a>
                             <span ng-show="trial.othername!=''"> {{"("+trial.othername+");"}}</span>
-                            <span ng-show="trial.phase!=''"> {{"Phase: "+trial.phase+";"}}</span>
-                            <span ng-show="trial.patient_number!=''"> {{"N="+trial.patient_number+";"}}</span>
-                            <span ng-show="trial.truncated_title!=''">{{trial.truncated_title}}</span>
-                            <span><a  ui-sref='dashboard.trackweekly({tabName: "Clinical Data", state: "{\"id\": \"" + trial.nct_id + "\"}"})'>Read More</a></span>
+                            <span class="trial_phase" ng-show="trial.phase!=''"><span>Phase:</span><span class="trial_phase_value">{{trial.phase+";"}}</span></span>
+                            <span class="trial_phase" ng-show="trial.patient_number!=''"><span>N=</span><span class="trial_phase_value">{{trial.patient_number+";"}}</span></span>
+                            <span class="truncated_title" ng-show="trial.truncated_title!=''">{{trial.truncated_title}}</span>
+                            <span><a class="id_link" ui-sref='dashboard.trackweekly({tabName: "Clinical Data", state: "{\"id\": \"" + trial.nct_id + "\"}"})'>Read More</a></span>
                            </p>
                          </td>
                        </tr>
@@ -259,9 +378,6 @@ vertical-align: middle;
              </div>
           </div>
           
-
-
-
         </div>
       </div>
     </div>
