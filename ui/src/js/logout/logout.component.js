@@ -9,6 +9,10 @@
                            "Auth", "AUTH_EVENTS",
              function ($rootScope, Auth, AUTH_EVENTS) {
 
+               this.user_data = JSON.parse(localStorage.userData || null);
+
+               this.userName = this.user_data.user != null ? this.user_data.user.userName : "";
+
                this.logout = function () {
 
                  Auth.logout().then(function () {

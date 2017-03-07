@@ -99,12 +99,9 @@ header {
         }
     }
 
-    &.collapsed {
-
-      mySidenav, aside, div.aside-overlay {
+    &> .aside-overlay {
 
         display: none;
-      }
     }
 
     &> a.toggle-collapse, &> a.brand {
@@ -227,7 +224,7 @@ header {
     div.aside-overlay {
 
       .overlay;
-      display: block;
+      display: none;
       cursor: pointer;
       background-color: fade(#000000, 50%);
       z-index: -2;

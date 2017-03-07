@@ -29,7 +29,7 @@
   <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" ng-click="$ctrl.hideSidebar()">&times;</a>
     <a ng-repeat="tab in $ctrl.tabs"
-          ng-class="{ 'active': $ctrl.activeTab === tab.name }" ui-sref="{{ tab.name + '({state: $ctrl.states[tab.name.split(\'.\')[1]] })' }}">
+          ng-class="{ 'active': $ctrl.activeTab === tab.name }" ng-click="$ctrl.hideSidebar()" ui-sref="{{ tab.name + '({state: $ctrl.states[tab.name.split(\'.\')[1]] })' }}">
           <i class="{{tab.icon}}" aria-hidden="true"></i>
           {{ tab.text }}
     </a>
@@ -43,7 +43,7 @@
       </li>
     </ul>
   </aside>-->
-  <div ng-click="$ctrl.toggleCollapse()"
+  <div ng-click="$ctrl.hideSidebar()"
        class="aside-overlay"></div>
   <ul ng-if="$ctrl.collapsed" class="nav navbar-nav pull-right">
     <li><logout></logout></li>

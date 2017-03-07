@@ -585,7 +585,59 @@ trackweekly {
     }
 
     div.news {
-      width:95%;
+      width:98%;
+
+      &> .panel {
+        padding: 20px;
+        font-family: ProximaNova;
+        border: none !important;
+        margin-bottom: 0px !important; 
+
+        &> .row > .col-md-9 {
+          h4 {
+            padding-bottom: 15px;
+            font-weight: 600;
+          }
+
+          .content {
+
+            table {
+
+                thead {
+
+                  tr {
+                    border: 1px solid #ddd;
+
+                    th {
+                      background-color: #fff;
+                      color:#004269;
+                      font-weight: 600;
+                      padding: 20px 10px;
+                    }
+                  }
+                }
+                tbody{
+                  border: 1px solid #ddd;
+          
+                  tr{
+                    &:nth-child(even) {
+                      background: #fff;
+                    }
+
+                    &:nth-child(odd) {
+                      background: #F8FAFD;
+                    }
+
+                    td {
+                      padding: 15px;
+                      border-top: none;
+                    }
+                  }
+                }
+            }
+          }
+        }
+      }
       
       div.widget{
        

@@ -59,6 +59,7 @@
                this.toggleSidebar = function(){
 
                   $('#mySidenav').css('display', 'block');
+                  $('.aside-overlay').css('display', 'block');
                   $('.menubutton').css('display', 'none');
                }
 
@@ -66,6 +67,7 @@
 
                   $('#mySidenav').css('display', 'none');
                   $('.menubutton').css('display', 'block');
+                  $('.aside-overlay').css('display', 'none');
                }
 
                function onNavigation (event, next, params) {

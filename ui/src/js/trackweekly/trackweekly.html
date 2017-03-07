@@ -210,18 +210,18 @@
     <h3></h3>
     <table class="center-block">
       <thead>
-	<tr>
-	  <th>Sl.No</th>
-	  <th>Drug</th>
-	  <th>NCTID (Trial Name)</th>
-	  <th>Phase</th>
-	  <th>Start Date/PCD</th>
-	  <th>Sample size</th>
-	  <th>Primary Endpoint</th>
-	  <th>Results</th>
-	  <th>Summary</th>
-      <th>Report</th>
-	</tr>
+      	<tr>
+      	  <th>Sl.No</th>
+      	  <th>Drug</th>
+      	  <th>NCTID (Trial Name)</th>
+      	  <th>Phase</th>
+      	  <th>Start Date/PCD</th>
+      	  <th>Sample size</th>
+      	  <th>Primary Endpoint</th>
+      	  <th>Results</th>
+      	  <th>Summary</th>
+            <th>Report</th>
+      	</tr>
       </thead>
       <tbody>
 	    <tr ng-repeat="trial in $ctrl.trials" ng-model="test=0">
@@ -258,89 +258,98 @@
   <!-- News Data starts Here -->
   <div class="tab-pane news center-block text-justify " role="tabpanel" 
     ng-if="$ctrl.activeTab === 'News' ">
-    <div class="widget">
- 
-      <div class="title">
-        <h3>Diabetes Newsletter (13th-17th July)</h3>
+    <!--<div class="widget">-->
+     
+      <div class="panel panel-default">
+          <div class="row">
+            <div class="col-md-9">
+                <h4>Diabetes Newsletter (13th-17th July)</h4>
+                <div class="content">
+                  <p>According to The Centers for Disease Control and Prevention there are about 24 million people in US with diabetes, out of which nearly 18 million people are diagnosed and the remaining 6 million people remain undiagnosed. It is also reported that majority of the people suffer from type 2 diabetes. Type 1 diabetes is only about 10% of the overall diabetes population. It is observed that the prevalence of diabetes is increasing over the years. Lifestyle disorders mainly obesity is the most important contributing factor. Prevalence of type 2 diabetes is high in Europe and even there obesity is considered as the main reason for increasing prevalence.
+                  </p>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+          </div>
       </div>
 
-      <div class="content">
-	<p>According to The Centers for Disease Control and Prevention there are about 24 million people in US with diabetes,
-	   out of which nearly 18 million people are diagnosed and the remaining 6 million people remain undiagnosed. It is also
-	   reported that majority of the people suffer from type 2 diabetes. Type 1 diabetes is only about 10% of the overall
-	   diabetes population. It is observed that the prevalence of diabetes is increasing over the years. Lifestyle disorders
-	   mainly obesity is the most important contributing factor. Prevalence of type 2 diabetes is high in Europe and even
-	   there obesity is considered as the main reason for increasing prevalence.
-        </p>
-	<p class="brown-font">
-          <b>This the first trial to assess effect of coadministration of a GLP-1 receptor agonist /SGLT-2 
-	     inhibitor
-          </b>
-        </p>
-        <p class="sub-heading"><span>DURATION-8 Study Details</span></p>
-        <p>The study was a 28 week, multicentre, double-blind, randomised, active-controlled phase 3 trial done at 109 sites
-	  in six countries</p>
-	<p class="sub-heading"><span>Efficacy</span></p>
-	<ul>
-	  <li><p>In the study, T2D adults with stable metformin therapy received receive once-weekly exenatide 2 mg plus
-	    once-daily dapagliflozin 10 mg oral tablets for 28 weeks</p></li>
-	    <li><p>Exenatide plus dapagliflozin significantly reduced HbA1c from baseline to week 28 compared with exenatide
-	    alone (-0.4% [95% CI -0.6 to -0.1]; p=0.004) or dapagliflozin alone (-0.6% [-0.8 to -0.3]; p&lt;0.001).</p></li>
-	</ul>
-	<table class="table table-bordered">
-	  <tbody>
-	    <tr>
-	      <td></td>
-	      <td>exenatide plus dapagliflozin</td>
-	      <td>exenatide</td>
-	      <td>dapagliflozin</td>
-	    </tr>
-	    <tr>
-	      <td>Change in baseline HbA1c at 28 weeks</td>
-	      <td>-1.95% (95% CI -2.1 to -1.8)</td>
-	      <td>-1.58% (-1.8 to -1.4)</td>
-	      <td>-1.37% (-1.6 to -1.2)</td>
-	    </tr>
-	    <tr>
-	      <td>Body weight reduction (kg)</td>
-	      <td>-3.4</td>
-	      <td>-1.5</td>
-	      <td>-2.2</td>
-	    </tr>
-	    <tr>
-	      <td>Systolic blood pressure reduction in mmHg</td>
-	      <td>-4.2</td>
-	      <td>-1.3</td>
-	      <td>-1.8</td>
-	    </tr>
-	  </tbody>
-	</table>
+      <div class="panel panel-default" style="background: #f6f6f7;">
+          <div class="row">
+            <div class="col-md-9">
+                <h4>This the first trial to assess effect of coadministration of a GLP-1 receptor agonist /SGLT-2 inhibitor</h4>
+                <div class="content">
+                  <p style="color: #003966"><strong>DURATION-8 Study Details</strong></p>
+                  <p>The study was a 28 week, multicentre, double-blind, randomised, active-controlled phase 3 trial done at 109 sites in six countries</p>
+                  <p style="color: #003966"><strong>Efficacy</strong></p>
+                  <ul>
+                    <li>
+                      <p>In the study, T2D adults with stable metformin therapy received receive once-weekly exenatide 2 mg plus
+                      once-daily dapagliflozin 10 mg oral tablets for 28 weeks
+                      </p>
+                    </li>
+                    <li>
+                      <p>Exenatide plus dapagliflozin significantly reduced HbA1c from baseline to week 28 compared with exenatide
+                      alone (-0.4% [95% CI -0.6 to -0.1]; p=0.004) or dapagliflozin alone (-0.6% [-0.8 to -0.3]; p&lt;0.001).
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+          </div>
+      </div>
 
-	<p class="sub-heading brown-font"><span>Other pipeline updates</span></p>
-        <p>The diabetes pipeline indicates that there are around 150 molecules in different phases of development.  The late
-	  stage molecules are follow up drugs such as ertugliflozin (PF-04971729) which is a SGLT-2 inhibitor and combination
-	  therapies with ertugliflozin as seen in the Pfizer and Merck pipeline. Novo Nordisk has semaglutide in phase 3 which is
-	  a GLP-1 medicine but with weekly one dose.  The drug will be the fourth drug in the market for weekly once dosing apart
-	  from Trulicity, Tanzeum and Bydureon. In its trials the drug has proved that it can reduce heart risks and stroke by 26%.
-	  This drug is expected to drive the growth of the company in the future since its blockbuster drug Victoza will lose its
-	  market share against Trulicity. The company is also conducting trials for oral semaglutide which would be taken daily.</p>
-	  
-        <p>Some of the companies such as MedImmune, GSK, Roche, REMD Biotherapeutics, Navitas Pharma,   and IndiPharm ha
-	  ve their molecules in early stages of development. </p>
-	<p>Not only novel drugs and combinations but companies such as Medtronic and Qualcomm are working together to develop
-	  future generation continuous glucose monitoring (CGM) systems that aim to improve health outcomes for people with diabetes.
-	  Medtronic is a market leader in diabetes management and Qualcomm has expertise in developing reference designs for wireless,
-	  single-use and small integrated modules. Using expertise from both the companies they are developing affordable, user
-	  friendly and more accurate CGM systems.</p>
-	<p>Apart from spending in research and development we even see that companies are going forward for mergers and
-	  acquisitions to step ahead in the diabetes market. Such as OPKO Health has announced that it will acquire Transition
-	  Therapeutics. This acquisition will help OPKO to gain access and also have first mover advantage to diabetes market with
-	  novel drug GLP-1/Glucagon dual agonist for type 2 diabetes and obesity. The drug TT401 is a once or twice weekly
-	  oxyntomodulin for type 2 diabetes and obesity and has recently completed phase 2 trials.</p>
-	<p>Similarly Allergan has declared that it will acquire Motus Therapeutics (formerly known as Rhythm Health) for Motus'
-	  ghrelin agonist, for the treatment of gastroparesis in patients with type 1 and type 2 diabetes.</p>
-      </div>   
-    </div>
+      <div class="panel panel-default">
+          <div class="row">
+            <div class="col-md-9">
+                <div class="content">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>Exenatide Plus Dapagliflozin</th>
+                        <th>Exenatide</th>
+                        <th>Dapagliflozin</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Change in baseline HbA1c at 28 weeks</td>
+                        <td>-1.95% (95% CI -2.1 to -1.8)</td>
+                        <td>-1.58% (-1.8 to -1.4)</td>
+                        <td>-1.37% (-1.6 to -1.2)</td>
+                      </tr>
+                      <tr>
+                        <td>Body weight reduction (kg)</td>
+                        <td>-3.4</td>
+                        <td>-1.5</td>
+                        <td>-2.2</td>
+                      </tr>
+                      <tr>
+                        <td>Systolic blood pressure reduction in mmHg</td>
+                        <td>-4.2</td>
+                        <td>-1.3</td>
+                        <td>-1.8</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <h4>Diabetes Newsletter (13th-17th July)</h4>
+                <div class="content">
+                  <p>The diabetes pipeline indicates that there are around 150 molecules in different phases of development.  The late stage molecules are follow up drugs such as ertugliflozin (PF-04971729) which is a SGLT-2 inhibitor and combination therapies with ertugliflozin as seen in the Pfizer and Merck pipeline. Novo Nordisk has semaglutide in phase 3 which is a GLP-1 medicine but with weekly one dose.  The drug will be the fourth drug in the market for weekly once dosing apart from Trulicity, Tanzeum and Bydureon. In its trials the drug has proved that it can reduce heart risks and stroke by 26%.This drug is expected to drive the growth of the company in the future since its blockbuster drug Victoza will lose itsmarket share against Truli city. The company is also conducting trials for oral semaglutide which would be taken daily.</p>
+
+                  <p>Some of the companies such as MedImmune, GSK, Roche, REMD Biotherapeutics, Navitas Pharma,   and IndiPharm have their molecules in early stages of development. </p>
+
+                  <p>Not only novel drugs and combinations but companies such as Medtronic and Qualcomm are working together to developfuture generation continuous glucose monitoring (CGM) systems that aim to improve health outcomes for people with diabetes. Medtronic is a market leader in diabetes management and Qualcomm has expertise in developing reference designs for wireless, single-use and small integrated modules. Using expertise from both the companies they are developing affordable, user friendly and more accurate CGM systems.</p>
+
+                  <p>Apart from spending in research and development we even see that companies are going forward for mergers and acquisitions to step ahead in the diabetes market. Such as OPKO Health has announced that it will acquire Transition Therapeutics. This acquisition will help OPKO to gain access and also have first mover advantage to diabetes market with novel drug GLP-1/Glucagon dual agonist for type 2 diabetes and obesity. The drug TT401 is a once or twice weekly oxyntomodulin for type 2 diabetes and obesity and has recently completed phase 2 trials.</p>
+
+                  <p>Similarly Allergan has declared that it will acquire Motus Therapeutics (formerly known as Rhythm Health) for Motus' ghrelin agonist, for the treatment of gastroparesis in patients with type 1 and type 2 diabetes.</p>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+          </div>
+      </div>
   </div>
   <!-- News Data Ends Here -->
 </div>

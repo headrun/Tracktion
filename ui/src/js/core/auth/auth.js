@@ -51,6 +51,8 @@
 
           resp = resp.data;
 
+          localStorage.userData = JSON.stringify(resp.result);
+
           if (resp.result && resp.result.user) {
 
             Session.set(resp.result.user);
