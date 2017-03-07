@@ -263,11 +263,6 @@ def clinicaltrail_summary(request):
 
 
 
-
-
-
-
-
 def clinical_dropdowns_data(dropdown_inputs):
     divide_query = ''
     final_dropdown = {}
@@ -326,8 +321,27 @@ def clinical_dropdowns_data(dropdown_inputs):
 
 def get_wordcloud(request):
     source = request.GET.get('source', 'intarcia')
+    key_word = request.GET.get('key_word', '')
 
-    word_query = ''.join(get_query(source))
+    if key_word:
+        if source == 'influencers':
+            word_data = get_influencer_query(source,key_word)
+        else:
+            #word_data = get_query(source)
+            word_data = get_query(source,'facets')
+            for wd_data in word_data:
+                var = wd_data.split(' AND ')[0].replace('"', '').replace('(', '')
+                if key_word == var:
+                    word_data = wd_data
+                    break;
+    else:
+        word_data= get_query(source)
+
+    #word_data = '( xtags:Januvia) AND (dt_added :[2017-01-03 TO 2017-02-02])'
+
+    word_query = ''.join(word_data)
+    print word_query
+
 
     records =  search.search(query={"query":{"query_string":{"query": word_query,"fields":["title","text"],"use_dis_max":True}},"size":0,"aggs":{"words":{"terms":{"field":'text', "size":200}}},"highlight":{"fields":{"title":{},"text":{}}}},indexes=SEARCH["indexes"],doc_types="item",query_params={"scroll":"15m"})
 
@@ -348,30 +362,78 @@ def get_wordcloud(request):
 
     return HttpResponse(json.dumps(_freq_words), content_type='application/json')
 
+def search_scroll(request):
+    scroll_id = request.GET.get('scroll_id', '')
+    records = search.search_scroll(scroll_id=scroll_id, scroll_timeout="10m")
+
+    return HttpResponse(json.dumps(records), content_type='application/json')
+
+def get_articles(request):
+    sentiment = request.GET.get('sentiment', '')
+    date = request.GET.get('date', '')
+    source = request.GET.get('source', 'intarcia')
+    author_name = request.GET.get('author_name', '')
+    lang_name  = request.GET.get('lang_name', '')
+    key_word = request.GET.get('key_word', '')
+
+    if source=='influencers':
+        query_eses = get_influencer_query(source,key_word)
+    else:
+        query_eses = get_query(source, 'articles')
+    for query_es in query_eses:
+        if sentiment:
+            query_es += ' AND (xtags:' + sentiment + '_sentiment_final)'
+        if author_name :
+            query_es += ' AND author.name:"%s"' %author_name
+        if lang_name : 
+            query_es += ' AND (xtags:' + lang_name + '_language_auto)'
+        if key_word :
+            query_es += ' AND ' + key_word
+            if source=='influencers':
+                query_es = '( xtags:' + key_word+ ')'
+        if date:
+            query_es += ' AND (dt_added:[' + date + ' TO ' + date + ' ])'
+        print query_es
+        records = search.search(query={"query":{"query_string":{"query":query_es,\
+            "fields":search_fields,"use_dis_max":True}},"size":20, \
+            "sort":[{"dt_added":{"order":"desc"}}]},indexes=SEARCH["indexes"],\
+            doc_types="item",query_params={"scroll":"15m"})
+    return HttpResponse(json.dumps(records), content_type='application/json')
+
 def get_social_media(request):
     facet = request.GET.get('facet', '')
     sentiment = request.GET.get('sentiment', '')
     source = request.GET.get('source', 'intarcia')
+    infr_type = request.GET.get('infr_type', '')
 
     facets_v = {}
+    if infr_type:
+        query_eses = get_influencer_query(source,infr_type)
+    else:
+        query_eses = get_query(source,'facets')
 
-    query_eses = get_query(source)
 
     variable_dict = {}
     for query_es in query_eses:
+        print query_es
         if sentiment:
             query_es += ' AND (xtags:' + sentiment + '_sentiment_final)'
 
         if facet:
             facet_value = facets[facet]
             facets_v = {facet : facet_value}
-
         if 'influencer' in facet:
             query_es += '((xtags:twitter_search_sourcetype_manual OR \
                 xtags:twitter_streaming_sourcetype_manual) AND (  xtags:usa_country_auto ))'
 
         if source == 'marketwatch':
             var = query_es.split(' AND ')[0].replace('"', '').replace('(', '')
+        elif source == 'influencers':
+            var = query_es.split(' AND ')[0]
+            if 'OR' in var:
+                var = 'Overall'
+            else:
+                var = var.split('_')[0].split(':')[1].title()
         else:
             var = source
 
@@ -418,7 +480,7 @@ def get_social_media(request):
 
     return HttpResponse(json.dumps(records), content_type='application/json')
 
-def get_query(source):
+def get_query(source, s_type='articles'):
     days = 30
     wquery = ''
     objs = SocialAPI.objects.filter(source=source)
@@ -433,16 +495,75 @@ def get_query(source):
     dt_qry = " AND (dt_added :[" + old_date + " TO " + str(curdate.date()) + "])"
 
     qry_list = []
-    if source == 'marketwatch':
+    if source == 'marketwatch' and s_type!='articles':
         wquerys = wquery.split(' OR ')
         for i in wquerys:
             wqry = '(' + i + source_keys + dt_qry + ')'
             qry_list.append(wqry)
 
         wquery = qry_list
-
+    elif source == 'influencers':
+        wquerys = wquery.split(' OR ')
+        overall = []
+        for i in wquerys:
+            tag_key = 'xtags:'+i+'_dcube_influencers_project_manual'
+            overall.append(tag_key)
+            wqry = '(' + tag_key + source_keys + dt_qry + ')'
+            qry_list.append(wqry)
+        overall_tag_key = '('+ overall[0] + ' OR ' + overall[1] + ' OR ' + overall[2]  + ' OR ' + overall[3] + ')'
+        wqry = '(' + overall_tag_key + source_keys + dt_qry + ')'
+        qry_list.append(wqry)
+        wquery = qry_list
     else:
+        wquery = "(%s)" %wquery
+        wquery += source_keys
         wquery += dt_qry
+        #wquery = wquery.replce('','')
         wquery = [wquery]
 
     return wquery
+
+def get_influencer_query(source,infr_type):
+    days = 30
+    wquery = ''
+    objs = SocialAPI.objects.filter(source=source)
+
+    values = objs.values_list('source', 'query', 'sources', 'days',\
+        'added_by', 'created_at', 'modified_at', 'last_seen')
+    if values:
+        source, wquery, sources, days, added_by, created_at,\
+            modified_at, last_seen = values[0]
+
+    old_date = str((curdate + datetime.timedelta(-days)).date())
+    dt_qry = " AND (dt_added :[" + old_date + " TO " + str(curdate.date()) + "])"
+
+    qry_list = []
+    if infr_type=='':
+        wquerys = wquery.split(' OR ')
+        overall = []
+        for i in wquerys:
+            tag_key = 'xtags:'+i+'_dcube_influencers_project_manual'
+            overall.append(tag_key)
+        overall_tag_key = '('+ overall[0] + ' OR ' + overall[1] + ' OR ' + overall[2]  + ' OR ' + overall[3] + ')' 
+        qry_list.append(overall_tag_key)
+    else:
+        tag_data = '( xtags:' + infr_type +')' + dt_qry
+        qry_list.append(tag_data)
+    return qry_list
+
+def wordcloud_dropdown(request):
+    source = request.GET.get('source', 'influencer')
+    objs = SocialAPI.objects.filter(source=source).values_list('query',flat=True)
+    dropdown_values= []
+    dropdowns = objs[0].split(' OR ')
+    print dropdowns
+    for value in dropdowns:
+        if '"' in value :
+            value =value.replace('"','')
+        else:
+            value = value.title()
+        dropdown_values.append(value)
+    dr_value ={}
+    dr_value['dr_values'] = dropdown_values
+    return HttpResponse(json.dumps(dr_value), content_type='application/json')
+    

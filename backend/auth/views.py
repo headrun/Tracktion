@@ -21,6 +21,7 @@ def login(request):
   username = request.POST.get("username")
   password = request.POST.get("password")
 
+
   if not username and not password:
     body = request.body
 
@@ -59,10 +60,10 @@ def logout(request):
 
   return HttpResponse("logged out")
 
-@ensure_csrf_cookie
 def status(request):
 
   if request.user.is_authenticated():
+    #return HttpResponse(getUserData(request.user))
     return HttpResponse({"user": getUserData(request.user)})
 
   return HttpResponse("Invalid Login")
