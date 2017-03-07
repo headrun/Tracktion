@@ -28,7 +28,7 @@
                 <div class="form-group" >
                   <label style="font-family: sans-serif; font-weight: 700;">Login to Your Account</label><br>
                   <input type="text" name="uName" ng-model="$ctrl.credentials.username"
-                         class="form-control" placeholder="Username" required />
+                         class="form-control userName" placeholder="Username" required />
                   <span class="field-error"
                         ng-show="userForm.uName.$touched">
                     <span ng-show="userForm.uName.$error.required">Username is required.</span>
@@ -38,26 +38,26 @@
                 <div class="form-group">
                   <input type="password" name="uPassword"
                          ng-model="$ctrl.credentials.password"
-                         class="form-control" placeholder="Password" required />
+                         class="form-control password" placeholder="Password" required />
                   <span class="field-error" ng-show="userForm.uPassword.$touched">
                     <span ng-show="userForm.uPassword.$error.required">Password is required</span>
                   </span>
                 </div>
                 <div class="form-group">
-                  <a href="#" class="pull-right" style="font-size: smaller; margin-bottom: 10px;">Forgot password ?</a>
+                  <a href="#" class="pull-right" style="font-size: smaller; margin-bottom: 10px; color: #ccc">Forgot password ?</a>
                 </div>
 
                 <div class="form-group">
                   <input type="submit"
                          ng-disabled="userForm.uName.$error.required || userForm.uPassword.$error.required || $ctrl.viewSubmit"
                          class="btn btn-primary"
-                         value="{{$ctrl.loadingText}}" style="width: 100%" />
+                         value="{{$ctrl.loadingText}}" style="width: 100%; background: #2196f3;" />
                 </div>
               </form>
         </div>
 
         <div class="login_bg">
-          <img class="primarylogo" src="/img/traction_logo.png" />
+          <img class="primarylogo" src="/img/summary_icons/tacktion_logo_white.png" />
           <p>Tracking intelligence for actionable insights</p>
         </div>
     </div>

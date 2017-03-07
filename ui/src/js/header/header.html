@@ -31,6 +31,7 @@
     <a ng-repeat="tab in $ctrl.tabs"
           ng-class="{ 'active': $ctrl.activeTab === tab.name }" ng-click="$ctrl.hideSidebar()" ui-sref="{{ tab.name + '({state: $ctrl.states[tab.name.split(\'.\')[1]] })' }}">
           <i class="{{tab.icon}}" aria-hidden="true"></i>
+          <!--<span><img src="/img/summary_icons/{{ tab.icon }}"></span>-->
           {{ tab.text }}
     </a>
   </div>
