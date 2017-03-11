@@ -13,6 +13,8 @@
 
     this.intarciasrc = {};
 
+    this.languageChart = {};
+
     this.diabsourcedist= {};
 
     this.highchartintarciatimeline = {};
@@ -329,8 +331,26 @@
               case 4:
                     //languages
                     //console.log(resp.data.result.facets);
-                    that.languages=resp.data.result.facets.lang.terms.Intarcia;
-                    //console.log(that.languages);
+                    //that.languages=resp.data.result.facets.lang.terms.Intarcia;
+                    angular.extend(that.languageChart, {
+                                chart: {
+                                    renderTo: 'container',
+                                    type: 'pie',
+                                    height: 250,
+                                    width: 380
+                                },
+
+                                series: [{
+                                    innerSize: '50%',
+                                    showInLegend:true,
+                                    data: [
+                                        {name: 'Yellow Slice', y: 12, color: 'yellow'},
+                                        {name: 'Red Slice', y: 10, color: 'red' },
+                                        {name: 'Blue Slice', y: 33, color: 'blue'},
+                                        {name: 'Green Slice', y: 20, color: 'green'}
+                                    ]
+                                }]
+                    });
                     break;
               default:
                     break;

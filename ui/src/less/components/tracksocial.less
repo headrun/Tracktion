@@ -4,19 +4,74 @@ tracksocial {
     overflow:auto;
   }
 
+  ul.navs{
+        display: flex!important;
+              list-style: none!important;
+        padding: 0px!important;
+        margin-top: -5px!important;
+        margin-bottom: 0px!important;
+        background-color:#2196f3 !important;
+          li {
+             display:inline !important;
+             width: 15% !important;
+             word-break: break-word !important;
+             text-align: center !important;
+             background-color:#2196f3 !important;
+             padding:18px !important;
+             position:relative !important;
+             
+             &:hover {
+                 background-color:#2196f3 !important;
+                 cursor:pointer !important;
+                 
+                 &:after {
+                   border-top:#2196f3 !important;
+                 }
+              }
+                 &.active {
+                   &:after {
+                           width: 0 !important;
+                           height: 0 !important;
+                           border-left: 15px solid transparent !important;
+                           border-right: 15px solid transparent !important;
+                           border-top: 15px solid #2196f3 !important;
+                           content: " " !important;
+                           position: absolute !important;
+                           bottom: -7px !important;
+                           left: 45% !important;
+                     z-index: 1 !important;
+                           }
+                       }
+             a {
+                padding: 0px !important;
+                text-decoration: none !important;
+                color:white !important;
+               }
+           }
+        }
+
+
   div.widget {
     background-color:#fff;
     
     div.widget-title {
-        background-color:@brand-primary;
-        color:white;
+        background-color: #fff;
+        color: #000;
+        font-weight: 600;
 
         h3{
           padding:10px;
           font-size:18px;
         }
         span {
-          a {color:#fff;}
+          a {
+            color:#fff;
+
+            img {
+              width: 15px;
+              margin-right: 15px;
+            }
+          }
           a:hover {color:#196090}
         }
     }
@@ -227,16 +282,33 @@ tracksocial {
 
       div.commonwid{
         border-radius:6px;
-        color:white;
-        min-height:109px; 
+        min-height:115px; 
         
+        & .firstDiv {
+          padding: 5px;
+
+          & .imgDiv {
+            margin-right: 10px;
+            float: right;
+            width: 60px;
+            height: 60px;
+            border-radius: 3px;
+            margin-top: -15px;
+            text-align: center;
+
+            & img {
+              padding-top: 12px;
+              width: 35px;
+            }
+          }
+        }
+
        div.value-block {
         display:inline-block;
-        padding-right:10px;
-        padding-top:5px;
+        padding-left:10px;
 
         div.value-self {
-          font-size:25px;
+          font-size: 28px;
         }
       
         div.value-sub {
@@ -245,8 +317,9 @@ tracksocial {
        }
        
        div.block-footer {
-          padding:10px;
-          background-color:rgba(0, 0, 0, 0.3);
+          padding: 10px 10px;
+          font-size: smaller;
+          background-color: #fff;
           border-bottom-left-radius:6px;
           border-bottom-right-radius:6px;
        }
@@ -262,22 +335,22 @@ tracksocial {
 
       div.white-block {
 
-        background-color:#3498db;          
+        background-color:#fff;          
       }
   
       div.red-block{
 
-        background-color:#d9534f;
+        background-color:#fff;
       }
 
       div.lightgreen-block {
    
-        background-color:rgb(26, 188, 156);
+        background-color: #fff;
       }
 
       div.orange-block {
 
-        background-color:rgb(241, 196, 15);
+        background-color: #fff;
       }
 
     }
@@ -356,7 +429,7 @@ tracksocial {
       }
     }
     div.wordcloud {
-      min-height:800px;
+      min-height: 310px;
       
       div.wordcloud-content {
          
@@ -367,6 +440,11 @@ tracksocial {
            position:relative;
            display:inline-block;
            padding:5px;
+           font-size: 14px !important;
+           border: 1px solid;
+           border-radius: 3px;
+           margin-bottom: 5px;
+           line-height: 11px;
           }
           &> .intarcia-wordcloud-loading {
             margin-top:150px;
@@ -381,16 +459,35 @@ tracksocial {
       min-height:550px;
     }
     div.twitter-top-influencers {
-      min-height:300px;
+      min-height:310px;
       div.twitter-top-influencer-content {
         div.influencers-rows {
          overflow-y:scroll;
          max-height:250px;
+
+           .table>thead>tr>th {
+              border-bottom: none !important;
+            }
+
+            .table>tbody>tr {
+              
+              &:nth-child(even) {
+                  background: #F8FAFD;
+              }
+
+              &:nth-child(odd) {
+                  background: #fff;
+              }
+              
+                td {
+                border-top: none !important;
+              }
+            }
         }
       }
     }
     div.languages {
-      min-height:150px;
+      min-height: 310px;
       div.languages-content {
         div.influencers-rows {
           height:250px;
