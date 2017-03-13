@@ -1,5 +1,5 @@
 tracksocial {
-  
+
   div.tabs-content {
     overflow:auto;
   }
@@ -13,7 +13,7 @@ tracksocial {
         background-color:#2196f3 !important;
           li {
              display:inline !important;
-             width: 15% !important;
+             width: 12% !important;
              word-break: break-word !important;
              text-align: center !important;
              background-color:#2196f3 !important;
@@ -38,7 +38,7 @@ tracksocial {
                            content: " " !important;
                            position: absolute !important;
                            bottom: -7px !important;
-                           left: 45% !important;
+                           left: 40% !important;
                      z-index: 1 !important;
                            }
                        }
@@ -53,10 +53,12 @@ tracksocial {
 
   div.widget {
     background-color:#fff;
+    box-shadow: 2px 3px 10px 0px rgba(0, 0, 0, 0.12);
     
     div.widget-title {
         background-color: #fff;
         color: #000;
+        font-family: ProximaNova;
         font-weight: 600;
 
         h3{
@@ -81,7 +83,6 @@ tracksocial {
   div.marketwatch-content {
     
     width:95%;
-    margin-top:24px;
     overflow:auto;
 
     div.widget {
@@ -97,8 +98,33 @@ tracksocial {
       }
        
       div.news-second-row {
-        height:301px;
+        height:275px;
         overflow:auto;
+
+        div.influencers-rows {
+         overflow-y:scroll;
+         max-height:250px;
+         font-family: ProximaNova;
+
+           .table>thead>tr>td {
+              border-top: none !important;
+            }
+
+            .table>tbody>tr {
+              
+              &:nth-child(even) {
+                  background: #F8FAFD;
+              }
+
+              &:nth-child(odd) {
+                  background: #fff;
+              }
+              
+              td {
+                border-top: none !important;
+              }
+            }
+        }
       }
     
     }
@@ -111,24 +137,27 @@ tracksocial {
     }
 
     div.news-third-row {
-       min-height:214px;
-       margin-bottom:20px;
+       margin-bottom:30px;
 
        div.wordclouddata {
           
          div.tagcloud {
 	    
-           padding:5px;
-           min-height:220px;
+           padding:20px;
   
            a { 
              display:inline-block;
              padding:5px;
              position: relative;
-             margin-right:8px;
+             margin-left: 15px;
+             font-size: 14px !important;
+             border: 1px solid;
+             border-radius: 3px;
+             margin-bottom: 8px;
+             line-height: 11px;
            }
            &> .diabetes-wordcloud-loading {
-            margin-top:100px;
+            margin-top:10px;
             font-weight:bold;
            }
 
@@ -335,22 +364,26 @@ tracksocial {
 
       div.white-block {
 
-        background-color:#fff;          
+        background-color:#fff;
+        box-shadow: 2px 3px 10px 0px rgba(0, 0, 0, 0.12);          
       }
   
       div.red-block{
 
         background-color:#fff;
+        box-shadow: 2px 3px 10px 0px rgba(0, 0, 0, 0.12);
       }
 
       div.lightgreen-block {
    
         background-color: #fff;
+        box-shadow: 2px 3px 10px 0px rgba(0, 0, 0, 0.12);
       }
 
       div.orange-block {
 
         background-color: #fff;
+        box-shadow: 2px 3px 10px 0px rgba(0, 0, 0, 0.12);
       }
 
     }
@@ -435,6 +468,8 @@ tracksocial {
          
         div.tagcloud {
           padding:5px;
+          font-family: ProximaNova;
+
           a{
            margin-left:5px;
            position:relative;
@@ -464,6 +499,7 @@ tracksocial {
         div.influencers-rows {
          overflow-y:scroll;
          max-height:250px;
+         font-family: ProximaNova;
 
            .table>thead>tr>th {
               border-bottom: none !important;
@@ -510,22 +546,23 @@ tracksocial {
     #heading {
       a{
         text-decoration:none;
+        color: #000;
       }
+    }
+    #timestamp {
+      padding-left: 25px;
+      padding-bottom: 12px;
     }
     #link {
       a {
-        color: green; 
         text-decoration:none; 
         font-size: 13px;
       }
     }
     #content {
-      padding-top: 20px; 
+      padding-top: 12px; 
       font-size: 13px; 
       line-height: 22px;
-    }
-    #timestamp {
-      padding-top: 15px;
     }
   }
 
@@ -534,21 +571,25 @@ tracksocial {
     margin-top: 0px;
   }
   .modal-content {
-    border: 7px solid #ccc !important;
+    border: 2px solid #ccc !important;
+    border-radius: 0px;
+    font-family: ProximaNova;
   }
-  .modal-lg{
-    width: 750px !important;
+  .modal-header {
+    background: #2196f3;
+    color: #fff;
   }
   .modal-body {
     padding: 0 0 10px 0;
   }
 
   .drugsDropdown {
-    margin-left: 150px !important;
-    width: 120px;
-    position: absolute;
-    margin-top: -23px !important;
-    height: 28px !important;
+    width: 76px;
+    background: #fff;
+    height: 25px !important;
+    border: 0px;
+    margin-right: 22px !important;
+    font-size: 12px;
   }
 }
 

@@ -186,16 +186,16 @@
                       that.data.push([value.time , value.count]);
                     });
                     if(z==0){
-                      that.series[z]={"color":"#258cd1","name":"overall","data":that.data};
+                      that.series[z]={"color":"#26C4D8","name":"overall","data":that.data};
                     } 
                     if(z==1){
-                      that.series[z]={"color":"#5cb85c","name":"positive","data":that.data};
+                      that.series[z]={"color":"#4CA64F","name":"positive","data":that.data};
                     }
                     if(z==2){
-                      that.series[z]={"color":"#e5412d","name":"negative","data":that.data};
+                      that.series[z]={"color":"#E13E33","name":"negative","data":that.data};
                     }
                     if(z==3){
-                      that.series[z]={"color":"#f0ad4e","name":"netural","data":that.data};
+                      that.series[z]={"color":"#C1C1C1","name":"netural","data":that.data};
                     }
                   }
                   // console.log(that.series);
@@ -265,7 +265,7 @@
             if(resp.data.error) {
               return;
             }
-            //console.log(resp.data.result.facets);
+            console.log(resp.data.result.facets);
             switch(i){
               case 0:
                      //sentiment
@@ -331,7 +331,13 @@
               case 4:
                     //languages
                     //console.log(resp.data.result.facets);
-                    //that.languages=resp.data.result.facets.lang.terms.Intarcia;
+                    var data = [];
+                    var colors = ["#7FC11C", "#FDBF07", "#E13E33", "#26C4D8"];
+                    that.languages=resp.data.result.facets.lang.terms.Intarcia;
+                    for (var z = 0; z < that.languages.length; z++) {
+                        var temp = {name: that.languages[z].term, y: that.languages[z].perc, color: colors[z]};
+                        data.push(temp);
+                    }
                     angular.extend(that.languageChart, {
                                 chart: {
                                     renderTo: 'container',
@@ -343,14 +349,14 @@
                                 series: [{
                                     innerSize: '50%',
                                     showInLegend:true,
-                                    data: [
-                                        {name: 'Yellow Slice', y: 12, color: 'yellow'},
+                                    data: data/*[
+                                        {name: 'Yellow Slice', y: 12, color: '#ccc'},
                                         {name: 'Red Slice', y: 10, color: 'red' },
                                         {name: 'Blue Slice', y: 33, color: 'blue'},
                                         {name: 'Green Slice', y: 20, color: 'green'}
-                                    ]
+                                    ]*/
                                 }]
-                    });
+                          });
                     break;
               default:
                     break;
@@ -371,7 +377,7 @@
         setTimeout(function(){
         $.fn.tagcloud.defaults = {
           size: {start: 18, end: 30, unit: 'pt'},
-          color: {start: '#327fc5', end: '#f52'}
+          color: {start: '#26C4D8', end: '#E13E33'}
         };
         //$(function () {
           $('.intarcia-word-cloud a').tagcloud();
@@ -408,8 +414,10 @@
 
                 case 0: //sources
                         that.market_watch_timeline_data=resp.data.result.facets.updated_on.entries;
-                        that.series=[];
-                        that.timelinecolor=["#dd301b","#3498db","#c09853","#90ed7d","orange","#f7a35c"];
+                        that.series=[{
+                          lineWidth:5
+                        }];
+                        that.timelinecolor=["#2194F0","#4CA64F","#E13E33","#C1C1C1","#E13E33","#FFD820"];
                         that.index=0;
                         console.log(that.market_watch_timeline_data);
                         angular.forEach(that.market_watch_timeline_data,function(value,key){
@@ -505,7 +513,7 @@
           that.market_word_cloud=resp.data;
           setTimeout(function(){
           $.fn.tagcloud.defaults = { 
-            size: {start: 18, end: 30, unit: 'pt'},
+            size: {start: 12, end: 12, unit: 'pt'},
             color: {start: '#327fc5', end: '#f52'}
           };  
           //$(function () 
@@ -535,8 +543,10 @@
 
                 case 0: //sources
                         that.market_watch_timeline_data=resp.data.result.facets.updated_on.entries;
-                        that.series=[];
-                        that.timelinecolor=["#dd301b","#3498db","#c09853","#90ed7d","orange","#f7a35c"];
+                        that.series=[{ 
+                            lineWidth: 5
+                        }];
+                        that.timelinecolor=["#2194F0","#4CA64F","#E13E33","#C1C1C1","#E13E33","#FFD820"];
                         that.index=0;
                         console.log(that.market_watch_timeline_data);
                         angular.forEach(that.market_watch_timeline_data,function(value,key){
