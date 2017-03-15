@@ -24,11 +24,11 @@
             <div class="col-md-5 all_data"><p>All</p></li></div>
           </div>
           <div class="col-md-3">
-            <div class="col-md-6 select_values"><p>Select by Drug</p></li></div>
+            <div class="col-md-6 select_values"><p>Select Drug</p></li></div>
             <div class="col-md-6 all_data"><p>All</p></li></div>
           </div>
           <div class="col-md-2">
-            <div class="col-md-7 select_values"><p>End Date</p></li></div>
+            <div class="col-md-7 select_values"><p>Trial End Date</p></li></div>
             <div class="col-md-5 all_data"><p>All</p></li></div>
           </div>
           <div class="col-md-2">
@@ -171,7 +171,7 @@
       <h3></h3>
 
     <div class="clinical-trail-summary-data center-block table-responsive" style="overflow-y: hidden;">
-      <div class="row">
+      <div class="row" style="margin-left: 0px; margin-right: 0px;">
         <div class="summary-container">
 
          <table class="table drugtable center-block" style="margin: 0px">
@@ -229,7 +229,7 @@
              </tr>
            </thead>
            <tbody>
-             <table class="table center-block drugrow1table">
+             <table class="table center-block drugrow1table" style="height: 350px; display: block; overflow-y: scroll;">
                <tbody >
                  <tr ng-repeat="trialdrug in $ctrl.clinical_summary | filter:drugName">
                    <td class="main_row text-center" > {{trialdrug.drug_name}}</td>
@@ -328,8 +328,8 @@
       	  <th>Sample size</th>
       	  <th>Primary Endpoint</th>
       	  <th>Results</th>
-      	  <th>Summary</th>
-            <th>Report</th>
+      	  <th>Comments</th>
+            <th>Summary</th>
       	</tr>
       </thead>
       <tbody>

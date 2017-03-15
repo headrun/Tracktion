@@ -270,6 +270,7 @@
 
         that.filterformsubmit=function(filtersdata){
 
+          that.showLoading();
           var filtersdata = {};
            angular.forEach(that.ang_dict, function(val, key) {
              var data_list = [];
@@ -309,6 +310,7 @@
                  },0);
             });
           }
+          this.hideLoading();
         }
 
         this.hideLoading();

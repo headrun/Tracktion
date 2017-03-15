@@ -5,20 +5,23 @@
       <div class="col-md-12 form-inline">
         <div class="filter-item">
           <input type="radio" name="track" >
-          <select class="form-control">
-            <option> Select by date</option>
-            <option>Jan</option>
-            <option>Feb</option>
-            <option>March</option>
-            <option>April</option>
-            <option>May</option>
+          <select class="form-control"
+                  ng-init="month = 'jan'" 
+                  ng-model="month" 
+                  ng-change="$ctrl.applyFilter(month)">
+            <!--<option value=""> Select by date</option>-->
+            <option value="jan">Jan</option>
+            <option value="feb">Feb</option>
+            <option value="march">March</option>
+            <option value="april">April</option>
+            <!--<option>May</option>
             <option>June</option>
             <option>July</option>
             <option>Aug</option>
             <option>Sep</option>
             <option>Oct</option>
             <option>Nov</option>
-            <option>Dec</option>
+            <option>Dec</option>-->
           </select>
         </div>
         <div class="filter-item">
@@ -35,9 +38,9 @@
     </div>
     
     <div class="row data-block">
-      <div class="col-md-4">
+      <div class="col-md-4" ng-if="$ctrl.filter == 'jan'">
          <a href="http://176.9.181.46/track/AdociaInitiatesTwoNewProjectsforTreatmentofT1DM.docx"><img src="/img/files.png" width=80 /></a>
-        <div class="sidedata">
+         <div class="sidedata">
           <p>Adocia Initiates Two New Projects <br> for Treatment of T1DM,<br>6-Jan-17</p>
           <p class="text-primary">
             <span class="tag"><a href="javascript:void(0)">Adocia</a></span>
@@ -47,9 +50,9 @@
             <span class="tag"><a href="javascript:void(0)">Guidelines</a></span>
             <span class="tag"><a href="javascript:void(0)">T2DM</a></span>
           </p>
-        </div>
+         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4" ng-if="$ctrl.filter == 'jan'">
         <a href="http://176.9.181.46/track/IonisReportsPositivePh2ResultsforIONIS-GCGR-Rx.docx"><img src="/img/files.png" width=80 /></a>
         <div class="sidedata">
           <p>Ionis Reports Positive Ph2 Results <br> for IONIS-GCGR-Rx,<br>5-Jan-17
@@ -62,10 +65,10 @@
           </p>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4" ng-if="$ctrl.filter == 'feb'">
         <a href="http://176.9.181.46/track/LillyAnnouncesChangesinitsOrganizationalStructure.docx"><img src="/img/files.png" width=80 /></a>
         <div class="sidedata">
-          <p>Lilly Announces Changes <br> in its Organizational Structure,<br>5-Jan-17
+          <p>Lilly Announces Changes <br> in its Organizational Structure,<br>5-Feb-17
           </p>
           <p class="text-primary">
             <span class="tag"><a href="javascript:void(0)">Lilly</a></span>
@@ -73,12 +76,13 @@
           </p>
         </div>
       </div>
-    </div>
-    <div class="row data-block"> 
-      <div class="col-md-4">
+      <div class="clearfix"></div>
+    <!--</div>
+    <div class="row data-block"> -->
+      <div class="col-md-4" ng-if="$ctrl.filter == 'march'">
         <a href="http://176.9.181.46/track/SanofiScalesBackDealwithHanmi.docx "><img src="/img/files.png" width=80 /></a>
         <div class="sidedata">
-          <p>Sanofi Scales Back Deal with Hanmi,<br>5-Jan-17
+          <p>Sanofi Scales Back Deal with Hanmi,<br>5-March-17
           </p>
           <p class="text-primary">
             <span class="tag"><a href="javascript:void(0)">Sanofi</a></span>
@@ -92,10 +96,10 @@
           </p>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4" ng-if="$ctrl.filter == 'march'">
         <a href="http://176.9.181.46/track/SanofiSoliquaNowAvailableinUSPharmacies.docx"><img src="/img/files.png" width=80 /></a>
         <div class="sidedata">
-          <p>Sanofi's Soliqua Now Available <br> in US Pharmacies,<br>4-Jan-17
+          <p>Sanofi's Soliqua Now Available <br> in US Pharmacies,<br>4-March-17
           </p>
           <p class="text-primary">
             <span class="tag"><a href="javascript:void(0)">Sanofi</a></span>
@@ -107,10 +111,10 @@
           </p>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4" ng-if="$ctrl.filter == 'april'">
         <a href="http://176.9.181.46/track/NovoGrantedOrphanStatusforPh2T1DMAnti-IL-21Victoza.docx"><img src="/img/files.png" width=80 /></a>
         <div class="sidedata">
-          <p>Novo Granted Orphan Status for Ph2 <br>T1DM Anti-IL-21 + Victoza,<br>5-Jan-17
+          <p>Novo Granted Orphan Status for Ph2 <br>T1DM Anti-IL-21 + Victoza,<br>5-April-17
           </p>
           <p class="text-primary">
             <span class="tag"><a href="javascript:void(0)">Novo Nordisk</a></span>

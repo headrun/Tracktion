@@ -27,6 +27,8 @@
 
     this.highchartoptionloader=true;
 
+    this.kloudcolors = ["#7FC11C", "#FDBF07", "#E13E33", "#26C4D8"];
+
     $scope.parseFloat = parseFloat;
 
     var scopeName = this.stateName.split(".")[1];
@@ -35,14 +37,14 @@
 
     var tabName = $state.params.tabName;
 
-    this.tabsOrder = ["Intarcia","Market Watch","Influencers"];
+    this.tabsOrder = ["Intarcia", "Market Watch", "Influencers", "Company"];
 
     this.tabs = {
 
       "Market Watch": {
 
         "name" : "Market Watch",
-        "title": "Market Watch",
+        "title": "Event track",
         "state": "{}"
       },
 
@@ -50,6 +52,13 @@
 
         "name" : "Influencers",
         "title": "Influencers",
+        "state": "{}"
+      },
+
+      "Company": {
+
+        "name" : "Company",
+        "title": "Company",
         "state": "{}"
       },
 
@@ -376,7 +385,7 @@
         that.intarcia_word_cloud=resp.data;
         setTimeout(function(){
         $.fn.tagcloud.defaults = {
-          size: {start: 18, end: 30, unit: 'pt'},
+          //size: {start: 18, end: 30, unit: 'pt'},
           color: {start: '#26C4D8', end: '#E13E33'}
         };
         //$(function () {
@@ -527,6 +536,178 @@
     }
 
     if(tabName=='Influencers'){
+      that.showLoading();
+      that.params=[
+                   {'facet':'updated_on','source':'influencers'},
+                  ];
+
+      for(var i=0;i<that.params.length;i++){
+        (function(i){
+          $http.get(domainUrl+"clinicalapi/get_social_media/",{"params":that.params[i]}) 
+            .then(function (resp){
+              if(resp.data.error) {
+                return;
+              }
+               switch(i){
+
+                case 0: //sources
+                        that.market_watch_timeline_data=resp.data.result.facets.updated_on.entries;
+                        that.series=[{ 
+                            lineWidth: 5
+                        }];
+                        that.timelinecolor=["#2194F0","#4CA64F","#E13E33","#C1C1C1","#E13E33","#FFD820"];
+                        that.index=0;
+                        console.log(that.market_watch_timeline_data);
+                        angular.forEach(that.market_watch_timeline_data,function(value,key){
+                          that.data=[];
+                          angular.forEach(value, function(value1, key1) {
+                            that.data.push([value1.time , value1.count]);
+                          });
+                          that.series.push({"color":that.timelinecolor[that.index],"name":key,"data":that.data});
+                          that.index++;
+                        });
+                        console.log(that.series);
+                        angular.extend(that.highchartoption, {
+                            "chart":{
+                                      "type":"areaspline",
+                                      "margin":[0,15,60,60],
+                                      "backgroundColor":"transparent",
+                                      "spacingLeft":0,"spacingRight":0
+                                    },
+                            "credits":{"enabled":false},
+                            "title":{"text":""},
+                            "xAxis":{
+                                     "type":"datetime",
+                                     "dateTimeLabelFormats":{"day":"%b %e"},
+                                     "title":{"enabled":false},
+                                     "gridLineColor":"#ddd",
+                                     "gridLineWidth":1,
+                                     "lineWidth":1
+                                    },
+                            "yAxis":{
+                                     "endOnTick":false,
+                                     "maxPadding":0.3,
+                                     "title":{"text": "Mentions"},
+                                     "gridLineColor":"#ddd","gridLineWidth":1},
+                                     "plotOptions":{
+                                        "areaspline":{
+                                            "fillOpacity":0.45,
+                                            "dashStyle":"Solid",
+                                            "lineWidth":3,
+                                            "marker":{"symbol":"circle"},
+                                            "cursor":"pointer",
+                                            "point" : {
+                                                "events" : {
+                                                    "click" : function(event){
+                                                        var d = new Date(event.point.x);
+                                                        var dateFormat = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
+                                                        var drugName = that.drugNamesInfluencers[event.point.color];
+                                                        var url = "";
+                                                        if (drugName == "Overall") {
+                                                          url = domainUrl+"clinicalapi/get_articles/?source=influencers&date="+dateFormat;
+                                                        }else{
+                                                          url = domainUrl+"clinicalapi/get_articles/?source=influencers&date="+dateFormat+"&key_word="+drugName+"_dcube_influencers_project_manual";
+                                                        }
+                                                        var title = drugName+" Impressions on "+dateFormat;
+                                                        that.loadArticleModal(url, title);
+                                                    }
+                                                }
+                                            }
+                                         }
+                                       },
+                           "series":that.series,
+                            "tooltip":{"shared":true}
+                  });
+                   // that.highchartoptionloader=false;
+                   that.hideLoading();
+                   break;
+               }
+            });
+        })(i);
+       }
+
+       //Top Doctors
+       $http.get(domainUrl+"clinicalapi/get_social_media/?facet=influencers&source=influencers&infr_type=doctor_dcube_influencers_project_manual")
+        .then(function(resp){
+          if(resp.data.error){
+            return;
+          }
+          that.topDoctors = resp.data.result.facets.influencers.terms;
+        });
+
+
+       //Top patiennts
+       $http.get(domainUrl+"clinicalapi/get_social_media/?facet=influencers&source=influencers&infr_type=patient_dcube_influencers_project_manual")
+        .then(function(resp){
+          if(resp.data.error){
+            return;
+          }
+          that.topPatients = resp.data.result.facets.influencers.terms;
+        });
+
+
+       //Top Allied HCP
+       $http.get(domainUrl+"clinicalapi/get_social_media/?facet=influencers&source=influencers&infr_type=alliedhcp_dcube_influencers_project_manual")
+        .then(function(resp){
+          if(resp.data.error){
+            return;
+          }
+          that.topAlliedHps = resp.data.result.facets.influencers.terms;
+        });  
+
+        //Top Other Influencers
+        $http.get(domainUrl+"clinicalapi/get_social_media/?facet=influencers&source=influencers&infr_type=other_dcube_influencers_project_manual")
+         .then(function(resp){
+           if(resp.data.error){
+             return;
+           }
+           that.topOther = resp.data.result.facets.influencers.terms;
+         });  
+
+      // Drug Dropdown 
+      $http.get(domainUrl+"clinicalapi/wordcloud_dropdown/?source=influencers")
+      .then(function(resp){
+        if(resp.data.error){
+          return;
+        }
+        that.drugsDropdown = resp.data.dr_values;
+        that.defaultDrug =  resp.data.dr_values[0];
+        that.loadMarketwatchWordCloud();
+      });
+
+      // for word cloud
+      this.loadMarketwatchWordCloud = function(drugName){
+        that.marketwatch_word_cloud_loading=true;
+        var url = "";
+        if (drugName != "" && typeof drugName != "undefined") {
+          url = domainUrl+"clinicalapi/get_wordcloud/?source=influencers&key_word="+drugName+"_dcube_influencers_project_manual";
+        }else{
+          url = domainUrl+"clinicalapi/get_wordcloud/?source=influencers&key_word="+this.defaultDrug+"_dcube_influencers_project_manual";
+        }
+        $http.get(url)
+        .then(function(resp){
+          if(resp.data.error){
+            return;
+          }
+          that.marketwatch_word_cloud_loading=false;
+          //console.log(resp.data);
+          that.market_word_cloud=resp.data;
+          setTimeout(function(){
+          $.fn.tagcloud.defaults = { 
+            size: {start: 18, end: 30, unit: 'pt'},
+            color: {start: '#327fc5', end: '#f52'}
+          };  
+          //$(function () 
+            $('.marketwatch-word-cloud a').tagcloud();
+          //});
+          },0);
+          
+        });
+      }
+    
+    }
+
+    if(tabName=='Company'){
       that.showLoading();
       that.params=[
                    {'facet':'updated_on','source':'influencers'},

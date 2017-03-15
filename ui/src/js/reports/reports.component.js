@@ -3,7 +3,7 @@
 
   var _ = window._;
 
- function controller ($state, $http, Highcharts, utils) {
+ function controller ($state, $http, Highcharts, utils, $scope) {
 
     var that = this;
 
@@ -27,6 +27,11 @@
     this.updateActiveTab({"tabName": "dashboard.reports"});
 
     var selectedFilters = this.state.dashboard[scopeName];
+
+    that.filter = "jan";
+    that.applyFilter = function() {
+      that.filter = $scope.month; 
+    }
 /*
     if (!tabName) {
       $state.go($state.current.name,
@@ -46,7 +51,7 @@
          .component("reports", {
 
            "templateUrl": global.templateUrl + "/reports.html",
-           "controller" : ["$state", "$http", "Highcharts", "utils",
+           "controller" : ["$state", "$http", "Highcharts", "utils", "$scope", 
                            controller],
            "bindings": {
 

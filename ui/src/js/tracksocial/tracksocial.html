@@ -660,6 +660,244 @@
     </div>
   </div>
   <div class="tab-pane" role="tabpanel" 
+    ng-if="$ctrl.activeTab === 'Company' ">
+    <div class="marketwatch-content  container-fluid center-block">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="widget widget-blue">
+            <div class="widget-title news-firstrow-title">
+              <h3>
+                 Influencer activity
+                 <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Download" data-original-title="Remove">
+                    	<img src="/img/summary_icons/blue_download.png">
+                    </a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="" data-original-title="Remove">
+                    	<img src="/img/share.png">
+                    </a>
+                 </span>
+              </h3> 
+            </div>
+            <div class="widget-content news-first-row">
+              <div class="timeline-chart">
+                <highcharts options="$ctrl.highchartoption" >
+                </highcharts>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row row-2">
+        <div class="col-md-4">
+          <div class="widget">
+            <div class="widget-title top">
+              <h3>
+                Top Doctor Influencers
+                <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Download" data-original-title="Remove">
+                    	<img src="/img/summary_icons/blue_download.png">
+                    </a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="" data-original-title="Remove">
+                    	<img src="/img/share.png">
+                    </a>
+                 </span>
+              </h3>
+            </div>
+            <div class="widget-content top-social-content news-second-row">
+              <div class="influencers-rows">
+                  <table class="table" id="influencers-table">
+	             <thead>
+		       <tr>
+			 <td>Influencer Name</td>
+			 <td class="text-right">Klout Score</td>
+		       </tr>
+	             </thead>
+	             <tbody>
+		       <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" data-title="click to view data" rel="tooltip" title="" ng-repeat="doctor in $ctrl.topDoctors">
+			 <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+				<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?author_name='+doctor.term+'&source=influencers', 'Impressions by '+doctor.term)">{{ doctor.term }}</a>
+			 </td>
+			 <td class="count text-right">{{ doctor.min.toFixed(2) }}</td>
+		       </tr>
+	            </tbody>
+                  </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="widget">
+            <div class="widget-title top">
+              <h3>
+                Top Patient Influencers
+                <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Download" data-original-title="Remove">
+                    	<img src="/img/summary_icons/blue_download.png">
+                    </a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="" data-original-title="Remove">
+                    	<img src="/img/share.png">
+                    </a>
+                 </span>
+              </h3>
+            </div>
+            <div class="widget-content top-social-content news-second-row">
+              <div class="influencers-rows">
+                <table class="table" id="influencers-table">
+		  <thead>
+		    <tr>
+		      <td>Influencer Name</td>
+		      <td class="text-right">Klout Score</td>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" data-title="click to view data" rel="tooltip" title="" ng-repeat="patient in $ctrl.topPatients">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+				<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?author_name='+patient.term+'&source=influencers', 'Impressions by '+patient.term)">{{ patient.term }}</a>
+		      </td>
+		      <td class="count text-right">{{ patient.min.toFixed(2) }}</td>
+		    </tr>
+		  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="widget">
+            <div class="widget-title top">
+              <h3>
+                Top Allied HCP Influencers
+                <span class="pull-right">
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Download" data-original-title="Remove">
+                    	<img src="/img/summary_icons/blue_download.png">
+                    </a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="" data-original-title="Remove">
+                    	<img src="/img/share.png">
+                    </a>
+                 </span>
+              </h3>
+            </div>
+            <div class="widget-content top-social-content news-second-row">
+              <div class="influencers-rows"> 
+                <table class="table" id="influencers-table">
+		  <thead>
+		    <tr>
+		      <td>Influencer Name</td>
+		      <td class="text-right">Klout Score</td>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" data-title="click to view data" rel="tooltip" title="" ng-repeat="alliedHps in $ctrl.topAlliedHps">
+
+		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+				<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?author_name='+alliedHps.term+'&source=influencers', 'Impressions by '+alliedHps.term)">{{ alliedHps.term }}</a>
+		      </td>
+		      <td class="count text-right">{{ alliedHps.min.toFixed(2) }}</td>
+		    </tr>
+		  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+        <!-- end of row -->
+
+      <div class="row row3">
+      	<div class="col-md-4">
+           <div class="widget">
+             <div class="widget-title top">
+               <h3>
+                 Top Other Influencers
+                 <span class="pull-right">
+                  <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Download" data-original-title="Remove">
+                    	<img src="/img/summary_icons/blue_download.png">
+                    </a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="" data-original-title="Remove">
+                    	<img src="/img/share.png">
+                    </a>
+                  </span>
+               </h3>
+             </div>
+             <div class="widget-content top-social-content news-second-row">
+               <div class="influencers-rows"> 
+                 <table class="table" id="influencers-table">
+ 		  <thead>
+ 		    <tr>
+ 		      <td>Influencer Name</td>
+ 		      <td class="text-right">Klout Score</td>
+ 		    </tr>
+ 		  </thead>
+ 		  <tbody>
+ 		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" data-title="click to view data" rel="tooltip" title="" ng-repeat="others in $ctrl.topOther">
+ 
+ 		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+ 			<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?author_name='+others.term+'&source=influencers', 'Impressions by '+others.term)">{{ others.term }}</a>
+ 		      </td>
+ 		      <td class="count text-right">{{ others.min.toFixed(2) }}</td>
+ 		    </tr>
+ 		  </tbody>
+                 </table>
+               </div>
+             </div>
+           </div>
+ 
+         </div>
+        <div class="col-md-4">
+          <div class="widget widget-blue">
+            <div class="widget-title news-thirdrow-title">
+              <h3>
+              	Word Cloud
+                 <span class="pull-right">
+                 	<select class="drugsDropdown" 
+				     ng-model="$ctrl.defaultDrug"
+ 				    ng-change="$ctrl.loadMarketwatchWordCloud($ctrl.defaultDrug)">
+					   <option  ng-repeat="drugs in $ctrl.drugsDropdown" 
+					   			value="{{ drugs }}"
+ 					   			ng-selected="{{ drugs == $ctrl.defaultDrug }}">
+					   	{{ drugs }}
+					   </option>
+					</select>
+                 	<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="Download" data-original-title="Remove">
+                    	<img src="/img/summary_icons/blue_download.png">
+                    </a>
+                 <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
+                    title="" data-original-title="Remove">
+                    	<img src="/img/share.png">
+                    </a>
+                 </span>
+              </h3>
+            </div>
+            <div class="widget-content news-third-row">
+              <div class="wordclouddata">
+                <div class="tagcloud text-justify marketwatch-word-cloud" style="padding: 10px">
+                  <a ng-if="!$ctrl.marketwatch_word_cloud_loading" ng-repeat=" (key,value) in $ctrl.market_word_cloud" 
+                     rel="{{value}}" ng-click="$ctrl.loadArticleModal('https://demo.headrun.com/clinicalapi/get_articles/?key_word='+key+'&source=marketwatch', 'Impressions on '+key)" style="margin-left: 5px;">{{key}}</a>
+                  <span ng-if="$ctrl.marketwatch_word_cloud_loading" class="diabetes-wordcloud-loading text-center center-block">Loading...</span>
+		        </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- end of row --> 
+    </div>
+  </div>
+  <div class="tab-pane" role="tabpanel" 
     ng-if="$ctrl.activeTab === 'Intarcia' ">
     
     <div class="intarcia conatainer-fluid center-block">  
@@ -795,7 +1033,7 @@
 
 
         <div class="row">
-          <div class="col-md-4" style="padding-left: 30px; padding-right: 5px;">
+          <div class="col-md-4" style="padding-left: 15px; padding-right: 5px;">
 	          <div class="widget twitter-top-influencers">
 	            <div class="widget-title twitter-top-influencers-title">
 	              <h3>
@@ -876,7 +1114,7 @@
           	</div> 
           </div> 
 
-          <div class="col-md-4" style="padding-right: 30px;">
+          <div class="col-md-4" style="padding-right: 15px;">
 	         <div class="widget wordcloud">
 	            <div class="widget-title wordcloud-title">
 	              <h3>

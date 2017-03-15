@@ -12,18 +12,18 @@
                this.collapsed = true;
 
                this.tabs = [
-                            {"name"  : "dashboard.summary",
+                    {"name"  : "dashboard.summary",
                              "text"  : "Summary",
                              "params": {"state": ""},
-                             "icon"  : "fa fa-th-large"
+                             "icon"  : "summary_icon.png"//"fa fa-th-large"
                             },
-                            {"name"  : "dashboard.trackweekly",
+          {"name"  : "dashboard.trackweekly",
                              "text"  : "Track Weekly",
                              "params": {
 
                                "state": this.states
                              },
-                             "icon"  : "fa fa-calendar"
+                             "icon"  : "track_weekly_icon.png"//"fa fa-calendar"
                             },
 			    {"name"  : "dashboard.trackspecial",
                              "text"  : "Track Special",
@@ -31,7 +31,7 @@
 
                                "state": this.states
                              },
-                             "icon"  : "fa fa-star-o"
+                             "icon"  : "Track_special_icon.png"//"fa fa-star-o"
                             },
 			    {"name"  : "dashboard.tracksocial",
                              "text"  : "Track Social",
@@ -39,7 +39,7 @@
 
                                "state": this.states
                              },
-                             "icon"  : "fa fa-star-o"
+                             "icon"  : "Track_social_icon.png"//"fa fa-star-o"
                             },
 			    {"name"  : "dashboard.reports",
                              "text"  : "Reports",
@@ -47,7 +47,7 @@
 
                                "state": this.states
                              },
-                             "icon"  : "fa fa-file-text-o"
+                             "icon"  : "Reports_icon.png"//"fa fa-file-text-o"
                             }
                            ];
 
