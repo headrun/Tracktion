@@ -479,6 +479,26 @@
 		       </tr>
 	             </thead>
 	             <tbody>
+	             <tr>
+	             	<td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+	          			<a href="javascript:void(0)" class="articles-link state-sensitive" data-toggle="popover" data-container="body" data-popover-content="#doctor" data-placement="top" data-trigger="focus" data-html="true" data-encoded="true">David L. Katz</a> 
+	          			<div id="doctor" class="hidden">
+						    <div class="popover-heading"><strong>Stats of David</strong>
+						    <a href="/img/Doctor.docx" class="pull-right"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+						    </div>
+						    <div class="popover-body">
+						    <p><strong>Location : </strong> Derby, Connecticut</p>
+						      <ul class="list-group">
+						      <li class="list-group-item">Instagram <span class="badge">1174</span> <i class="fa fa-user-circle" aria-hidden="true"></i></li>
+						      <li class="list-group-item">facebook <span class="badge">10,249</span><i class="fa fa-thumbs-up" aria-hidden="true"></i></li>
+						      <li class="list-group-item">LinkedIn <span class="badge">732,262</span> <i class="fa fa-user-circle" aria-hidden="true"></i></li>
+						      <li class="list-group-item">Twitter <span class="badge">15.6k</span><i class="fa fa-retweet" aria-hidden="true"></i></li>
+						    </ul>
+						    </div>
+						</div>   		
+	             	</td>
+	             	<td class="count text-right">99.91</td>
+	             </tr>
 		       <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" data-title="click to view data" rel="tooltip" title="" ng-repeat="doctor in $ctrl.topDoctors">
 			 <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
 				<a class="articles-link state-sensitive" data-encoded="true" ng-click="$ctrl.loadArticleModal('http://176.9.181.36:2222/clinicalapi/get_articles/?author_name='+doctor.term+'&source=influencers', 'Impressions by '+doctor.term)">{{ doctor.term }}</a>
@@ -491,6 +511,23 @@
             </div>
           </div>
         </div>
+
+        <script type="text/javascript">
+        	$(function(){
+	        	$("[data-toggle=popover]").popover({
+			        html : true,
+			        content: function() {
+			          var content = $(this).attr("data-popover-content");
+			          return $(content).children(".popover-body").html();
+			        },
+			        title: function() {
+			          var title = $(this).attr("data-popover-content");
+			          return $(title).children(".popover-heading").html();
+			        }
+			    });
+		    });
+        </script>
+
         <div class="col-md-4">
           <div class="widget">
             <div class="widget-title top">
@@ -518,6 +555,25 @@
 		    </tr>
 		  </thead>
 		  <tbody>
+		  	<tr>
+             	<td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
+          			<a href="javascript:void(0)" class="articles-link state-sensitive" data-toggle="popover" data-container="body" data-popover-content="#Patient" data-placement="top" data-trigger="focus" data-html="true" data-encoded="true">Bret Michael</a> 
+          			<div id="Patient" class="hidden">
+					    <div class="popover-heading"><strong>Stats of Michael</strong>
+					    <a href="/img/Patient.docx" class="pull-right"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+					    </div>
+					    <div class="popover-body">
+					    <p><strong>Location : </strong> USA</p>
+					      <ul class="list-group">
+					      <li class="list-group-item">Instagram <span class="badge">53.7k<span> <i class="fa fa-user-circle" aria-hidden="true"></i></li>
+					      <li class="list-group-item">Facebook <span class="badge">1,779,612</span><i class="fa fa-thumbs-up" aria-hidden="true"></i></li>
+					      <li class="list-group-item">Twitter <span class="badge">10.5k</span><i class="fa fa-retweet" aria-hidden="true"></i></li>
+					    </ul>
+					    </div>
+					</div>   		
+             	</td>
+             	<td class="count text-right">89.91</td>
+             </tr>
 		    <tr class="tw-influencer" data-id="BGBJl2" data-original-title="" data-placement="top" data-source="twitter" data-title="click to view data" rel="tooltip" title="" ng-repeat="patient in $ctrl.topPatients">
 
 		      <td class="author" style="overflow: hidden; text-overflow: ellipsis; width: 60%">
