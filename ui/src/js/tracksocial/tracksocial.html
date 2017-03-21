@@ -516,6 +516,7 @@
         	$(function(){
 	        	$("[data-toggle=popover]").popover({
 			        html : true,
+			        trigger: 'hover',
 			        content: function() {
 			          var content = $(this).attr("data-popover-content");
 			          return $(content).children(".popover-body").html();
@@ -565,7 +566,7 @@
 					    <div class="popover-body">
 					    <p><strong>Location : </strong> USA</p>
 					      <ul class="list-group">
-					      <li class="list-group-item">Instagram <span class="badge">53.7k<span> <i class="fa fa-user-circle" aria-hidden="true"></i></li>
+					      <li class="list-group-item">Instagram <span class="badge">53.7k</span> <i class="fa fa-user-circle" aria-hidden="true"></i></li>
 					      <li class="list-group-item">Facebook <span class="badge">1,779,612</span><i class="fa fa-thumbs-up" aria-hidden="true"></i></li>
 					      <li class="list-group-item">Twitter <span class="badge">10.5k</span><i class="fa fa-retweet" aria-hidden="true"></i></li>
 					    </ul>
