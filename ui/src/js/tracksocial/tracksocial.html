@@ -723,7 +723,7 @@
           <div class="widget widget-blue">
             <div class="widget-title news-firstrow-title">
               <h3>
-                 Influencer activity
+                 Companies activity
                  <span class="pull-right">
                  <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
                     title="Download" data-original-title="Remove">
@@ -750,7 +750,7 @@
           <div class="widget">
             <div class="widget-title top">
               <h3>
-                Top Doctor Influencers
+                Top Lilllypad Influencers
                 <span class="pull-right">
                  <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
                     title="Download" data-original-title="Remove">
@@ -789,7 +789,7 @@
           <div class="widget">
             <div class="widget-title top">
               <h3>
-                Top Patient Influencers
+                Top Merck Influencers
                 <span class="pull-right">
                  <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
                     title="Download" data-original-title="Remove">
@@ -829,7 +829,7 @@
           <div class="widget">
             <div class="widget-title top">
               <h3>
-                Top Allied HCP Influencers
+                Top Sanofi Influencers
                 <span class="pull-right">
                  <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
                     title="Download" data-original-title="Remove">
@@ -874,7 +874,7 @@
            <div class="widget">
              <div class="widget-title top">
                <h3>
-                 Top Other Influencers
+                 Top Novonordisk Influencers
                  <span class="pull-right">
                   <a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top"
                     title="Download" data-original-title="Remove">
@@ -967,7 +967,7 @@
 			          	</div>
 			            <div class="value-block  text-left pull-left" style="color: #26C4D8;">
 			               	<div class="value-self">
-			                 	{{$ctrl.summarywidgets[0]['count']+$ctrl.summarywidgets[1]['count']+$ctrl.summarywidgets[2]['count']}}
+			                 	{{$ctrl.summarywidgets[0]['count']+$ctrl.summarywidgets[1]['count']+$ctrl.summarywidgets[2]['count'] || 0}}
 			               </div>
 			               <div class="value-sub value-sub-bigger pull-right">
 			                 	Overall
@@ -992,7 +992,7 @@
 			          	</div>
 			            <div class="value-block  text-left pull-left" style="color: #4CA64F;">
 			               	<div class="value-self">
-			                 	{{$ctrl.summarywidgets[2]['count']}}
+			                 	{{$ctrl.summarywidgets[2]['count'] || 0}}
 			               </div>
 			               <div class="value-sub value-sub-bigger pull-right">
 			                 	Positive
@@ -1017,7 +1017,7 @@
 			          	</div>
 			            <div class="value-block  text-left pull-left" style="color: #E13E33;">
 			               	<div class="value-self">
-			                 	{{$ctrl.summarywidgets[1]['count']}}
+			                 	{{$ctrl.summarywidgets[1]['count'] || 0}}
 			               </div>
 			               <div class="value-sub value-sub-bigger pull-right">
 			                 	Negative
@@ -1042,7 +1042,7 @@
 			          	</div>
 			            <div class="value-block  text-left pull-left" style="color: #C1C1C1;">
 			               	<div class="value-self">
-			                 	{{$ctrl.summarywidgets[0]['count']}}
+			                 	{{$ctrl.summarywidgets[0]['count'] || 0}}
 			               </div>
 			               <div class="value-sub value-sub-bigger pull-right">
 			                 	Neutral

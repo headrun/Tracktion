@@ -423,9 +423,7 @@
 
                 case 0: //sources
                         that.market_watch_timeline_data=resp.data.result.facets.updated_on.entries;
-                        that.series=[{
-                          lineWidth:5
-                        }];
+                        that.series=[];
                         that.timelinecolor=["#2194F0","#4CA64F","#E13E33","#C1C1C1","#E13E33","#FFD820"];
                         that.index=0;
                         console.log(that.market_watch_timeline_data);
@@ -552,9 +550,7 @@
 
                 case 0: //sources
                         that.market_watch_timeline_data=resp.data.result.facets.updated_on.entries;
-                        that.series=[{ 
-                            lineWidth: 5
-                        }];
+                        that.series=[];
                         that.timelinecolor=["#2194F0","#4CA64F","#E13E33","#C1C1C1","#E13E33","#FFD820"];
                         that.index=0;
                         console.log(that.market_watch_timeline_data);
@@ -710,7 +706,7 @@
     if(tabName=='Company'){
       that.showLoading();
       that.params=[
-                   {'facet':'updated_on','source':'influencers'},
+                   {'facet':'updated_on','source':'company'},
                   ];
 
       for(var i=0;i<that.params.length;i++){
@@ -724,10 +720,8 @@
 
                 case 0: //sources
                         that.market_watch_timeline_data=resp.data.result.facets.updated_on.entries;
-                        that.series=[{ 
-                            lineWidth: 5
-                        }];
-                        that.timelinecolor=["#2194F0","#4CA64F","#E13E33","#C1C1C1","#E13E33","#FFD820"];
+                        that.series=[];
+                        that.timelinecolor=["#2194F0","#4CA64F","#C1C1C1","#E13E33","#FFD820"];
                         that.index=0;
                         console.log(that.market_watch_timeline_data);
                         angular.forEach(that.market_watch_timeline_data,function(value,key){
@@ -776,9 +770,9 @@
                                                         var drugName = that.drugNamesInfluencers[event.point.color];
                                                         var url = "";
                                                         if (drugName == "Overall") {
-                                                          url = domainUrl+"clinicalapi/get_articles/?source=influencers&date="+dateFormat;
+                                                          url = domainUrl+"clinicalapi/get_articles/?source=company&date="+dateFormat;
                                                         }else{
-                                                          url = domainUrl+"clinicalapi/get_articles/?source=influencers&date="+dateFormat+"&key_word="+drugName+"_dcube_influencers_project_manual";
+                                                          url = domainUrl+"clinicalapi/get_articles/?source=company&date="+dateFormat+"&key_word="+drugName+"_dcube_influencers_project_manual";
                                                         }
                                                         var title = drugName+" Impressions on "+dateFormat;
                                                         that.loadArticleModal(url, title);
@@ -799,7 +793,7 @@
        }
 
        //Top Doctors
-       $http.get(domainUrl+"clinicalapi/get_social_media/?facet=influencers&source=influencers&infr_type=doctor_dcube_influencers_project_manual")
+       $http.get(domainUrl+"clinicalapi/get_social_media/?facet=influencers&source=company&infr_type=Lilly")
         .then(function(resp){
           if(resp.data.error){
             return;
@@ -809,7 +803,7 @@
 
 
        //Top patiennts
-       $http.get(domainUrl+"clinicalapi/get_social_media/?facet=influencers&source=influencers&infr_type=patient_dcube_influencers_project_manual")
+       $http.get(domainUrl+"clinicalapi/get_social_media/?facet=influencers&source=company&infr_type=Merck")
         .then(function(resp){
           if(resp.data.error){
             return;
@@ -819,7 +813,7 @@
 
 
        //Top Allied HCP
-       $http.get(domainUrl+"clinicalapi/get_social_media/?facet=influencers&source=influencers&infr_type=alliedhcp_dcube_influencers_project_manual")
+       $http.get(domainUrl+"clinicalapi/get_social_media/?facet=influencers&source=company&infr_type=Sanofi")
         .then(function(resp){
           if(resp.data.error){
             return;
@@ -828,7 +822,7 @@
         });  
 
         //Top Other Influencers
-        $http.get(domainUrl+"clinicalapi/get_social_media/?facet=influencers&source=influencers&infr_type=other_dcube_influencers_project_manual")
+        $http.get(domainUrl+"clinicalapi/get_social_media/?facet=influencers&source=company&infr_type=Novo")
          .then(function(resp){
            if(resp.data.error){
              return;
@@ -837,7 +831,7 @@
          });  
 
       // Drug Dropdown 
-      $http.get(domainUrl+"clinicalapi/wordcloud_dropdown/?source=influencers")
+      $http.get(domainUrl+"clinicalapi/wordcloud_dropdown/?source=company")
       .then(function(resp){
         if(resp.data.error){
           return;
@@ -852,9 +846,9 @@
         that.marketwatch_word_cloud_loading=true;
         var url = "";
         if (drugName != "" && typeof drugName != "undefined") {
-          url = domainUrl+"clinicalapi/get_wordcloud/?source=influencers&key_word="+drugName+"_dcube_influencers_project_manual";
+          url = domainUrl+"clinicalapi/get_wordcloud/?source=company&key_word="+drugName;
         }else{
-          url = domainUrl+"clinicalapi/get_wordcloud/?source=influencers&key_word="+this.defaultDrug+"_dcube_influencers_project_manual";
+          url = domainUrl+"clinicalapi/get_wordcloud/?source=company&key_word="+this.defaultDrug;
         }
         $http.get(url)
         .then(function(resp){
